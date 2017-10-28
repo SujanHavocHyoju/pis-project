@@ -67,7 +67,15 @@ class DB_dbc
         $result= mysqli_query($this->dbc, $query);
         return $result;
     }
+    function selectTransactionLocal($oid){
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activity AS a INNER JOIN tbl_transaction_local AS tl ON a.id = tl.activity_id WHERE tl.local_offices_id = '$oid'");
+        return $res;
+    }
 
+    function selectOneTransactionLocal($oid, $tlid){
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activity AS a INNER JOIN tbl_transaction_local AS tl ON a.id = tl.activity_id WHERE tl.local_offices_id = '$oid' AND tl.id= '$tlid'");
+        return $res;
+    }
 //    function select
 
     /*function selectOneMainActivity($id){
