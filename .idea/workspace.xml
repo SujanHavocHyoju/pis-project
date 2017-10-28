@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae5fcf5c-b78a-492c-a5fd-fce9041f84de" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/pis-project.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cp/entryThree.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/class/common.php" afterPath="$PROJECT_DIR$/class/common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/entry.php" afterPath="$PROJECT_DIR$/cp/entry.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/entryTwo.php" afterPath="$PROJECT_DIR$/cp/entryTwo.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/mainActivity.php" afterPath="$PROJECT_DIR$/cp/mainActivity.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,11 +62,20 @@
       <file leaf-file-name="common.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/class/common.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+            <state relative-caret-position="144">
+              <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
               <folding>
-                <marker date="1509206589758" expanded="true" signature="712:737" ph="SELECT * FRO... tbl_program" />
-                <marker date="1509206589758" expanded="true" signature="1828:1883" ph="SELECT * FRO... tbl_sub_activity" />
+                <marker date="1509207011564" expanded="true" signature="712:737" ph="SELECT * FRO... tbl_program" />
+                <marker date="1509207011564" expanded="true" signature="846:896" ph="SELECT * FRO... tbl_program" />
+                <marker date="1509207011564" expanded="true" signature="1005:1036" ph="SELECT * FRO... tbl_local_offices" />
+                <marker date="1509207011564" expanded="true" signature="1150:1207" ph="SELECT * FRO... tbl_main_activity" />
+                <marker date="1509207011564" expanded="true" signature="1318:1380" ph="SELECT * FRO... tbl_sub_activity" />
+                <marker date="1509207011564" expanded="true" signature="1488:1545" ph="SELECT * FRO... tbl_activity" />
+                <marker date="1509207011564" expanded="true" signature="1659:1715" ph="SELECT * FRO... tbl_main_activity" />
+                <marker date="1509207011564" expanded="true" signature="1828:1883" ph="SELECT * FRO... tbl_sub_activity" />
+                <marker date="1509207011564" expanded="true" signature="1995:2121" ph="INSERT INTO `db_pis`.`tbl_main_activity`... " />
+                <marker date="1509207011564" expanded="true" signature="2520:2677" ph="SELECT a.nam... tbl_activity" />
+                <marker date="1509207011564" expanded="true" signature="2803:2979" ph="SELECT a.nam... tbl_activity" />
               </folding>
             </state>
           </provider>
@@ -179,12 +182,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1509198915338</updated>
-      <workItem from="1509198918316" duration="5951000" />
+      <workItem from="1509198918316" duration="6506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5951000" />
+    <option name="totallyTimeSpent" value="6506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -277,11 +280,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/class/common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+        <state relative-caret-position="144">
+          <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
           <folding>
-            <marker date="1509206589758" expanded="true" signature="712:737" ph="SELECT * FRO... tbl_program" />
-            <marker date="1509206589758" expanded="true" signature="1828:1883" ph="SELECT * FRO... tbl_sub_activity" />
+            <marker date="1509207011564" expanded="true" signature="712:737" ph="SELECT * FRO... tbl_program" />
+            <marker date="1509207011564" expanded="true" signature="846:896" ph="SELECT * FRO... tbl_program" />
+            <marker date="1509207011564" expanded="true" signature="1005:1036" ph="SELECT * FRO... tbl_local_offices" />
+            <marker date="1509207011564" expanded="true" signature="1150:1207" ph="SELECT * FRO... tbl_main_activity" />
+            <marker date="1509207011564" expanded="true" signature="1318:1380" ph="SELECT * FRO... tbl_sub_activity" />
+            <marker date="1509207011564" expanded="true" signature="1488:1545" ph="SELECT * FRO... tbl_activity" />
+            <marker date="1509207011564" expanded="true" signature="1659:1715" ph="SELECT * FRO... tbl_main_activity" />
+            <marker date="1509207011564" expanded="true" signature="1828:1883" ph="SELECT * FRO... tbl_sub_activity" />
+            <marker date="1509207011564" expanded="true" signature="1995:2121" ph="INSERT INTO `db_pis`.`tbl_main_activity`... " />
+            <marker date="1509207011564" expanded="true" signature="2520:2677" ph="SELECT a.nam... tbl_activity" />
+            <marker date="1509207011564" expanded="true" signature="2803:2979" ph="SELECT a.nam... tbl_activity" />
           </folding>
         </state>
       </provider>
