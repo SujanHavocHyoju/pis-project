@@ -1,0 +1,130 @@
+body {
+	font-family: "Times New Roman", Times, serif;
+	line-height: 1.3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #595959;
+}
+
+h1 {
+	font-size: 16pt;
+}
+
+h2 {
+	font-size: 14pt;
+}
+
+h3, h4, h5, h6 {
+	font-size: 11pt;
+	text-align:center;
+	padding:0;
+	margin:0;
+}
+
+a:link, a:visited {
+	text-decoration: underline;
+	font-weight: bolder;
+}
+
+a img {
+	border: 1px solid #595959;
+}
+
+.hidden {
+	position: absolute;
+	top: -10000px;
+	left: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.perex {
+	margin-bottom: 60px;
+}
+
+#menu, #header .hide, form.searching, #content-box-in-right-in h3,#footer, .white {
+	display: none;
+}
+
+.preeti {
+	font-family:"kalimati";
+	font-size:13px;
+}
+
+.siddhi {
+	font-family:"kalimati";
+	font-size:13px;	
+}
+
+.hov td:hover{
+	background:#CCC;
+}
+
+.table {
+	border:1px solid #666;
+	border-collapse:collapse;
+	margin:0px auto;
+	text-align:left
+}
+.table span {
+	padding-left:5px;
+	padding-right:5px;
+}
+.table p {
+	margin:0;
+	padding:0;
+	margin:3px 0;
+}
+.table tr:hover {
+	background:#e7e7e7;
+}
+.table tr th p, .table tr td p {
+	margin-left:3px
+}
+.table tr td p a {
+	color: #9b9b9b; font-weight:normal;
+}
+.table tr:hover td p a.view {
+	color: #55a34a;  font-weight:900;
+}
+.table tr:hover td p a.edit {
+	color: #c5a059; font-weight:900;
+}
+.table tr:hover td p a.delete {
+	color: #a02b2b; font-weight:900;
+}
+.table .hov td p .preeti.none {
+	color:#336699;
+}
+.table .hov td p .preeti.none:hover {
+	color:#000;
+}
+
+.galerie ul {
+	margin-left:50px;
+	list-style-image:url(../img/list.gif);
+}
+.galerie ul ol {
+	margin-left:25px;	
+	margin-top:10px;
+	margin-bottom:20px;
+	list-style:decimal;
+}
+.galerie ul ol li {
+	line-height:19px;
+}
+.galerie ul ol li a {
+	font-weight:normal;
+}
+
+#header h1, #header h2{
+	margin:0;
+	padding:0;
+}
+
+#header h1 {
+	font-size:28px;	
+}

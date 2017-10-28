@@ -1,0 +1,12 @@
+.galerie {
+	_height: 1px;
+}
+
+.foto:hover, .foto.hover, .fotoHover {
+	background-color: #D6ECF8;
+	border: 1px solid #82B7DF;
+}
+
+div.foto {
+	behavior: url('../hover.htc');
+}
