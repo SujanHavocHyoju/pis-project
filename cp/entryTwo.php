@@ -13,12 +13,6 @@
                     कार्यालय : <?php echo $_GET['name'] ?><br>आ.व. : 2073/74<br>
                     <p align="right"><a href="dashboard.php?action=entry">अघिल्लो पेजमा जाने</a> || <a href="excelreport.php">प्रतिवेदन डाउनलोड गर्ने</a></p>
 
-
-
-
-
-
-
                     <form name="del" action="" method="post">
                         <table width="120%" align="center" border="1" class="table">
                             <tr>
@@ -49,36 +43,31 @@
 
                                 <td  align="center"><span class="preeti">भौतिक परिमाण</span></td>
                                 <td  align="center"><span class="preeti">खर्च बजेट</span></td>
-
-
-
-
-
-
-
                             </tr>
+                            <?php $sql = $dbc->selectTransactionLocal($_GET['oid']);
+                                while($row = mysqli_fetch_array($sql)) {
+                            ?>
                             <tr>
-                                <td><span class="siddhi">
-										                                        </span></td>
-                                <td><span class="siddhi">1.2.3.2</span></td>
-                                <td><span class="siddhi">विद्यालय निरीक्षक, स्रोतब्यक्ति, इञ्जिनीयर र सव इञ्जिनीयरहरुका लागि फिल्ड भत्ता</span></td>
                                 <td><span class="siddhi"></span></td>
-                                <td align="right"><span class="preeti">22</span></td>
-                                <td align="right"><span class="preeti">3</span></td>
+                                <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
+                                <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
+                                <td><span class="siddhi"></span></td>
+                                <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_qty'] ?></span></td>
+                                <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_cost'] ?></span></td>
 
-                                <td align="right"><span class="preeti">792.000</span></td>
+                                <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
 
-                                <td align="right" bgcolor="#CCCCCC"><span class="preeti">5</span></td>
-                                <td align="right" bgcolor="#CCCCCC"><span class="preeti">647.710</span></td>
+                                <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_qty_expenditure'] ?></span></td>
+                                <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span></td>
 
 
-                                <td align="right"><span class="preeti">22</span></td>
-                                <td align="right"><span class="preeti">237.6</span></td>
-                                <td align="right" bgcolor="#CCCCCC"><span class="preeti">5</span></td>
-                                <td align="right" bgcolor="#CCCCCC"><span class="preeti">434.15</span></td>
-                                <td align="center" ><p><a href="addprogress.php?id=1" class="delete">Add Progress</a></p></td>
+                                <td align="right"><span class="preeti"><?php echo $row['q3_alloc_qty'] ?></span></td>
+                                <td align="right"><span class="preeti"><?php echo $row['q3_alloc_budget'] ?></span></td>
+                                <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_qty_expenditure'] ?></span></td>
+                                <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_expenditure'] ?></span></td>
+                                <td align="center" ><p><a href="dashboard.php?action=entryThree&oid=<?php echo $_GET['oid'] ?>&name=<?php echo $_GET['name'] ?>&tlid=<?php echo $row['id'] ?>" class="delete">Add Progress</a></p></td>
                             </tr>
-
+                            <?php } ?>
                         </table>
                     </form>
                     <br />

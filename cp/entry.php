@@ -33,7 +33,7 @@
                                 </td>
                                 <td align="center" width="12%">
                                     <span class="preeti"><a
-                                                href="dashboard.php?action=entryTwo&id=<?php echo $row['id']?>&name=<?php echo $row['name_np'] ?>"
+                                                href="dashboard.php?action=entryTwo&oid=<?php echo $row['id']?>&name=<?php echo $row['name_np'] ?>"
                                                 class="edit" name="entry">प्रगति विवरण प्रविष्टि गर्नुहोस</a></span>
                                 </td>
                             </tr>
