@@ -57,6 +57,16 @@ class DB_dbc
         $res = mysqli_query($this->dbc, "SELECT * FROM tbl_sub_activity WHERE id = '$id' LIMIT 1");
         return $res;
     }
+    function insertMainActivity($id,$name,$program_id){
+        $query= sprintf("INSERT INTO `db_pis`.`tbl_main_activity` (`id`, `name_np`, `code`, `program_id`) VALUES         
+        ('%s','%s','%s','%s')",
+         mysqli_real_escape_string($this->dbc,$id),
+         mysqli_real_escape_string($this->dbc,$name),
+         mysqli_real_escape_string($this->dbc,$id),
+         mysqli_real_escape_string($this->dbc,$program_id));
+        $result= mysqli_query($this->dbc, $query);
+        return $result;
+    }
 
 //    function select
 

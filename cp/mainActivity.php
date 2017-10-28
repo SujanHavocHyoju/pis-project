@@ -1,7 +1,21 @@
 <div id="skip-menu"></div>
 
-<?php $sql = $dbc->selectOneProgram($_GET['pid']);
-$program = mysqli_fetch_array($sql);
+<?php 
+global $program_code,$message;
+$program_code= $_GET['pid'];
+    if(isset($_POST["txtmaincode"])){
+        $main_activity_code =  $_POST["txtmaincode"];
+        $main_activity_name = $_POST["txtmainactivity"];
+        $result = $dbc->insertMainActivity($main_activity_code,$main_activity_name,$program_code);
+        echo $result;
+        if($result){
+            $message= $main_activity_name." has been added successfully";
+        }else{
+            $message= $main_activity_name." has been added successfully";
+        }
+    }
+    $sql = $dbc->selectOneProgram($program_code);
+    $program = mysqli_fetch_array($sql);
 ?>
 
 <!-- Content box -->
@@ -18,8 +32,9 @@ $program = mysqli_fetch_array($sql);
                     <p style="font-size:18px;">कार्यक्रम : <?php echo $program['name_np'] ?><br />
 
                     </p>
+                    <p><?php echo isset($message)?$message:"";?></p>
 
-                    <form name="addstaff" action="" method="post">
+                    <form action="http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=<?php echo $program_code?>" method="post">
 
                         <table width="100%" align="center" border="1" class="table">
 
@@ -32,14 +47,15 @@ $program = mysqli_fetch_array($sql);
                                 <th align="center"></th>
                             </tr>
                             <tr>
-                                <th  align="left"><span class="preeti"><input class="siddhi"  size="10" maxlength="50" type="text" name="txtmaincode" /></span></th>
+                                <th  align="left"><span class="preeti">
+                                <input class="siddhi"  size="10" maxlength="50" type="text" name="txtmaincode" /></span></th>
 
                                 <th  width="60%"><span class="preeti"><input type="text" class="preeti" size="30" maxlength="350" name="txtmainactivity" required  /></span></th>
 
 
 
                                 <th colspan="3"><input type="submit" name="btnaddmainactivity" value="  सेभ गर्ने  "  style="width:150px;height:30px;"/> </th>
-
+                           
                             </tr>
                             <?php
                             $i = 1;
