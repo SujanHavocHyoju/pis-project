@@ -19,12 +19,18 @@ class DB_dbc
         mysqli_query ($this->dbc,"set collation_connection='utf8_general_ci'");
         mysqli_select_db($this->dbc, 'db_pis');
     }
-    function selectOffice(){
-        $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,d.name_np as 'd_name' FROM tbl_local_offices as lo LEFT JOIN tbl_developement_regions AS d ON lo.development_region_id = d.id");
-        return $res;
-    }
+    
     function selectProgram(){
         $res = mysqli_query($this->dbc, "SELECT * FROM tbl_programs");
+        return $res;
+    }
+    function selectOneProgram($id){
+        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_programs WHERE id = '$id' LIMIT 1");
+        return $res;
+    }
+    
+    function selectOffice(){
+        $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,d.name_np as 'd_name' FROM tbl_local_offices as lo LEFT JOIN tbl_developement_regions AS d ON lo.development_region_id = d.id");
         return $res;
     }
     function insertProgram($exp_head_code,$program){
@@ -45,10 +51,7 @@ class DB_dbc
         $res = mysqli_Query($this->dbc,$query);
         return $query;
     }
-    function selectOneProgram($id){
-        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_programs WHERE id = '$id' LIMIT 1");
-        return $res;
-    }
+    
     function selectLocalOffice(){
         $result  = mysqli_query($this->dbc,"SELECT * FROM tbl_local_offices");
         return $result;
@@ -143,22 +146,59 @@ class DB_dbc
     echo $query;
     return $result;
     }
+    
+
+    
+    function selectTransactionGovernment($oid){
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id WHERE tl.edu_office_id = '$oid'");
+        return $res;
+    }
     function selectTransactionLocal($oid){
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local AS tl ON a.id = tl.activity_id WHERE tl.local_offices_id = '$oid'");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.id = tl.activity_id WHERE tl.local_office_id = '$oid'");
+        return $res;
+    }
+
+    function selectOneTransactionGovernment($oid, $tlid){
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id WHERE tl.edu_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
         return $res;
     }
 
     function selectOneTransactionLocal($oid, $tlid){
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local AS tl ON a.id = tl.activity_id WHERE tl.local_offices_id = '$oid' AND tl.id= '$tlid'");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.id = tl.activity_id WHERE tl.local_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
         return $res;
     }
-//    function select
+    function selectUsers(){
+        $res = mysqli_query($this->dbc, "SELECT u.username, u.password, CONCAT(u.firstname, ' ', u.lastname) AS fullname, o.name_np FROM tbl_users AS u INNER JOIN tbl_local_offices AS o ON a.office_id = o.id");
+        return $res;
+    }
 
-    /*function selectOneMainActivity($id){
-	    $res = mysqli_query($this->dbc, "SELECT * FROM tbl_main_activities WHERE id = '$id'  LIMIT 1");
-	    return $res;
-    }*/
+    function selectLocalOfficeForTransaction(){
+        $res = mysqli_query($this->dbc, "SELECT o.name FROM tbl_local_offices AS o 
+                JOIN tbl_transaction_edu_offices AS tl ON o.id = tl.edu_office_id;
+");
+    }
 
+    function updateGovernmentTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid){
+        $sql = sprintf("UPDATE `db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty_expenditure = '%s',yearly_progress_expenditure='%s',q3_expenditure='%s',q3_qty_expenditure='%s' where id = '%s'",
+            mysqli_real_escape_string($this->dbc,$txtpyearqty),
+            mysqli_real_escape_string($this->dbc,$txtpyearbudget),
+            mysqli_real_escape_string($this->dbc,$txtpttbudget),
+            mysqli_real_escape_string($this->dbc,$txtpttqty),
+            mysqli_real_escape_string($this->dbc,$tlid));
+        $res = mysqli_query($this->dbc, $sql);
+        return $res;
+    }
+
+    function updateLocalTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid){
+        $sql = sprintf("UPDATE `db_pis`.`tbl_transaction_local_offices` set yearly_progress_qty_expenditure = '%s',yearly_progress_expenditure='%s',q3_expenditure='%s',q3_qty_expenditure='%s' where id = '%s'",
+            mysqli_real_escape_string($this->dbc,$txtpyearqty),
+            mysqli_real_escape_string($this->dbc,$txtpyearbudget),
+            mysqli_real_escape_string($this->dbc,$txtpttbudget),
+            mysqli_real_escape_string($this->dbc,$txtpttqty),
+            mysqli_real_escape_string($this->dbc,$tlid));
+        $res = mysqli_query($this->dbc, $sql);
+        return $res;
+    }
 }
 
 
