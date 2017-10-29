@@ -84,9 +84,9 @@ include('../class/common.php');
             <li><a href="dashboard.php?action=home" class="active">गृहपृष्ठ</a></li>
             <li><a href="#">डाटा प्रविष्टि</a>
                 <ul>
-                    <li><a href="dashboard.php?action=entry" title="" class="preeti none"
+                    <li><a href="dashboard.php?action=program" title="" class="preeti none"
                            style="font-size:14px; font-weight:normal">कार्यक्रम प्रविष्टी</a></li>
-                    <li><a href="office.php" title="" class="preeti none" style="font-size:14px; font-weight:normal">कार्यालय
+                    <li><a href="dashboard.php?action=office" title="" class="preeti none" style="font-size:14px; font-weight:normal">कार्यालय
                             प्रविष्टि </a></li>
                     <li><a href="users.php" title="" class="preeti none" style="font-size:14px; font-weight:normal">प्रयोगकर्ता
                             व्यवस्थापन</a></li>
@@ -94,7 +94,7 @@ include('../class/common.php');
                            style="font-size:14px; font-weight:normal">आर्थिक वर्ष प्रविष्टि </a></li>
 
 
-                    <li><a href="dashboard.php?action=program" title="" class="preeti none"
+                    <li><a href="dashboard.php?action=programlist" title="" class="preeti none"
                            style="font-size:14px; font-weight:normal">क्रियाकलाप प्रविष्टि</a></li>
 
 

@@ -1,8 +1,22 @@
 <div id="skip-menu"></div>
 <?php
-$program = mysqli_fetch_array($dbc->selectOneProgram($_GET['pid']));
-$mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($_GET['mid']));
-$subActivity = mysqli_fetch_array($dbc->selectOneSubActivity($_GET['sid']));
+$program_code = $_GET['pid'];
+$main_id = $_GET['mid'];
+$sub_id=$_GET['sid'];
+if(isset($_POST["btnaddactivity"])){
+    $activity_code = $_POST["txtactivitycode"];
+    $activity_name = $_POST["txtactivity"];
+    $unit = $_POST["txtactivity"];
+    $result = $dbc->insertActivity($activity_code,$activity_name,$unit,$sub_id);
+    if($result){
+        $message= $activity_name." has been added successfully";
+    }else{
+        $message= $activity_name." has been added successfully";
+    }
+}
+$program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
+$mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
+$subActivity = mysqli_fetch_array($dbc->selectOneSubActivity($sub_id));
 ?>
 <!-- Content box -->
 <div id="content-box">
@@ -19,13 +33,16 @@ $subActivity = mysqli_fetch_array($dbc->selectOneSubActivity($_GET['sid']));
                         मुख्य क्रियाकलाप : <?php echo $mainActivity['name_np'] ?><br />
                         सहायक क्रियाकलाप : <?php echo $subActivity['name_np'] ?>                        </p>
 
-
-                    <form name="addstaff" action="" method="post">
+                        <p><?php echo isset($message)?$message:"";?></p>
+                    <form action="http://localhost/pis-project/cp/dashboard.php?action=activity&pid=<?php echo $program_code."&mid=".$main_id."&sid=".$sub_id;?>" method="post">
 
                         <table width="100%" align="center" border="1" class="table">
 
                             <tr>
-                                <th  align="right" colspan="5"><span class="preeti"><a href="subactivity.php">Back to Main Page</a></span></th>
+     
+
+
+                            <th  >&nbsp;</th>                           <th  align="right" colspan="5"><span class="preeti"><a href="subactivity.php">Back to Main Page</a></span></th>
 
 
                             </tr>
@@ -56,9 +73,9 @@ $subActivity = mysqli_fetch_array($dbc->selectOneSubActivity($_GET['sid']));
                             <tr>
                                 <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
-                                <td><span class="siddhi"></span></td>
+                                <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
 
-                                <td align="center" ><p><a href="#" class="edit">Edit</a></p></td>
+                                <td align="center" ><p><a href="dashboard.php?action=editactivity&id=<?php echo $row['id'];?>&code=<?php echo $row['code'] ?>&a_name=<?php echo $row['name_np'] ?>&qty=<?php echo $row['unit'] ?>&pid=<?php echo $program_code?>&mid=<?php echo $main_id?>&sid=<?php echo $sub_id?>" class="edit">Edit</a></p></td>
 
                                 <td align="center" ><p><a onclick="return validateForm()" href="deluser.php?id=1.0" class="delete">Delete</a></p></td>
 

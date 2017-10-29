@@ -10,6 +10,7 @@ $program_code= $_GET['pid'];
         echo $result;
         if($result){
             $message= $main_activity_name." has been added successfully";
+        
         }else{
             $message= $main_activity_name." has been added successfully";
         }
@@ -58,17 +59,15 @@ $program_code= $_GET['pid'];
                            
                             </tr>
                             <?php
-                            $i = 1;
                             $sql = $dbc->selectMainActivity($_GET['pid']);
                             while ($row = mysqli_fetch_array($sql)) {
                             ?>
                             <tr>
-                                <td><span class="siddhi"><?php echo $i++ ?></span></td>
+                                <td><span class="siddhi"><?php echo $row["code"] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
+                                <td align="center" ><p><a href="dashboard.php?action=editmainactivity&id=<?php echo $row['id']?>&p_id=<?php echo $program['id']?>&m_name=<?php echo $row['name_np']?>&m_code=<?php echo $row["code"];?>" class="edit">Edit</a></p></td>
 
-                                <td align="center" ><p><a href="editmainactivity.php?id=<?php echo $row['id'] ?>" class="edit">Edit</a></p></td>
-
-                                <td align="center" ><p><a onclick="return validateForm()" href="deluser.php?id=1" class="delete">Delete</a></p></td>
+                                <td align="center" ><p><a onclick="return validateForm()" href="dashboard.php?action=editmainactivity&type=del&id=<?php echo $row['id']?>&p_id=<?php echo $program['id']?>&m_name=<?php echo $row['name_np']?>" class="delete">Delete</a></p></td>
                                 <td align="center" ><p><a href="dashboard.php?action=subActivity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $row['id'] ?>" class="delete">Add Sub Activity</a></p></td>
                             </tr>
                             <?php } ?>

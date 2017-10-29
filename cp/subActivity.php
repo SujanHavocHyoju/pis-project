@@ -1,7 +1,19 @@
 <div id="skip-menu"></div>
 <?php
-$program = mysqli_fetch_array($dbc->selectOneProgram($_GET['pid']));
-$mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($_GET['mid']));
+$program_code = $_GET['pid'];
+$main_id = $_GET['mid'];
+if(isset($_POST["txtsubactivitycode"])){
+    $sub_activity_code =  $_POST["txtsubactivitycode"];
+    $sub_activity_name = $_POST["txtsubactivity"];
+    $result = $dbc->insertSubActivity($sub_activity_code,$sub_activity_name,$main_id);
+    if($result){
+        $message= $sub_activity_name." has been added successfully";
+    }else{
+        $message= $sub_activity_name." has been added successfully";
+    }
+}
+$program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
+$mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
 
 ?>
 <!-- Content box -->
@@ -18,8 +30,8 @@ $mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($_GET['mid']));
                     <p style="font-size:18px;">कार्यक्रम : <?php echo $program['name_np'] ?><br/>
                         मुख्य क्रियाकलाप : <?php echo $mainActivity['name_np'] ?>                        </p>
 
-
-                    <form name="addstaff" action="" method="post">
+                    <p><?php echo isset($message)?$message:"";?></p>
+                    <form  action="http://localhost/pis-project/cp/dashboard.php?action=subActivity&pid=<?php echo $program_code."&mid=".$main_id?>" method="post">
 
                         <table width="100%" align="center" border="1" class="table">
 
@@ -51,17 +63,17 @@ $mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($_GET['mid']));
 
                                 <th colspan="3"><input type="submit" name="btnaddsubactivity" value="  सेभ गर्ने  "
                                                        style="width:150px;height:30px;"/></th>
-
                             </tr>
                             <?php
                             $sql = $dbc->selectSubActivity($_GET['mid']);
+                            
                             while ($row = mysqli_fetch_array($sql)) {
                                 ?>
                                 <tr>
-                                    <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
+                                    <td><span class="siddhi"><?php echo $row["code"] ?></span></td>
                                     <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
 
-                                    <td align="center"><p><a href="dashboard.php?id=" class="edit">Edit</a></p>
+                                    <td align="center"><p><a href="dashboard.php?action=editsubactivity&id=<?php echo $row["id"] ?>&s_code=<?php echo $row["code"];?>&s_name=<?php echo $row['name_np'] ?>&pid=<?php echo $program['id'] ?>&mid=<?php echo $mainActivity['id'] ?>" class="edit">Edit</a></p>
                                     </td>
 
                                     <td align="center"><p><a onclick="return validateForm()" href="deluser.php?id=1"
