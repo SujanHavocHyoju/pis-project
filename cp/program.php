@@ -4,8 +4,9 @@
         $program_name =$_POST["txtmainsubhead"];
         $result = $dbc->insertProgram($exp_head_code,$program_name);
         echo $result;
-        if($result){
-            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=program';</script>";            
+        if($result>0){
+            //return;
+            //echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=program';</script>";            
         }
     }
 ?>

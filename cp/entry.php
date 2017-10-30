@@ -22,7 +22,7 @@
                         </tr>
                         <?php
                         $i = 1;
-                        $sql = $dbc->selectLocalOffice();
+                        $sql = $dbc->selectEduOffice();
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>
                             <tr>

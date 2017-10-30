@@ -26,7 +26,8 @@ include('../class/common.php');
     <link rel="stylesheet" type="text/css" href="../public/css/style-ie.css" media="screen, projection, tv"/>
     <![endif]-->
     <link rel="stylesheet" href="../public/css/style-print.css" type="text/css" media="print"/>
-
+    <link rel="stylesheet" href="../public/css/tableexport.min.css" type="text/css" media="screen, projection, tv"/>
+    
     <link rel="shortcut icon" href="../public/img/favicon.ico" type="image/x-icon"/>
     <script>
         function validateForm() {
@@ -63,6 +64,8 @@ include('../class/common.php');
 </script>
 <script src="../public/js/jquery.maskedinput.min.js"></script>
 <script src="../public/js/functions.js"></script>
+<script src="../public/js/FileSaver.min.js"></script>
+<script src="../public/js/tableexport.min.js"></script>
 <div id="header">
 
     <!-- Your gallery name  -->
@@ -91,7 +94,7 @@ include('../class/common.php');
                             <li><a href="dashboard.php?action=office" title="" class="preeti none"
                                    style="font-size:14px; font-weight:normal">Local कार्यालय
                                     प्रविष्टि </a></li>
-                            <li><a href="dashboard.php?action=office" title="" class="preeti none"
+                            <li><a href="dashboard.php?action=eduoffice" title="" class="preeti none"
                                    style="font-size:14px; font-weight:normal">Government कार्यालय
                                     प्रविष्टि </a></li>
                         </ul>

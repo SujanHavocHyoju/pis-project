@@ -4,13 +4,13 @@ $program_code = $_GET['pid'];
 $main_id = $_GET['mid'];
 $sub_id=$_GET['sid'];
 if(isset($_POST["btnaddactivity"])){
+    echo 'Here';
     $activity_code = $_POST["txtactivitycode"];
     $activity_name = $_POST["txtactivity"];
-    $unit = $_POST["txtactivity"];
+    $unit = $_POST["txtunit"];
     $result = $dbc->insertActivity($activity_code,$activity_name,$unit,$sub_id);
+    echo $result;
     if($result){
-        $message= $activity_name." has been added successfully";
-    }else{
         $message= $activity_name." has been added successfully";
     }
 }
