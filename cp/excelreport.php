@@ -9,7 +9,7 @@ if(isset($_GET['eid'])){
     $sql = $dbc->selectTransactionLocal($_GET['eid']);
 }
 if(isset($_GET['lid'])){
-    $sql = $dbc->selectTransactionLocalok($_GET['lid']);
+    $sql = $dbc->selectTransactionLocal($_GET['lid']);
 }
 $objPHPExcel->setActiveSheetIndex()
 ->mergeCells('C3:C4');
