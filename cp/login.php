@@ -1,7 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<?php
 
+session_start();
+
+if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
+    echo "<script>window.location='dashboard.php';</script>";
+}
+
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Welcome to Progress Reporting Software</title>
@@ -42,6 +52,18 @@
             color: #5d5d5d;
         }
 
+        .danger {
+            margin-bottom: 18px;
+            color: #fffaf7;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+            background-color: #970004;
+            border: 1px solid #fbeed5;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+
     </style>
 </head>
 <body>
@@ -51,18 +73,24 @@
     प्रगति विवरण सूचना प्रणाली
 </p>
 <div id="login">
-    <form action="http://pis.doe.gov.np/logincheck.php" method="post">
+
+    <form action="loginCheck.php" method="post">
         <table border="0" align="center">
+<!--            --><?php //if (isset($_GET['error'])): ?>
+<!--                <td align="right" class="danger">-->
+<!--                    Your username or password is incorrect-->
+<!--                </td>-->
+<!--            --><?php //endif; ?>
             <tr>
-                <td align="right">Username</td>
-                <td align="left"><input class="txt" required type="text" name="txtUser"/></td>
+                <td align="center">Username</td>
+                <td align="center"><input class="txt" required type="text" name="txtUser"/></td>
             </tr>
             <tr>
-                <td align="right">Password</td>
-                <td align="left"><input class="txt" required type="password" name="txtPass"/></td>
+                <td align="center">Password</td>
+                <td align="center"><input class="txt" required type="password" name="txtPass"/></td>
             </tr>
             <tr>
-                <td align="right">Fiscalyear</td>
+                <td align="center">Fiscalyear</td>
 
 
                 <td align="left">
