@@ -83,7 +83,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpyearqty"
-                                                                                               value="<?php echo $row['yearly_progress_qty_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['yearly_progress_qty'] ?>"/></span>
                                 </td>
 
                             </tr>
@@ -127,7 +127,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttqty"
-                                                                                               value="<?php echo $row['q3_qty_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['q3_progress_qty'] ?>"/></span>
                                 </td>
                             </tr>
                             <tr>
@@ -136,7 +136,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttbudget"
-                                                                                               value="<?php echo $row['q3_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['q3_progress_expenditure'] ?>"/></span>
                                 </td>
                             </tr>
 
