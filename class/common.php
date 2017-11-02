@@ -314,9 +314,10 @@ class DB_dbc
 ");
     }
 
+
     function updateGovernmentTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid)
     {
-        $sql = sprintf("UPDATE `db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q3_progress_expenditure='%s',q3_progress_qty='%s' where id = '%s'",
+        $sql = sprintf("UPDATE `db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty_expenditure = '%s',yearly_progress_expenditure='%s',q3_expenditure='%s',q3_qty_expenditure='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc, $txtpyearqty),
             mysqli_real_escape_string($this->dbc, $txtpyearbudget),
             mysqli_real_escape_string($this->dbc, $txtpttbudget),

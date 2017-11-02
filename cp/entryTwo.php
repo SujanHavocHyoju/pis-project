@@ -57,14 +57,14 @@
 
                             <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
 
-                            <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_qty'] ?></span></td>
+                            <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_qty_expenditure'] ?></span></td>
                             <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span></td>
 
 
                             <td align="right"><span class="preeti"><?php echo $row['q3_alloc_qty'] ?></span></td>
                             <td align="right"><span class="preeti"><?php echo $row['q3_alloc_budget'] ?></span></td>
-                            <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_progress_qty'] ?></span></td>
-                            <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_progress_expenditure'] ?></span></td>
+                            <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_qty_expenditure'] ?></span></td>
+                            <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_expenditure'] ?></span></td>
                             <td align="center" ><p><a href="dashboard.php?action=entryThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>" class="delete">Add Progress</a></p></td>
                         </tr>
                         <?php } ?>
