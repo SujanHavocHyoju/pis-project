@@ -64,7 +64,7 @@ while($row = mysqli_fetch_array($sql)) {
     ->setCellValue('L'.$i,$row['q3_expenditure']);
 }
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="pis-report.xls"');
+header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xls"');
 header('Cache-Control: max-age=0');
 // If you're serving to IE 9, then the following may be needed
 header('Cache-Control: max-age=1');

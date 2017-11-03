@@ -1,22 +1,37 @@
 <div id="skip-menu"></div>
 
 <?php 
-global $program_code,$message;
-$program_code= $_GET['pid'];
-    if(isset($_POST["txtmaincode"])){
-        $main_activity_code =  $_POST["txtmaincode"];
-        $main_activity_name = $_POST["txtmainactivity"];
-        $result = $dbc->insertMainActivity($main_activity_code,$main_activity_name,$program_code);
-        echo $result;
-        if($result){
-            $message= $main_activity_name." has been added successfully";
-        
-        }else{
-            $message= $main_activity_name." has been added successfully";
+if(isset($_GET['message'])){
+    $message = $utils->infoMessage($_GET['message']);
+}
+if(isset($_GET['error'])){
+    $message = $utils->errorMessage($_GET['message']);
+}
+    if(isset($_GET['pid'])){
+        $program_code= $_GET['pid'];
+        if(isset($_POST["txtmaincode"])){
+            $main_activity_code =  $_POST["txtmaincode"];
+            $main_activity_name = $_POST["txtmainactivity"];
+            $result = $dbc->insertMainActivity($main_activity_code,$main_activity_name,$program_code);
+            if($result>0){
+                $message= $utils->successMessage('क्रियाकलाप विवरण '.$main_activity_name." दर्ता भैसाकेको छ!");
+            }
+            else if($result==-1){
+                $message= $utils->infoMessage('क्रियाकलाप विवरण ' .$main_activity_name." पहिलै हालि सकेको छ!! पुन प्रयाश गर्र्नु होला!!");
+            }
+            else{
+                $message= $utils->errorMessage('क्रियाकलाप विवरण ' .$main_activity_name." दर्ता हुन्न सकेना!  ्पुन प्रयाश गर्र्नु होला!");
+            }
         }
+        $sql = $dbc->selectOneProgram($program_code);
+        $program = mysqli_fetch_array($sql);
+        if(!isset($program)){
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=programlist&message=क्रियाकलाप विवरण भेतौन सकेन!';</script>";
+        }
+    }else{
+        echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=programlist';</script>";
     }
-    $sql = $dbc->selectOneProgram($program_code);
-    $program = mysqli_fetch_array($sql);
+    
 ?>
 
 <!-- Content box -->
@@ -33,7 +48,9 @@ $program_code= $_GET['pid'];
                     <p style="font-size:18px;">कार्यक्रम : <?php echo $program['name_np'] ?><br />
 
                     </p>
-                    <p><?php echo isset($message)?$message:"";?></p>
+                    <?php 
+                        echo isset($message)?$message:"";
+                    ?>
 
                     <form action="http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=<?php echo $program_code?>" method="post">
 

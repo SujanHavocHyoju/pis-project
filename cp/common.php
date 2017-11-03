@@ -3,7 +3,7 @@
 /*Declaring the constant keyword */
 define('DB_SERVER','127.0.0.1');
 define('DB_USER','root');
-define('DB_PASS' ,'admin');
+define('DB_PASS' ,'root');
 define('DB_NAME', 'db_pis');
 
 class DB_dbc
@@ -19,7 +19,7 @@ class DB_dbc
         mysqli_query ($this->dbc,"set collation_connection='utf8_general_ci'");
         mysqli_select_db($this->dbc, 'db_pis');
     }
-    
+
     function selectProgram(){
         $res = mysqli_query($this->dbc, "SELECT * FROM tbl_programs");
         return $res;
@@ -47,7 +47,8 @@ class DB_dbc
             mysqli_real_escape_string($this->dbc,$office_name_ep),
             mysqli_real_escape_string($this->dbc,$region),
             mysqli_real_escape_string($this->dbc,$sn));
-        $res = mysqli_query($this->dbc,$query);
+        echo $query;
+        $res = mysqli_Query($this->dbc,$query);
         return $res;
     }
     function insertEduOffice($sn,$office_name_np,$office_name_ep,$region){
@@ -57,108 +58,28 @@ class DB_dbc
             mysqli_real_escape_string($this->dbc,$office_name_ep),
             mysqli_real_escape_string($this->dbc,'0'),
             mysqli_real_escape_string($this->dbc,$region));
-        $res = mysqli_query($this->dbc,$query);
+        $res = mysqli_Query($this->dbc,$query);
         return $res;
     }
-    function isProgramExist($exp_code){
-        if(isset($exp_code)){
-            $query = "Select COUNT(*) FROM tbl_programs WHERE exp_head_code='$exp_code'";
-            $res = mysqli_query($this->dbc,$query);
-            $result = mysqli_fetch_array($res);
-            return $result[0]>0?true:false;
-        }
-    }
     function insertProgram($exp_head_code,$program){
-        if($this->isProgramExist($exp_head_code)){
-            return -1;
-        }else{
-            $query =sprintf("INSERT INTO `db_pis`.`tbl_programs` (`name_np`, `exp_head_code`) VALUES ('%s','%s')",
+        $query =sprintf("INSERT INTO `db_pis`.`tbl_programs` (`name_np`, `exp_head_code`) VALUES ('%s','%s')",
             mysqli_real_escape_string($this->dbc,$program),
             mysqli_real_escape_string($this->dbc,$exp_head_code)
         );
-            $res = mysqli_query($this->dbc,$query);
-            return $res;
-        }
+        $res = mysqli_Query($this->dbc,$query);
+        return $query;
     }
     function updateProgram($id,$exp_head_code,$program_name){
-        
-            $query =sprintf("UPDATE  `db_pis`.`tbl_programs` set exp_head_code='%s', name_np='%s' where id='%s'",
-                mysqli_real_escape_string($this->dbc,$exp_head_code),
-                mysqli_real_escape_string($this->dbc,$program_name),
-                mysqli_real_escape_string($this->dbc,$id)
-            );
-            $res = mysqli_query($this->dbc,$query);
-            return $res;
-        
-    }
-    function isUserExists($username){
-            if(isset($username)){
-                $query = "Select COUNT(*) FROM tbl_users WHERE username='$username'";
-                $res = mysqli_query($this->dbc,$query);
-                $result = mysqli_fetch_array($res);
-                
-                return $result[0]>0?true:false;
-            }
-    }
-    function insertLocalUser($username,$password,$full_name,$user_type,$office_id){
-        $is_user = $this->isUserExists($username);
-        echo $is_user;
-        if($is_user){
-           return -1;
-        }else{
-            $query =sprintf("INSERT INTO `db_pis`.`tbl_users` (`username`, `password`, `fullname`, `user_type`, `office_id`) VALUES ('%s', '%s', '%s', '%s', '%s');",
-            mysqli_real_escape_string($this->dbc,$username),
-            mysqli_real_escape_string($this->dbc,crypt($password,'st')),
-            mysqli_real_escape_string($this->dbc,$full_name),
-            mysqli_real_escape_string($this->dbc,$user_type),
-            mysqli_real_escape_string($this->dbc,$office_id)
-        );
-        $res = mysqli_query($this->dbc,$query);
-        return $res;
-        }
-    }
-    function selectOneUser($id){
-            $res = mysqli_query(
-                $this->dbc,'SELECT * FROM db_pis.tbl_users where id='.$id.';'
-            );
-            return $res;
-    }
-    function changePassword($id){
-        
-        $length = 8;
-        
-        $randomletter = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, $length);
-        $query =  sprintf(
-            "UPDATE `db_pis`.`tbl_users` SET `password`='%s' WHERE `id`='%s';",
-            mysqli_real_escape_string($this->dbc,crypt($randomletter,st)),
+        $query =sprintf("UPDATE  `db_pis`.`tbl_programs` set exp_head_code='%s', name_np='%s' where id='%s'",
+            mysqli_real_escape_string($this->dbc,$exp_head_code),
+            mysqli_real_escape_string($this->dbc,$program_name),
             mysqli_real_escape_string($this->dbc,$id)
         );
-        $res = mysqli_query(
-            $this->dbc,$query
-        );
-        if($res>0){return $randomletter;}
+        echo $query;
+        $res = mysqli_Query($this->dbc,$query);
+        return $query;
     }
-    function updateUser($id,$username,$fullname,$user_type,$office_id){
-        $is_user = $this->isUserExists($username);
-         if(!$is_user){
-            return -1;
-         }else{
-            $query =  sprintf(
-                "UPDATE `db_pis`.`tbl_users` SET `username`='%s', `fullname`='%s', `user_type`='%s', `office_id`='%s' WHERE `id`='%s';",
-                mysqli_real_escape_string($this->dbc,$username),
-                mysqli_real_escape_string($this->dbc,$fullname),
-                mysqli_real_escape_string($this->dbc,$user_type),
-                mysqli_real_escape_string($this->dbc,$office_id),
-                mysqli_real_escape_string($this->dbc,$id)
-            );
-            $res = mysqli_query(
-                $this->dbc,$query
-            );
-            echo $query;
-            return $res;
-         }
-       
-    }
+
     function selectLocalOffice(){
         $result  = mysqli_query($this->dbc,"SELECT * FROM tbl_local_offices");
         return $result;
@@ -187,33 +108,22 @@ class DB_dbc
         $res = mysqli_query($this->dbc, "SELECT * FROM tbl_sub_activities WHERE id = '$id' LIMIT 1");
         return $res;
     }
-    function isMainActivityExists($code){
-        if(isset($code)){
-            $query = "Select COUNT(*) FROM tbl_main_activities WHERE code='$code'";
-            $res = mysqli_query($this->dbc,$query);
-            $result = mysqli_fetch_array($res);
-            return $result[0]>0?true:false;   
-        }
-    }
+
     function insertMainActivity($id,$name,$program_id){
-        if($this->isMainActivityExists($id)){
-            return -1;
-        }
-        else{
-            $query= sprintf("INSERT INTO `db_pis`.`tbl_main_activities` (`name_np`, `code`, `program_id`) VALUES         
-            ('%s','%s','%s')",
-                mysqli_real_escape_string($this->dbc,$name),
-                mysqli_real_escape_string($this->dbc,$id),
-                mysqli_real_escape_string($this->dbc,$program_id));
-            $result= mysqli_query($this->dbc, $query);
-            return $result;
-        }
+        $query= sprintf("INSERT INTO `db_pis`.`tbl_main_activities` (`name_np`, `code`, `program_id`) VALUES         
+        ('%s','%s','%s')",
+            mysqli_real_escape_string($this->dbc,$name),
+            mysqli_real_escape_string($this->dbc,$id),
+            mysqli_real_escape_string($this->dbc,$program_id));
+        $result= mysqli_query($this->dbc, $query);
+        return $result;
     }
     function updateMainActivity($id,$main_activity_code,$main_activity_name){
         $query= sprintf("UPDATE `db_pis`.`tbl_main_activities` set name_np='%s',code='%s' where id='%s'",
             mysqli_real_escape_string($this->dbc,$main_activity_name),
             mysqli_real_escape_string($this->dbc,$main_activity_code),
             mysqli_real_escape_string($this->dbc,$id));
+        echo $query;
         $result= mysqli_query($this->dbc, $query);
         return $result;
     }
@@ -223,9 +133,6 @@ class DB_dbc
         $result= mysqli_query($this->dbc, $query);
         echo $query;
         return $result;
-    }
-    function isSubActivityExists(){
-        
     }
     function insertSubActivity($code,$name,$main_id){
         $query= sprintf("INSERT INTO `db_pis`.`tbl_sub_activities` (`code`, `name_np`, `main_activity_id`) VALUES        
@@ -293,38 +200,22 @@ class DB_dbc
         $res = mysqli_query($this->dbc, "SELECT u.username, u.password, CONCAT(u.firstname, ' ', u.lastname) AS fullname, o.name_np FROM tbl_users AS u INNER JOIN tbl_local_offices AS o ON a.office_id = o.id");
         return $res;
     }
-    function selectUser(){
-        $res = mysqli_query($this->dbc,"SELECT id,username,fullname,user_type,office_id FROM db_pis.tbl_users where not user_type = '0';");
-        return $res;
-    }
-    function selectOfficeNameFromIdAndUserType($user_type,$office_id){
-        if($user_type==1){
-            $res = mysqli_query(
-                $this->dbc,'SELECT name_np FROM db_pis.tbl_edu_offices where id='.$office_id.';'
-            );
-            return $res;
-        }
-        else{
-            $res = mysqli_query(
-                $this->dbc,'SELECT name_np FROM db_pis.tbl_local_offices where id='.$office_id.';'
-            );
-            return $res;
-        }
-    }
+
     function selectLocalOfficeForTransaction(){
         $res = mysqli_query($this->dbc, "SELECT o.name FROM tbl_local_offices AS o 
                 JOIN tbl_transaction_edu_offices AS tl ON o.id = tl.edu_office_id;
 ");
     }
 
-    function updateGovernmentTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid)    {      
-        $sql = sprintf("UPDATE `db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty_expenditure = '%s',yearly_progress_expenditure='%s',q3_expenditure='%s',q3_qty_expenditure='%s' where id = '%s'",            
-        mysqli_real_escape_string($this->dbc, $txtpyearqty),            
-        mysqli_real_escape_string($this->dbc, $txtpyearbudget),            mysqli_real_escape_string($this->dbc, $txtpttbudget),            
-        mysqli_real_escape_string($this->dbc, $txtpttqty),            
-        mysqli_real_escape_string($this->dbc, $tlid));        
-        $res = mysqli_query($this->dbc, $sql);        
-        return $res;    
+    function updateGovernmentTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid){
+        $sql = sprintf("UPDATE `db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q3_progress_expenditure='%s',q3_progress_qty='%s' where id = '%s'",
+            mysqli_real_escape_string($this->dbc,$txtpyearqty),
+            mysqli_real_escape_string($this->dbc,$txtpyearbudget),
+            mysqli_real_escape_string($this->dbc,$txtpttbudget),
+            mysqli_real_escape_string($this->dbc,$txtpttqty),
+            mysqli_real_escape_string($this->dbc,$tlid));
+        $res = mysqli_query($this->dbc, $sql);
+        return $res;
     }
 
     function updateLocalTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid){

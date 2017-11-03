@@ -1,12 +1,21 @@
 <?php 
+    if(isset($_GET['message'])){
+        $message =$utils->successMessage($_GET['message']);
+    }
+    if(isset($_GET['error'])){
+        $message = $utils->errorMessage($_GET['error']);
+    }
     if(isset($_POST["btnaddmainsubhead"])){
         $exp_head_code = $_POST["txtmainsubheadcode"];
         $program_name =$_POST["txtmainsubhead"];
         $result = $dbc->insertProgram($exp_head_code,$program_name);
-        echo $result;
         if($result>0){
-            //return;
-            //echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=program';</script>";            
+            $message =$utils->successMessage($program_name . ' दर्ता भैसाकेको छ!');
+        }
+        else if($result==-1){
+            $message =$utils->infoMessage(' बजेट उपशीर्षक नम्बर '.$exp_head_code. ' पहिलै हालि सकेको छ!! पुन प्रयाश गर्र्नु होला!');
+        }else{
+            $message = $utils->errorMessage('दर्ता हुन्न सकेना!  ्पुन प्रयाश गर्र्नु होला!');
         }
     }
 ?>
@@ -20,7 +29,7 @@
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
                 <h3 class="line"><span class="preeti" style="font-size:23px;">कार्यक्रम विवरण</span></h3>
-                    
+                    <?php echo isset($message)?$message:'';?>
                     <!-- My latest work -->
                     <div class="galerie">
                 <form name="addProgram" action="http://localhost/pis-project/cp/dashboard.php?action=program" method="post">
@@ -104,18 +113,6 @@
 <!-- Content box end -->
 
 <hr class="noscreen" />
-
-<!-- Footer -->	
-<div id="footer">
-    
-<div id="footer-in">
-        <p class="footer-left">&copy; <a href="#">शिक्षा विभाग</a>, <span class="siddhi">2073/74. </span> </p>
-         
-        
-        <p class="footer-right"> <a href="http://www.himalayanit.com.np/"> User Logged In : admin</a></p>
-    </div>
-        </div>
-<!-- Footer end -->
 
 </body>
 </html>

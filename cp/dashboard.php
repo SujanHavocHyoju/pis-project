@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../class/common.php');
+include('../class/utils.php');
 /*if (!isset($_SESSION['loggedin'])) {
     echo "<script>window.location='index.php'</script>";
 }*/
@@ -9,15 +10,12 @@ include('../class/common.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta name="Description" content=""/>
     <meta name="Keywords" content=""/>
     <meta name="robots" content="all,follow"/>
-    <meta name="author" content="Himalayan IT"/>
+    <meta name="author" content=""/>
     <meta name="copyright" content=""/>
-
     <meta http-equiv="Content-Script-Type" content="text/javascript"/>
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <!-- CSS -->
@@ -48,7 +46,7 @@ include('../class/common.php');
 <link rel="stylesheet" type="text/css" href="../public/js/style.css">
 <script type='text/javascript' src='../public/js/jquery.hoverIntent.minified.js'></script>
 <script type='text/javascript' src='../public/js/jquery.dcmegamenu.1.3.3.js'></script>
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link href="../public/css/skins/white.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
     $(document).ready(function ($) {
@@ -67,7 +65,9 @@ include('../class/common.php');
 <script src="../public/js/FileSaver.min.js"></script>
 <script src="../public/js/tableexport.min.js"></script>
 <div id="header">
-
+	<div id="logged-in">
+        <p class="logged-in-right"><a href="http://pis.doe.gov.np/"> हालको प्रयोगकर्ता : व्यवस्थापक</a></p>
+    </div>
     <!-- Your gallery name  -->
     <h1 style="font-size:24px"><a href="dashboard.php?action=home">शिक्षा विभाग</a></h1>
     <!-- Your gallery name end -->
@@ -188,12 +188,8 @@ if (isset($_GET['action']) and !empty($_GET['action'])) {
 
 <!-- Footer -->
 <div id="footer">
-
     <div id="footer-in">
-        <p class="footer-left">&copy; <a href="#">शिक्षा विभाग</a>, <span class="siddhi">2073/74. </span></p>
-
-
-        <p class="footer-right"><a href="http://www.himalayanit.com.np/"> User Logged In : admin</a></p>
+        <p class="footer-left">&copy; <a href="#">शिक्षा विभाग</a>, <span class="siddhi">2074/75. </span></p>
     </div>
 </div>
 <!-- Footer end -->

@@ -2,6 +2,9 @@
 
 <?php 
 global $program_code,$message;
+if(!isset($_GET['id'])||!isset($_GET["m_code"])||!isset($_GET["m_code"])){
+    echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=programlist&message=';</script>";
+}
 $id = $_GET["id"];
 $main_activity_code = $_GET["m_code"];
 $main_activity_name = $_GET["m_name"];
@@ -9,16 +12,20 @@ $program_code = $_GET["p_id"];
 if(isset($_GET["type"])){
 $main_activity_code = $_GET["id"];
 $result = $dbc->deleteMainActivity($main_activity_code);
-echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=".$program_code."';</script>";
+    echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=".$program_code."';</script>";
 }
    else{
     if(isset($_POST["btnaddmainactivity"])){
             $main_activity_code =$_POST["txtmaincode"];
             $main_activity_name = $_POST["txtmainactivity"];
             $result = $dbc->updateMainActivity($id,$main_activity_code,$main_activity_name);
-            if($result){
-                $message= $main_activity_name." has been update successfully";
-                echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=".$program_code."';</script>";
+            if($result>0){
+                $message= $main_activity_name." परिबर्तन भैसकेको छ!!";
+                echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=".$program_code."&message=".$message."';</script>";
+            }
+            else{
+                $message= $main_activity_name." परिबर्तन हुन्न सकेन!!";
+                echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=".$program_code."&error=".$message."';</script>";
             }
         }
    }

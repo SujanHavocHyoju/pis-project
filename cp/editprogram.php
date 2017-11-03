@@ -7,8 +7,13 @@
         $program_name =$_POST["txtmainsubhead"];
         $result = $dbc->updateProgram($id,$exp_head_code,$program_name);
         echo $result;
-        if($result){
-            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=program';</script>";            
+        if($result>0){
+            $message = $program_name . ' परिबर्तन भैसकेको छ!!';
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=program&message=".$message."';</script>";            
+        }
+        else{
+            $message = $program_name . ' परिबर्तन हुन्न सकेन!!';
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=program&error=".$message."';</script>";
         }
     }
 ?>

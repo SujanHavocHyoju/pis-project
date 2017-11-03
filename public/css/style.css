@@ -1,4 +1,6 @@
-{
+
+
+*{
 margin: 0;
 padding: 0;
 }
@@ -144,6 +146,27 @@ height: 172px;
 position: relative;
 background: #005D85 url('../img/hd-bg.gif') repeat-x 0 0;
 text-align: left;
+}
+
+/* Logged In */
+
+#logged-in {
+color: #FFFFFF;
+width: 350px;
+float: right;
+text-align: right;
+margin: 8px 12px 0 0;
+display: inline; /* Because of IE Doubled Float-Margin Bug */
+}
+
+#logged-in a, #logged-in a:visited {
+color: #FFFFFF;
+font-weight: normal;
+}
+
+p.logged-in a, p.logged-in a:visited  {
+font-weight: normal;
+color: #FFFFFF;
 }
 
 
@@ -526,4 +549,38 @@ font-weight: normal;
 	font-size:60px;
 	text-decoration:none;
 	color:#dd0000;
+}
+
+
+.isa_info, .isa_success, .isa_warning, .isa_error {
+margin: 10px 0px;
+padding:12px;
+
+text-align: center;
+}
+.isa_info {
+   color: #00529B;
+   text-align: center;
+   background-color: #BDE5F8;
+}
+.isa_success {
+   color: #4F8A10;
+   text-align: center;
+   background-color: #DFF2BF;
+}
+.isa_warning {
+   color: #9F6000;
+   text-align: center;
+   background-color: #FEEFB3;
+}
+.isa_error {
+   color: #D8000C;
+   text-align: center;
+   background-color: #FFD2D2;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+   margin:10px 22px;
+   text-align: center;
+   font-size:2em;
+   vertical-align:middle;
 }

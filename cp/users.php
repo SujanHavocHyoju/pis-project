@@ -1,4 +1,5 @@
 <?php 
+$message = isset($_GET['message'])?$_GET['message']:'';
     if(isset($_POST['adduser'])){
         $username = $_POST['txtuname'];
         $password = $_POST['txtupass'];
@@ -9,9 +10,12 @@
             $user_type = $_POST['user_type'];
             $office_id = $_POST['txtofficecode'];
             $result = $dbc->insertLocalUser($username,$password,$full_name,$user_type,$office_id);
-            echo $result;
-            if($result>0){
+            echo "Result iss ".$result;
+            if($result==1){
                 $message = $full_name." has been saved";
+            }
+            else{
+                $message = "Username already exists";
             }
         }
     }
@@ -90,8 +94,8 @@
                                  ?>
                                 </td>
 
-                                <td align="center"><p><a href="edituser.php?id=80" class="edit">Edit</a></p></td>
-                                <td align="center"><p><a href="changepassword.php?id=80" class="edit">ChangePass</a></p>
+                                <td align="center"><p><a href="dashboard.php?action=edituser&id=<?php echo $row['id'];?>" class="edit">Edit</a></p></td>
+                                <td align="center"><p><a href="dashboard.php?action=changepassword&id=<?php echo $row['id'];?>" class="edit">ChangePass</a></p>
                                 </td>
                                 <td align="center"><p><a onclick="return validateForm()" href="deluser.php?id=80"
                                                          class="delete">Delete</a></p></td>
@@ -105,7 +109,6 @@
                 </div>
                 <!-- My latest work end -->
             </div>
-        </div>
 <script>
     $("#office_type").change(function(){
         var office_type = $("#office_type").val();
@@ -119,6 +122,6 @@
                         $('#txtofficecode').html(response);
                 
             }
-        })
+        });
     });
 </script>

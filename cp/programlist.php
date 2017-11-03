@@ -1,3 +1,9 @@
+<?php 
+    if(isset($_GET['message'])){
+        $message = $utils->infoMessage($_GET['message']);
+    }
+?>
+
 <div id="skip-menu"></div>
 
 <!-- Content box -->
@@ -11,6 +17,10 @@
 
                 <!-- My latest work -->
                 <div class="galerie">
+                <?php 
+                        echo isset($message)?$message:"";
+                        
+                    ?>
                     <table width="100%" align="center" border="1" class="table">
 
                         <tr>

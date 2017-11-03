@@ -1,20 +1,24 @@
 <div id="skip-menu"></div>
 <?php
-$program_code = $_GET['pid'];
-$main_id = $_GET['mid'];
-if(isset($_POST["txtsubactivitycode"])){
-    $sub_activity_code =  $_POST["txtsubactivitycode"];
-    $sub_activity_name = $_POST["txtsubactivity"];
-    $result = $dbc->insertSubActivity($sub_activity_code,$sub_activity_name,$main_id);
-    if($result){
-        $message= $sub_activity_name." has been added successfully";
-    }else{
-        $message= $sub_activity_name." has been added successfully";
+if(isset($_GET['pid'])||isset($_GET['mid'])){
+    $program_code = $_GET['pid'];
+    $main_id = $_GET['mid'];
+    if(isset($_POST["txtsubactivitycode"])){
+        $sub_activity_code =  $_POST["txtsubactivitycode"];
+        $sub_activity_name = $_POST["txtsubactivity"];
+        $result = $dbc->insertSubActivity($sub_activity_code,$sub_activity_name,$main_id);
+        if($result>0){
+            $message= " सहायक क्रियाकलाप विवरण ".$sub_activity_name." दर्ता भैसाकेको छ!";
+        }else{
+            $message= " सहायक क्रियाकलाप विवरण "$sub_activity_name." दर्ता हुन्न सकेना!  ्पुन प्रयाश गर्र्नु होला!";
+        }
     }
+    $program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
+    $mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
 }
-$program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
-$mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
-
+else{
+    echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=programlist';</script>";
+}
 ?>
 <!-- Content box -->
 <div id="content-box">
