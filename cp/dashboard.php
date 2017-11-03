@@ -1,10 +1,9 @@
 <?php
 session_start();
 include('../class/common.php');
-include('../class/utils.php');
-/*if (!isset($_SESSION['loggedin'])) {
-    echo "<script>window.location='index.php'</script>";
-}*/
+if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
+    echo "<script>window.location='login.php';</script>";
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +24,7 @@ include('../class/utils.php');
     <![endif]-->
     <link rel="stylesheet" href="../public/css/style-print.css" type="text/css" media="print"/>
     <link rel="stylesheet" href="../public/css/tableexport.min.css" type="text/css" media="screen, projection, tv"/>
-    
+
     <link rel="shortcut icon" href="../public/img/favicon.ico" type="image/x-icon"/>
     <script>
         function validateForm() {
@@ -65,8 +64,8 @@ include('../class/utils.php');
 <script src="../public/js/FileSaver.min.js"></script>
 <script src="../public/js/tableexport.min.js"></script>
 <div id="header">
-	<div id="logged-in">
-        <p class="logged-in-right"><a href="http://pis.doe.gov.np/"> हालको प्रयोगकर्ता : व्यवस्थापक</a></p>
+    <div id="logged-in">
+        <p class="logged-in-right">हालको प्रयोगकर्ता : <?php echo $_SESSION['username'] ?></p>
     </div>
     <!-- Your gallery name  -->
     <h1 style="font-size:24px"><a href="dashboard.php?action=home">शिक्षा विभाग</a></h1>
@@ -91,12 +90,16 @@ include('../class/utils.php');
                            style="font-size:14px; font-weight:normal">कार्यक्रम प्रविष्टी</a></li>
                     <li><a href="#">डाटा प्रविष्टि</a>
                         <ul>
+                            <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 2): ?>
                             <li><a href="dashboard.php?action=office" title="" class="preeti none"
                                    style="font-size:14px; font-weight:normal">Local कार्यालय
                                     प्रविष्टि </a></li>
+                            <?php endif; ?>
+                            <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1): ?>
                             <li><a href="dashboard.php?action=eduoffice" title="" class="preeti none"
                                    style="font-size:14px; font-weight:normal">Government कार्यालय
                                     प्रविष्टि </a></li>
+                            <?php endif; ?>
                         </ul>
                     </li>
                     <li><a href="dashboard.php?action=users" title="" class="preeti none"
@@ -116,11 +119,14 @@ include('../class/utils.php');
 
             <li><a href="#">प्रगति प्रविष्टि</a>
                 <ul>
-
+                    <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1): ?>
                     <li><a href="dashboard.php?action=entry" class="preeti none"
                            style="font-size:14px; font-weight:normal">government कार्यालय</a></li>
+                    <?php endif; ?>
+                    <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 2): ?>
                     <li><a href="dashboard.php?action=entryLocal" class="preeti none"
                            style="font-size:14px; font-weight:normal">local कार्यालय</a></li>
+                    <?php endif; ?>
                     </li>
                 </ul>
             </li>
@@ -151,7 +157,7 @@ include('../class/utils.php');
                             परिवर्तन</a></li>
                     <li><a href="backup.php" class="preeti none" style="font-size:14px; font-weight:normal">डाटाबेस
                             ब्याक अप </a></li>
-                    <li><a href="dashboard.php?action=logout.php" class="preeti none"
+                    <li><a href="dashboard.php?action=logout" class="preeti none"
                            style="font-size:14px; font-weight:normal">लग आउट</a>
                     </li>
                 </ul>
