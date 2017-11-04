@@ -632,3 +632,6 @@ text-align: center;
     text-decoration: none;
     color: #dd0000;
 }
+.fa {
+    font-size: 12px;
+}

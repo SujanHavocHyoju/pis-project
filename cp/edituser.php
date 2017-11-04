@@ -31,6 +31,9 @@
         //     $message = $office_name_np." has been added";
         // }
     }
+    else{
+        $utils->backPage();
+    }
     if(isset($_POST['addsec'])){
         $username=$_POST['txtuname'];
         $fullname=$_POST['txtname'];
@@ -38,11 +41,11 @@
         $office_id = $_POST['txtofficecode'];
         $result = $dbc->updateUser($id,$username,$fullname,$user_type,$office_id);
         if($result>0){
-            echo "Here";
-            $message = $username." has been updated";
-            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=users';</script>";
+            $message = $utils->successOnEdit("",$username);
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=users&message=".$message."';</script>";
         }else{
-
+            $message = $utils->errorOnEdit("",$username);
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=users&error=".$message."';</script>";
         }
     }
 ?>

@@ -1,5 +1,6 @@
 <?php
-if(isset($_GET['id'])){
+$idExist = isset($_GET['id'])&&!empty($_GET['id']);
+if($idExist){
     $sql = $dbc->selectOneUser($_GET['id']);
     $row = mysqli_fetch_array($sql);
     $id = $_GET['id'];
@@ -7,7 +8,7 @@ if(isset($_GET['id'])){
     $fullname=$row['fullname'];
     $user_type=$row['user_type'];
     $office_id = $row['office_id'];
-         
+    $other = true;
     echo '
     <script>
       $(document).ready(function(){
@@ -25,18 +26,46 @@ if(isset($_GET['id'])){
             
       });
     </script>'; 
-
     // $result = $dbc->insertEduOffice($sn,$office_name_np,$office_name_ep,$region);
     // if($result>0){
     //     $message = $office_name_np." has been added";
     // }
 }
-if(isset($_POST['addsec'])){
-    
-    $result = $dbc->changePassword($id);
-        $message = $result." is new password, please note it.";
-       
+else if(!$idExist&&isset($_SESSION['user_id'])){
+    $sql = $dbc->selectOneUser($_SESSION['user_id']);
+    $row = mysqli_fetch_array($sql);
+    $id = $_SESSION['user_id'];
+    $username=$row['username'];
+    $fullname=$row['fullname'];
+    $user_type=$row['user_type'];
+    $office_id = $row['office_id'];
+    $other = false;
+    echo '
+    <script>
+      $(document).ready(function(){
+          $("#office_type option[value='.$user_type.']").attr("selected","selected");
+          $.ajax({
+            url:"officelist.php",
+            type : "POST",
+            data :"data="+'.$user_type.',
+            success: function(response){
+                        $("#txtofficecode").html(response);
+                        $("#txtofficecode option[value='.$office_id.']").attr("selected","selected");
+                
+            }
+            }); 
+            
+      });
+    </script>'; 
 }
+else{
+    $utils->backPage();
+}
+if(isset($_POST['addsec'])){
+    $result = $dbc->changePassword($id);
+        $message = $utils->infoMessage("<b>".$result."</b> is new password, please note it.");
+    }
+
 ?>
 <div id="content-box">
 <div id="content-box-in">
@@ -44,7 +73,9 @@ if(isset($_POST['addsec'])){
     <!-- Content left -->
     <div id="content-box-in-left">
         <div id="content-box-in-left-in">
-            <h3 class="line"><span class="preeti" style="font-size:23px;">कार्यालय विवरण </span></h3>
+            <h3 class="line"><span class="preeti" style="font-size:23px;"><?php 
+              echo  $other?" प्रयोगकर्ता पासवर्ड परिवर्तन":"तपाईको पासवर्ड परिवर्तन";
+            ?> </span></h3>
             <?php echo isset($message)?$message:"" ?>
             <!-- My latest work -->
             <div class="galerie">

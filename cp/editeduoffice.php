@@ -1,5 +1,5 @@
 <?php
-    if(isset($_GET['id'])){
+    if(isset($_GET['id'])&&!empty($_GET['id'])){
         $sql = $dbc->selectOneEduOffice($_GET['id']);
         $row = mysqli_fetch_array($sql);
 
@@ -20,15 +20,20 @@
         //     $message = $office_name_np." has been added";
         // }
     }
+    else{
+        $utils->backPage();
+    }
     if(isset($_POST['addsec'])){
         $office_name_np=$_POST['txtofficename'];
         $office_name_ep=$_POST['txtEofficename'];
         $region = $_POST['txtregion'];
         $result = $dbc->updateEduOffice($sn,$office_name_np,$office_name_ep,$region);
-        echo $result;
         if($result>0){
-            $message = $office_name_np." has been added";
-            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=eduoffice';</script>";
+            $message = " शैक्षिक कार्यालय प्रविष्टि ".$office_name_np." परिबर्तन भैसकेको छ!!";
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=eduoffice&message=".$message."';</script>";
+        }else{
+            $message = " शैक्षिक कार्यालय प्रविष्टि ".$office_name_np." परिबर्तन हुन्न सकेन!!";
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=eduoffice&error=".$message."';</script>";
         }
     }
 ?>
@@ -38,7 +43,7 @@
         <!-- Content left -->
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
-                <h3 class="line"><span class="preeti" style="font-size:23px;">कार्यालय विवरण </span></h3>
+                <h3 class="line"><span class="preeti" style="font-size:23px;">शैक्षिक कार्यालय प्रविष्टि </span></h3>
 
                 <!-- My latest work -->
                 <div class="galerie">

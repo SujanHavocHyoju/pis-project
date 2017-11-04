@@ -83,10 +83,11 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpyearqty"
-                                                                                               value="<?php echo $row['yearly_progress_qty_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['yearly_progress_qty'] ?>"/></span>
                                 </td>
 
                             </tr>
+
                             <tr>
                                 <td align="center"><span class="preeti">खर्च बजेट</span></td>
                                 <td align="left" bgcolor="#CCCCCC"><span class="preeti"><input class="siddhi" size="30"
@@ -120,6 +121,8 @@ if (isset($_POST['btnaddprogress'])) {
 
                             </tr>
 
+
+
                             <tr>
 
                                 <td align="center"><span class="preeti">भौतिक परिमाण</span></td>
@@ -127,7 +130,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttqty"
-                                                                                               value="<?php echo $row['q3_qty_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['q3_progress_qty'] ?>"/></span>
                                 </td>
                             </tr>
                             <tr>
@@ -136,7 +139,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttbudget"
-                                                                                               value="<?php echo $row['q3_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['q3_progress_expenditure'] ?>"/></span>
                                 </td>
                             </tr>
 

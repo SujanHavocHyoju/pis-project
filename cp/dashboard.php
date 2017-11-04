@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../class/common.php');
+include('../class/utils.php');
 if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
     echo "<script>window.location='login.php';</script>";
 
@@ -65,7 +66,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
 <script src="../public/js/tableexport.min.js"></script>
 <div id="header">
     <div id="logged-in">
-        <p class="logged-in-right">हालको प्रयोगकर्ता : <?php echo $_SESSION['username'] ?></p>
+        <p class="logged-in-right">हालको प्रयोगकर्ता : <?php echo $_SESSION['fullname']; ?></p>
     </div>
     <!-- Your gallery name  -->
     <h1 style="font-size:24px"><a href="dashboard.php?action=home">शिक्षा विभाग</a></h1>
@@ -90,22 +91,23 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
                            style="font-size:14px; font-weight:normal">कार्यक्रम प्रविष्टी</a></li>
                     <li><a href="#">डाटा प्रविष्टि</a>
                         <ul>
-                            <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 2): ?>
-                            <li><a href="dashboard.php?action=office" title="" class="preeti none"
-                                   style="font-size:14px; font-weight:normal">Local कार्यालय
-                                    प्रविष्टि </a></li>
-                            <?php endif; ?>
                             <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1): ?>
                             <li><a href="dashboard.php?action=eduoffice" title="" class="preeti none"
-                                   style="font-size:14px; font-weight:normal">Government कार्यालय
+                                   style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय
                                     प्रविष्टि </a></li>
                             <?php endif; ?>
+                            <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 2): ?>
+                            <li><a href="dashboard.php?action=office" title="" class="preeti none"
+                                   style="font-size:14px; font-weight:normal">स्थानीय कार्यालय
+                                    प्रविष्टि </a></li>
+                            <?php endif; ?>
+                            
                         </ul>
                     </li>
                     <li><a href="dashboard.php?action=users" title="" class="preeti none"
                            style="font-size:14px; font-weight:normal">प्रयोगकर्ता
                             व्यवस्थापन</a></li>
-                    <li><a href="fiscalYear.php" title="" class="preeti none"
+                    <li><a href="dashboard.php?action=fiscalYear" title="" class="preeti none"
                            style="font-size:14px; font-weight:normal">आर्थिक वर्ष प्रविष्टि </a></li>
 
 
@@ -121,11 +123,11 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
                 <ul>
                     <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1): ?>
                     <li><a href="dashboard.php?action=entry" class="preeti none"
-                           style="font-size:14px; font-weight:normal">government कार्यालय</a></li>
+                           style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय</a></li>
                     <?php endif; ?>
                     <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 2): ?>
                     <li><a href="dashboard.php?action=entryLocal" class="preeti none"
-                           style="font-size:14px; font-weight:normal">local कार्यालय</a></li>
+                           style="font-size:14px; font-weight:normal">स्थानीय कार्यालय</a></li>
                     <?php endif; ?>
                     </li>
                 </ul>

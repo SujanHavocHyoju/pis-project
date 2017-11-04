@@ -1,16 +1,25 @@
 <div id="skip-menu"></div>
 <?php
+if(isset($_GET['message'])){
+    $message= $utils->successMessage($_GET['message']);
+}
+if(isset($_GET['error'])){
+    $message= $utils->successMessage($_GET['error']);
+}
 if(isset($_GET['pid'])||isset($_GET['mid'])){
     $program_code = $_GET['pid'];
     $main_id = $_GET['mid'];
-    if(isset($_POST["txtsubactivitycode"])){
+    if(isset($_POST["btnaddsubactivity"])){
         $sub_activity_code =  $_POST["txtsubactivitycode"];
         $sub_activity_name = $_POST["txtsubactivity"];
         $result = $dbc->insertSubActivity($sub_activity_code,$sub_activity_name,$main_id);
         if($result>0){
-            $message= " सहायक क्रियाकलाप विवरण ".$sub_activity_name." दर्ता भैसाकेको छ!";
+            $message= $utils->successMessage(" सहायक क्रियाकलाप विवरण ".$sub_activity_name." दर्ता भैसाकेको छ!");
+        }
+        else if($result == -1){
+            $message= $utils->infoMessage(" सहायक क्रियाकलाप विवरण ".$sub_activity_name." पहिलै दर्ता भैसाकेको छ!! पुन प्रयाश गर्र्नु होला!!");
         }else{
-            $message= " सहायक क्रियाकलाप विवरण "$sub_activity_name." दर्ता हुन्न सकेना!  ्पुन प्रयाश गर्र्नु होला!";
+            $message= $utils->errorMessage(" सहायक क्रियाकलाप विवरण ".$sub_activity_name." दर्ता हुन्न सकेना!  ्पुन प्रयाश गर्र्नु होला!");
         }
     }
     $program = mysqli_fetch_array($dbc->selectOneProgram($program_code));

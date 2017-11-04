@@ -1,4 +1,10 @@
 <?php
+if(isset($_GET['message'])){
+    $message = $utils->successMessage($_GET['message']);
+}
+if(isset($_GET['error'])){
+    $message = $utils->errorMessage($_GET['error']);
+}
     if(isset($_POST['addsec'])){
         $sn =$_POST['txtofficecode'];
         $office_name_np=$_POST['txtofficename'];
@@ -6,8 +12,21 @@
         $region = $_POST['txtregion'];
         $result = $dbc->insertEduOffice($sn,$office_name_np,$office_name_ep,$region);
         if($result>0){
-            $message = $office_name_np." has been added";
+            $message = $utils->successMessage($utils->success(" शैक्षिक कार्यालय प्रविष्टि ",$office_name_np));
         }
+        else if($result==-1){
+            $message = $utils->infoMessage($utils->alreadyExists(" शैक्षिक कार्यालय प्रविष्टि ",$office_name_np));
+        }
+        else{
+            $message = $utils->errorMessage($utils->error(" शैक्षिक कार्यालय प्रविष्टि ",$office_name_np));
+        }
+
+    }
+    if(isset($_POST['btnsearch'])){
+        $sql = $dbc->searchOffice($_POST['txtsearch']);
+        var_dump($sql);
+    }else{
+        $sql = $dbc->selectEduOffice();
     }
 ?>
 <div id="content-box">
@@ -16,7 +35,7 @@
         <!-- Content left -->
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
-                <h3 class="line"><span class="preeti" style="font-size:23px;">कार्यालय विवरण </span></h3>
+                <h3 class="line"><span class="preeti" style="font-size:23px;">शैक्षिक कार्यालय प्रविष्टि </span></h3>
 
                 <!-- My latest work -->
                 <div class="galerie">
@@ -68,7 +87,7 @@
                     </form>
                     <br />
 
-                    <form name="searchsection" action="" method="post">
+                    <form name="searchsection" action="http://localhost/pis-project/cp/dashboard.php?action=eduoffice" method="post">
                         <table width="80%" align="center" border="1" class="table">
                             <tr>
                                 <td align="right">
@@ -93,7 +112,7 @@
 
 
                         </tr>
-                        <?php $sql = $dbc->selectEduOffice();
+                        <?php 
                                 while($row = mysqli_fetch_array($sql)){
                             ?>
                             <tr>

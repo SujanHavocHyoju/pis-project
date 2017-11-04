@@ -1,3 +1,8 @@
+<?php
+    if(isset($_POST['message'])){
+        $message = $utils->infoMessage($_POST['message'].' डेटाबेस जगेडा हुन्न सफल वयेको छ!!');
+    }
+?>
 <div id="content-box">
     <div id="content-box-in">
 
@@ -9,7 +14,7 @@
                     शिक्षा विभाग Admin
                     )
                     </span></h3>
-
+                    <p><?php echo isset($message)?$message:"";?></p>
                 <!-- My latest work -->
                 <div class="galerie">
 

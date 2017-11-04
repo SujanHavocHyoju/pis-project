@@ -1,11 +1,13 @@
 <?php
-
+include('../class/utils.php');
+if(isset($_GET['error'])){
+    $message = $utils->errorMessage($_GET['error']);
+}
 session_start();
 
 if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
     echo "<script>window.location='dashboard.php';</script>";
 }
-
 
 ?>
 
@@ -73,7 +75,7 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
     प्रगति विवरण सूचना प्रणाली
 </p>
 <div id="login">
-
+<p><?php echo isset($message)?$message:"";?></p>
     <form action="loginCheck.php" method="post">
         <table border="0" align="center">
 <!--            --><?php //if (isset($_GET['error'])): ?>

@@ -3,7 +3,7 @@
 /*Declaring the constant keyword */
 define('DB_SERVER','127.0.0.1');
 define('DB_USER','root');
-define('DB_PASS' ,'root');
+define('DB_PASS' ,'admin');
 define('DB_NAME', 'db_pis');
 
 class DB_dbc
@@ -18,6 +18,11 @@ class DB_dbc
         mysqli_query ($this->dbc,"set character_set_results='utf8'");
         mysqli_query ($this->dbc,"set collation_connection='utf8_general_ci'");
         mysqli_select_db($this->dbc, 'db_pis');
+    }
+    function selectUserLogin($username, $password){
+        $query = "SELECT * FROM tbl_users WHERE username = '$username' AND password = '$password' LIMIT 1";
+        $result = mysqli_query($this->dbc, $query);
+        return $result;
     }
 
     function selectProgram(){

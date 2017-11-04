@@ -7,7 +7,7 @@ if (isset($_POST['btnLogin'])) {
         $username = $_POST['txtUser'];
         $password = $_POST['txtPass'];
 
-        $result = $dbc->selectUserLogin($username, $password);
+        $result = $dbc->selectUserLogin($username, crypt($password,'st'));
 
         $row = mysqli_fetch_array($result);
 
@@ -18,18 +18,16 @@ if (isset($_POST['btnLogin'])) {
         if (count($row) > 0) {
             session_start();
             $_SESSION['username'] = $username;
+            $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_type'] = $row['user_type'];
             $_SESSION['office_id'] = ($_SESSION['user_type'] != 0) ? $row['office_id'] : null;
-            echo "Miliraxa ta";
+            $_SESSION['fullname'] = $row['fullname'];
             if (isset($_SESSION['username']) && isset($_SESSION['user_type'])) {
                 header('location:dashboard.php');
 
-            } else {
-                header('location:login.php?error');
-                exit();
             }
         } else {
-            header('location:login.php?error');
+            header('location:login.php?error=तपाईको प्रयोगकर्ता नाम अथावा पासवर्ड मिल्न सकेन!!!');
         }
 
     }

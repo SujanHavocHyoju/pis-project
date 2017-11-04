@@ -1,24 +1,30 @@
 <div id="skip-menu"></div>
 <?php
-$program_code = $_GET['pid'];
-$main_id = $_GET['mid'];
-$id= $_GET['id'];
-$sub_activity_code = $_GET["s_code"];
-$sub_activity_name = $_GET["s_name"];
-if(isset($_POST["txtsubactivity"])){
-    $sub_activity_code =  $_POST["txtsubactivitycode"];
-    $sub_activity_name = $_POST["txtsubactivity"];
-    $result = $dbc->updateSubActivity($id,$sub_activity_code,$sub_activity_name);
-    if($result>0){
-        $message= $sub_activity_name." has been added successfully";
-        echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=subActivity&pid=".$program_code."&mid=".$main_id."';</script>";
-        
-    }else{
-        $message= $sub_activity_name." has been added successfully";
+if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['id'])&&isset($_GET["s_code"])&&isset($_GET["s_name"])){
+    $program_code = $_GET['pid'];
+    $main_id = $_GET['mid'];
+    $id= $_GET['id'];
+    $sub_activity_code = $_GET["s_code"];
+    $sub_activity_name = $_GET["s_name"];
+    if(isset($_POST["btnaddsubactivity"])){
+        $sub_activity_code =  $_POST["txtsubactivitycode"];
+        $sub_activity_name = $_POST["txtsubactivity"];
+        $result = $dbc->updateSubActivity($id,$sub_activity_code,$sub_activity_name);
+        echo $result;
+        if($result>0){
+            $message= " सहायक क्रियाकलाप विवरण ".$sub_activity_name." परिबर्तन भैसकेको छ!!";
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=subActivity&pid=".$program_code."&mid=".$main_id."&message=".$message."';</script>";
+        }else{
+            $message=" सहायक क्रियाकलाप विवरण ".$sub_activity_name." परिबर्तन हुन्न सकेन!!";
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=subActivity&pid=".$program_code."&mid=".$main_id."&error=".$message."';</script>";
+        }
     }
+    $program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
+    $mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
+}else{
+    echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=programlist';</script>";
 }
-$program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
-$mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
+
 
 ?>
 <!-- Content box -->

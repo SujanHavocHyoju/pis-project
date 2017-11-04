@@ -1,26 +1,44 @@
 <div id="skip-menu"></div>
 <?php
-$id = $_GET["id"];
-$program_code = $_GET['pid'];
-$main_id = $_GET['mid'];
-$sub_id=$_GET['sid'];
-$activity_code =  $_GET["code"];
-$activity_name = $_GET["a_name"];
-$unit = $_GET["qty"];
-if(isset($_POST["btneditactivity"])){
-  
-    $activity_code = $_POST['txtactivitycode'];
-    $activity_name = $_POST["txtactivity"];
-    $unit = $_POST["txtunit"];
-    $result = $dbc->updateActivity($id,$activity_code,$activity_name,$unit);
-    if($result){
-        $message= $activity_name." has been added successfully";
-        echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=activity&pid=".$program_code."&mid=".$main_id."&sid=".$sub_id."';</script>";
+
+
+$isExists = isset($_GET["id"])
+            &&isset($_GET['pid'])
+            &&isset($_GET['mid'])
+            &&isset($_GET['sid'])
+            &&isset($_GET["code"])
+            &&isset($_GET["a_name"])
+            &&isset($_GET["qty"]);
+if($isExists){
+    $id = $_GET["id"];
+    $program_code = $_GET['pid'];
+    $main_id = $_GET['mid'];
+    $sub_id=$_GET['sid'];
+    $activity_code =  $_GET["code"];
+    $activity_name = $_GET["a_name"];
+    $unit = $_GET["qty"];
+    if(isset($_POST["btneditactivity"])){
+      
+        $activity_code = $_POST['txtactivitycode'];
+        $activity_name = $_POST["txtactivity"];
+        $unit = $_POST["txtunit"];
+        $result = $dbc->updateActivity($id,$activity_code,$activity_name,$unit);
+        if($result){
+            $message= $activity_name." परिबर्तन भैसकेको छ!!";
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=activity&pid=".$program_code."&mid=".$main_id."&sid=".$sub_id."&message=".$message."';</script>";
+        }else{
+            $message= $activity_name." परिबर्तन हुन्न सकेन!!";
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=activity&pid=".$program_code."&mid=".$main_id."&sid=".$sub_id."&error=".$message."';</script>";
+        }
     }
+    $program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
+    $mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
+    $subActivity = mysqli_fetch_array($dbc->selectOneSubActivity($id));
 }
-$program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
-$mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
-$subActivity = mysqli_fetch_array($dbc->selectOneSubActivity($id));
+else{
+    echo "<script>window.history.back();</script>";
+}
+
 ?>
 <!-- Content box -->
 <div id="content-box">

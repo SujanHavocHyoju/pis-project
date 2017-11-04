@@ -17,7 +17,7 @@ if(isset($_GET['error'])){
                 $message= $utils->successMessage('क्रियाकलाप विवरण '.$main_activity_name." दर्ता भैसाकेको छ!");
             }
             else if($result==-1){
-                $message= $utils->infoMessage('क्रियाकलाप विवरण ' .$main_activity_name." पहिलै हालि सकेको छ!! पुन प्रयाश गर्र्नु होला!!");
+                $message= $utils->infoMessage('क्रियाकलाप विवरण ' .$main_activity_name." पहिलै दर्ता भैसाकेको छ!! पुन प्रयाश गर्र्नु होला!!");
             }
             else{
                 $message= $utils->errorMessage('क्रियाकलाप विवरण ' .$main_activity_name." दर्ता हुन्न सकेना!  ्पुन प्रयाश गर्र्नु होला!");

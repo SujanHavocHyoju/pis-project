@@ -2,15 +2,10 @@
 include('../class/common.php');
 require_once "../class/PHPExcel.php";
 $objPHPExcel = new PHPExcel();
-$office_name = $_GET['o_name'];
-$fiscal_year = $_GET['f_year'];
+$office_name = 'कार्यालय अनुसर';
+$fiscal_year = '2074/75';
 ini_set('max_execution_time', 300);
-if(isset($_GET['eid'])){
-    $sql = $dbc->selectTransactionGovernment($_GET['eid']);
-}
-if(isset($_GET['lid'])){
-    $sql = $dbc->selectTransactionLocal($_GET['lid']);
-}
+$sql = $dbc->selectTransactionByActivity();
 $objPHPExcel->setActiveSheetIndex()
 ->mergeCells('C3:C4');
 $objPHPExcel->setActiveSheetIndex()

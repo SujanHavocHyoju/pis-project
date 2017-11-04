@@ -1,5 +1,10 @@
 <?php 
-$message = isset($_GET['message'])?$_GET['message']:'';
+    if(isset($_GET['message'])){
+        $message = $utils->infoMessage($_GET['message']);
+    }
+    if(isset($_GET['error'])){
+        $message = $utils->errorMessage($_GET['error']);
+    }
     if(isset($_POST['adduser'])){
         $username = $_POST['txtuname'];
         $password = $_POST['txtupass'];
@@ -9,13 +14,15 @@ $message = isset($_GET['message'])?$_GET['message']:'';
         }else{
             $user_type = $_POST['user_type'];
             $office_id = $_POST['txtofficecode'];
-            $result = $dbc->insertLocalUser($username,$password,$full_name,$user_type,$office_id);
-            echo "Result iss ".$result;
-            if($result==1){
-                $message = $full_name." has been saved";
+            $result = $dbc->insertUser($username,$password,$full_name,$user_type,$office_id);
+            if($result>0){
+                $message = $utils->successMessage($full_name." दर्ता भैसाकेको छ!");
+            }
+            else if($result == -1){
+                $message =$utils->infoMessage($utils->alreadyExists("",$full_name));
             }
             else{
-                $message = "Username already exists";
+                $message = $utils->errorMessage($utils->error("",$full_name));
             }
         }
     }
@@ -26,7 +33,7 @@ $message = isset($_GET['message'])?$_GET['message']:'';
         <!-- Content left -->
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
-                <h3 class="line"><span style="font-size:23px;">User Management</span></h3>
+                <h3 class="line"><span style="font-size:23px;">प्रयोगकर्ता खाता नियन्त्रण</span></h3>
 
                 <!-- My latest work -->
                 <div class="galerie">
@@ -37,10 +44,10 @@ $message = isset($_GET['message'])?$_GET['message']:'';
                         <table width="80%" align="center" border="1" class="table">
                             <tr>
 
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Full Name</th>
-                                <th>Office Name</th>
+                                <th>प्रयोगकर्ता नाम</th>
+                                <th>पासवर्ड</th>
+                                <th>नाम</th>
+                                <th>कार्यालय नाम</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -63,7 +70,7 @@ $message = isset($_GET['message'])?$_GET['message']:'';
                                 </th>
                                 <th>
                                 <select name="user_type" style="height:30px; width:250px;" id='office_type'>
-                                    <option selected disabled>Select Office</option>
+                                    <option selected disabled>कार्यालय नाम छान्नुहोस्</option>
                                     <option value="1">Education Office</option>
                                     <option value="2">Local Office</option>
                                 </select>

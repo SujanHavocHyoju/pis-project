@@ -1,22 +1,37 @@
 <div id="skip-menu"></div>
 <?php
-$program_code = $_GET['pid'];
-$main_id = $_GET['mid'];
-$sub_id=$_GET['sid'];
-if(isset($_POST["btnaddactivity"])){
-    echo 'Here';
-    $activity_code = $_POST["txtactivitycode"];
-    $activity_name = $_POST["txtactivity"];
-    $unit = $_POST["txtunit"];
-    $result = $dbc->insertActivity($activity_code,$activity_name,$unit,$sub_id);
-    echo $result;
-    if($result){
-        $message= $activity_name." has been added successfully";
-    }
+if(isset($_GET['message'])){
+    $message = $utils->successMessage($_GET['message']);
 }
-$program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
-$mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
-$subActivity = mysqli_fetch_array($dbc->selectOneSubActivity($sub_id));
+if(isset($_GET['error'])){
+    $message = $utils->errorMessage($_GET['message']);
+}
+if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
+    $program_code = $_GET['pid'];
+    $main_id = $_GET['mid'];
+    $sub_id=$_GET['sid'];
+    if(isset($_POST["btnaddactivity"])){
+        echo 'Here';
+        $activity_code = $_POST["txtactivitycode"];
+        $activity_name = $_POST["txtactivity"];
+        $unit = $_POST["txtunit"];
+        $result = $dbc->insertActivity($activity_code,$activity_name,$unit,$sub_id);
+        if($result>0){
+            $message= $utils->successMessage("क्रियाकलाप विवरण ".$activity_name." दर्ता भैसाकेको छ!");
+        }
+        else if($result==-1){
+            $message = $utils->infoMessage(" क्रियाकलाप विवरण ".$activity_name." पहिलै दर्ता भैसाकेको छ!! पुन प्रयाश गर्र्नु होला!!");
+        }
+        else{
+            $message = $utils->errorMessage(" क्रियाकलाप विवरण ".$activity_name." दर्ता हुन्न सकेना!  ्पुन प्रयाश गर्र्नु होला!");
+        }
+    }
+    $program = mysqli_fetch_array($dbc->selectOneProgram($program_code));
+    $mainActivity = mysqli_fetch_array($dbc->selectOneMainActivity($main_id));
+    $subActivity = mysqli_fetch_array($dbc->selectOneSubActivity($sub_id));
+}else{
+    echo "<script>window.history.back();</script>";
+}
 ?>
 <!-- Content box -->
 <div id="content-box">

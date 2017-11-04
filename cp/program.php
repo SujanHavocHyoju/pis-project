@@ -18,7 +18,6 @@
             $message = $utils->errorMessage('दर्ता हुन्न सकेना!  ्पुन प्रयाश गर्र्नु होला!');
         }
     }
-}
 ?>
 <div id="skip-menu"></div>
 
@@ -30,19 +29,11 @@
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
                 <h3 class="line"><span class="preeti" style="font-size:23px;">कार्यक्रम विवरण</span></h3>
-<<<<<<< HEAD
                     <?php echo isset($message)?$message:'';?>
                     <!-- My latest work -->
                     <div class="galerie">
                 <form name="addProgram" action="http://localhost/pis-project/cp/dashboard.php?action=program" method="post">
                     <table width="100%" align="center" border="0" class="table">
-=======
-
-                <!-- My latest work -->
-                <div class="galerie">
-                    <form name="addProgram" action="http://localhost/pis-project/cp/dashboard.php?action=program" method="post">
-                        <table width="100%" align="center" border="0" class="table">
->>>>>>> b5301f022ba99044b45f1ae6e92ff7e97cf7e3ad
                             <tr>
                                 <td  align="right"><span class="preeti">बजेट उपशीर्षक नम्बर</span></td>
                                 <td  align="left"><p><input class="siddhi"  size="20" maxlength="50" type="text" name="txtmainsubheadcode" required autofocus /></p></td>
