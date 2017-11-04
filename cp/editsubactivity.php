@@ -1,15 +1,17 @@
 <div id="skip-menu"></div>
 <?php
-if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['id'])&&isset($_GET["s_code"])&&isset($_GET["s_name"])){
+if(isset($_GET['id'])&&isset($_GET["s_code"])&&isset($_GET["s_name"])){
     $program_code = $_GET['pid'];
     $main_id = $_GET['mid'];
     $id= $_GET['id'];
     $sub_activity_code = $_GET["s_code"];
     $sub_activity_name = $_GET["s_name"];
+    $sub_activity_name_en = $_GET["s_name_en"];
     if(isset($_POST["btnaddsubactivity"])){
         $sub_activity_code =  $_POST["txtsubactivitycode"];
         $sub_activity_name = $_POST["txtsubactivity"];
-        $result = $dbc->updateSubActivity($id,$sub_activity_code,$sub_activity_name);
+        $sub_activity_name_en = $_POST["txtsubactivity_en"];
+        $result = $dbc->updateSubActivity($id,$sub_activity_code,$sub_activity_name,$sub_activity_name_en);
         echo $result;
         if($result>0){
             $message= " सहायक क्रियाकलाप विवरण ".$sub_activity_name." परिबर्तन भैसकेको छ!!";
@@ -66,7 +68,10 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['id'])&&isset($_GET["s_
                                                                             maxlength="350" name="txtsubactivity"
                                                                             value="<?php echo $sub_activity_name?>"
                                                                             required/></span></td>
-
+                                <td width="60%"><span class="preeti"><input type="text" class="preeti" size="30"
+                                                                            maxlength="350" name="txtsubactivity_en"
+                                                                            value="<?php echo $sub_activity_name_en;?>"
+                                                                            required/></span></td>                          
 
                                 <td colspan="3"><input type="submit" name="btnaddsubactivity" value="  अपडेट गर्ने  "
                                                        style="width:150px;height:30px;"/></td>

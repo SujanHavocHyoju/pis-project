@@ -26,8 +26,8 @@
                         <tr>
                             <th width="10%"><span class="preeti">बजेट उपशीर्षक नम्बर</span></th>
                             <th><span class="preeti">कार्यक्रम</span></th>
-
-                            <th>&nbsp;</th>
+                            <th><span class="preeti">कार्यक्रम (अँग्रेजी)</span></th>
+                            <th width="20%">&nbsp;</th>
 
                         </tr>
                             <?php
@@ -36,8 +36,8 @@
                             ?>
                         <tr>
                             <td><span class="siddhi"><?php echo $row['exp_head_code'] ?></span></td>
-                            <td width="50%"><span class="preeti"><?php echo $row['name_np'] ?></span></td>
-
+                            <td width="30%"><span class="preeti"><?php echo $row['name_np'] ?></span></td>
+                            <td width="30%"><span class="preeti"><?php echo $row['name_en'] ?></span></td>
                             <td align="center" ><p><a href="dashboard.php?action=mainActivity&pid=<?php echo $row['id'] ?>" class="edit">क्रियाकलाप विवरण प्रविष्टि गर्ने</a></p></td>
                         </tr>
                         <?php } ?>

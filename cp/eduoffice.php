@@ -106,6 +106,7 @@ if(isset($_GET['error'])){
                         <tr>
                             <th width="15%"><span class="preeti">सि.नं.</span></th>
                             <th ><span class="preeti">कार्यालयको नाम</span></th>
+                            <th ><span class="preeti">कार्यालयको नाम (अँग्रेजी)</span></th>
                             <th ><span class="preeti">विकास क्षेत्र</span></th>
                             <th ></th>
                             <th ></th>
@@ -118,6 +119,7 @@ if(isset($_GET['error'])){
                             <tr>
                             <td><span class="siddhi"><?php echo $row["id"];?></span></td>
                             <td width="55%"><span class="preeti"><?php echo $row["name_np"];?></span></td>
+                            <td width="55%"><span class="preeti"><?php echo $row["name_en"];?></span></td>
                             <td width="55%"><span class="preeti"><?php echo $row["d_name"];?></span></td>
 
 

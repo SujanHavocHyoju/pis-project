@@ -2,23 +2,28 @@
 
 <?php 
 global $program_code,$message;
-if(!isset($_GET['id'])||!isset($_GET["m_code"])||!isset($_GET["m_code"])){
+if(!isset($_GET['id'])){
     echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=programlist&message=';</script>";
+}else{
+    $id = $_GET["id"];
+    $result = $dbc->selectOneMainActivity($id);
+    $row = mysqli_fetch_array($result);
+    $main_activity_code = $row["code"];
+    $main_activity_name = $row["name_np"];
+    $main_activity_name_en = $row['name_en'];
+    $program_code = $row["program_id"];
 }
-$id = $_GET["id"];
-$main_activity_code = $_GET["m_code"];
-$main_activity_name = $_GET["m_name"];
-$program_code = $_GET["p_id"];
 if(isset($_GET["type"])){
-$main_activity_code = $_GET["id"];
-$result = $dbc->deleteMainActivity($main_activity_code);
+    $main_activity_code = $_GET["id"];
+    $result = $dbc->deleteMainActivity($main_activity_code);
     echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=".$program_code."';</script>";
 }
    else{
     if(isset($_POST["btnaddmainactivity"])){
             $main_activity_code =$_POST["txtmaincode"];
             $main_activity_name = $_POST["txtmainactivity"];
-            $result = $dbc->updateMainActivity($id,$main_activity_code,$main_activity_name);
+            $main_activity_name_en = $_POST["txtmainactivity_en"];
+            $result = $dbc->updateMainActivity($id,$main_activity_code,$main_activity_name,$main_activity_name_en);
             if($result>0){
                 $message= $main_activity_name." परिबर्तन भैसकेको छ!!";
                 echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=mainActivity&pid=".$program_code."&message=".$message."';</script>";
@@ -49,7 +54,7 @@ $result = $dbc->deleteMainActivity($main_activity_code);
                     </p>
                     <p><?php echo isset($message)?$message:"";?></p>
 
-                    <form action="dashboard.php?action=editmainactivity&id=<?php echo $id?>&p_id=<?php echo $program['id']?>&m_name=<?php echo $main_activity_name?>&m_code=<?php echo $main_activity_code;?>" method="post">
+                    <form action="dashboard.php?action=editmainactivity&id=<?php echo $id?>" method="post">
 
                         <table width="100%" align="center" border="1" class="table">
                             <tr>
@@ -58,7 +63,7 @@ $result = $dbc->deleteMainActivity($main_activity_code);
 
                                 <td  width="60%"><span class="preeti"><input type="text" class="preeti" size="30" maxlength="350" name="txtmainactivity" value="<?php echo $main_activity_name?>" required  /></span></td>
 
-
+                                <td  width="60%"><span class="preeti"><input type="text" class="preeti" size="30" maxlength="350" name="txtmainactivity_en" value="<?php echo $main_activity_name_en?>" required  /></span></td>
 
                                 <td colspan="3"><input type="submit" name="btnaddmainactivity" value="  अपडेट गर्ने  "  style="width:150px;height:30px;"/> </td>
                            

@@ -12,7 +12,8 @@ if(isset($_GET['error'])){
         if(isset($_POST["txtmaincode"])){
             $main_activity_code =  $_POST["txtmaincode"];
             $main_activity_name = $_POST["txtmainactivity"];
-            $result = $dbc->insertMainActivity($main_activity_code,$main_activity_name,$program_code);
+            $main_activity_name_en = $_POST["txtmainactivity_en"];
+            $result = $dbc->insertMainActivity($main_activity_code,$main_activity_name,$main_activity_name_en,$program_code);
             if($result>0){
                 $message= $utils->successMessage('क्रियाकलाप विवरण '.$main_activity_name." दर्ता भैसाकेको छ!");
             }
@@ -60,6 +61,7 @@ if(isset($_GET['error'])){
                                 <th  align="left"><span class="preeti">संकेत नम्बर</span></th>
 
                                 <th ><span class="preeti">मुख्य क्रियाकलाप</span></th>
+                                <th ><span class="preeti">मुख्य क्रियाकलाप (अँग्रेजी)</span></th>
                                 <th  >&nbsp;</th>
                                 <th align="center"></th>
                                 <th align="center"></th>
@@ -68,7 +70,8 @@ if(isset($_GET['error'])){
                                 <th  align="left"><span class="preeti">
                                 <input class="siddhi"  size="10" maxlength="50" type="text" name="txtmaincode" /></span></th>
 
-                                <th  width="60%"><span class="preeti"><input type="text" class="preeti" size="30" maxlength="350" name="txtmainactivity" required  /></span></th>
+                                <th  width="40%"><span class="preeti"><input type="text" class="preeti" size="30" maxlength="350" name="txtmainactivity" required  /></span></th>
+                                <th  width="40%"><span class="preeti"><input type="text" class="preeti" size="30" maxlength="350" name="txtmainactivity_en" required  /></span></th>
 
 
 
@@ -82,9 +85,10 @@ if(isset($_GET['error'])){
                             <tr>
                                 <td><span class="siddhi"><?php echo $row["code"] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
-                                <td align="center" ><p><a href="dashboard.php?action=editmainactivity&id=<?php echo $row['id']?>&p_id=<?php echo $program['id']?>&m_name=<?php echo $row['name_np']?>&m_code=<?php echo $row["code"];?>" class="edit">Edit</a></p></td>
+                                <td><span class="siddhi"><?php echo $row['name_en'] ?></span></td>
+                                <td align="center" ><p><a href="dashboard.php?action=editmainactivity&id=<?php echo $row['id']?>" class="edit">Edit</a></p></td>
 
-                                <td align="center" ><p><a onclick="return validateForm()" href="dashboard.php?action=editmainactivity&type=del&id=<?php echo $row['id']?>&p_id=<?php echo $program['id']?>&m_name=<?php echo $row['name_np']?>" class="delete">Delete</a></p></td>
+                                <td align="center" ><p><a onclick="return validateForm()" href="#" class="delete">Delete</a></p></td>
                                 <td align="center" ><p><a href="dashboard.php?action=subActivity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $row['id'] ?>" class="delete">Add Sub Activity</a></p></td>
                             </tr>
                             <?php } ?>

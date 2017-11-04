@@ -5,15 +5,15 @@ $objPHPExcel = new PHPExcel();
 $office_name = 'कार्यालय अनुसर';
 $fiscal_year = '2074/75';
 ini_set('max_execution_time', 300);
-$sql = $dbc->selectTransactionByActivity();
+$sql = $dbc->selectTransactionByGovOffice();
 $objPHPExcel->setActiveSheetIndex()
 ->mergeCells('C3:C4');
 $objPHPExcel->setActiveSheetIndex()
 ->mergeCells('D1:I1');
 $objPHPExcel->setActiveSheetIndex()
-->mergeCells('I3:J3');
+->mergeCells('J3:K3');
 $objPHPExcel->setActiveSheetIndex()
-->mergeCells('K3:L3');
+->mergeCells('L3:M3');
 $objPHPExcel->setActiveSheetIndex()->mergeCells('D2:I2');
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D1',$office_name);
@@ -22,24 +22,26 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('D2',$fiscal_year);
 $objPHPExcel->setActiveSheetIndex()->mergeCells('A3:A4');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A3','कार्यक्रम सँकेत न.');
 $objPHPExcel->setActiveSheetIndex()->mergeCells('B3:B4');
+$objPHPExcel->setActiveSheetIndex()->mergeCells('C3:C4');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B3','कार्यक्रम/क्रियाकलाप')
-->setCellValue('C3','इकाई');
+->setCellValue('C3','कार्यालय नाम ');
 $objPHPExcel->setActiveSheetIndex()->mergeCells('D3:F3');
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D3','वार्षिक लक्ष')
-->setCellValue('D4', 'भौतिक परिमाण')
-->setCellValue('E4', 'इकाइ लागत')
-->setCellValue('F4','बजेट');
-$objPHPExcel->setActiveSheetIndex()->mergeCells('G3:H3');
-$objPHPExcel->setActiveSheetIndex()->setCellValue('G3',"वार्षिक प्रगति")
-->setCellValue('G4',"भौतिक परिमाण")
-->setCellValue('h4','खर्च बजेट')
-->setCellValue('I3','तेश्रो चौमासिक लक्ष')
-->setCellValue('I4','तेश्रो चौमासिक लक्ष')
-->setCellValue('J4','बजेट')
-->setCellValue('K3','तेश्रो चौमासिक प्रगति')
-->setCellValue('k4','भौतिक परिमाण')
-->setCellValue('L4','खर्च बजेट');;
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E4','वार्षिक लक्ष')
+->setCellValue('D4','इकाई')
+->setCellValue('E4', 'भौतिक परिमाण')
+->setCellValue('F4', 'इकाइ लागत')
+->setCellValue('G4','बजेट');
+$objPHPExcel->setActiveSheetIndex()->mergeCells('H3:I3');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('H3',"वार्षिक प्रगति")
+->setCellValue('H4',"भौतिक परिमाण")
+->setCellValue('I4','खर्च बजेट')
+->setCellValue('J3','तेश्रो चौमासिक लक्ष')
+->setCellValue('J4','तेश्रो चौमासिक लक्ष')
+->setCellValue('K4','बजेट')
+->setCellValue('L3','तेश्रो चौमासिक प्रगति')
+->setCellValue('L4','भौतिक परिमाण')
+->setCellValue('M4','खर्च बजेट');;
 
 $i=4;
 while($row = mysqli_fetch_array($sql)) {
@@ -47,16 +49,17 @@ while($row = mysqli_fetch_array($sql)) {
     $objPHPExcel->setActiveSheetIndex()
     ->setCellValue('A'.$i,$row['code'])
     ->setCellValue('B'.$i,$row['name_np'])
-    ->setCellValue('C'.$i,"")
-    ->setCellValue('D'.$i,$row['yearly_alloc_qty'])
-    ->setCellValue('E'.$i,$row['yearly_alloc_cost'])
-    ->setCellValue('F'.$i,$row['yearly_alloc_budget'])
-    ->setCellValue('G'.$i,$row['yearly_progress_qty'])
-    ->setCellValue('H'.$i,$row['yearly_progress_expenditure'])
-    ->setCellValue('I'.$i,$row['q3_alloc_qty'])
-    ->setCellValue('J'.$i,$row['q3_alloc_budget'])
-    ->setCellValue('K'.$i,$row['q3_progress_qty'])
-    ->setCellValue('L'.$i,$row['q3_progress_expenditure']);
+    ->setCellValue('C'.$i,$row["edu_name_np"])
+    ->setCellValue('D'.$i,"")
+    ->setCellValue('E'.$i,$row['yearly_alloc_qty'])
+    ->setCellValue('F'.$i,$row['yearly_alloc_cost'])
+    ->setCellValue('G'.$i,$row['yearly_alloc_budget'])
+    ->setCellValue('H'.$i,$row['yearly_progress_qty'])
+    ->setCellValue('I'.$i,$row['yearly_progress_expenditure'])
+    ->setCellValue('J'.$i,$row['q3_alloc_qty'])
+    ->setCellValue('K'.$i,$row['q3_alloc_budget'])
+    ->setCellValue('L'.$i,$row['q3_progress_qty'])
+    ->setCellValue('M'.$i,$row['q3_progress_expenditure']);
 }
 header('Content-Type: application/vnd.ms-excel');
 header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xls"');

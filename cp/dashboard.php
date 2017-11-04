@@ -29,7 +29,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
     <link rel="shortcut icon" href="../public/img/favicon.ico" type="image/x-icon"/>
     <script>
         function validateForm() {
-            var agree = confirm("Do you Really want to Delete?");
+            var agree = confirm("this function is not provided right now.");
             if (agree)
                 return true;
             else
@@ -81,6 +81,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
     <!-- Search end -->
 
     <a href="#skip-menu" class="hidden">Skip menu</a>
+    <?php if($_SESSION['user_type'] == 0): ?>
     <div class="white">
         <!-- Menu -->
         <ul id="mega-menu-1" class="mega-menu">
@@ -91,16 +92,16 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
                            style="font-size:14px; font-weight:normal">कार्यक्रम प्रविष्टी</a></li>
                     <li><a href="#">डाटा प्रविष्टि</a>
                         <ul>
-                            <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1): ?>
+                           
                             <li><a href="dashboard.php?action=eduoffice" title="" class="preeti none"
                                    style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय
                                     प्रविष्टि </a></li>
-                            <?php endif; ?>
-                            <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 2): ?>
+                            
+                            
                             <li><a href="dashboard.php?action=office" title="" class="preeti none"
                                    style="font-size:14px; font-weight:normal">स्थानीय कार्यालय
                                     प्रविष्टि </a></li>
-                            <?php endif; ?>
+                            
                             
                         </ul>
                     </li>
@@ -121,14 +122,12 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
 
             <li><a href="#">प्रगति प्रविष्टि</a>
                 <ul>
-                    <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1): ?>
+                    
                     <li><a href="dashboard.php?action=entry" class="preeti none"
                            style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय</a></li>
-                    <?php endif; ?>
-                    <?php if($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 2): ?>
+                   
                     <li><a href="dashboard.php?action=entryLocal" class="preeti none"
                            style="font-size:14px; font-weight:normal">स्थानीय कार्यालय</a></li>
-                    <?php endif; ?>
                     </li>
                 </ul>
             </li>
@@ -155,7 +154,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
             <li><a href="#">अन्य प्रयोग</a>
                 <ul>
 
-                    <li><a href="passchange.php" class="preeti none" style="font-size:14px; font-weight:normal">पासवर्ड
+                    <li><a href="dashboard.php?action=changepassword" class="preeti none" style="font-size:14px; font-weight:normal">पासवर्ड
                             परिवर्तन</a></li>
                     <li><a href="backup.php" class="preeti none" style="font-size:14px; font-weight:normal">डाटाबेस
                             ब्याक अप </a></li>
@@ -168,7 +167,33 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
 
         </ul>
     </div>
-    <!-- Menu end -->
+    <?php endif; ?>
+        <!-- Menu end -->
+<!--FOR EDU-LOCAL-OFFICE-->
+<?php if($_SESSION['user_type'] != 0):
+    $edu_office_url = "dashboard.php?action=entryTwo&oid=".$_SESSION['office_id']."&name=".$_SESSION['office_name'];
+    $local_office_url = "dashboard.php?action=entryLocalTwo&oid=".$_SESSION['office_id']."&name=".$_SESSION['office_name'];
+    ?>
+    <div class="white">
+        <!-- Menu -->
+        <ul id="mega-menu-1" class="mega-menu">
+            <li><a href="dashboard.php?action=home" class="active">गृहपृष्ठ</a></li>
+            <li><a href="<?php echo $_SESSION['user_type'] ==1 ? $edu_office_url:$local_office_url?>">प्रगति प्रविष्टि</a></li>
+            <li><a href="#">अन्य प्रयोग</a>
+                <ul>
+
+                    <li><a href="dashboard.php?action=changepassword" class="preeti none" style="font-size:14px; font-weight:normal">पासवर्ड
+                            परिवर्तन</a></li>
+                    <li><a href="dashboard.php?action=logout" class="preeti none"
+                           style="font-size:14px; font-weight:normal">लग आउट</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <?php endif; ?>
+        <!--END FOR EDU LOCAL OFFICE-->
+
 </div>    <!-- Header end -->
 
 <hr class="noscreen"/>
@@ -177,11 +202,66 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
 if (isset($_GET['action']) and !empty($_GET['action'])) {
     $page = $_GET['action'] . ".php";
     if (file_exists($page)) {
-        include($page);
+        switch($_SESSION['user_type']){
+            case 0:
+                include($page);
+                break;
+            case 1:
+                $rba_for_edu = array('entryTwo.php','entryThree.php','home.php','changepassword.php','logout.php');
+                if(in_array($page,$rba_for_edu)){
+                    if($page=='entryThree.php'){
+                        if($_GET['oid']==$_SESSION['office_id']){
+                            include($page);
+                            break;
+                        }
+                        else{
+                            echo "<script>location.href='dashboard.php?action=home';</script>";
+                        }
+                    }
+                    if(isset($_GET['oid'])&&isset($_GET['name'])){
+                        
+                        if($_GET['oid']==$_SESSION['office_id']&&$_GET['name']==$_SESSION['office_name']){
+                            include($page);
+                            break;
+                        }
+                        else{
+                            echo "<script>location.href='dashboard.php?action=home';</script>";    
+                        }
+                    }
+                    include($page);
+                    break;
+                }else{
+                    echo "<script>location.href='dashboard.php?action=home';</script>";  
+                }
+            case 2:
+                $rba_for_local = array('entryLocalTwo.php','entryLocalThree.php','home.php','changepassword.php','logout.php');
+                if(in_array($page,$rba_for_local)){
+                if($page=='entryLocalThree.php'){
+                        if($_GET['oid']==$_SESSION['office_id']){
+                            include($page);
+                            break;
+                        }
+                        else{
+                            echo "<script>location.href='dashboard.php?action=home';</script>";
+                        }
+                }
+                if(isset($_GET['oid'])&&isset($_GET['name'])){
+                    if($_GET['oid']==$_SESSION['office_id']&&$_GET['name']==$_SESSION['office_name']){
+                        include($page);
+                        break;
+                    }
+                    else{
+                        echo "<script>location.href='dashboard.php?action=home';</script>";    
+                    }
+                }
+                    include($page);
+                    break;
+                }else{
+                echo "<script>location.href='dashboard.php?action=home';</script>";  
+                }
+        }
     } else {
-        ?>
-        The Requested Page Doesn't exist
-        <?php
+        echo "<script>location.href='dashboard.php?action=notfound';</script>";  
     }
 } else {
     ?>

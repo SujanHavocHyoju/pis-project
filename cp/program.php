@@ -8,7 +8,8 @@
     if(isset($_POST["btnaddmainsubhead"])){
         $exp_head_code = $_POST["txtmainsubheadcode"];
         $program_name =$_POST["txtmainsubhead"];
-        $result = $dbc->insertProgram($exp_head_code,$program_name);
+        $program_name_en =$_POST["txtmainsubhead_en"];
+        $result = $dbc->insertProgram($exp_head_code,$program_name,$program_name_en);
         if($result>0){
             $message =$utils->successMessage($program_name . ' दर्ता भैसाकेको छ!');
         }
@@ -36,13 +37,20 @@
                     <table width="100%" align="center" border="0" class="table">
                             <tr>
                                 <td  align="right"><span class="preeti">बजेट उपशीर्षक नम्बर</span></td>
-                                <td  align="left"><p><input class="siddhi"  size="20" maxlength="50" type="text" name="txtmainsubheadcode" required autofocus /></p></td>
+                                <td  align="left"><p><input class="siddhi"  size="20" maxlength="30" type="text" name="txtmainsubheadcode" required autofocus /></p></td>
 
-                                <td align="right"><span class="preeti">कार्यक्रम विवरण</span></td>
-                                <td align="left"><p><input type="text" class="preeti" size="40" maxlength="350" name="txtmainsubhead" required  /></p></td>
+                                
+                                
+                            </tr>
+                            <tr>
+                            <td align="right"><span class="preeti">कार्यक्रम विवरण</span></td>
+                                <td align="left"><p><input type="text" class="preeti" size="30" maxlength="350" name="txtmainsubhead" required  /></p></td>
+                            </tr>
+                            <tr>
+                            <td align="right"><span class="preeti">कार्यक्रम विवरण (अँग्रेजी)</span></td>
+                                <td align="left"><p><input type="text" class="preeti" size="30" maxlength="350" name="txtmainsubhead_en" required  /></p></td>
 
                             </tr>
-
                             <tr>
 
                                 <td align="center" colspan="4"><p><input type="submit" name="btnaddmainsubhead" value="  सेभ गर्ने  " /> </p></td>
@@ -74,10 +82,10 @@
                             <tr>
                                 <th width="10%"><span class="preeti">बजेट उपशीर्षक नम्बर</span></th>
                                 <th><span class="preeti">कार्यक्रम</span></th>
-
+                                <th><span class="preeti">कार्यक्रम (अँग्रेजी)</span></th>
 
                                 <th>&nbsp;</th>
-                                <th align="center"><input type="submit" value="मेट्ने" name="btnDelete" onclick="return validateForm()" id="btnDelete" /></th>
+                                <th align="center"><input type="submit" value="मेट्ने" name="btnDelete" onclick="return validateForm()" disabled id="btnDelete" /></th>
                             </tr>
                             <?php
                             $i = 1;
@@ -87,8 +95,8 @@
                                 <tr>
                                     <td><span class="siddhi"><?php echo $row["exp_head_code"];?></span></td>
                                     <td width="25%"><span class="preeti"><?php echo $row["name_np"];?></span></td>
-
-                                    <td align="center" width="8%"><p><a href="dashboard.php?action=editprogram&id=<?php echo $row["id"];?>&exp_code=<?php echo $row["exp_head_code"];?>&program_name=<?php echo $row["name_np"];?>" class="edit">सम्पादन गर्ने</a></p></td>
+                                    <td width="25%"><span class="preeti"><?php echo $row["name_en"];?></span></td>
+                                    <td align="center" width="8%"><p><a href="dashboard.php?action=editprogram&id=<?php echo $row["id"];?>&exp_code=<?php echo $row["exp_head_code"];?>&program_name=<?php echo $row["name_np"];?>&program_name_en=<?php echo $row["name_en"];?>" class="edit">सम्पादन गर्ने</a></p></td>
 
                                     <td align="center" width="8%"><p><input type="checkbox" name="delrec[]" value="350806" /></p></td>
                                 </tr>
