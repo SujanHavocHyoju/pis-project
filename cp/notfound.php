@@ -6,9 +6,9 @@
 			<!-- Content left -->
 			<div id="content-box-in-left">
 				<div id="content-box-in-left-in">
-					<h3 class="line" ><span>स्वागतम 
+					<h3 class="line" ><span>स्वागतम
                     (
-                    शिक्षा विभाग Admin                    
+                    <?php echo $_SESSION['office_name'];?> 
                     )
                     </span></h3>
 						
