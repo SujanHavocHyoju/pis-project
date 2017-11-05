@@ -82,8 +82,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
 
     <a href="#skip-menu" class="hidden">Skip menu</a>
     <?php if($_SESSION['user_type'] == 0): ?>
-    <div class="white" id="cssmenu">
-        
+    <div class="white">
         <!-- Menu -->
         <ul id="mega-menu-1" class="mega-menu">
             <li><a href="dashboard.php?action=home" class="active">गृहपृष्ठ</a></li>
@@ -192,55 +191,24 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
 if (isset($_GET['action']) and !empty($_GET['action'])) {
     $page = $_GET['action'] . ".php";
     if (file_exists($page)) {
-        $now = time();
-        if ($now > $_SESSION['expire']) {
-            session_destroy();
-            echo "<script>location.href='login.php?error=तपाईंको सेसन समाप्त भएको छ। (Your session has been timed out.)';</script>";
-        }else{
-            switch($_SESSION['user_type']){
-                case 0:
-                    include($page);
-                    break;
-                case 1:
-                    $rba_for_edu = array('entryTwo.php','entryThree.php','home.php','changepassword.php','logout.php');
-                    if(in_array($page,$rba_for_edu)){
-                        if($page=='entryThree.php'){
-                            if($_GET['oid']==$_SESSION['office_id']){
-                                include($page);
-                                break;
-                            }
-                            else{
-                                echo "<script>location.href='dashboard.php?action=home';</script>";
-                            }
+        switch($_SESSION['user_type']){
+            case 0:
+                include($page);
+                break;
+            case 1:
+                $rba_for_edu = array('entryTwo.php','entryThree.php','home.php','changepassword.php','logout.php');
+                if(in_array($page,$rba_for_edu)){
+                    if($page=='entryThree.php'){
+                        if($_GET['oid']==$_SESSION['office_id']){
+                            include($page);
+                            break;
                         }
-                        if(isset($_GET['oid'])&&isset($_GET['name'])){
-                            
-                            if($_GET['oid']==$_SESSION['office_id']&&$_GET['name']==$_SESSION['office_name']){
-                                include($page);
-                                break;
-                            }
-                            else{
-                                echo "<script>location.href='dashboard.php?action=home';</script>";    
-                            }
+                        else{
+                            echo "<script>location.href='dashboard.php?action=home';</script>";
                         }
-                        include($page);
-                        break;
-                    }else{
-                        echo "<script>location.href='dashboard.php?action=home';</script>";  
-                    }
-                case 2:
-                    $rba_for_local = array('entryLocalTwo.php','entryLocalThree.php','home.php','changepassword.php','logout.php');
-                    if(in_array($page,$rba_for_local)){
-                    if($page=='entryLocalThree.php'){
-                            if($_GET['oid']==$_SESSION['office_id']){
-                                include($page);
-                                break;
-                            }
-                            else{
-                                echo "<script>location.href='dashboard.php?action=home';</script>";
-                            }
                     }
                     if(isset($_GET['oid'])&&isset($_GET['name'])){
+                        
                         if($_GET['oid']==$_SESSION['office_id']&&$_GET['name']==$_SESSION['office_name']){
                             include($page);
                             break;
@@ -249,14 +217,38 @@ if (isset($_GET['action']) and !empty($_GET['action'])) {
                             echo "<script>location.href='dashboard.php?action=home';</script>";    
                         }
                     }
+                    include($page);
+                    break;
+                }else{
+                    echo "<script>location.href='dashboard.php?action=home';</script>";  
+                }
+            case 2:
+                $rba_for_local = array('entryLocalTwo.php','entryLocalThree.php','home.php','changepassword.php','logout.php');
+                if(in_array($page,$rba_for_local)){
+                if($page=='entryLocalThree.php'){
+                        if($_GET['oid']==$_SESSION['office_id']){
+                            include($page);
+                            break;
+                        }
+                        else{
+                            echo "<script>location.href='dashboard.php?action=home';</script>";
+                        }
+                }
+                if(isset($_GET['oid'])&&isset($_GET['name'])){
+                    if($_GET['oid']==$_SESSION['office_id']&&$_GET['name']==$_SESSION['office_name']){
                         include($page);
                         break;
-                    }else{
-                    echo "<script>location.href='dashboard.php?action=home';</script>";  
                     }
-            }
+                    else{
+                        echo "<script>location.href='dashboard.php?action=home';</script>";    
+                    }
+                }
+                    include($page);
+                    break;
+                }else{
+                echo "<script>location.href='dashboard.php?action=home';</script>";  
+                }
         }
-        
     } else {
         echo "<script>location.href='dashboard.php?action=notfound';</script>";  
     }
