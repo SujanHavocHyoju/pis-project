@@ -1,4 +1,12 @@
 <?php 
+    if(isset($_GET['type'])){
+        $id = $_GET['id'];
+        $ut= $_GET['ut'];
+        if($ut!=0){
+            $result = $dbc->deleteUser($id);
+            $message = $utils->successMessage("प्रयोगकर्ता खाता हतैईको छ!");
+        }
+    }
     if(isset($_GET['message'])){
         $message = $utils->infoMessage($_GET['message']);
     }
@@ -104,7 +112,7 @@
                                 <td align="center"><p><a href="dashboard.php?action=edituser&id=<?php echo $row['id'];?>" class="edit">Edit</a></p></td>
                                 <td align="center"><p><a href="dashboard.php?action=changepassword&id=<?php echo $row['id'];?>" class="edit">ChangePass</a></p>
                                 </td>
-                                <td align="center"><p><a onclick="return validateForm()" href="deluser.php?id=80"
+                                <td align="center"><p><a onclick="return validateForm()" href="dashboard.php?action=users&type=del&id=<?php echo $row['id'];?>&ut=<?php echo $row['user_type'];?>"
                                                          class="delete">Delete</a></p></td>
 
                             </tr>

@@ -418,6 +418,12 @@ class DB_dbc
         $result = mysqli_query($this->dbc,$query);
         return $result; 
     }
+    function deleteUser($id){
+        $query= sprintf("DELETE FROM `db_pis`.`tbl_users` where id='%s'",
+        mysqli_real_escape_string($this->dbc,$id));
+    $result= mysqli_query($this->dbc, $query);
+    return $result;
+    }
     function EXPORT_TABLES($host,$user,$pass,$name,$tables=false, $backup_name=false){ 
         set_time_limit(3000); $mysqli = new mysqli($host,$user,$pass,$name); $mysqli->select_db($name); $mysqli->query("SET NAMES 'utf8'");
         $queryTables = $mysqli->query('SHOW TABLES'); while($row = $queryTables->fetch_row()) { $target_tables[] = $row[0]; }   if($tables !== false) { $target_tables = array_intersect( $target_tables, $tables); } 
@@ -442,7 +448,8 @@ class DB_dbc
         if(isset($content)){
             return true;
         }
-    }    
+    }
+    
 }
 
 
