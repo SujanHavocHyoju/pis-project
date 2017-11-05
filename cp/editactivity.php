@@ -16,13 +16,15 @@ if($isExists){
     $sub_id=$_GET['sid'];
     $activity_code =  $_GET["code"];
     $activity_name = $_GET["a_name"];
+    $activity_name_en = $_GET["a_name_en"];
     $unit = $_GET["qty"];
     if(isset($_POST["btneditactivity"])){
       
         $activity_code = $_POST['txtactivitycode'];
         $activity_name = $_POST["txtactivity"];
+        $activity_name_en = $_POST["txtactivity_en"];
         $unit = $_POST["txtunit"];
-        $result = $dbc->updateActivity($id,$activity_code,$activity_name,$unit);
+        $result = $dbc->updateActivity($id,$activity_code,$activity_name,$unit,$activity_name_en);
         if($result){
             $message= $activity_name." परिबर्तन भैसकेको छ!!";
             echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=activity&pid=".$program_code."&mid=".$main_id."&sid=".$sub_id."&message=".$message."';</script>";
@@ -72,6 +74,7 @@ else{
                                 <th  align="left"><span class="preeti">संकेत नम्बर</span></th>
 
                                 <th ><span class="preeti">क्रियाकलाप</span></th>
+                                <th ><span class="preeti">क्रियाकलाप (अँग्रेजी)</span></th>
                                 <th ><span class="preeti">इकाइ</span></th>
 
 
@@ -83,6 +86,7 @@ else{
                                 <td align="left"><span class="preeti"><input  class="siddhi" value="<?php echo $activity_code?>" size="10" maxlength="50" type="text" name="txtactivitycode" /></span></td>
 
                                 <td  width="60%"><span class="preeti"><input type="text" class="preeti" size="50" maxlength="350" value="<?php echo $activity_name?>" name="txtactivity" required  /></span></td>
+                                <td  width="60%"><span class="preeti"><input type="text" class="preeti" size="50" maxlength="350" value="<?php echo $activity_name_en?>" name="txtactivity_en" required  /></span></td>
                                 <td  ><span class="preeti"><input type="text" class="preeti" size="20" maxlength="350" name="txtunit"  value="<?php echo $unit?>"/></span></td>
 
 

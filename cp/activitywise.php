@@ -1,6 +1,9 @@
 <?php
+session_start();
 include('../class/common.php');
 require_once "../class/PHPExcel.php";
+if(isset($_SESSION['user_type'])){
+    if($_SESSION['user_type']==0){
 $objPHPExcel = new PHPExcel();
 $office_name = 'कार्यक्रम अनुसर';
 $fiscal_year = '2074/75';
@@ -70,4 +73,11 @@ header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
 header ('Pragma: public'); // HTTP/1.0
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 $objWriter->save('php://output');
+}else{
+    echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home';</script>";
+}
+}
+else{
+echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home';</script>";
+} 
 ?>

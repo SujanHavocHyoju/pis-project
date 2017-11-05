@@ -12,7 +12,8 @@ if(isset($_GET['pid'])||isset($_GET['mid'])){
     if(isset($_POST["btnaddsubactivity"])){
         $sub_activity_code =  $_POST["txtsubactivitycode"];
         $sub_activity_name = $_POST["txtsubactivity"];
-        $result = $dbc->insertSubActivity($sub_activity_code,$sub_activity_name,$main_id);
+        $sub_activity_name_en = $_POST["txtsubactivity_en"];
+        $result = $dbc->insertSubActivity($sub_activity_code,$sub_activity_name,$main_id,$sub_activity_name_en);
         if($result>0){
             $message= $utils->successMessage(" सहायक क्रियाकलाप विवरण ".$sub_activity_name." दर्ता भैसाकेको छ!");
         }
@@ -59,7 +60,7 @@ else{
 
                                 <th><span class="preeti">सहायक क्रियाकलाप</span></th>
 
-
+                                <th><span class="preeti">सहायक क्रियाकलाप (अँग्रेजी)</span></th>
                                 <th>&nbsp;</th>
                                 <th align="center"></th>
                                 <th align="center"></th>
@@ -73,7 +74,9 @@ else{
                                                                             maxlength="350" name="txtsubactivity"
                                                                             required/></span></th>
 
-
+                                <th width="60%"><span class="preeti"><input type="text" class="preeti" size="30"
+                                                                            maxlength="350" name="txtsubactivity_en"
+                                                                            required/></span></th>
                                 <th colspan="3"><input type="submit" name="btnaddsubactivity" value="  सेभ गर्ने  "
                                                        style="width:150px;height:30px;"/></th>
                             </tr>
@@ -85,11 +88,11 @@ else{
                                 <tr>
                                     <td><span class="siddhi"><?php echo $row["code"] ?></span></td>
                                     <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
-
-                                    <td align="center"><p><a href="dashboard.php?action=editsubactivity&id=<?php echo $row["id"] ?>&s_code=<?php echo $row["code"];?>&s_name=<?php echo $row['name_np'] ?>&pid=<?php echo $program['id'] ?>&mid=<?php echo $mainActivity['id'] ?>" class="edit">Edit</a></p>
+                                    <td><span class="siddhi"><?php echo $row['name_en'] ?></span></td>
+                                    <td align="center"><p><a href="dashboard.php?action=editsubactivity&id=<?php echo $row["id"] ?>&s_code=<?php echo $row["code"];?>&s_name=<?php echo $row['name_np'] ?>&pid=<?php echo $program['id'] ?>&s_name_en=<?php echo $row['name_en']; ?>&mid=<?php echo $mainActivity['id']?>" class="edit">Edit</a></p>
                                     </td>
 
-                                    <td align="center"><p><a onclick="return validateForm()" href="deluser.php?id=1"
+                                    <td align="center"><p><a onclick="return validateForm()" href="#"
                                                              class="delete">Delete</a></p></td>
                                     <td align="center"><p><a href="dashboard.php?action=activity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $_GET['mid'] ?>&sid=<?php echo $row['id']?>" class="delete">Add
                                                 Activity</a></p></td>

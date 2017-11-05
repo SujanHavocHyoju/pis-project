@@ -1,5 +1,8 @@
 <?php
+include('../class/common.php');
 include('../class/utils.php');
+$sql=$dbc->selectFiscalYearByStatus();
+$row = mysqli_fetch_array($sql);
 if(isset($_GET['error'])){
     $message = $utils->errorMessage($_GET['error']);
 }
@@ -20,10 +23,9 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
     <style>
         body {
             height: 100%;
-            background: #0079a6 url('img/bg.gif') repeat-x;
+            background: #0079a6 url('../public/img/bg.gif') repeat-x;
             margin: 0px auto;
             text-align: center;
-
         }
 
         p {
@@ -36,8 +38,7 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
             width: 100%;
             text-align: center;
             height: 100%;
-            padding-top: 17%;
-
+            padding-top: 5%;
         }
 
         #login table {
@@ -64,17 +65,20 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
             -moz-border-radius: 4px;
             border-radius: 4px;
         }
-
-
     </style>
 </head>
 <body>
+<br />
 <p>नेपाल सरकार<br/>
 <p>शिक्षा मन्त्रालय<br/>
 <p>शिक्षा विभाग<br/>
     प्रगति विवरण सूचना प्रणाली
 </p>
 <div id="login">
+<center>
+	<img src="../public/img/LOGO.png" alt="" />
+</center>
+<br /><br />
 <p><?php echo isset($message)?$message:"";?></p>
     <form action="loginCheck.php" method="post">
         <table border="0" align="center">
@@ -84,21 +88,21 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
 <!--                </td>-->
 <!--            --><?php //endif; ?>
             <tr>
-                <td align="center">Username</td>
+                <td align="center">युजरनेम (Username)</td>
                 <td align="center"><input class="txt" required type="text" name="txtUser"/></td>
             </tr>
             <tr>
-                <td align="center">Password</td>
+                <td align="center">पासवर्ड (Password)</td>
                 <td align="center"><input class="txt" required type="password" name="txtPass"/></td>
             </tr>
             <tr>
-                <td align="center">Fiscalyear</td>
+                <td align="center">आर्थिक वर्ष (Fiscal Year)</td>
 
 
                 <td align="left">
                     <select name="txtfiscalyear" style="width:100px; height:30px;" class="preeti">
 
-                        <option value="2073/74">2073/74</option>
+                        <option value="<?php echo $row['fiscal_year'];?>"><?php echo $row['fiscal_year'];?></option>
                     </select>
 
                 </td>
@@ -107,7 +111,7 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
             </tr>
             <tr>
                 <td align="right"></td>
-                <td align="left"><input type="submit" value=" Login " name="btnLogin"/></td>
+                <td align="left"><input type="submit" value="लग-इन (Login) " name="btnLogin"/></td>
             </tr>
         </table>
     </form>

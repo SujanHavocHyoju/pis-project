@@ -4,18 +4,18 @@ if(isset($_GET['message'])){
     $message = $utils->successMessage($_GET['message']);
 }
 if(isset($_GET['error'])){
-    $message = $utils->errorMessage($_GET['message']);
+    $message = $utils->errorMessage($_GET['error']);
 }
 if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
     $program_code = $_GET['pid'];
     $main_id = $_GET['mid'];
     $sub_id=$_GET['sid'];
     if(isset($_POST["btnaddactivity"])){
-        echo 'Here';
         $activity_code = $_POST["txtactivitycode"];
         $activity_name = $_POST["txtactivity"];
+        $activity_name_en = $_POST["txtactivity_en"];
         $unit = $_POST["txtunit"];
-        $result = $dbc->insertActivity($activity_code,$activity_name,$unit,$sub_id);
+        $result = $dbc->insertActivity($activity_code,$activity_name,$unit,$sub_id,$activity_name_en);
         if($result>0){
             $message= $utils->successMessage("क्रियाकलाप विवरण ".$activity_name." दर्ता भैसाकेको छ!");
         }
@@ -64,7 +64,9 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
                             <tr>
                                 <th  align="left"><span class="preeti">संकेत नम्बर</span></th>
 
+                                
                                 <th ><span class="preeti">क्रियाकलाप</span></th>
+                                <th ><span class="preeti">क्रियाकलाप (अँग्रेजी)</span></th>
                                 <th ><span class="preeti">इकाइ</span></th>
 
 
@@ -76,6 +78,7 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
                                 <th  align="left"><span class="preeti"><input class="siddhi"  size="10" maxlength="50" type="text" name="txtactivitycode" /></span></th>
 
                                 <th  width="60%"><span class="preeti"><input type="text" class="preeti" size="50" maxlength="350" name="txtactivity" required  /></span></th>
+                                <th  width="60%"><span class="preeti"><input type="text" class="preeti" size="50" maxlength="350" name="txtactivity_en" required  /></span></th>
                                 <th  ><span class="preeti"><input type="text" class="preeti" size="20" maxlength="350" name="txtunit"  /></span></th>
 
 
@@ -88,11 +91,12 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
                             <tr>
                                 <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
+                                <td><span class="siddhi"><?php echo $row['name_en'] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
 
-                                <td align="center" ><p><a href="dashboard.php?action=editactivity&id=<?php echo $row['id'];?>&code=<?php echo $row['code'] ?>&a_name=<?php echo $row['name_np'] ?>&qty=<?php echo $row['unit'] ?>&pid=<?php echo $program_code?>&mid=<?php echo $main_id?>&sid=<?php echo $sub_id?>" class="edit">Edit</a></p></td>
+                                <td align="center" ><p><a href="dashboard.php?action=editactivity&id=<?php echo $row['id'];?>&code=<?php echo $row['code'] ?>,&a_name=<?php echo $row['name_np'] ?>&a_name_en=<?php echo $row['name_en'] ?>&qty=<?php echo $row['unit'] ?>&pid=<?php echo $program_code?>&mid=<?php echo $main_id?>&sid=<?php echo $sub_id?>" class="edit">Edit</a></p></td>
 
-                                <td align="center" ><p><a onclick="return validateForm()" href="deluser.php?id=1.0" class="delete">Delete</a></p></td>
+                                <td align="center" ><p><a onclick="return validateForm()" href="#" class="delete">Delete</a></p></td>
 
                             </tr>
                             <?php } ?>

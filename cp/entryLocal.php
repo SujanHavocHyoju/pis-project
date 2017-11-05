@@ -7,7 +7,7 @@
         <!-- Content left -->
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
-                <h3 class="line"><span class="preeti" style="font-size:23px;">Local कार्यालय  </span></h3>
+                <h3 class="line"><span class="preeti" style="font-size:23px;">स्थानीय कार्यालय  </span></h3>
                 <h4 class="line"><span class="preeti" style="font-size:23px;">आ.व. 2073/74 </span></h4>
 
                 <!-- My latest work -->

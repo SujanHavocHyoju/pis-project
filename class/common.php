@@ -38,7 +38,7 @@ class DB_dbc
         return $res;
     }
     function selectEduOffice(){
-        $res = mysqli_query($this->dbc, "SELECT eo.id,eo.name_np,d.name_np as 'd_name' FROM tbl_edu_offices as eo LEFT JOIN tbl_developement_regions AS d ON eo.development_region_id = d.id");
+        $res = mysqli_query($this->dbc, "SELECT eo.id,eo.name_np,eo.name_en,d.name_np as 'd_name' FROM tbl_edu_offices as eo LEFT JOIN tbl_developement_regions AS d ON eo.development_region_id = d.id");
         return $res;
     }
     function selectOneEduOffice($id){
@@ -88,23 +88,24 @@ class DB_dbc
             return $result[0]>0?true:false;
         }
     }
-    function insertProgram($exp_head_code,$program){
+    function insertProgram($exp_head_code,$program,$program_en){
         if($this->isProgramExist($exp_head_code)){
             return -1;
         }else{
-            $query =sprintf("INSERT INTO `db_pis`.`tbl_programs` (`name_np`, `exp_head_code`) VALUES ('%s','%s')",
+            $query =sprintf("INSERT INTO `db_pis`.`tbl_programs` (`name_np`, `exp_head_code`,`name_en`) VALUES ('%s','%s','%s')",
             mysqli_real_escape_string($this->dbc,$program),
-            mysqli_real_escape_string($this->dbc,$exp_head_code)
+            mysqli_real_escape_string($this->dbc,$exp_head_code),
+            mysqli_real_escape_string($this->dbc,$program_en)
         );
             $res = mysqli_query($this->dbc,$query);
             return $res;
         }
     }
-    function updateProgram($id,$exp_head_code,$program_name){
-        
-            $query =sprintf("UPDATE  `db_pis`.`tbl_programs` set exp_head_code='%s', name_np='%s' where id='%s'",
+    function updateProgram($id,$exp_head_code,$program_name,$program_en){
+            $query =sprintf("UPDATE  `db_pis`.`tbl_programs` set exp_head_code='%s', name_np='%s',name_en='%s' where id='%s'",
                 mysqli_real_escape_string($this->dbc,$exp_head_code),
                 mysqli_real_escape_string($this->dbc,$program_name),
+                mysqli_real_escape_string($this->dbc,$program_en),
                 mysqli_real_escape_string($this->dbc,$id)
             );
             $res = mysqli_query($this->dbc,$query);
@@ -143,10 +144,8 @@ class DB_dbc
             return $res;
     }
     function changePassword($id){
-        
         $length = 8;
-        
-        $randomletter = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, $length);
+        $randomletter = trim(substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, $length));
         $query =  sprintf(
             "UPDATE `db_pis`.`tbl_users` SET `password`='%s' WHERE `id`='%s';",
             mysqli_real_escape_string($this->dbc,crypt($randomletter,'st')),
@@ -176,6 +175,10 @@ class DB_dbc
     }
     function selectLocalOffice(){
         $result  = mysqli_query($this->dbc,"SELECT * FROM tbl_local_offices");
+        return $result;
+    }
+    function selectOneLocalOffice($id){
+        $result  = mysqli_query($this->dbc,"SELECT * FROM tbl_local_offices where id = '$id''");
         return $result;
     }
     function selectMainActivity($pid){
@@ -210,24 +213,27 @@ class DB_dbc
             return $result[0]>0?true:false;   
         }
     }
-    function insertMainActivity($id,$name,$program_id){
+ 
+    function insertMainActivity($id,$name,$name_en,$program_id){
         if($this->isMainActivityExists($id)){
             return -1;
         }
         else{
-            $query= sprintf("INSERT INTO `db_pis`.`tbl_main_activities` (`name_np`, `code`, `program_id`) VALUES         
-            ('%s','%s','%s')",
+            $query= sprintf("INSERT INTO `db_pis`.`tbl_main_activities` (`name_np`,`name_en`, `code`, `program_id`) VALUES         
+            ('%s','%s','%s','%s')",
                 mysqli_real_escape_string($this->dbc,$name),
+                mysqli_real_escape_string($this->dbc,$name_en),
                 mysqli_real_escape_string($this->dbc,$id),
                 mysqli_real_escape_string($this->dbc,$program_id));
             $result= mysqli_query($this->dbc, $query);
             return $result;
         }
     }
-    function updateMainActivity($id,$main_activity_code,$main_activity_name){
-        $query= sprintf("UPDATE `db_pis`.`tbl_main_activities` set name_np='%s',code='%s' where id='%s'",
+    function updateMainActivity($id,$main_activity_code,$main_activity_name,$name_en){
+        $query= sprintf("UPDATE `db_pis`.`tbl_main_activities` set name_np='%s',code='%s',name_en='%s' where id='%s'",
             mysqli_real_escape_string($this->dbc,$main_activity_name),
             mysqli_real_escape_string($this->dbc,$main_activity_code),
+            mysqli_real_escape_string($this->dbc,$name_en),
             mysqli_real_escape_string($this->dbc,$id));
         $result= mysqli_query($this->dbc, $query);
         return $result;
@@ -246,23 +252,25 @@ class DB_dbc
             return $result[0]>0?true:false;   
         }
     }
-    function insertSubActivity($code,$name,$main_id){
+    function insertSubActivity($code,$name,$main_id,$name_en){
        if($this->isSubActivityExists($code)){
            return -1;
        }else{
-        $query= sprintf("INSERT INTO `db_pis`.`tbl_sub_activities` (`code`, `name_np`, `main_activity_id`) VALUES        
-        ('%s','%s','%s')",
+        $query= sprintf("INSERT INTO `db_pis`.`tbl_sub_activities` (`code`, `name_np`, `main_activity_id`,`name_en`) VALUES        
+        ('%s','%s','%s','%s')",
             mysqli_real_escape_string($this->dbc,$code),
             mysqli_real_escape_string($this->dbc,$name),
-            mysqli_real_escape_string($this->dbc,$main_id));
+            mysqli_real_escape_string($this->dbc,$main_id),
+            mysqli_real_escape_string($this->dbc,$name_en));
         $result= mysqli_query($this->dbc, $query);
         return $result;
        }
     }
-    function updateSubActivity($id,$sub_activity_code,$sub_activity_name){
-        $query= sprintf("UPDATE `db_pis`.`tbl_sub_activities` set name_np='%s',code='%s' where id='%s'",
+    function updateSubActivity($id,$sub_activity_code,$sub_activity_name,$name_en){
+        $query= sprintf("UPDATE `db_pis`.`tbl_sub_activities` set name_np='%s',code='%s',name_en='%s' where id='%s'",
             mysqli_real_escape_string($this->dbc,$sub_activity_name),
             mysqli_real_escape_string($this->dbc,$sub_activity_code),
+            mysqli_real_escape_string($this->dbc,$name_en),
             mysqli_real_escape_string($this->dbc,$id));
         $result= mysqli_query($this->dbc, $query);
         return $result;
@@ -275,27 +283,30 @@ class DB_dbc
             return $result[0]>0?true:false;   
         }
     }
-    function insertActivity($activity_code,$activity_name,$unit,$sub_id){
+    function insertActivity($activity_code,$activity_name,$unit,$sub_id,$name_en){
         if($this->isActivityExist($activity_code)){
             return -1;
         }else{
-            $query= sprintf("INSERT INTO `db_pis`.`tbl_activities` (`name_np`, `code`, `sub_activity_id`, `unit`) VALUES        
-            ('%s','%s','%s','%s')",
+            $query= sprintf("INSERT INTO `db_pis`.`tbl_activities` (`name_np`, `code`, `sub_activity_id`, `unit`,`name_en`) VALUES        
+            ('%s','%s','%s','%s','%s')",
                 mysqli_real_escape_string($this->dbc,$activity_name),
                 mysqli_real_escape_string($this->dbc,$activity_code),
                 mysqli_real_escape_string($this->dbc,$sub_id),
-                mysqli_real_escape_string($this->dbc,$unit));
+                mysqli_real_escape_string($this->dbc,$unit),
+                mysqli_real_escape_string($this->dbc,$name_en));
             $result= mysqli_query($this->dbc, $query);
             return $result;
         }
     }
-    function updateActivity($id,$activity_code,$activity_name,$unit){
-        $query= sprintf("UPDATE `db_pis`.`tbl_activities` set name_np='%s',unit='%s',code='%s' where id='%s'",
+    function updateActivity($id,$activity_code,$activity_name,$unit,$name_en){
+        $query= sprintf("UPDATE `db_pis`.`tbl_activities` set name_np='%s',unit='%s',code='%s',name_en='%s' where id='%s'",
             mysqli_real_escape_string($this->dbc,$activity_name),
             mysqli_real_escape_string($this->dbc,$unit),
             mysqli_real_escape_string($this->dbc,$activity_code),
+            mysqli_real_escape_string($this->dbc,$name_en),
             mysqli_real_escape_string($this->dbc,$id));
         $result= mysqli_query($this->dbc, $query);
+        echo $query;
         return $result;
     }
 
@@ -313,7 +324,13 @@ class DB_dbc
         $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id");
         return $res;
     }
-
+    function selectTransactionByGovOffice(){
+        $res = mysqli_query($this->dbc, "
+        SELECT a.name_np, a.code,a.id, tl.*,edu.name_np as edu_name_np FROM tbl_activities AS a 
+        INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id 
+        INNER JOIN tbl_edu_offices AS edu on edu.id=tl.edu_office_id;");
+        return $res;
+    }
     function selectOneTransactionGovernment($oid, $tlid){
         $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id WHERE tl.edu_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
         return $res;
@@ -395,6 +412,11 @@ class DB_dbc
             $res = mysqli_query($this->dbc,$query);
             return $res;
         }
+    }
+    function selectFiscalYearByStatus(){
+        $query = "SELECT * from tbl_fiscal_year where status = 0";
+        $result = mysqli_query($this->dbc,$query);
+        return $result; 
     }
     function EXPORT_TABLES($host,$user,$pass,$name,$tables=false, $backup_name=false){ 
         set_time_limit(3000); $mysqli = new mysqli($host,$user,$pass,$name); $mysqli->select_db($name); $mysqli->query("SET NAMES 'utf8'");

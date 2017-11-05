@@ -14,9 +14,8 @@
                     <p align="right"><a href="dashboard.php?action=entryLocal">अघिल्लो पेजमा जाने</a> || <a href="#" id="create_excel">प्रतिवेदन डाउनलोड गर्ने</a></p>
 
                     <form name="del" action="" method="post">
-                        <table width="120%" align="center" border="1" class="table">
+                        <table width="100%" align="center" border="1" class="table">
                             <tr>
-                                <td rowspan="2" align="center"><span class="preeti"></span></td>
                                 <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत न.</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">कार्यक्रम/क्रियाकलाप</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">इकाई</span></td>
@@ -48,7 +47,6 @@
                             while($row = mysqli_fetch_array($sql)) {
                                 ?>
                                 <tr>
-                                    <td><span class="siddhi"></span></td>
                                     <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
                                     <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
                                     <td><span class="siddhi"></span></td>
@@ -65,7 +63,7 @@
                                     <td align="right"><span class="preeti"><?php echo $row['q3_alloc_budget'] ?></span></td>
                                     <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_qty_expenditure'] ?></span></td>
                                     <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_expenditure'] ?></span></td>
-                                    <td align="center" ><p><a href="dashboard.php?action=entryLocalThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>" class="delete">Add Progress</a></p></td>
+                                    <td align="center" ><p><a href="dashboard.php?action=entryLocalThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>" class="delete">प्रगति थप गर्ने</a></p></td>
                                 </tr>
                             <?php } ?>
                         </table>
