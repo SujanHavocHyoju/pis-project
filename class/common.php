@@ -66,18 +66,18 @@ class DB_dbc
         if($this->isEduOfficeExists($sn)){
             return -1;
         }else{
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_edu_offices` (`id`, `name_np`, `name_en`, `province_id`, `development_region_id`) VALUES ('%s', '%s', '%s', '%s', '%s');",
-            mysqli_real_escape_string($this->dbc,$sn),
+            $query = sprintf("INSERT INTO `db_pis`.`tbl_edu_offices` (`name_np`, `name_en`, `province_id`, `development_region_id`) VALUES ('%s', '%s', '%s', '%s');",
             mysqli_real_escape_string($this->dbc,$office_name_np),
             mysqli_real_escape_string($this->dbc,$office_name_ep),
             mysqli_real_escape_string($this->dbc,'0'),
             mysqli_real_escape_string($this->dbc,$region));
             $res = mysqli_query($this->dbc,$query);
+            echo $query;
             return $res;
         }
     }
     function searchOffice($office_name){
-        $query = "SELECT eo.id,eo.name_np,d.name_np as 'd_name' FROM tbl_edu_offices as eo LEFT JOIN tbl_developement_regions AS d ON eo.development_region_id = d.id where eo.name_np='$office_name'";
+        $query = "SELECT eo.id,eo.name_np,eo.name_en,d.name_np as 'd_name' FROM tbl_edu_offices as eo LEFT JOIN tbl_developement_regions AS d ON eo.development_region_id = d.id where eo.name_np='$office_name'";
         return mysqli_query($this->dbc,$query);
     }
     function isProgramExist($exp_code){

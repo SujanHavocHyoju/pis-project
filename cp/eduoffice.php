@@ -24,7 +24,6 @@ if(isset($_GET['error'])){
     }
     if(isset($_POST['btnsearch'])){
         $sql = $dbc->searchOffice($_POST['txtsearch']);
-        var_dump($sql);
     }else{
         $sql = $dbc->selectEduOffice();
     }
