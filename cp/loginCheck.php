@@ -10,7 +10,7 @@ if (isset($_POST['btnLogin'])) {
         $result = $dbc->selectUserLogin($username, crypt($password,'st'));
         
         $row = mysqli_fetch_array($result);
-
+        $fiscal_year_row = mysqli_fetch_array($dbc->selectFiscalYearByStatus());
         var_dump($row);
 
         $count = mysqli_num_rows($result);
@@ -21,6 +21,7 @@ if (isset($_POST['btnLogin'])) {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_type'] = $row['user_type'];
             $_SESSION['start'] = time();
+            $_SESSION['fiscal_year']=$fiscal_year_row['fiscal_year'];
             $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
             if($row['user_type']!=0){
                 $_SESSION['office_id'] = ($_SESSION['user_type'] != 0) ? $row['office_id'] : null;

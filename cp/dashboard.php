@@ -262,7 +262,6 @@ if (isset($_GET['action']) and !empty($_GET['action'])) {
 <!-- Content box end -->
 
 <hr class="noscreen"/>
-s
 
 <!-- Footer -->
 <div id="footer">

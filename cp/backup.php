@@ -6,7 +6,7 @@ if(isset($_SESSION['user_type'])){
     if($_SESSION['user_type']==0){
         $host= "127.0.0.1";
         $user="root";
-        $pass = "admin";
+        $pass = "";
         $name="db_pis";
         $result = $dbc->EXPORT_TABLES($host,$user,$pass,$name);
         if($result){

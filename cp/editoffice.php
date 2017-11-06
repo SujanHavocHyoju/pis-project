@@ -1,17 +1,16 @@
 <?php
     if(isset($_GET['id'])&&!empty($_GET['id'])){
-        $sql = $dbc->selectOneEduOffice($_GET['id']);
+        $sql = $dbc->selectOneLocalOffice($_GET['id']);
         $row = mysqli_fetch_array($sql);
-
         $sn =$row['id'];
         $office_name_np=$row['name_np'];
         $office_name_ep=$row['name_en'];
-        $region_id = $row['development_region_id'];
+        $district_id = $row['district_id'];
              
         echo '
         <script>
           $(document).ready(function(){
-              $("#regions option[value='.$region_id.']").attr("selected","selected");
+              $("#regions option[value='.$district_id.']").attr("selected","selected");
           });
         </script>'; 
     
@@ -27,13 +26,13 @@
         $office_name_np=$_POST['txtofficename'];
         $office_name_ep=$_POST['txtEofficename'];
         $region = $_POST['txtregion'];
-        $result = $dbc->updateEduOffice($sn,$office_name_np,$office_name_ep,$region);
+        $result = $dbc->updateLocalOffice($sn,$office_name_np,$office_name_ep,$region);
         if($result>0){
             $message = " शैक्षिक कार्यालय प्रविष्टि ".$office_name_np." परिबर्तन भैसकेको छ!!";
-            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=eduoffice&message=".$message."';</script>";
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=office&message=".$message."';</script>";
         }else{
             $message = " शैक्षिक कार्यालय प्रविष्टि ".$office_name_np." परिबर्तन हुन्न सकेन!!";
-            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=eduoffice&error=".$message."';</script>";
+            echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=office&error=".$message."';</script>";
         }
     }
 ?>
@@ -51,7 +50,7 @@
 
 
 
-                    <form action="http://localhost/pis-project/cp/dashboard.php?action=editeduoffice&id=<?php echo $sn;?>" method="post">
+                    <form action="http://localhost/pis-project/cp/dashboard.php?action=editoffice&id=<?php echo $sn;?>" method="post">
                         <table width="80%" align="center" border="0" class="table">
                             <tr>
                                 <td width="35%" align="right"><span class="preeti">सि. नं.</span></td>
@@ -65,7 +64,7 @@
 
                             </tr>
                             <tr>
-                                <td align="right"><span class="preeti">कार्यालयको नाम (अंग्रेजीमा) </span></td>
+                                <td align="right"><span class="preeti">कार्यालयको नाम (Office Name) </span></td>
                                 <td align="left"><p><input
                                 value="<?php echo $office_name_ep;?>"
                                  type="text" class="preeti" size="40" maxlength="500" name="txtEofficename" required autofocus /></p></td>
@@ -76,11 +75,13 @@
                                 <td align="left"><p>
                                         <select name="txtregion" id="regions"  class="preeti" style="width:232px; ">
 
-                                            <option value="1">पुर्वान्चल</option>
-                                            <option value="2">मध्यमान्चल</option>
-                                            <option value="3">पश्चिमान्चल</option>
-                                            <option value="4">मध्य पश्चिमान्चल</option>
-                                            <option value="5">सुदुर पश्चिमान्चल</option>
+                                            
+                                        <?php 
+                                            $res=$dbc->selectDistrict();
+                                            while($row=mysqli_fetch_array($res)){
+                                                ?> 
+                                                <option value="<?php echo $row['id'];?>"><?php echo $row['name_np'];?></option>    
+                                             <?php }?>
 
 
                                         </select>

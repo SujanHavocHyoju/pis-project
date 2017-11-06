@@ -39,10 +39,10 @@ if(isset($_SESSION['user_type'])){
         $objPHPExcel->setActiveSheetIndex()->setCellValue('H3',"वार्षिक प्रगति")
         ->setCellValue('H4',"भौतिक परिमाण")
         ->setCellValue('I4','खर्च बजेट')
-        ->setCellValue('J3','तेश्रो चौमासिक लक्ष')
-        ->setCellValue('J4','तेश्रो चौमासिक लक्ष')
+        ->setCellValue('J3','प्रथम चौमासिक लक्ष')
+        ->setCellValue('J4','प्रथम चौमासिक लक्ष')
         ->setCellValue('K4','बजेट')
-        ->setCellValue('L3','तेश्रो चौमासिक प्रगति')
+        ->setCellValue('L3','प्रथम चौमासिक प्रगति')
         ->setCellValue('L4','भौतिक परिमाण')
         ->setCellValue('M4','खर्च बजेट');;
 
@@ -59,10 +59,10 @@ if(isset($_SESSION['user_type'])){
             ->setCellValue('G'.$i,$row['yearly_alloc_budget'])
             ->setCellValue('H'.$i,$row['yearly_progress_qty'])
             ->setCellValue('I'.$i,$row['yearly_progress_expenditure'])
-            ->setCellValue('J'.$i,$row['q3_alloc_qty'])
-            ->setCellValue('K'.$i,$row['q3_alloc_budget'])
-            ->setCellValue('L'.$i,$row['q3_progress_qty'])
-            ->setCellValue('M'.$i,$row['q3_progress_expenditure']);
+            ->setCellValue('J'.$i,$row['q1_alloc_qty'])
+            ->setCellValue('K'.$i,$row['q1_alloc_budget'])
+            ->setCellValue('L'.$i,$row['q1_progress_qty'])
+            ->setCellValue('M'.$i,$row['q1_progress_expenditure']);
         }
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xls"');

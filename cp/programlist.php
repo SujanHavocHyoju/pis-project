@@ -24,9 +24,9 @@
                     <table width="100%" align="center" border="1" class="table">
 
                         <tr>
-                            <th width="10%"><span class="preeti">बजेट उपशीर्षक नम्बर</span></th>
+                            <th width="10%"><span class="preeti">बजेट उपशीर्षक नं.</span></th>
                             <th><span class="preeti">कार्यक्रम</span></th>
-                            <th><span class="preeti">कार्यक्रम (अँग्रेजी)</span></th>
+                            <th><span class="preeti">कार्यक्रम (अंग्रेजीमा)</span></th>
                             <th width="20%">&nbsp;</th>
 
                         </tr>

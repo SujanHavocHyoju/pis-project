@@ -28,17 +28,25 @@ class DB_dbc
         $res = mysqli_query($this->dbc, "SELECT * FROM tbl_programs");
         return $res;
     }
+    function selectDistrict(){
+        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_districts");
+        return $res;
+    }
+    function searchProgram($program_name){
+        $query = "SELECT *  FROM tbl_programs where name_np like '%$program_name%'";
+        return mysqli_query($this->dbc,$query);
+    }
     function selectOneProgram($id){
         $res = mysqli_query($this->dbc, "SELECT * FROM tbl_programs WHERE id = '$id' LIMIT 1");
         return $res;
     }
 
     function selectOffice(){
-        $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,d.name_np as 'd_name' FROM tbl_local_offices as lo LEFT JOIN tbl_developement_regions AS d ON lo.development_region_id = d.id");
+        $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_offices as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id");
         return $res;
     }
     function selectEduOffice(){
-        $res = mysqli_query($this->dbc, "SELECT eo.id,eo.name_np,eo.name_en,d.name_np as 'd_name' FROM tbl_edu_offices as eo LEFT JOIN tbl_developement_regions AS d ON eo.development_region_id = d.id");
+        $res = mysqli_query($this->dbc, "SELECT eo.id,eo.code,eo.name_np,eo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_offices as eo LEFT JOIN tbl_districts AS di ON eo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id");
         return $res;
     }
     function selectOneEduOffice($id){
@@ -61,6 +69,36 @@ class DB_dbc
             $result = mysqli_fetch_array($res);
             return $result[0]>0?true:false;
         }
+
+    }
+    function isLocalOfficeExists($sn){
+        if(isset($sn)){
+            $query = "Select COUNT(*) FROM tbl_local_offices WHERE id='$sn'";
+            $res = mysqli_query($this->dbc,$query);
+            $result = mysqli_fetch_array($res);
+            return $result[0]>0?true:false;
+        }
+    }
+    function insertLocalOffice($sn,$name_np,$name_en,$district_id){
+        if($this->isLocalOfficeExists($sn)){
+            return -1;
+        }else{
+            $query = sprintf("INSERT INTO `db_pis`.`tbl_local_offices` (`name_np`, `name_en`, `district_id`) VALUES ('%s', '%s', '%s');",
+            mysqli_real_escape_string($this->dbc,$name_np),
+            mysqli_real_escape_string($this->dbc,$name_en),
+            mysqli_real_escape_string($this->dbc,$district_id));
+            $res = mysqli_query($this->dbc,$query);
+            return $res;
+        }
+    }
+    function updateLocalOffice($sn,$name_np,$name_en,$district_id){
+        $query = sprintf("UPDATE `db_pis`.`tbl_local_offices` SET name_np='%s',name_en='%s',district_id='%s' where id = '%s'",
+        mysqli_real_escape_string($this->dbc,$name_np),
+        mysqli_real_escape_string($this->dbc,$name_en),
+        mysqli_real_escape_string($this->dbc,$district_id),
+        mysqli_real_escape_string($this->dbc,$sn));
+        $res = mysqli_query($this->dbc,$query);
+        return $res;
     }
     function insertEduOffice($sn,$office_name_np,$office_name_ep,$region){
         if($this->isEduOfficeExists($sn)){
@@ -77,7 +115,11 @@ class DB_dbc
         }
     }
     function searchOffice($office_name){
-        $query = "SELECT eo.id,eo.name_np,eo.name_en,d.name_np as 'd_name' FROM tbl_edu_offices as eo LEFT JOIN tbl_developement_regions AS d ON eo.development_region_id = d.id where eo.name_np='$office_name'";
+        $query = "SELECT eo.id,eo.name_np,eo.name_en,d.name_np as 'd_name' FROM tbl_edu_offices as eo LEFT JOIN tbl_developement_regions AS d ON eo.development_region_id = d.id where eo.name_np LIKE '%$office_name%'";
+        return mysqli_query($this->dbc,$query);
+    }
+    function searchLocalOffice($office_name){
+        $query = "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_offices as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id where lo.name_np LIKE '%$office_name%'";
         return mysqli_query($this->dbc,$query);
     }
     function isProgramExist($exp_code){
@@ -173,12 +215,8 @@ class DB_dbc
          
        
     }
-    function selectLocalOffice(){
-        $result  = mysqli_query($this->dbc,"SELECT * FROM tbl_local_offices");
-        return $result;
-    }
     function selectOneLocalOffice($id){
-        $result  = mysqli_query($this->dbc,"SELECT * FROM tbl_local_offices where id = '$id''");
+        $result  = mysqli_query($this->dbc,"SELECT * FROM tbl_local_offices where id = '$id'");
         return $result;
     }
     function selectMainActivity($pid){
@@ -313,31 +351,31 @@ class DB_dbc
 
 
     function selectTransactionGovernment($oid){
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id WHERE tl.edu_office_id = '$oid'");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id WHERE tl.edu_office_id = '$oid'");
         return $res;
     }
     function selectTransactionLocal($oid){
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.id = tl.activity_id WHERE tl.local_office_id = '$oid'");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_id WHERE tl.local_office_id = '$oid'");
         return $res;
     }
     function selectTransactionByActivity(){
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id");
         return $res;
     }
     function selectTransactionByGovOffice(){
         $res = mysqli_query($this->dbc, "
         SELECT a.name_np, a.code,a.id, tl.*,edu.name_np as edu_name_np FROM tbl_activities AS a 
-        INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id 
+        INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id 
         INNER JOIN tbl_edu_offices AS edu on edu.id=tl.edu_office_id;");
         return $res;
     }
     function selectOneTransactionGovernment($oid, $tlid){
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.id = tl.activity_id WHERE tl.edu_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id WHERE tl.edu_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
         return $res;
     }
 
     function selectOneTransactionLocal($oid, $tlid){
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.id = tl.activity_id WHERE tl.local_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_id WHERE tl.local_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
         return $res;
     }
     function selectUsers(){
@@ -448,6 +486,29 @@ class DB_dbc
         if(isset($content)){
             return true;
         }
+    }
+    function generateOfficeUsers(){
+        $fiscal_year = $this->selectFiscalYearByStatus();
+        $fyr = mysqli_fetch_array($fiscal_year);
+        $fis = str_replace("/","",$fyr["fiscal_year"]);
+        $sql = $this->selectOffice();
+        while($row = mysqli_fetch_array($sql)){
+            $name = "local_admin_".$row["id"];
+            $password = "pis_".$fis.'_'.$row["id"];
+            $this->insertUser($name,$password,$row["name_np"],'2',$row["id"]);
+        }
+    }
+    function generateEduOfficeUsers(){
+        $fiscal_year = $this->selectFiscalYearByStatus();
+        $fyr = mysqli_fetch_array($fiscal_year);
+        $fis = str_replace("/","",$fyr["fiscal_year"]);
+        $sql = $this->selectEduOffice();
+        while($row = mysqli_fetch_array($sql)){
+            $name = "edu_admin_".$row["id"];
+            $password = "pis_".$fis.'_'.$row["id"];
+            $this->insertUser($name,$password,$row["name_np"],'1',$row["id"]);
+        }
+
     }
     
 }

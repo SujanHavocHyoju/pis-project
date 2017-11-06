@@ -58,10 +58,10 @@ if(isset($_GET['error'])){
                         <table width="100%" align="center" border="1" class="table">
 
                             <tr>
-                                <th  align="left"><span class="preeti">संकेत नम्बर</span></th>
+                                <th  align="left"><span class="preeti">संकेत नं.</span></th>
 
                                 <th ><span class="preeti">मुख्य क्रियाकलाप</span></th>
-                                <th ><span class="preeti">मुख्य क्रियाकलाप (अँग्रेजी)</span></th>
+                                <th ><span class="preeti">मुख्य क्रियाकलाप (अंग्रेजीमा)</span></th>
                                 <th  >&nbsp;</th>
                                 <th align="center"></th>
                                 <th align="center"></th>
@@ -75,7 +75,7 @@ if(isset($_GET['error'])){
 
 
 
-                                <th colspan="3"><input type="submit" name="btnaddmainactivity" value="  सेभ गर्ने  "  style="width:150px;height:30px;"/> </th>
+                                <th colspan="3" align="center"><input type="submit" name="btnaddmainactivity" value=" सेभ गर्ने "  style="height:30px;"/> </th>
                            
                             </tr>
                             <?php
@@ -86,10 +86,10 @@ if(isset($_GET['error'])){
                                 <td><span class="siddhi"><?php echo $row["code"] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['name_en'] ?></span></td>
-                                <td align="center" ><p><a href="dashboard.php?action=editmainactivity&id=<?php echo $row['id']?>" class="edit">Edit</a></p></td>
+                                <td align="center" ><p><a href="dashboard.php?action=editmainactivity&id=<?php echo $row['id']?>" class="edit">सम्पादन गर्ने</a></p></td>
 
-                                <td align="center" ><p><a onclick="return validateForm()" href="#" class="delete">Delete</a></p></td>
-                                <td align="center" ><p><a href="dashboard.php?action=subActivity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $row['id'] ?>" class="delete">Add Sub Activity</a></p></td>
+                                <td align="center" ><p><a onclick="return validateForm()" href="#" class="delete"> मेट्ने </a></p></td>
+                                <td align="center" ><p><a href="dashboard.php?action=subActivity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $row['id'] ?>" class="delete">सहायक क्रियाकलाप थप गर्ने</a></p></td>
                             </tr>
                             <?php } ?>
                         </table>

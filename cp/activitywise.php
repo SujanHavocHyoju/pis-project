@@ -37,10 +37,10 @@ $objPHPExcel->setActiveSheetIndex()->mergeCells('G3:H3');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('G3',"वार्षिक प्रगति")
 ->setCellValue('G4',"भौतिक परिमाण")
 ->setCellValue('h4','खर्च बजेट')
-->setCellValue('I3','तेश्रो चौमासिक लक्ष')
-->setCellValue('I4','तेश्रो चौमासिक लक्ष')
+->setCellValue('I3','प्रथम चौमासिक लक्ष')
+->setCellValue('I4','प्रथम चौमासिक लक्ष')
 ->setCellValue('J4','बजेट')
-->setCellValue('K3','तेश्रो चौमासिक प्रगति')
+->setCellValue('K3','प्रथम चौमासिक प्रगति')
 ->setCellValue('k4','भौतिक परिमाण')
 ->setCellValue('L4','खर्च बजेट');;
 
@@ -56,10 +56,10 @@ while($row = mysqli_fetch_array($sql)) {
     ->setCellValue('F'.$i,$row['yearly_alloc_budget'])
     ->setCellValue('G'.$i,$row['yearly_progress_qty'])
     ->setCellValue('H'.$i,$row['yearly_progress_expenditure'])
-    ->setCellValue('I'.$i,$row['q3_alloc_qty'])
-    ->setCellValue('J'.$i,$row['q3_alloc_budget'])
-    ->setCellValue('K'.$i,$row['q3_progress_qty'])
-    ->setCellValue('L'.$i,$row['q3_progress_expenditure']);
+    ->setCellValue('I'.$i,$row['q1_alloc_qty'])
+    ->setCellValue('J'.$i,$row['q1_alloc_budget'])
+    ->setCellValue('K'.$i,$row['q1_progress_qty'])
+    ->setCellValue('L'.$i,$row['q1_progress_expenditure']);
 }
 header('Content-Type: application/vnd.ms-excel');
 header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xls"');

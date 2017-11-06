@@ -52,10 +52,10 @@
                         <table width="80%" align="center" border="1" class="table">
                             <tr>
 
-                                <th>प्रयोगकर्ता नाम</th>
-                                <th>पासवर्ड</th>
-                                <th>नाम</th>
-                                <th>कार्यालय नाम</th>
+                                <th align="center">युजरनेम (Username)</th>
+                                <th align="center">पासवर्ड</th>
+                                <th align="center">पुरा नाम (Full Name)</th>
+                                <th align="center">कार्यालयको नाम</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -65,30 +65,30 @@
                             <tr>
 
                                 <th><input size="20" maxlength="50" type="text" 
-                                style="height:20px; width:150px;"
+                                style="height:20px; width:120px;"
                                 name="txtuname"  style="height:30px;"/>
                                 </th>
                                 <th><input type="password" 
-                                style="height:20px; width:150px;"
+                                style="height:20px; width:120px;"
                                 size="20" maxlength="50" name="txtupass"
                                            style="height:30px;"/></th>
                                 <th><input size="20" maxlength="50" 
-                                style="height:20px; width:150px;"
+                                style="height:20px; width:120px;"
                                 type="text" name="txtname" style="height:30px;"/>
                                 </th>
                                 <th>
-                                <select name="user_type" style="height:30px; width:250px;" id='office_type'>
-                                    <option selected disabled>कार्यालय नाम छान्नुहोस्</option>
+                                <select name="user_type" style="height:30px; width:200px;" id='office_type'>
+                                    <option selected disabled>कार्यालयको नाम छान्नुहोस्</option>
                                     <option value="1">Education Office</option>
                                     <option value="2">Local Office</option>
                                 </select>
                                      
-                                    <select name="txtofficecode" style="height:30px; width:250px;" id="txtofficecode">
+                                    <select name="txtofficecode" style="height:30px; width:200px;" id="txtofficecode">
                                            
                                     </select>
                                 </th>
-                                <th colspan="3"><input type="submit" name="adduser" value=" Add "
-                                                       style="height:30px; width:100px;"/></th>
+                                <th colspan="3" align="center"><input type="submit" name="adduser" value="  प्रयोगकर्ता थप गर्ने  "
+                                                       style="height:30px; width:120px;"/></th>
 
 
                             </tr>
@@ -109,11 +109,11 @@
                                  ?>
                                 </td>
 
-                                <td align="center"><p><a href="dashboard.php?action=edituser&id=<?php echo $row['id'];?>" class="edit">Edit</a></p></td>
-                                <td align="center"><p><a href="dashboard.php?action=changepassword&id=<?php echo $row['id'];?>" class="edit">ChangePass</a></p>
+                                <td align="center"><p><a href="dashboard.php?action=edituser&id=<?php echo $row['id'];?>" class="edit"> सम्पादन गर्ने </a></p></td>
+                                <td align="center"><p><a href="dashboard.php?action=changepassword&id=<?php echo $row['id'];?>" class="edit"> पासवर्ड परिवर्तन गर्ने </a></p>
                                 </td>
                                 <td align="center"><p><a onclick="return validateForm()" href="dashboard.php?action=users&type=del&id=<?php echo $row['id'];?>&ut=<?php echo $row['user_type'];?>"
-                                                         class="delete">Delete</a></p></td>
+                                                         class="delete"> मेट्ने </a></p></td>
 
                             </tr>
                             <?php }?>

@@ -27,7 +27,7 @@
                                 <td  align="right"><span class="preeti">आर्थिक वर्ष</span></td>
                                 <td  align="left"><p><input class="siddhi"  size="20" maxlength="50" type="text" name="txtfiscalyear" required autofocus /></p></td>
 
-                                <td align="right"><span class="preeti"><input type="submit" name="btnaddfiscalyear" value="  सेभ गर्ने  " /></span></td>
+                                <td align="right"><span class="preeti"><input type="submit" name="btnaddfiscalyear" value=" सेभ गर्ने " /></span></td>
                                 <td align="left"><p></p></td>
 
                             </tr>
@@ -44,11 +44,11 @@
                     <form name="del" action="" method="post">
                         <table width="100%" align="center" border="1" class="table">
                         <tr>
-                                    <th width="10%"><span class="preeti">सि.नं.</span></th>
+                                    <th width="10%"><span class="preeti">सि. नं.</span></th>
                                     <th><span class="preeti">आर्थिक वर्ष</span></th>
     
     
-                                    <th align="center"><input type="submit" value="मेट्ने" name="btnDelete" onclick="return validateForm()" id="btnDelete" /></th>
+                                    <th align="center"><input type="submit" disabled value=" मेट्ने " name="btnDelete" onclick="return validateForm()" id="btnDelete" /></th>
                                 </tr>
                             <?php 
                                 $sql=$dbc->selectFiscalYear();
@@ -59,7 +59,7 @@
                                     <td width="25%"><span class="preeti"><?php echo $row['fiscal_year'];?></span></td>
     
     
-                                    <td align="center" width="8%"><p><input type="checkbox" name="delrec[]" value="2073/74" /></p></td>
+                                    <td align="center" width="8%"><p><input type="checkbox" name="delrec[]" value="2074/75" /></p></td>
                                 </tr>
                                 <?php }
                             ?>

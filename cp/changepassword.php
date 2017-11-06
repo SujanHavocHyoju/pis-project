@@ -63,7 +63,7 @@ else{
 }
 if(isset($_POST['addsec'])){
     $result = $dbc->changePassword($id);
-        $message = $utils->infoMessage("<b>".$result."</b> is new password, please note it.");
+        $message = $utils->infoMessage("तपाईंको नयाँ पासवर्ड   <b>". $result ."</b>   हो। कृपया याद राख्नुहुन अनुरोध गर्दछौं !");
     }
 
 ?>
@@ -86,7 +86,7 @@ if(isset($_POST['addsec'])){
                 <form action="http://localhost/pis-project/cp/dashboard.php?action=changepassword&id=<?php echo $id;?>" method="post">
                     <table width="80%" align="center" border="0" class="table">
                         <tr>
-                            <td width="35%" align="right"><span class="preeti">Username</span></td>
+                            <td width="35%" align="right"><span class="preeti">युजरनेम (Username)</span></td>
                             <td width="65%" align="left"><p><input size="20" maxlength="50" type="text" 
                             style="height:20px; width:150px;"
                             disabled
@@ -95,7 +95,7 @@ if(isset($_POST['addsec'])){
                             /></p></td>
                         </tr>
                         <tr>
-                            <td align="right"><span class="preeti">Full Name</span></td>
+                            <td align="right"><span class="preeti">पुरा नाम (Full Name)</span></td>
                             <td align="left"><p><input size="20" maxlength="50" 
                             style="height:20px; width:150px;"
                             disabled
@@ -105,7 +105,8 @@ if(isset($_POST['addsec'])){
 
                         </tr>
                         
-                        <tr>
+                       <?php if($_SESSION["user_type"]!=0):?>
+                       <tr>
                             <td align="right"><span class="preeti">Office Name </span></td>
                             <td align="left"><p>
                                     <select disabled name="user_type" style="height:30px; width:250px;" id='office_type'>
@@ -120,13 +121,19 @@ if(isset($_POST['addsec'])){
                                 </p></td>
 
                         </tr>
-
-
+                        <?php endif;?>
+                        
+                        <?php if($_SESSION['user_type'] == 0): ?>
+                        <tr>
+                            <td align="right"><span class="preeti">कार्यालयको नाम (Office Name)</span></td>
+                            <td align="left"><p>शिक्षा विभाग</p></td>
+                            </tr>
+                        <?php endif;?>
 
 
                         <tr>
                             <td>&nbsp;</td>
-                            <td><p><input type="submit" name="addsec" value=" रेसेट पस्स्वोर्ड " /></p></td>
+                            <td><p><input type="submit" name="addsec" value=" पासवर्ड रिसेट गर्ने " /></p></td>
                         </tr>
                     </table>
                 </form>

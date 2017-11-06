@@ -22,8 +22,8 @@
                             <td  colspan="3" align="center"><span class="preeti">वार्षिक लक्ष</span></td>
 
                             <td  colspan="2" align="center"><span class="preeti">वार्षिक प्रगति</span></td>
-                            <td  colspan="2" align="center"><span class="preeti">तेश्रो चौमासिक लक्ष</span></td>
-                            <td  colspan="2" align="center"><span class="preeti">तेश्रो चौमासिक प्रगति</span></td>
+                            <td  colspan="2" align="center"><span class="preeti">प्रथम चौमासिक लक्ष</span></td>
+                            <td  colspan="2" align="center"><span class="preeti">प्रथम चौमासिक प्रगति</span></td>
                             <td  align="center"  rowspan="2"><span class="preeti"></span></td>
 
                         </tr>
@@ -59,10 +59,10 @@
                             <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span></td>
 
 
-                            <td align="right"><span class="preeti" style="width:0.6em;"><?php echo $row['q3_alloc_qty'] ?></span></td>
-                            <td align="right"><span class="preeti"><?php echo $row['q3_alloc_budget'] ?></span></td>
-                            <td align="right" bgcolor="#CCCCCC" style="width:0.6em;"><span class="preeti"><?php echo $row['q3_progress_qty'] ?></span></td>
-                            <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q3_progress_expenditure'] ?></span></td>
+                            <td align="right"><span class="preeti" style="width:0.6em;"><?php echo $row['q1_alloc_qty'] ?></span></td>
+                            <td align="right"><span class="preeti"><?php echo $row['q1_alloc_budget'] ?></span></td>
+                            <td align="right" bgcolor="#CCCCCC" style="width:0.6em;"><span class="preeti"><?php echo $row['q1_progress_qty'] ?></span></td>
+                            <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
                             <td align="center" ><p><a href="dashboard.php?action=entryThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>" class="delete">प्रगति थप गर्ने</a></p></td>
                         </tr>
                         <?php } ?>
