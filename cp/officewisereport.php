@@ -16,9 +16,8 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
             <div id="content-box-in-left-in">
 
                 <h3 align="center"><span class="preeti" style="font-size:20px; text-align: center">
-                     नेपाल सरकार
-                     शिक्षा मन्त्रालय
-                     शिक्षा विभाग
+                     स्थानीय कार्यालयगत
+                            प्रतिवेदन
 
                     </span>
                 </h3>
@@ -42,7 +41,7 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
                         <tr>
 
                             <td colspan="14" style="text-align: center;">
-                                आ.व. &#2408;&#2406;&#2413;&#2409;/&#2413;&#2410; (जिल्लास्तर)
+                                आ.व. &#2408;&#2406;&#2413;&#2409;/&#2413;&#2410;
                             </td>
                         </tr>
 
@@ -94,7 +93,7 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
                             </tr>
 
 
-                            <?php $sql = $dbc->selectActivityWiseReportEdu($activity_code);
+                            <?php $sql = $dbc->selectActivityWiseReportLocal($activity_code);
                             $i = 1;
                             while ($row = mysqli_fetch_array($sql)) {
                                 ?>
@@ -111,25 +110,25 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
                                     <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
                                     <td><span class="siddhi"></span></td>
                                     <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_alloc_cost'] ?></span></td>
+                                            class="preeti"><?php echo $row['yearly_alloc_cost'] ?></span></td>
                                     <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_qty'] ?></span>
                                     </td>
                                     <td align="right"><span class="preeti"></span></td>
                                     <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
+                                            class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
 
                                     <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_progress_qty'] ?></span>
+                                            class="preeti"><?php echo $row['yearly_progress_qty'] ?></span>
                                     <td align="right"><span
-                                                class="preeti"><?php echo $percentageYearlyQty ?></span>
+                                            class="preeti"><?php echo $percentageYearlyQty ?></span>
                                     </td>
 
 
                                     <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span>
+                                            class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span>
                                     </td>
                                     <td align="right"><span
-                                                class="preeti"><?php echo $percentageYearlyExpenditure?></span>
+                                            class="preeti"><?php echo $percentageYearlyExpenditure?></span>
                                     </td>
 
 
@@ -143,13 +142,13 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
                                     <td align="right"><span class="preeti"><?php echo $row['q3_progress_qty'] ?></span>
                                     </td>
                                     <td align="right"><span
-                                                class="preeti"><?php echo $percentageQThreeQty ?></span>
+                                            class="preeti"><?php echo $percentageQThreeQty ?></span>
                                     </td>
 
                                     <td align="right"><span
-                                                class="preeti"><?php echo $row['q3_progress_expenditure'] ?></span></td>
+                                            class="preeti"><?php echo $row['q3_progress_expenditure'] ?></span></td>
                                     <td align="right"><span
-                                                class="preeti"><?php echo $percentageQThreeExpenditure ?></span>
+                                            class="preeti"><?php echo $percentageQThreeExpenditure ?></span>
                                     </td>
 
                                 </tr>

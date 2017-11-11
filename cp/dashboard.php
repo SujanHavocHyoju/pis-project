@@ -126,11 +126,11 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
                 <ul>
 
 
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="finalexcelreport.php">कार्यक्रमगत
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=#">कार्यक्रमगत
                             एकमुष्ट प्रतिवेदन</a></li>
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="officewise.php">कार्यालयगत
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=officewise">कार्यालयगत
                             प्रतिवेदन</a></li>
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="activitywise.php">क्रियाकलापगत
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=activitywise">क्रियाकलापगत
                             प्रतिवेदन</a></li>
                     <!-- <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="totalexcelreport.php">एकमुष्ट प्रतिवेदन</a></li>
 
