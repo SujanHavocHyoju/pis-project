@@ -3,7 +3,7 @@ include('report.php');
 /*Declaring the constant keyword */
 define('DB_SERVER', '127.0.0.1');
 define('DB_USER', 'root');
-define('DB_PASS', 'root');
+define('DB_PASS', 'admin');
 define('DB_NAME', 'db_pis');
 
 class DB_dbc
@@ -918,7 +918,6 @@ HAVING `activity_id` = '$activity_id'";
     {
         $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
         $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
-
         if ($resultForTruncate > 0) {
             $queryForMainActivity = $this->sumOfMainActivity();
             while ($rma = mysqli_fetch_array($queryForMainActivity)) {
@@ -954,8 +953,7 @@ HAVING `activity_id` = '$activity_id'";
                     mysqli_real_escape_string($this->dbc, $rma['main_name_np']));
                 $resultFromMain = mysqli_query($this->dbc, $queryToInsertForMain);
                 if ($resultFromMain > 0) {
-                    $resultForQuery = $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
-                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);$this->sumOfSubActivity($rma['main_id']);
+                    $resultForQuery = $this->sumOfSubActivity($rma['main_id']);
                     while ($rsa = mysqli_fetch_array($resultForQuery)) {
                         $queryToInsertForSub = sprintf("INSERT INTO 
                         `db_pis`.`tbl_current_reports` 
@@ -1059,12 +1057,11 @@ HAVING `activity_id` = '$activity_id'";
                     }
                 }else{
                     $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
-                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
-                    return false;
+                                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                                    return false;
                 }
 
             }
-            return true;
         }
     }
     function selectAllFinalReport(){
