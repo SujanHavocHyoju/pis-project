@@ -14,25 +14,28 @@
         $message = $utils->errorMessage($_GET['error']);
     }
     if(isset($_POST['adduser'])){
-        $username = $_POST['txtuname'];
-        $password = $_POST['txtupass'];
-        $full_name = $_POST['txtname'];
-        if(!isset($_POST['txtofficecode'])){
-            $message = "Select office name";
-        }else{
-            $user_type = $_POST['user_type'];
-            $office_id = $_POST['txtofficecode'];
-            $result = $dbc->insertUser($username,$password,$full_name,$user_type,$office_id);
-            if($result>0){
-                $message = $utils->successMessage($full_name." दर्ता भैसाकेको छ!");
-            }
-            else if($result == -1){
-                $message =$utils->infoMessage($utils->alreadyExists("",$full_name));
-            }
-            else{
-                $message = $utils->errorMessage($utils->error("",$full_name));
-            }
-        }
+        // $username = $_POST['txtuname'];
+        // $password = $_POST['txtupass'];
+        // $full_name = $_POST['txtname'];
+        // if(!isset($_POST['txtofficecode'])){
+        //     $message = "Select office name";
+        // }else{
+        //     $user_type = $_POST['user_type'];
+        //     $office_id = $_POST['txtofficecode'];
+        //     $result = $dbc->insertUser($username,$password,$full_name,$user_type,$office_id);
+        //     if($result>0){
+        //         $message = $utils->successMessage($full_name." दर्ता भैसाकेको छ!");
+        //     }
+        //     else if($result == -1){
+        //         $message =$utils->infoMessage($utils->alreadyExists("",$full_name));
+        //     }
+        //     else{
+        //         $message = $utils->errorMessage($utils->error("",$full_name));
+        //     }
+        // }
+        $sql = $dbc->selectUserByUserType($_POST['user_type']);
+    }else{
+        $sql = $dbc->selectUser();
     }
 ?>
 <div id="content-box">
@@ -64,35 +67,26 @@
                             
                             <tr>
 
-                                <th><input size="20" maxlength="50" type="text" 
-                                style="height:20px; width:120px;"
-                                name="txtuname"  style="height:30px;"/>
+                                <th>
                                 </th>
-                                <th><input type="password" 
-                                style="height:20px; width:120px;"
-                                size="20" maxlength="50" name="txtupass"
-                                           style="height:30px;"/></th>
-                                <th><input size="20" maxlength="50" 
-                                style="height:20px; width:120px;"
-                                type="text" name="txtname" style="height:30px;"/>
+                                <th></th>
+                                <th>
                                 </th>
                                 <th>
                                 <select name="user_type" style="height:30px; width:200px;" id='office_type'>
-                                    <option selected disabled>कार्यालयको नाम छान्नुहोस्</option>
-                                    <option value="1">Education Office</option>
-                                    <option value="2">Local Office</option>
+                                    <option selected disabled>कार्यालयको प्रकार</option>
+                                    <option value="1">शैक्षिक कार्यालय</option>
+                                    <option value="2">स्थानीय कार्यालय </option>
                                 </select>
                                      
-                                    <select name="txtofficecode" style="height:30px; width:200px;" id="txtofficecode">
-                                           
-                                    </select>
+                               
                                 </th>
-                                <th colspan="3" align="center"><input type="submit" name="adduser" value="  प्रयोगकर्ता थप गर्ने  "
-                                                       style="height:30px; width:120px;"/></th>
+                                <th colspan="3" align="center"><input type="submit" name="adduser" value="  खोजी गर्ने  "
+                                                       style="height:30px; width:120px;" /></th>
 
 
                             </tr>
-                            <?php $sql = $dbc->selectUser();
+                            <?php 
                                 while($row = mysqli_fetch_array($sql)){
                             ?>
                             <tr>

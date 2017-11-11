@@ -71,7 +71,7 @@
 
                             </tr>
                             <tr>
-                                <td align="right"><span class="preeti">विकास क्षेत्र </span></td>
+                                <td align="right"><span class="preeti">जिल्ला </span></td>
                                 <td align="left"><p>
                                         <select name="txtregion" id="regions"  class="preeti" style="width:232px; ">
 

@@ -29,7 +29,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
     <link rel="shortcut icon" href="../public/img/favicon.ico" type="image/x-icon"/>
     <script>
         function validateForm() {
-            var agree = confirm("this function is not provided right now.");
+            var agree = confirm("मेट्ने सुबिधा उपलव्ध छैन ");
             if (agree)
                 return true;
             else

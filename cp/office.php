@@ -96,7 +96,7 @@
                     </form>
                     <h2><?php echo isset($message)?$message:'';?></h2>
 
-                    <table width="80%" align="center" border="1" class="table">
+                    <table width="100v  %" align="center" border="1" class="table">
                         <tr>
                             <th><span class="preeti">सि. नं.</span></th>
                             <th ><span class="preeti">कार्यालयको नाम</span></th>
@@ -113,10 +113,10 @@
                             ?>
                             <tr>
                             <td><span class="siddhi"><?php echo $row["id"];?></span></td>
-                            <td width="55%"><span class="preeti"><?php echo $row["name_np"];?></span></td>
-                            <td width="55%"><span class="preeti"><?php echo $row["name_en"];?></span></td>
-                            <td width="55%"><span class="preeti"><?php echo $row["d_name"];?></span></td>
-                            <td width="55%"><span class="preeti"><?php echo $row["di_name"];?></span></td>
+                            <td ><span class="preeti"><?php echo $row["name_np"];?></span></td>
+                            <td ><span class="preeti"><?php echo $row["name_en"];?></span></td>
+                            <td ><span class="preeti"><?php echo $row["d_name"];?></span></td>
+                            <td ><span class="preeti"><?php echo $row["di_name"];?></span></td>
 
                             <td align="center" width="10%"><p><input type="button" onclick="window.location.href='dashboard.php?action=editoffice&id=<?php echo $row['id'];?>'" class="edit" value=' सम्पादन गर्ने '></p></td>
                             <td align="center" width="10%"><p><a onclick="return validateForm()" href="deloffice.php?id=1" class="delete">मेट्ने</a></p></td>

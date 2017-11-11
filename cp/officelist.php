@@ -5,7 +5,7 @@
         if($office_type==1){
             $sql = $dbc->selectEduOffice();
         }else{
-            $sql = $dbc->selectLocalOffice();    
+            $sql = $dbc->selectOffice();    
         }
         
     }
