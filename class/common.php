@@ -1014,7 +1014,7 @@ HAVING `activity_id` = '$activity_id'";
                                 `status`) 
                                 VALUES (
                                 '%s', 
-                                '%s', http://localhost/pis-project/cp/dashboard.php?action=home
+                                '%s',
                                 '0', 
                                 '%s',  
                                 '%s', 
