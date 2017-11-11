@@ -1,5 +1,4 @@
 <?php
-    $dbc->generateFinalReport();
     if(isset($_POST['message'])){
         $message = $utils->infoMessage($_POST['message'].' डेटाबेस जगेडा हुन्न सफल वयेको छ!!');
     }
