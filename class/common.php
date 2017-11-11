@@ -581,15 +581,6 @@ class DB_dbc
          $result = mysqli_query($this->dbc,$query);
          return $result;
     }
-    function generateFinalReport(){
-        $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
-        $result = mysqli_query($this->dbc,$queryForTruncate);
-        if($result>0){
-
-        }
-    }
-}
-
     function selectActivityWiseReportEdu($activity_id)
     {
         $query = "SELECT 
@@ -648,8 +639,252 @@ HAVING `activity_id` = '$activity_id'";
         $result = mysqli_query($this->dbc, $query);
         return $result;
     }
+    function sumOfMainActivity(){
+        $sql = "
+        SELECT 
+        main_id, 
+        main_name_np,
+               SUM(Sub_syag) as Main_syag, 
+               SUM(Sub_syab) as Main_syab, 
+               SUM(Sub_sypq) as Main_sypq, 
+               SUM(Sub_sype) as Main_sype, 
+               SUM(Sub_sqaq) as Main_sqaq, 
+               SUM(Sub_sqab) as Main_sqab, 
+               SUM(Sub_sqpq) as Main_sqpq, 
+               SUM(Sub_sqpe) as Main_sqpe 
+               FROM
+                    (
+                        SELECT 
+                        main_id, 
+                        main_name_np,
+                        SUM(syaq) as Sub_syag, 
+                        SUM(syab) as Sub_syab, 
+                        SUM(sypq) as Sub_sypq, 
+                        SUM(sype) as Sub_sype, 
+                        SUM(sqaq) as Sub_sqaq, 
+                        SUM(sqab) as Sub_sqab, 
+                        SUM(sqpq) as Sub_sqpq, 
+                        SUM(sqpe) as Sub_sqpe 
+                        FROM 
+                            (
+                            SELECT 
+                            main.id as main_id, 
+                            main.name_np as main_name_np,
+                            SUM(tl.yearly_alloc_qty) as syaq,
+                            SUM(tl.yearly_alloc_budget) as syab,
+                            SUM(tl.yearly_progress_qty) as sypq,
+                            SUM(tl.yearly_progress_expenditure) as sype,
+                            SUM(tl.q1_alloc_qty) as sqaq,
+                            SUM(tl.q1_alloc_budget) as sqab,
+                            SUM(tl.q1_progress_qty) as sqpq, 
+                            SUM(tl.q1_progress_expenditure) as sqpe
+                                from tbl_activities as act
+                                left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+                                left join tbl_main_activities as main on main.id= sub.main_activity_id
+                                left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+                                    where main.id=sub.main_activity_id
+                                        GROUP BY
+                                        act.id
+                                        ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id;";
+        $res =  mysqli_query($this->dbc,$sql);
+        return $res;
+    }
+    function sumOfSubActivity($id){
+        $sql = "SELECT 
+            sub_code, 
+            sub_name_np,
+            SUM(syaq) as sub_syag, 
+            SUM(syab) as sub_syab, 
+            SUM(sypq) as sub_sypq, 
+            SUM(sype) as sub_sype, 
+            SUM(sqaq) as sub_sqaq, 
+            SUM(sqab) as sub_sqab, 
+            SUM(sqpq) as sub_sqpq, 
+            SUM(sqpe) as sub_sqpe 
+            FROM 
+                (SELECT 
+                    sub.code as sub_code, 
+                    sub.name_np as sub_name_np,
+                    SUM(tl.yearly_alloc_qty) as syaq,SUM(tl.yearly_alloc_budget) as syab,
+                    SUM(tl.yearly_progress_qty) as sypq,
+                    SUM(tl.yearly_progress_expenditure) as sype,
+                    SUM(tl.q1_alloc_qty) as sqaq,
+                    SUM(tl.q1_alloc_budget) as sqab,
+                    SUM(tl.q1_progress_qty) as sqpq, 
+                    SUM(tl.q1_progress_expenditure) as sqpe
+                        from tbl_activities as act
+                        left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+                        left join tbl_main_activities as main on main.id= sub.main_activity_id
+                        left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+                                where main.id='1' and
+                                sub.id=act.sub_activity_id
+                                GROUP BY sub.id
+                                ORDER BY sub.id ASC) as T_SUB GROUP BY sub_code;";
+      
+        mysqli_query($this->dbc,"SET sql_mode = '';");
+        $res =mysqli_query($this->dbc,$sql);
+        return $res;
 
+    }
+    function sumofActivity($main_activity,$sub_activity){
+        $query = "SELECT 
+        act.name_np as act_name_np,
+        act.code as act_code,
+        SUM(tl.yearly_alloc_qty) as syaq,
+        SUM(tl.yearly_alloc_budget) as syab,
+        SUM(tl.yearly_progress_qty) as sypq,
+        SUM(tl.yearly_progress_expenditure) as sype,
+        SUM(tl.q1_alloc_qty) as sqaq,
+        SUM(tl.q1_alloc_budget) as sqab,
+        SUM(tl.q1_progress_qty) as sqpq, 
+        SUM(tl.q1_progress_expenditure) as sqpe
+        from tbl_activities as act
+            left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+            left join tbl_main_activities as main on main.id= sub.main_activity_id
+            left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+            where main.id='$main_activity' and
+            sub.code='$sub_activity'
+            GROUP BY
+            act.id
+            ORDER BY act.id ASC;";
+            //mysqli_query($this->dbc,"SET sql_mode = '';");
+            $res =mysqli_query($this->dbc,$query);
+            return $res;
+
+    }
+    function generateFinalReport(){
+        $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+        $resultForTruncate = mysqli_query($this->dbc,$queryForTruncate);
+        if($resultForTruncate>0){
+            $queryForMainActivity = $this->sumOfMainActivity();
+            while($rma = mysqli_fetch_array($queryForMainActivity)){
+                $queryToInsertForMain = sprintf("INSERT INTO 
+                `db_pis`.`tbl_current_reports` 
+                (`activity_number`, 
+                `yearly_weight`, 
+                `yearly_alloc_budget`, 
+                `yearly_progress_expenditure`, 
+                `yearly_progress_expenditure_percent`, 
+                `qtr_alloc_weight`, 
+                `qtr_alloc_budget`, 
+                `qtr_progress_expenditure`, 
+                `qtr_progress_expenditure_percent`, 
+                `name_np`) VALUES 
+                ('%s', 
+                '0', 
+                '%s', 
+                '%s', 
+                '0', 
+                '0', 
+                '%s', 
+                '%s',
+                '0', 
+                '%s')",
+                mysqli_real_escape_string($this->dbc,$rma['main_id']),
+                mysqli_real_escape_string($this->dbc,$rma['Main_syab']),
+                mysqli_real_escape_string($this->dbc,$rma['Main_sype']),
+                mysqli_real_escape_string($this->dbc,$rma['Main_sqab']),
+                mysqli_real_escape_string($this->dbc,$rma['Main_sqpe']),
+                mysqli_real_escape_string($this->dbc,$rma['main_name_np']));
+                $resultFromMain = mysqli_query($this->dbc,$queryToInsertForMain);
+                if($resultFromMain>0){
+                    $resultForQuery =$this->sumOfSubActivity($rma['main_id']);
+                    while($rsa=mysqli_fetch_array($resultForQuery)){
+                        $queryToInsertForSub =sprintf("INSERT INTO 
+                        `db_pis`.`tbl_current_reports` 
+                        (`activity_number`, 
+                        `yearly_weight`, 
+                        `yearly_alloc_budget`,                                
+                        `yearly_progress_expenditure`, 
+                        `yearly_progress_expenditure_percent`, 
+                        `qtr_alloc_weight`, 
+                        `qtr_alloc_budget`, 
+                        `qtr_progress_expenditure`, 
+                        `qtr_progress_expenditure_percent`, 
+                        `name_np`) VALUES 
+                        ('%s', 
+                        '0', 
+                        '%s', 
+                        '%s', 
+                        '0', 
+                        '0', 
+                        '%s', 
+                        '%s',
+                        '0', 
+                        '%s')",
+                        mysqli_real_escape_string($this->dbc,$rsa['sub_code']),
+                        mysqli_real_escape_string($this->dbc,$rsa['sub_syab']),
+                        mysqli_real_escape_string($this->dbc,$rsa['sub_sype']),
+                        mysqli_real_escape_string($this->dbc,$rsa['sub_sqab']),
+                        mysqli_real_escape_string($this->dbc,$rsa['sub_sqpe']),
+                        mysqli_real_escape_string($this->dbc,$rsa['sub_name_np']));
+                        $resultFromSub = mysqli_query($this->dbc,$queryToInsertForSub);
+                        if($resultFromSub>0){
+                            $resultFromSubQueries = $this->sumofActivity($rma['main_id'],$rsa['sub_code']);
+                            while($raa=mysqli_fetch_array($resultFromSubQueries)){
+                                $queryToInsertAct = sprintf(
+                                "INSERT INTO 
+                                `db_pis`.`tbl_current_reports` 
+                                (`activity_number`, 
+                                `yearly_alloc_qty`, 
+                                `yearly_weight`, 
+                                `yearly_alloc_budget`, 
+                                `yearly_progress_qty`, 
+                                `yearly_progress_qty_percent`, 
+                                `yearly_progress_expenditure`, 
+                                `yearly_progress_expenditure_percent`, 
+                                `yearly_progress_weighted`, 
+                                `qtr_alloc_qty`, 
+                                `qtr_alloc_weight`, 
+                                `qtr_alloc_budget`, 
+                                `qtr_progress_qty`, 
+                                `qtr_progress_qty_percent`, 
+                                `qtr_progress_expenditure`, 
+                                `qtr_progress_expenditure_percent`, 
+                                `qtr_progress_expenditure_weighted`, 
+                                `name_np`) 
+                                VALUES (
+                                '%s', 
+                                '%s', 
+                                '0', 
+                                '%s',  
+                                '%s', 
+                                '0', 
+                                '%s', 
+                                '0', 
+                                '0', 
+                                '%s', 
+                                '0', 
+                                '%s', 
+                                '%s',  
+                                '0', 
+                                '%s',  
+                                '0', 
+                                '0', 
+                                '%s')",
+                                mysqli_real_escape_string($this->dbc,$raa['act_code']),
+                                mysqli_real_escape_string($this->dbc,$raa['syaq']),
+                                mysqli_real_escape_string($this->dbc,$raa['syab']),
+                                mysqli_real_escape_string($this->dbc,$raa['sypq']),
+                                mysqli_real_escape_string($this->dbc,$raa['sype']),
+                                mysqli_real_escape_string($this->dbc,$raa['sqaq']),
+                                mysqli_real_escape_string($this->dbc,$raa['sqab']),
+                                mysqli_real_escape_string($this->dbc,$raa['sqpq']),
+                                mysqli_real_escape_string($this->dbc,$raa['sqpe']),
+                                mysqli_real_escape_string($this->dbc,$raa['act_name_np'])
+                                );
+                                echo $queryToInsertAct;
+                                $resultFrom = mysqli_query($this->dbc,$queryToInsertAct);
+                            }
+                        }
+                    }
+                }
+                
+            }
+            }
+    }
 }
+
 
 
 /*Creating the object to retrieve the data*/
