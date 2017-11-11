@@ -59,22 +59,21 @@ if(isset($_GET['error'])){
 
                             </tr>
                             <tr>
-                                <td align="right"><span class="preeti">विकास क्षेत्र </span></td>
-                                <td align="left"><p>
-                                        <select name="txtregion"  class="preeti" style="width:232px; ">
+                            <td align="right"><span class="preeti">जिल्ला</span></td>
+                            <td align="left"><p>
+                                    <select name="txtregion"  class="preeti" style="width:232px; ">
+                                  
+                                        <?php 
+                                        $res=$dbc->selectDistrict();
+                                        while($row=mysqli_fetch_array($res)){
+                                            ?> 
+                                            <option value="<?php echo $row['id'];?>"><?php echo $row['name_np'];?></option>    
+                                         <?php }?>
 
-                                            <option value="1">पुर्वान्चल</option>
-                                            <option value="2">मध्यमान्चल</option>
-                                            <option value="3">पश्चिमान्चल</option>
-                                            <option value="4">मध्य पश्चिमान्चल</option>
-                                            <option value="5">सुदुर पश्चिमान्चल</option>
+                                    </select>
+                                </p></td>
 
-
-                                        </select>
-                                    </p></td>
-
-                            </tr>
-
+                        </tr>
 
 
 

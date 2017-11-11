@@ -1,3 +1,11 @@
+<?php 
+    if(isset($_SESSION['message'])&&!empty($_SESSION['message'])){
+        $message = $utils->infoMessage($_SESSION['message']);
+        unset($_SESSION['message']);
+    }
+
+?>
+
 <div id="content-box">
 <div id="content-box-in">
 
@@ -10,13 +18,13 @@
 
             <!-- My latest work -->
             <div class="galerie preeti" >
-                कार्यालय : <?php echo $_GET['name'] ?><br>आ.व. : 2073/74<br>
+                कार्यालय : <?php echo $_GET['name'] ?><br>आ.व. : <?php echo $_SESSION['fiscal_year'];?><br>
                 <p align="right"><a href="dashboard.php?action=entry">अघिल्लो पेजमा जाने</a> || <a href="#" id="create_excel">प्रतिवेदन डाउनलोड गर्ने</a></p>
-
+                <p><?php echo isset($message)?$message:"";?></p>
                 <form name="del" action="" method="post">
                     <table width="100%" align="center" border="1" class="table">
                         <tr>
-                            <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत न.</span></td>
+                            <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत नं.</span></td>
                             <td rowspan="2" align="center"><span class="preeti">कार्यक्रम/क्रियाकलाप</span></td>
                             <td rowspan="2" align="center"><span class="preeti">इकाई</span></td>
                             <td  colspan="3" align="center"><span class="preeti">वार्षिक लक्ष</span></td>

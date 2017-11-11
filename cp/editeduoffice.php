@@ -6,7 +6,7 @@
         $sn =$row['id'];
         $office_name_np=$row['name_np'];
         $office_name_ep=$row['name_en'];
-        $region_id = $row['development_region_id'];
+        $region_id = $row['district_id'];
              
         echo '
         <script>
@@ -72,21 +72,24 @@
 
                             </tr>
                             <tr>
-                                <td align="right"><span class="preeti">विकास क्षेत्र </span></td>
-                                <td align="left"><p>
-                                        <select name="txtregion" id="regions"  class="preeti" style="width:232px; ">
+                            <td align="right"><span class="preeti">जिल्ला </span></td>
+                            <td align="left"><p>
+                                    <select name="txtregion" id="regions"  class="preeti" style="width:232px; ">
 
-                                            <option value="1">पुर्वान्चल</option>
-                                            <option value="2">मध्यमान्चल</option>
-                                            <option value="3">पश्चिमान्चल</option>
-                                            <option value="4">मध्य पश्चिमान्चल</option>
-                                            <option value="5">सुदुर पश्चिमान्चल</option>
+                                        
+                                    <?php 
+                                        $res=$dbc->selectDistrict();
+                                        while($row=mysqli_fetch_array($res)){
+                                            ?> 
+                                            <option value="<?php echo $row['id'];?>"><?php echo $row['name_np'];?></option>    
+                                         <?php }?>
 
 
-                                        </select>
-                                    </p></td>
+                                    </select>
+                                </p></td>
 
-                            </tr>
+                        </tr>
+
 
 
 

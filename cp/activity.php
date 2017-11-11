@@ -51,7 +51,7 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
                         <p><?php echo isset($message)?$message:"";?></p>
                     <form action="http://localhost/pis-project/cp/dashboard.php?action=activity&pid=<?php echo $program_code."&mid=".$main_id."&sid=".$sub_id;?>" method="post">
 
-                        <table width="100%" align="center" border="1" class="table">
+                        <table align="center" border="1" class="table">
 
                             <tr>
      
@@ -62,12 +62,12 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
 
                             </tr>
                             <tr>
-                                <th  align="left"><span class="preeti">संकेत नम्बर</span></th>
+                                <th align="left"><span class="preeti">संकेत नं.</span></th>
 
                                 
-                                <th ><span class="preeti">क्रियाकलाप</span></th>
-                                <th ><span class="preeti">क्रियाकलाप (अँग्रेजी)</span></th>
-                                <th ><span class="preeti">इकाइ</span></th>
+                                <th><span class="preeti">क्रियाकलाप</span></th>
+                                <th><span class="preeti">क्रियाकलाप (अँग्रेजी)</span></th>
+                                <th><span class="preeti">इकाइ</span></th>
 
 
                                 <th  >&nbsp;</th>
@@ -75,11 +75,16 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
 
                             </tr>
                             <tr>
-                                <th  align="left"><span class="preeti"><input class="siddhi"  size="10" maxlength="50" type="text" name="txtactivitycode" /></span></th>
+                                <th  align="left"><span class="preeti"><input class="siddhi"  size="10"
+                                style="width:30px;"
+                                 maxlength="20" type="text" name="txtactivitycode" /></span></th>
 
-                                <th  width="60%"><span class="preeti"><input type="text" class="preeti" size="50" maxlength="350" name="txtactivity" required  /></span></th>
-                                <th  width="60%"><span class="preeti"><input type="text" class="preeti" size="50" maxlength="350" name="txtactivity_en" required  /></span></th>
-                                <th  ><span class="preeti"><input type="text" class="preeti" size="20" maxlength="350" name="txtunit"  /></span></th>
+                                <th><span class="preeti"><input type="text" class="preeti" size="50"
+                                
+                                style="width:250px;"
+                                 maxlength="150" name="txtactivity" required  /></span></th>
+                                <th  ><span class="preeti"><input type="text" style="width:250px;" class="preeti" size="50" maxlength="150" name="txtactivity_en" required  /></span></th>
+                                <th  ><span class="preeti"><input type="text" style="width:30px;" class="preeti" size="20" maxlength="50" name="txtunit"  /></span></th>
 
 
                                 <th colspan="2"><input type="submit" name="btnaddactivity" value="  सेभ गर्ने  "  style="width:150px;height:30px;"/> </th>

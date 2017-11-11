@@ -1,5 +1,5 @@
 <?php
-
+include('report.php');
 /*Declaring the constant keyword */
 define('DB_SERVER','127.0.0.1');
 define('DB_USER','root');
@@ -46,7 +46,7 @@ class DB_dbc
         return $res;
     }
     function selectEduOffice(){
-        $res = mysqli_query($this->dbc, "SELECT eo.id,eo.code,eo.name_np,eo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_offices as eo LEFT JOIN tbl_districts AS di ON eo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id");
+        $res = mysqli_query($this->dbc, "SELECT eo.id,eo.code,eo.name_np,eo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_edu_offices as eo LEFT JOIN tbl_districts AS di ON eo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id");
         return $res;
     }
     function selectOneEduOffice($id){
@@ -54,7 +54,7 @@ class DB_dbc
         return $res;
     }
     function updateEduOffice($sn,$office_name_np,$office_name_ep,$region){
-        $query = sprintf("UPDATE `db_pis`.`tbl_edu_offices` SET name_np='%s',name_en='%s',development_region_id='%s' where id = '%s'",
+        $query = sprintf("UPDATE `db_pis`.`tbl_edu_offices` SET name_np='%s',name_en='%s',district_id='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc,$office_name_np),
             mysqli_real_escape_string($this->dbc,$office_name_ep),
             mysqli_real_escape_string($this->dbc,$region),
@@ -104,13 +104,12 @@ class DB_dbc
         if($this->isEduOfficeExists($sn)){
             return -1;
         }else{
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_edu_offices` (`name_np`, `name_en`, `province_id`, `development_region_id`) VALUES ('%s', '%s', '%s', '%s');",
+            $query = sprintf("INSERT INTO `db_pis`.`tbl_edu_offices` (`name_np`, `name_en`, `province_id`, `district_id`) VALUES ('%s', '%s', '%s', '%s');",
             mysqli_real_escape_string($this->dbc,$office_name_np),
             mysqli_real_escape_string($this->dbc,$office_name_ep),
             mysqli_real_escape_string($this->dbc,'0'),
             mysqli_real_escape_string($this->dbc,$region));
             $res = mysqli_query($this->dbc,$query);
-            echo $query;
             return $res;
         }
     }
@@ -362,11 +361,11 @@ class DB_dbc
         $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id");
         return $res;
     }
-    function selectTransactionByGovOffice(){
+    function selectTransactionByGovOffice($oid){
         $res = mysqli_query($this->dbc, "
         SELECT a.name_np, a.code,a.id, tl.*,edu.name_np as edu_name_np FROM tbl_activities AS a 
         INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id 
-        INNER JOIN tbl_edu_offices AS edu on edu.id=tl.edu_office_id;");
+        INNER JOIN tbl_edu_offices AS edu on edu.id=tl.edu_office_id WHERE tl.edu_office_id = '$oid';");
         return $res;
     }
     function selectOneTransactionGovernment($oid, $tlid){
@@ -407,7 +406,7 @@ class DB_dbc
     }
 
     function updateGovernmentTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid)    {        
-        $sql = sprintf("UPDATE `db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q3_progress_expenditure='%s',q3_progress_qty='%s' where id = '%s'",            
+        $sql = sprintf("UPDATE `db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q1_progress_expenditure='%s',q1_progress_qty='%s' where id = '%s'",            
         mysqli_real_escape_string($this->dbc, $txtpyearqty),            
         mysqli_real_escape_string($this->dbc, $txtpyearbudget),            
         mysqli_real_escape_string($this->dbc, $txtpttbudget),            
@@ -418,7 +417,7 @@ class DB_dbc
     }
 
     function updateLocalTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid){
-        $sql = sprintf("UPDATE `db_pis`.`tbl_transaction_local_offices` set yearly_progress_qty_expenditure = '%s',yearly_progress_expenditure='%s',q3_expenditure='%s',q3_qty_expenditure='%s' where id = '%s'",
+        $sql = sprintf("UPDATE `db_pis`.`tbl_transaction_local_offices` set yearly_progress_qty_expenditure = '%s',yearly_progress_expenditure='%s',q1_expenditure='%s',q1_qty_expenditure='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc,$txtpyearqty),
             mysqli_real_escape_string($this->dbc,$txtpyearbudget),
             mysqli_real_escape_string($this->dbc,$txtpttbudget),
@@ -510,9 +509,77 @@ class DB_dbc
         }
 
     }
-    
+    function selectUserByUserType($user_type){
+        return mysqli_query($this->dbc,"SELECT id,username,fullname,user_type,office_id FROM db_pis.tbl_users where user_type = '$user_type';");
+    }
+    function countActivities($office_id){
+        $query = "SELECT count(*) FROM db_pis.tbl_transaction_edu_offices where edu_office_id='$office_id';";
+        return mysqli_query($this->dbc,$query);
+    }
+    function countActiviesWhichIsUnDone($office_id){
+        $query = "SELECT count(*) FROM db_pis.tbl_transaction_edu_offices where edu_office_id='$office_id' and q1_progress_qty='0' and q1_progress_expenditure='0.00';";
+        return mysqli_query($this->dbc,$query);
+    }
+    function selectSubActivityByMainActivityCode($m_code){
+        $query = "SELECT * FROM db_pis.tbl_sub_activities where main_activity_id='$m_code';";
+        return mysqli_query($this->dbc,$query);
+    }
+    function selectSumTransactionFromActivity($a_code){
+        $query = "SELECT SUM(yearly_alloc_qty) as syaq,SUM(yearly_alloc_budget) as syab,
+        SUM(yearly_progress_qty) as sypq,SUM(yearly_progress_expenditure) as sype,
+        SUM(q1_alloc_qty) as sqaq,SUM(q1_alloc_budget) as sqab,
+        SUM(q1_progress_qty) as sqpq, SUM(q1_progress_expenditure) as sqpe
+         FROM db_pis.tbl_transaction_edu_offices where activity_id='$a_code';";
+        return mysqli_query($this->dbc,$query);
+    }
+    function selectAllMainActivity(){
+        $query = "SELECT * FROM db_pis.tbl_main_activities;";
+        return mysqli_query($this->dbc,$query);
+    }
+    function generateEduOfficeReportByMainId($id){
+        $query = "SELECT act.id as act_id, act.name_np as act_name_np,
+        act.code as act_code,
+        SUM(tl.yearly_alloc_qty) as syaq,SUM(tl.yearly_alloc_budget) as syab,
+        SUM(tl.yearly_progress_qty) as sypq,SUM(tl.yearly_progress_expenditure) as sype,
+        SUM(tl.q1_alloc_qty) as sqaq,SUM(tl.q1_alloc_budget) as sqab,
+        SUM(tl.q1_progress_qty) as sqpq, SUM(tl.q1_progress_expenditure) as sqpe
+         from tbl_activities as act
+         left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+         left join tbl_main_activities as main on main.id= sub.main_activity_id
+         left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+         where main.id='$id' and
+        sub.main_activity_id='$id'
+         GROUP BY
+         act.id;";
+          $result = mysqli_query($this->dbc,$query);
+          return $result;
+         
+    }
+    function eduOfficeFinalReport(){
+        $query ="SELECT act.id as act_id, act.name_np as act_name_np,
+        act.code as act_code, main.id as main_id,main.name_np as main_name_np,
+        sub.id as sub_id, sub.name_np as sub_name_np,
+        SUM(tl.yearly_alloc_qty) as syaq,SUM(tl.yearly_alloc_budget) as syab,
+        SUM(tl.yearly_progress_qty) as sypq,SUM(tl.yearly_progress_expenditure) as sype,
+        SUM(tl.q1_alloc_qty) as sqaq,SUM(tl.q1_alloc_budget) as sqab,
+        SUM(tl.q1_progress_qty) as sqpq, SUM(tl.q1_progress_expenditure) as sqpe
+         from tbl_activities as act
+         left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+         left join tbl_main_activities as main on main.id= sub.main_activity_id
+         left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+         GROUP BY
+         act.id;";
+         $result = mysqli_query($this->dbc,$query);
+         return $result;
+    }
+    function generateFinalReport(){
+        $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+        $result = mysqli_query($this->dbc,$queryForTruncate);
+        if($result>0){
+            
+        }
+    }
 }
-
 
 /*Creating the object to retrieve the data*/
 $dbc = new DB_dbc();

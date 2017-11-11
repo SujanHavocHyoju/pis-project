@@ -35,10 +35,9 @@
         $utils->backPage();
     }
     if(isset($_POST['addsec'])){
-        $username=$_POST['txtuname'];
         $fullname=$_POST['txtname'];
-        $user_type = $_POST['user_type'];
-        $office_id = $_POST['txtofficecode'];
+        //$user_type = $_POST['user_type'];
+        //$office_id = $_POST['txtofficecode'];
         $result = $dbc->updateUser($id,$username,$fullname,$user_type,$office_id);
         if($result>0){
             $message = $utils->successOnEdit("",$username);
@@ -66,15 +65,16 @@
                     <form action="http://localhost/pis-project/cp/dashboard.php?action=edituser&id=<?php echo $id;?>" method="post">
                         <table width="80%" align="center" border="0" class="table">
                             <tr>
-                                <td width="35%" align="right"><span class="preeti">Username</span></td>
+                                <td width="35%" align="right"><span class="preeti">युजरनेम (Username)</span></td>
                                 <td width="65%" align="left"><p><input size="20" maxlength="50" type="text" 
                                 style="height:20px; width:150px;"
+                                disabled
                                 name="txtuname"  style="height:30px;"
                                 value="<?php echo $username;?>"
                                 /></p></td>
                             </tr>
                             <tr>
-                                <td align="right"><span class="preeti">Full Name</span></td>
+                                <td align="right"><span class="preeti">पुरा नाम (Full Name)</span></td>
                                 <td align="left"><p><input size="20" maxlength="50" 
                                 style="height:20px; width:150px;"
                                 type="text" name="txtname" style="height:30px;"
@@ -84,15 +84,15 @@
                             </tr>
                             
                             <tr>
-                                <td align="right"><span class="preeti">Office Name </span></td>
+                                <td align="right"><span class="preeti">कार्यालयको नाम </span></td>
                                 <td align="left"><p>
-                                        <select name="user_type" style="height:30px; width:250px;" id='office_type'>
+                                        <select disabled name="user_type" style="height:30px; width:250px;" id='office_type'>
                                     <option selected disabled>Select Office</option>
                                     <option value="1">Education Office</option>
                                     <option value="2">Local Office</option>
                                 </select>
                                      
-                                    <select name="txtofficecode" style="height:30px; width:250px;" id="txtofficecode">
+                                    <select disabled name="txtofficecode" style="height:30px; width:250px;" id="txtofficecode">
                                            
                                     </select>
                                     </p></td>

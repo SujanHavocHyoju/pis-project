@@ -29,7 +29,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
     <link rel="shortcut icon" href="../public/img/favicon.ico" type="image/x-icon"/>
     <script>
         function validateForm() {
-            var agree = confirm("this function is not provided right now.");
+            var agree = confirm("मेट्ने सुबिधा उपलव्ध छैन ");
             if (agree)
                 return true;
             else
@@ -60,7 +60,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
         });
     });
 </script>
-<script src="../public/js/jquery.maskedinput.min.js"></script>
+<script src="../public/js/jquery.maskedinput.min.js"></officewisescript>
 <script src="../public/js/functions.js"></script>
 <script src="../public/js/FileSaver.min.js"></script>
 <script src="../public/js/tableexport.min.js"></script>
@@ -128,9 +128,11 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
 
                     <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="finalexcelreport.php">कार्यक्रमगत
                             एकमुष्ट प्रतिवेदन</a></li>
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="officewise.php">कार्यालयगत
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=officewisereport">शैक्षिक कार्यालयगत
                             प्रतिवेदन</a></li>
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="activitywise.php">क्रियाकलापगत
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=officewisereport">स्थानीय कार्यालयगत
+                            प्रतिवेदन</a></li>
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=activitywise">क्रियाकलापगत
                             प्रतिवेदन</a></li>
                     <!-- <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="totalexcelreport.php">एकमुष्ट प्रतिवेदन</a></li>
 

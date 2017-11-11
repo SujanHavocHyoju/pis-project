@@ -17,10 +17,13 @@ if (isset($_POST['btnaddprogress'])) {
         echo $res;*/
 
     $res = $dbc->updateGovernmentTransaction($_POST['txtpyearqty'], $_POST['txtpyearbudget'], $_POST['txtpttbudget'], $_POST['txtpttqty'], $_GET['tlid']);
-
-    echo "<script>
-             window.history.go(-2);
-     </script>";
+    if($res){
+        $_SESSION["message"]=" लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
+        echo "<script>
+        window.history.go(-2);
+        </script>";
+    }
+    
 }
 ?>
 
@@ -37,7 +40,7 @@ if (isset($_POST['btnaddprogress'])) {
                     <form name="saveEntry" method="post">
                         <table width="120%" align="center" border="1" class="table">
                             <tr>
-                                <td align="left" colspan="2"><span class="preeti">कार्यक्रम सँकेत न.</span></td>
+                                <td align="left" colspan="2"><span class="preeti">कार्यक्रम सँकेत नं.</span></td>
                                 <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
 
                             </tr>
@@ -99,7 +102,7 @@ if (isset($_POST['btnaddprogress'])) {
                             </tr>
                             <tr>
 
-                                <td align="center" rowspan="3"><span class="preeti">तेश्रो चौमासिक लक्ष</span></td>
+                                <td align="center" rowspan="3"><span class="preeti">प्रथम चौमासिक लक्ष</span></td>
 
                             </tr>
 
@@ -117,7 +120,7 @@ if (isset($_POST['btnaddprogress'])) {
 
 
                             <tr>
-                                <td rowspan="3" align="center"><span class="preeti">तेश्रो चौमासिक प्रगति</span></td>
+                                <td rowspan="3" align="center"><span class="preeti">प्रथम चौमासिक प्रगति</span></td>
 
                             </tr>
 
@@ -130,7 +133,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttqty"
-                                                                                               value="<?php echo $row['q3_progress_qty'] ?>"/></span>
+                                                                                               value="<?php echo $row['q1_progress_qty'] ?>"/></span>
                                 </td>
                             </tr>
                             <tr>
@@ -139,7 +142,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttbudget"
-                                                                                               value="<?php echo $row['q3_progress_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['q1_progress_expenditure'] ?>"/></span>
                                 </td>
                             </tr>
 
@@ -147,7 +150,7 @@ if (isset($_POST['btnaddprogress'])) {
                             <tr>
                                 <td colspan="3" align="center" rowspan="2"><span class="preeti"><input type="submit"
                                                                                                        name="btnaddprogress"
-                                                                                                       value="  Save Record  "
+                                                                                                       value="  सेभ गर्ने  "
                                                                                                        style="width:150px;height:30px;"/></span>
                                 </td>
 
