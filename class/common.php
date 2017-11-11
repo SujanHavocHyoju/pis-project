@@ -954,7 +954,8 @@ HAVING `activity_id` = '$activity_id'";
                     mysqli_real_escape_string($this->dbc, $rma['main_name_np']));
                 $resultFromMain = mysqli_query($this->dbc, $queryToInsertForMain);
                 if ($resultFromMain > 0) {
-                    $resultForQuery = $this->sumOfSubActivity($rma['main_id']);
+                    $resultForQuery = $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);$this->sumOfSubActivity($rma['main_id']);
                     while ($rsa = mysqli_fetch_array($resultForQuery)) {
                         $queryToInsertForSub = sprintf("INSERT INTO 
                         `db_pis`.`tbl_current_reports` 
@@ -1044,12 +1045,26 @@ HAVING `activity_id` = '$activity_id'";
                                     mysqli_real_escape_string($this->dbc, $raa['act_name_np'])
                                 );
                                 $resultFrom = mysqli_query($this->dbc, $queryToInsertAct);
+                                if($resultFrom<0){
+                                    $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                                    return false;
+                                }
                             }
+                        }else{
+                            $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                            $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                            return false; 
                         }
                     }
+                }else{
+                    $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                    return false;
                 }
 
             }
+            return true;
         }
     }
     function selectAllFinalReport(){
