@@ -755,6 +755,7 @@ HAVING `activity_id` = '$activity_id'";
     function generateFinalReport(){
         $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
         $resultForTruncate = mysqli_query($this->dbc,$queryForTruncate);
+  
         if($resultForTruncate>0){
             $queryForMainActivity = $this->sumOfMainActivity();
             while($rma = mysqli_fetch_array($queryForMainActivity)){
@@ -769,7 +770,8 @@ HAVING `activity_id` = '$activity_id'";
                 `qtr_alloc_budget`, 
                 `qtr_progress_expenditure`, 
                 `qtr_progress_expenditure_percent`, 
-                `name_np`) VALUES 
+                `name_np`,
+                `status`) VALUES 
                 ('%s', 
                 '0', 
                 '%s', 
@@ -779,7 +781,8 @@ HAVING `activity_id` = '$activity_id'";
                 '%s', 
                 '%s',
                 '0', 
-                '%s')",
+                '%s',
+                '0')",
                 mysqli_real_escape_string($this->dbc,$rma['main_id']),
                 mysqli_real_escape_string($this->dbc,$rma['Main_syab']),
                 mysqli_real_escape_string($this->dbc,$rma['Main_sype']),
@@ -801,7 +804,8 @@ HAVING `activity_id` = '$activity_id'";
                         `qtr_alloc_budget`, 
                         `qtr_progress_expenditure`, 
                         `qtr_progress_expenditure_percent`, 
-                        `name_np`) VALUES 
+                        `name_np`,
+                        `status`) VALUES 
                         ('%s', 
                         '0', 
                         '%s', 
@@ -811,7 +815,8 @@ HAVING `activity_id` = '$activity_id'";
                         '%s', 
                         '%s',
                         '0', 
-                        '%s')",
+                        '%s',
+                        '1')",
                         mysqli_real_escape_string($this->dbc,$rsa['sub_code']),
                         mysqli_real_escape_string($this->dbc,$rsa['sub_syab']),
                         mysqli_real_escape_string($this->dbc,$rsa['sub_sype']),
@@ -842,10 +847,11 @@ HAVING `activity_id` = '$activity_id'";
                                 `qtr_progress_expenditure`, 
                                 `qtr_progress_expenditure_percent`, 
                                 `qtr_progress_expenditure_weighted`, 
-                                `name_np`) 
+                                `name_np`,
+                                `status`) 
                                 VALUES (
                                 '%s', 
-                                '%s', 
+                                '%s', http://localhost/pis-project/cp/dashboard.php?action=home
                                 '0', 
                                 '%s',  
                                 '%s', 
@@ -861,7 +867,8 @@ HAVING `activity_id` = '$activity_id'";
                                 '%s',  
                                 '0', 
                                 '0', 
-                                '%s')",
+                                '%s',
+                                '2')",
                                 mysqli_real_escape_string($this->dbc,$raa['act_code']),
                                 mysqli_real_escape_string($this->dbc,$raa['syaq']),
                                 mysqli_real_escape_string($this->dbc,$raa['syab']),
@@ -873,7 +880,6 @@ HAVING `activity_id` = '$activity_id'";
                                 mysqli_real_escape_string($this->dbc,$raa['sqpe']),
                                 mysqli_real_escape_string($this->dbc,$raa['act_name_np'])
                                 );
-                                echo $queryToInsertAct;
                                 $resultFrom = mysqli_query($this->dbc,$queryToInsertAct);
                             }
                         }
