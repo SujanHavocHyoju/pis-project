@@ -1052,7 +1052,10 @@ HAVING `activity_id` = '$activity_id'";
             }
         }
     }
-
+    function selectAllFinalReport(){
+        $res = mysqli_query($this->dbc, "SELECT * FROM db_pis.tbl_current_reports;");
+        return $res;
+    }
     function selectAllActivities()
     {
         $res = mysqli_query($this->dbc, "SELECT id, code, name_np FROM tbl_activities WHERE sub_activity_id IS NOT NULL");
