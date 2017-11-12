@@ -4,6 +4,12 @@ include('../class/common.php');
 include('../class/utils.php');
 if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
     echo "<script>window.location='login.php';</script>";
+$now = time(); 
+    
+if ($now > $_SESSION['expire']) {
+session_destroy();
+echo "<script>window.location='login.php';</script>";
+}
 
 ?>
 

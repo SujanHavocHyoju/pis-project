@@ -5,8 +5,7 @@
 
 <div id="skip-menu"></div>
 <!-- Content box -->
-<div id="content-box">
-    <div id="content-box-in">
+
 
         <!-- Content left -->
         <div id="content-box-in-left">
@@ -26,7 +25,7 @@
 
                 <!-- My latest work -->
                 <div class="galerie preeti">
-
+                <p> <a href="#" id="create_excel">प्रतिवेदन डाउनलोड गर्ने</a></p>
                     <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
                         <tbody>
                         <tr>
@@ -54,7 +53,7 @@
 
 
                     <form name="del" action="" method="post">
-                        <table width="100%" align="center" border="1" class="table">
+                        <table align="center" border="1" class="table">
 
                             <tr>
                                 <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत न.</span></td>
@@ -100,13 +99,13 @@
 
                                 $sql = $dbc->selectAllFinalReport();
                                 while ($row = mysqli_fetch_array($sql)) {
-                                    var_dump($row);
+                                   
                                     if ($row['status'] == 0) {
-                                        $row['color'] = '#999999';
-                                    } elseif ($row['status'] == 1) {
                                         $row['color'] = '#336699';
+                                    } elseif ($row['status'] == 1) {
+                                        $row['color'] = '#999999';
                                     } elseif ($row['status'] == 4) {
-                                        $row['color'] = '#F00';
+                                        $row['color'] = '#FFFF00';
                                     } else {
                                         $row['color'] = '#FFF';
                                     }
@@ -114,7 +113,7 @@
                                     ?>
 
                                     <tr bgcolor="<?php echo $row['color'] ?>" style="font-weight:bold;">
-                                        <td><span class="siddhi"><?php echo $row['activity_number'] ?></span></td>
+                                        <td width="5%"><span class="siddhi"><?php echo $row['activity_number'] ?></span></td>
                                         <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
                                         <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
                                         <td><span class="siddhi"><?php echo $row['yearly_alloc_cost'] ?></span></td>
@@ -128,8 +127,7 @@
                                                     class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['yearly_progress_qty'] ?></span></td>
-                                        <td align="right"><span
-                                                    class="preeti"><?php echo $row['yearly_progress_qty_percent'] ?></span>
+                                        <td align="right"><span class="preeti"><?php echo $row['yearly_progress_qty_percent'] ?></span>
                                         </td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span>
@@ -185,7 +183,9 @@
 
         <!-- Content right --><!-- Content right end -->
         <div class="cleaner">&nbsp;</div>
-    </div>
-</div>
-
-
+        <?php echo '<script>
+    $("#create_excel").click(function(){
+            var page ="finalreportexcel.php";
+            window.location=page;
+    });
+</script>';?>
