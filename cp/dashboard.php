@@ -122,11 +122,11 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
             </li>
 
 
-            <li><a href="report.php">प्रतिवेदनहरु</a>
+            <li><a href="#">प्रतिवेदनहरु</a>
                 <ul>
 
 
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=#">कार्यक्रमगत
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport">कार्यक्रमगत
                             एकमुष्ट प्रतिवेदन</a></li>
                     <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=officewise">कार्यालयगत
                             प्रतिवेदन</a></li>
