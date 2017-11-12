@@ -95,12 +95,12 @@
 
                             <?php
 
-//                            $result = $dbc->generateFinalReport();
-//                            if ($result) {
+                            $result = $dbc->generateFinalReport();
+                            if ($result) {
 
                                 $sql = $dbc->selectAllFinalReport();
                                 while ($row = mysqli_fetch_array($sql)) {
-//                                var_dump($row);
+                                    var_dump($row);
                                     if ($row['status'] == 0) {
                                         $row['color'] = '#999999';
                                     } elseif ($row['status'] == 1) {
@@ -110,62 +110,68 @@
                                     } else {
                                         $row['color'] = '#FFF';
                                     }
-//                                }
 
-                                ?>
+                                    ?>
 
-                                <tr bgcolor="<?php echo $row['color'] ?>" style="font-weight:bold;">
-                                    <td><span class="siddhi"><?php echo $row['activity_number'] ?></span></td>
-                                    <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
-                                    <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
-                                    <td><span class="siddhi"><?php echo $row['yearly_alloc_cost'] ?></span></td>
-                                    <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_qty'] ?></span>
-                                    </td>
-                                    <td align="right"><span class="preeti"><?php echo $row['yearly_weight'] ?></span>
-                                    </td>
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_progress_qty'] ?></span></td>
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_progress_qty_percent'] ?></span>
-                                    </td>
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span>
-                                    </td>
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_progress_expenditure_percent'] ?></span>
-                                    </td>
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['yearly_progress_weighted'] ?></span>
-                                    </td>
-                                    <td align="right"><span class="preeti"><?php echo $row['qtr_alloc_qty'] ?></span>
-                                    </td>
-                                    <td align="right"><span class="preeti"><?php echo $row['qtr_alloc_weight'] ?></span>
-                                    </td>
+                                    <tr bgcolor="<?php echo $row['color'] ?>" style="font-weight:bold;">
+                                        <td><span class="siddhi"><?php echo $row['activity_number'] ?></span></td>
+                                        <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
+                                        <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
+                                        <td><span class="siddhi"><?php echo $row['yearly_alloc_cost'] ?></span></td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['yearly_alloc_qty'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['yearly_weight'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['yearly_progress_qty'] ?></span></td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['yearly_progress_qty_percent'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['yearly_progress_expenditure_percent'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['yearly_progress_weighted'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['qtr_alloc_qty'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['qtr_alloc_weight'] ?></span>
+                                        </td>
 
-                                    <td align="right"><span class="preeti"><?php echo $row['qtr_alloc_budget'] ?></span>
-                                    </td>
-                                    <td align="right"><span class="preeti"><?php echo $row['qtr_progress_qty'] ?></span>
-                                    </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['qtr_alloc_budget'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['qtr_progress_qty'] ?></span>
+                                        </td>
 
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['qtr_progress_qty_percent'] ?></span>
-                                    </td>
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['qtr_progress_expenditure'] ?></span>
-                                    </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['qtr_progress_qty_percent'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['qtr_progress_expenditure'] ?></span>
+                                        </td>
 
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['qtr_progress_expenditure_percent'] ?></span>
-                                    </td>
-                                    <td align="right"><span
-                                                class="preeti"><?php echo $row['qtr_progress_expenditure_weighted'] ?></span>
-                                    </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_percent'] ?></span>
+                                        </td>
+                                        <td align="right"><span
+                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_weighted'] ?></span>
+                                        </td>
 
-                                </tr>
+                                    </tr>
 
-                            <?php }
+                                <?php }
+                            }
                             ?>
                         </table>
                     </form>
