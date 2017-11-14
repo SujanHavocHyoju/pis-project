@@ -1270,6 +1270,7 @@ HAVING `activity_id` = '$activity_id'";
                                         GROUP BY
                                         act.id
                                         ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id;";
+        mysqli_query($this->dbc, "SET sql_mode = '';");
         $res = mysqli_query($this->dbc, $sql);
         return $res;
     }
@@ -1335,7 +1336,7 @@ HAVING `activity_id` = '$activity_id'";
             GROUP BY
             act.id
             ORDER BY act.id ASC;";
-        //mysqli_query($this->dbc,"SET sql_mode = '';");
+        mysqli_query($this->dbc,"SET sql_mode = '';");
         $res = mysqli_query($this->dbc, $query);
         return $res;
 
