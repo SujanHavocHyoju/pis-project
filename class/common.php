@@ -53,7 +53,7 @@ class DB_dbc
 
     function selectOffice()
     {
-        $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_offices as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id");
+        $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_bodies as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id");
         return $res;
     }
 
@@ -94,7 +94,7 @@ class DB_dbc
     function isLocalOfficeExists($sn)
     {
         if (isset($sn)) {
-            $query = "Select COUNT(*) FROM tbl_local_offices WHERE id='$sn'";
+            $query = "Select COUNT(*) FROM tbl_local_bodies WHERE id='$sn'";
             $res = mysqli_query($this->dbc, $query);
             $result = mysqli_fetch_array($res);
             return $result[0] > 0 ? true : false;
@@ -106,7 +106,7 @@ class DB_dbc
         if ($this->isLocalOfficeExists($sn)) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_local_offices` (`name_np`, `name_en`, `district_id`) VALUES ('%s', '%s', '%s');",
+            $query = sprintf("INSERT INTO `db_pis`.`tbl_local_bodies` (`name_np`, `name_en`, `district_id`) VALUES ('%s', '%s', '%s');",
                 mysqli_real_escape_string($this->dbc, $name_np),
                 mysqli_real_escape_string($this->dbc, $name_en),
                 mysqli_real_escape_string($this->dbc, $district_id));
@@ -117,7 +117,7 @@ class DB_dbc
 
     function updateLocalOffice($sn, $name_np, $name_en, $district_id)
     {
-        $query = sprintf("UPDATE `db_pis`.`tbl_local_offices` SET name_np='%s',name_en='%s',district_id='%s' where id = '%s'",
+        $query = sprintf("UPDATE `db_pis`.`tbl_local_bodies` SET name_np='%s',name_en='%s',district_id='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc, $name_np),
             mysqli_real_escape_string($this->dbc, $name_en),
             mysqli_real_escape_string($this->dbc, $district_id),
@@ -149,7 +149,7 @@ class DB_dbc
 
     function searchLocalOffice($office_name)
     {
-        $query = "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_offices as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id where lo.name_np LIKE '%$office_name%'";
+        $query = "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_bodies as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id where lo.name_np LIKE '%$office_name%'";
         return mysqli_query($this->dbc, $query);
     }
 
@@ -266,7 +266,7 @@ class DB_dbc
 
     function selectOneLocalOffice($id)
     {
-        $result = mysqli_query($this->dbc, "SELECT * FROM tbl_local_offices where id = '$id'");
+        $result = mysqli_query($this->dbc, "SELECT * FROM tbl_local_bodies where id = '$id'");
         return $result;
     }
 
@@ -284,7 +284,7 @@ class DB_dbc
 
     function selectActivity($sid)
     {
-        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_activities WHERE sub_activity_id = '$sid'");
+        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_activities WHERE sub_activity_code = '$sid'");
         return $res;
     }
 
@@ -296,7 +296,7 @@ class DB_dbc
 
     function selectOneSubActivity($id)
     {
-        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_sub_activities WHERE id = '$id' LIMIT 1");
+        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_sub_activities WHERE code = '$id' LIMIT 1");
         return $res;
     }
 
@@ -397,7 +397,7 @@ class DB_dbc
         if ($this->isActivityExist($activity_code)) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_activities` (`name_np`, `code`, `sub_activity_id`, `unit`,`name_en`) VALUES        
+            $query = sprintf("INSERT INTO `db_pis`.`tbl_activities` (`name_np`, `code`, `sub_activity_code`, `unit`,`name_en`) VALUES        
             ('%s','%s','%s','%s','%s')",
                 mysqli_real_escape_string($this->dbc, $activity_name),
                 mysqli_real_escape_string($this->dbc, $activity_code),
@@ -424,19 +424,19 @@ class DB_dbc
 
     function selectTransactionGovernment($oid)
     {
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id WHERE tl.edu_office_id = '$oid'");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code WHERE tl.edu_office_id = '$oid'");
         return $res;
     }
 
     function selectTransactionLocal($oid)
     {
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_id WHERE tl.local_office_id = '$oid'");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_code WHERE tl.local_office_id = '$oid'");
         return $res;
     }
 
     function selectTransactionByActivity()
     {
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code");
         return $res;
     }
 
@@ -444,26 +444,26 @@ class DB_dbc
     {
         $res = mysqli_query($this->dbc, "
         SELECT a.name_np, a.code,a.id, tl.*,edu.name_np as edu_name_np FROM tbl_activities AS a 
-        INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id 
+        INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code 
         INNER JOIN tbl_edu_offices AS edu on edu.id=tl.edu_office_id;");
         return $res;
     }
 
     function selectOneTransactionGovernment($oid, $tlid)
     {
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_id WHERE tl.edu_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code WHERE tl.edu_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
         return $res;
     }
 
     function selectOneTransactionLocal($oid, $tlid)
     {
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_id WHERE tl.local_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_code WHERE tl.local_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
         return $res;
     }
 
     function selectUsers()
     {
-        $res = mysqli_query($this->dbc, "SELECT u.username, u.password, CONCAT(u.firstname, ' ', u.lastname) AS fullname, o.name_np FROM tbl_users AS u INNER JOIN tbl_local_offices AS o ON a.office_id = o.id");
+        $res = mysqli_query($this->dbc, "SELECT u.username, u.password, CONCAT(u.firstname, ' ', u.lastname) AS fullname, o.name_np FROM tbl_users AS u INNER JOIN tbl_local_bodies AS o ON a.office_id = o.id");
         return $res;
     }
 
@@ -482,7 +482,7 @@ class DB_dbc
             return $res;
         } else {
             $res = mysqli_query(
-                $this->dbc, 'SELECT name_np FROM db_pis.tbl_local_offices where id=' . $office_id . ';'
+                $this->dbc, 'SELECT name_np FROM db_pis.tbl_local_bodies where id=' . $office_id . ';'
             );
             return $res;
         }
@@ -490,7 +490,7 @@ class DB_dbc
 
     function selectLocalOfficeForTransaction()
     {
-        $res = mysqli_query($this->dbc, "SELECT o.name FROM tbl_local_offices AS o 
+        $res = mysqli_query($this->dbc, "SELECT o.name FROM tbl_local_bodies AS o 
                 JOIN tbl_transaction_edu_offices AS tl ON o.id = tl.edu_office_id;
 ");
     }
@@ -704,9 +704,9 @@ class DB_dbc
         SUM(tl.q1_alloc_qty) as sqaq,SUM(tl.q1_alloc_budget) as sqab,
         SUM(tl.q1_progress_qty) as sqpq, SUM(tl.q1_progress_expenditure) as sqpe
          from tbl_activities as act
-         left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+         left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
          left join tbl_main_activities as main on main.id= sub.main_activity_id
-         left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+         left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
          where main.id='$id' and
         sub.main_activity_id='$id'
          GROUP BY
@@ -726,9 +726,9 @@ class DB_dbc
         SUM(tl.q1_alloc_qty) as sqaq,SUM(tl.q1_alloc_budget) as sqab,
         SUM(tl.q1_progress_qty) as sqpq, SUM(tl.q1_progress_expenditure) as sqpe
          from tbl_activities as act
-         left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+         left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
          left join tbl_main_activities as main on main.id= sub.main_activity_id
-         left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+         left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
          GROUP BY
          act.id;";
         $result = mysqli_query($this->dbc, $query);
@@ -769,7 +769,7 @@ FROM `tbl_transaction_edu_offices` AS teo INNER JOIN tbl_edu_offices AS eo ON eo
 FROM
     `tbl_transaction_local_offices` AS teo
 INNER JOIN
-tbl_local_offices AS lo
+tbl_local_bodies AS lo
 ON 
 lo.id = teo.local_office_id
 GROUP BY local_office_id , activity_id
@@ -833,9 +833,9 @@ HAVING `activity_id` = '$activity_id'";
                             SUM(tl.q1_progress_qty) as sqpq, 
                             SUM(tl.q1_progress_expenditure) as sqpe
                                 from tbl_activities as act
-                                left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+                                left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
                                 left join tbl_main_activities as main on main.id= sub.main_activity_id
-                                left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+                                left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                     where main.id=sub.main_activity_id
                                         GROUP BY
                                         act.id
@@ -884,14 +884,15 @@ HAVING `activity_id` = '$activity_id'";
                             SUM(tl.q1_progress_qty) as sqpq, 
                             SUM(tl.q1_progress_expenditure) as sqpe
                                 from tbl_activities as act
-                                left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+                                left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
                                 left join tbl_main_activities as main on main.id= sub.main_activity_id
-                                left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+                                left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                     where main.id=sub.main_activity_id
                                         GROUP BY
                                         act.id
                                         ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id;";
-        $res = mysqli_query($this->dbc, $sql);
+        mysqli_query($this->dbc, "SET sql_mode = '';");
+       $res = mysqli_query($this->dbc, $sql);
         return $res;
     }
 
@@ -920,11 +921,11 @@ HAVING `activity_id` = '$activity_id'";
                     SUM(tl.q1_progress_qty) as sqpq, 
                     SUM(tl.q1_progress_expenditure) as sqpe
                         from tbl_activities as act
-                        left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+                        left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
                         left join tbl_main_activities as main on main.id= sub.main_activity_id
-                        left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+                        left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                 where main.id='$id' and
-                                sub.id=act.sub_activity_id
+                                sub.code=act.sub_activity_code
                                 GROUP BY sub.id
                                 ORDER BY sub.id ASC) as T_SUB GROUP BY sub_code;";
 
@@ -948,9 +949,9 @@ HAVING `activity_id` = '$activity_id'";
         SUM(tl.q1_progress_qty) as sqpq, 
         SUM(tl.q1_progress_expenditure) as sqpe
         from tbl_activities as act
-            left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+            left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
             left join tbl_main_activities as main on main.id= sub.main_activity_id
-            left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+            left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
             where main.id='$main_activity' and
             sub.code='$sub_activity'
             GROUP BY
@@ -1211,9 +1212,9 @@ HAVING `activity_id` = '$activity_id'";
                             SUM(tl.q1_progress_qty) as sqpq, 
                             SUM(tl.q1_progress_expenditure) as sqpe
                                 from tbl_activities as act
-                                left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+                                left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
                                 left join tbl_main_activities as main on main.id= sub.main_activity_id
-                                left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+                                left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                     where main.id=sub.main_activity_id and edu_office_id='$id'
                                         GROUP BY
                                         act.id
@@ -1262,9 +1263,9 @@ HAVING `activity_id` = '$activity_id'";
                             SUM(tl.q1_progress_qty) as sqpq, 
                             SUM(tl.q1_progress_expenditure) as sqpe
                                 from tbl_activities as act
-                                left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+                                left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
                                 left join tbl_main_activities as main on main.id= sub.main_activity_id
-                                left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+                                left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                     where main.id=sub.main_activity_id and edu_office_id='$id'
                                         GROUP BY
                                         act.id
@@ -1298,11 +1299,11 @@ HAVING `activity_id` = '$activity_id'";
                     SUM(tl.q1_progress_qty) as sqpq, 
                     SUM(tl.q1_progress_expenditure) as sqpe
                         from tbl_activities as act
-                        left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+                        left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
                         left join tbl_main_activities as main on main.id= sub.main_activity_id
-                        left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+                        left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                 where main.id='$id' and
-                                sub.id=act.sub_activity_id and edu_office_id='$office_id'
+                                sub.code=act.sub_activity_code and edu_office_id='$office_id'
                                 GROUP BY sub.id
                                 ORDER BY sub.id ASC) as T_SUB GROUP BY sub_code;";
 
@@ -1326,9 +1327,9 @@ HAVING `activity_id` = '$activity_id'";
         SUM(tl.q1_progress_qty) as sqpq, 
         SUM(tl.q1_progress_expenditure) as sqpe
         from tbl_activities as act
-            left join tbl_sub_activities as sub on sub.id=act.sub_activity_id
+            left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
             left join tbl_main_activities as main on main.id= sub.main_activity_id
-            left join tbl_transaction_edu_offices as tl on tl.activity_id=act.code
+            left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
             where main.id='$main_activity' and
             sub.code='$sub_activity' and edu_office_id='$office_id'
             GROUP BY

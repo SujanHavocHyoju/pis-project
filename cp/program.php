@@ -100,7 +100,7 @@
                             while ($row = mysqli_fetch_array($sql)) {
                                 ?>
                                 <tr>
-                                    <td><span class="siddhi"><?php echo $row["exp_head_code"];?></span></td>
+                                    <td><span class="siddhi"><?php echo $row["code"];?></span></td>
                                     <td width="25%"><span class="preeti"><?php echo $row["name_np"];?></span></td>
                                     <td width="25%"><span class="preeti"><?php echo $row["name_en"];?></span></td>
                                     <td align="center" width="8%"><p><input type="button" onclick="window.location.href='dashboard.php?action=editprogram&id=<?php echo $row["id"];?>&exp_code=<?php echo $row["exp_head_code"];?>&program_name=<?php echo $row["name_np"];?>&program_name_en=<?php echo $row["name_en"];?>'" class="edit" value=" सम्पादन गर्ने "/></p></td>

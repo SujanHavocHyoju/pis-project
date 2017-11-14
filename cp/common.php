@@ -66,17 +66,17 @@ class DB_dbc
         $res = mysqli_Query($this->dbc,$query);
         return $res;
     }
-    function insertProgram($exp_head_code,$program){
-        $query =sprintf("INSERT INTO `db_pis`.`tbl_programs` (`name_np`, `exp_head_code`) VALUES ('%s','%s')",
+    function insertProgram($code,$program){
+        $query =sprintf("INSERT INTO `db_pis`.`tbl_programs` (`name_np`, `code`) VALUES ('%s','%s')",
             mysqli_real_escape_string($this->dbc,$program),
-            mysqli_real_escape_string($this->dbc,$exp_head_code)
+            mysqli_real_escape_string($this->dbc,$code)
         );
         $res = mysqli_Query($this->dbc,$query);
         return $query;
     }
-    function updateProgram($id,$exp_head_code,$program_name){
-        $query =sprintf("UPDATE  `db_pis`.`tbl_programs` set exp_head_code='%s', name_np='%s' where id='%s'",
-            mysqli_real_escape_string($this->dbc,$exp_head_code),
+    function updateProgram($id,$code,$program_name){
+        $query =sprintf("UPDATE  `db_pis`.`tbl_programs` set code='%s', name_np='%s' where id='%s'",
+            mysqli_real_escape_string($this->dbc,$code),
             mysqli_real_escape_string($this->dbc,$program_name),
             mysqli_real_escape_string($this->dbc,$id)
         );
@@ -100,7 +100,7 @@ class DB_dbc
     }
 
     function selectActivity($sid){
-        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_activities WHERE sub_activity_id = '$sid'");
+        $res = mysqli_query($this->dbc, "SELECT * FROM tbl_activities WHERE sub_activity_code = '$sid'");
         return $res;
     }
 
@@ -160,7 +160,7 @@ class DB_dbc
 
     }
     function insertActivity($activity_code,$activity_name,$unit,$sub_id){
-        $query= sprintf("INSERT INTO `db_pis`.`tbl_activities` (`name_np`, `code`, `sub_activity_id`, `unit`) VALUES        
+        $query= sprintf("INSERT INTO `db_pis`.`tbl_activities` (`name_np`, `code`, `sub_activity_code`, `unit`) VALUES        
         ('%s','%s','%s','%s')",
             mysqli_real_escape_string($this->dbc,$activity_name),
             mysqli_real_escape_string($this->dbc,$activity_code),
