@@ -27,7 +27,7 @@
                         </tr>
                         <?php
                         $i = 1;
-                        $sql = $dbc->selectOffice();
+                        $sql = $dbc->selectLocalOffice();
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>
                             <tr>

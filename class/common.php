@@ -1547,6 +1547,20 @@ HAVING `activity_id` = '$activity_id'";
         $res = mysqli_query($this->dbc, "SELECT * FROM tbl_activities WHERE id = '$id' LIMIT 1");
         return $res;
     }
+
+    /* New functions to be sent */
+
+    function selectLocalOffice(){
+        $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_bodies as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id");
+        return $res;
+    }
+
+    function selectLocalOfficeTransaction($oid){
+        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_bodies AS tl ON a.id = tl.local_body_activity4_id WHERE tl.local_body_id = '$oid'");
+        return $res;
+    }
+
+
 }
 
 

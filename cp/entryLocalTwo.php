@@ -50,7 +50,7 @@
                                 <td  align="center"><span class="preeti">भौतिक परिमाण</span></td>
                                 <td  align="center"><span class="preeti">खर्च बजेट</span></td>
                             </tr>
-                            <?php $sql = $dbc->selectTransactionLocal($_GET['oid']);
+                            <?php $sql = $dbc->selectLocalOfficeTransaction($_GET['oid']);
                             while($row = mysqli_fetch_array($sql)) {
                                 ?>
                                 <tr>
@@ -62,15 +62,16 @@
 
                                     <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
 
-                                    <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_qty_expenditure'] ?></span></td>
+                                    <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_qty'] ?></span></td>
                                     <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span></td>
 
 
                                     <td align="right"><span class="preeti"><?php echo $row['q1_alloc_qty'] ?></span></td>
                                     <td align="right"><span class="preeti"><?php echo $row['q1_alloc_budget'] ?></span></td>
-                                    <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_qty_expenditure'] ?></span></td>
-                                    <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_expenditure'] ?></span></td>
-                                    <td align="center" ><p><a href="dashboard.php?action=entryLocalThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>" class="delete">प्रगति थप गर्ने</a></p></td>
+                                    <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
+                                    <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
+<!--                                    <td align="center" style="width: 80px"><p><a href="dashboard.php?action=entryLocalThree&oid=--><?php //echo $_GET['oid'] ?><!--&tlid=--><?php //echo $row['id'] ?><!--" class="delete">प्रगति थप गर्ने</a></p></td>-->
+                                    <td align="center" style="width: 80px; pointer-events: none;"><p><a href="#" class="delete">प्रगति थप गर्ने</a></p></td>
                                 </tr>
                             <?php } ?>
                         </table>
