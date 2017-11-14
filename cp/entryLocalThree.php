@@ -1,5 +1,5 @@
 <div id="skip-menu"></div>
-<?php $row = mysqli_fetch_array($dbc->selectOneTransactionLocal($_GET['oid'], $_GET['tlid']));
+<?php $row = mysqli_fetch_array($dbc->selectOneTransactionForLocal($_GET['oid'], $_GET['tlid']));
 if (isset($_POST['btnaddprogress'])) {
 
 
@@ -16,7 +16,7 @@ if (isset($_POST['btnaddprogress'])) {
        $res= mysqli_query($dbc, $edit);
         echo $res;*/
 
-    $res = $dbc->updateLocalTransaction($_POST['txtpyearqty'], $_POST['txtpyearbudget'], $_POST['txtpttbudget'], $_POST['txtpttqty'], $_GET['tlid']);
+    $res = $dbc->updateOneLocalTransaction($_POST['txtpyearqty'], $_POST['txtpyearbudget'], $_POST['txtpttbudget'], $_POST['txtpttqty'], $_GET['tlid']);
     if($res){
         $_SESSION["message"]=" लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
         echo "<script>
@@ -40,12 +40,17 @@ if (isset($_POST['btnaddprogress'])) {
                         <table width="120%" align="center" border="1" class="table">
                             <tr>
                                 <td align="left" colspan="2"><span class="preeti">कार्यक्रम सँकेत नं.</span></td>
-                                <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
+                                <td><span class="siddhi"><?php echo $row['local_activity3_code'] ?></span></td>
 
                             </tr>
                             <tr>
-                                <td align="left" colspan="2"><span class="preeti">कार्यक्रम/क्रियाकलाप</span></td>
-                                <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
+                                <td align="left" colspan="2"><span class="preeti">कार्यक्रम</span></td>
+                                <td><span class="siddhi"><?php echo $row['local_activity3_desc_np'] ?></span></td>
+
+                            </tr>
+                            <tr>
+                                <td align="left" colspan="2"><span class="preeti">क्रियाकलाप</span></td>
+                                <td><span class="siddhi"><?php echo $row['desc_np'] ?></span></td>
                             </tr>
                             <tr>
                                 <td align="left" colspan="2"><span class="preeti">इकाई</span></td>
@@ -85,7 +90,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpyearqty"
-                                                                                               value="<?php echo $row['yearly_progress_qty_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['yearly_progress_qty'] ?>"/></span>
                                 </td>
 
                             </tr>
@@ -129,7 +134,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttqty"
-                                                                                               value="<?php echo $row['q3_qty_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['q3_progress_qty'] ?>"/></span>
                                 </td>
                             </tr>
                             <tr>
@@ -138,7 +143,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttbudget"
-                                                                                               value="<?php echo $row['q3_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $row['q3_progress_expenditure'] ?>"/></span>
                                 </td>
                             </tr>
 

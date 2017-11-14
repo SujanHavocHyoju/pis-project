@@ -1,6 +1,6 @@
 <?php 
     if(isset($_SESSION['message'])&&!empty($_SESSION['message'])){
-        $message = $utils->infoMessage($_SESSION['message']);
+        $message = $utils->successMessage($_SESSION['message']);
         unset($_SESSION['message']);
     }
 
@@ -25,7 +25,8 @@
                         <table width="100%" align="center" border="1" class="table">
                             <tr>
                                 <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत नं.</span></td>
-                                <td rowspan="2" align="center"><span class="preeti">कार्यक्रम/क्रियाकलाप</span></td>
+                                <td rowspan="2" align="center"><span class="preeti">कार्यक्रम</span></td>
+                                <td rowspan="2" align="center"><span class="preeti">क्रियाकलाप</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">इकाई</span></td>
                                 <td  colspan="3" align="center"><span class="preeti">वार्षिक लक्ष</span></td>
 
@@ -52,10 +53,12 @@
                             </tr>
                             <?php $sql = $dbc->selectLocalOfficeTransaction($_GET['oid']);
                             while($row = mysqli_fetch_array($sql)) {
+//                                var_dump($row);
                                 ?>
                                 <tr>
-                                    <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
-                                    <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
+                                    <td><span class="siddhi"><?php echo $row['local_activity3_code'] ?></span></td>
+                                    <td><span class="siddhi"><?php echo $row['local_activity3_desc_np'] ?></span></td>
+                                    <td><span class="siddhi"><?php echo $row['desc_np'] ?></span></td>
                                     <td><span class="siddhi"></span></td>
                                     <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_qty'] ?></span></td>
                                     <td align="right"><span class="preeti"><?php echo $row['yearly_alloc_cost'] ?></span></td>
@@ -70,8 +73,8 @@
                                     <td align="right"><span class="preeti"><?php echo $row['q1_alloc_budget'] ?></span></td>
                                     <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
                                     <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
-<!--                                    <td align="center" style="width: 80px"><p><a href="dashboard.php?action=entryLocalThree&oid=--><?php //echo $_GET['oid'] ?><!--&tlid=--><?php //echo $row['id'] ?><!--" class="delete">प्रगति थप गर्ने</a></p></td>-->
-                                    <td align="center" style="width: 80px; pointer-events: none;"><p><a href="#" class="delete">प्रगति थप गर्ने</a></p></td>
+                                    <td align="center" style="width: 80px"><p><a href="dashboard.php?action=entryLocalThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>" class="delete">प्रगति थप गर्ने</a></p></td>
+<!--                                    <td align="center" style="width: 80px; pointer-events: none;"><p><a href="#" class="delete">प्रगति थप गर्ने</a></p></td>-->
                                 </tr>
                             <?php } ?>
                         </table>

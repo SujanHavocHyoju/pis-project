@@ -3,7 +3,7 @@ include('report.php');
 /*Declaring the constant keyword */
 define('DB_SERVER', '127.0.0.1');
 define('DB_USER', 'root');
-define('DB_PASS', 'admin');
+define('DB_PASS', 'root');
 define('DB_NAME', 'db_pis');
 
 class DB_dbc
@@ -1558,7 +1558,25 @@ HAVING `activity_id` = '$activity_id'";
     }
 
     function selectLocalOfficeTransaction($oid){
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_bodies AS tl ON a.id = tl.local_body_activity4_id WHERE tl.local_body_id = '$oid'");
+        $res = mysqli_query($this->dbc, "SELECT a.desc_np, a.local_activity3_code, a.local_activity3_desc_np, a.id, tl.* FROM tbl_local_bodies_activities4 AS a INNER JOIN tbl_transaction_local_bodies AS tl ON a.id = tl.local_body_activity4_id WHERE tl.local_body_id = '$oid'");
+        return $res;
+    }
+
+    function selectOneTransactionForLocal($oid, $tlid)
+    {
+        $res = mysqli_query($this->dbc, "SELECT a.desc_np, a.local_activity3_code, a.local_activity3_desc_np,a.id, tl.* FROM tbl_local_bodies_activities4 AS a INNER JOIN tbl_transaction_local_bodies AS tl ON a.id = tl.local_body_activity4_id WHERE tl.local_body_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
+        return $res;
+    }
+
+    function updateOneLocalTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid)
+    {
+        $sql = sprintf("UPDATE `db_pis`.`tbl_transaction_local_bodies` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q1_progress_expenditure='%s',q1_progress_qty='%s' where id = '%s'",
+            mysqli_real_escape_string($this->dbc, $txtpyearqty),
+            mysqli_real_escape_string($this->dbc, $txtpyearbudget),
+            mysqli_real_escape_string($this->dbc, $txtpttbudget),
+            mysqli_real_escape_string($this->dbc, $txtpttqty),
+            mysqli_real_escape_string($this->dbc, $tlid));
+        $res = mysqli_query($this->dbc, $sql);
         return $res;
     }
 
