@@ -3,7 +3,7 @@ include('report.php');
 /*Declaring the constant keyword */
 define('DB_SERVER', '127.0.0.1');
 define('DB_USER', 'root');
-define('DB_PASS', 'root');
+define('DB_PASS', 'admin');
 define('DB_NAME', 'db_pis');
 
 class DB_dbc
@@ -749,7 +749,6 @@ teo.q3_progress_qty,
 teo.q3_progress_expenditure 
 FROM `tbl_transaction_edu_offices` AS teo INNER JOIN tbl_edu_offices AS eo ON eo.id = teo.edu_office_id where teo.`activity_code` = '$activity_id';";
         $result = mysqli_query($this->dbc, $query);
-        echo $query;
         return $result;
     }
 

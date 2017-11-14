@@ -73,7 +73,7 @@
                                     <td align="right"><span class="preeti"><?php echo $row['q1_alloc_budget'] ?></span></td>
                                     <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
                                     <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
-                                    <td align="center" style="width: 80px"><p><a href="dashboard.php?action=entryLocalThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>" class="delete">प्रगति थप गर्ने</a></p></td>
+                                    <td align="center" style="width: 80px"><p><input type="button" onclick="window.location.href='dashboard.php?action=entryLocalThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>'" class="delete" value=" प्रगति थप गर्ने "></p></td>
 <!--                                    <td align="center" style="width: 80px; pointer-events: none;"><p><a href="#" class="delete">प्रगति थप गर्ने</a></p></td>-->
                                 </tr>
                             <?php } ?>

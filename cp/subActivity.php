@@ -89,13 +89,13 @@ else{
                                     <td><span class="siddhi"><?php echo $row["code"] ?></span></td>
                                     <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
                                     <td><span class="siddhi"><?php echo $row['name_en'] ?></span></td>
-                                    <td align="center"><p><a href="dashboard.php?action=editsubactivity&id=<?php echo $row["id"] ?>&s_code=<?php echo $row["code"];?>&s_name=<?php echo $row['name_np'] ?>&pid=<?php echo $program['id'] ?>&s_name_en=<?php echo $row['name_en']; ?>&mid=<?php echo $mainActivity['id']?>" class="edit">Edit</a></p>
+                                    <td align="center"><p><input type="button" onclick="window.location.href='dashboard.php?action=editsubactivity&id=<?php echo $row["id"] ?>&s_code=<?php echo $row["code"];?>&s_name=<?php echo $row['name_np'] ?>&pid=<?php echo $program['id'] ?>&s_name_en=<?php echo $row['name_en']; ?>&mid=<?php echo $mainActivity['id']?>'" class="edit" value=" सम्पादन गर्ने "/></p>
                                     </td>
 
-                                    <td align="center"><p><a onclick="return validateForm()" href="#"
-                                                             class="delete">Delete</a></p></td>
-                                    <td align="center"><p><a href="dashboard.php?action=activity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $_GET['mid'] ?>&sid=<?php echo $row['code']?>" class="delete">Add
-                                                Activity</a></p></td>
+                                    <td align="center"><p><input type="button" onclick="return validateForm()" href="#"
+                                                             class="delete" disabled  value=" मेट्ने "></p></td>
+                                    <td align="center"><p><input type="button"  onclick="window.location.href='dashboard.php?action=activity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $_GET['mid'] ?>&sid=<?php echo $row['code']?>'" class="delete" value="Add Activity"/>
+                                                </p></td>
                                 </tr>
                                 <?php
                             }

@@ -61,8 +61,8 @@
                                 <td rowspan="2" align="center"><span class="preeti">एकाई</span></td>
                                 <td colspan="4" align="center"><span class="preeti">वार्षिक लक्ष</span></td>
                                 <td colspan="5" align="center"><span class="preeti">वार्षिक प्रगति</span></td>
-                                <td colspan="3" align="center"><span class="preeti">तेश्रो चौमासिक लक्ष</span></td>
-                                <td colspan="5" align="center"><span class="preeti">तेश्रो चौमासिक प्रगति</span></td>
+                                <td colspan="3" align="center"><span class="preeti">प्रथम चौमासिक लक्ष</span></td>
+                                <td colspan="5" align="center"><span class="preeti">प्रथम चौमासिक प्रगति</span></td>
 
 
                             </tr>

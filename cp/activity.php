@@ -99,9 +99,9 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
                                 <td><span class="siddhi"><?php echo $row['name_en'] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
 
-                                <td align="center" ><p><a href="dashboard.php?action=editactivity&id=<?php echo $row['id'];?>&code=<?php echo $row['code'] ?>,&a_name=<?php echo $row['name_np'] ?>&a_name_en=<?php echo $row['name_en'] ?>&qty=<?php echo $row['unit'] ?>&pid=<?php echo $program_code?>&mid=<?php echo $main_id?>&sid=<?php echo $sub_id?>" class="edit">Edit</a></p></td>
+                                <td align="center" ><p><input type="button" onclick="window.location.href='dashboard.php?action=editactivity&id=<?php echo $row['id'];?>&code=<?php echo $row['code'] ?>,&a_name=<?php echo $row['name_np'] ?>&a_name_en=<?php echo $row['name_en'] ?>&qty=<?php echo $row['unit'] ?>&pid=<?php echo $program_code?>&mid=<?php echo $main_id?>&sid=<?php echo $sub_id?>'" class="edit" value=" Edit "></p></td>
 
-                                <td align="center" ><p><a onclick="return validateForm()" href="#" class="delete">Delete</a></p></td>
+                                <td align="center" ><p><input type="button"  onclick="return validateForm()" value=" मेट्ने " disabled class="delete"/></p></td>
 
                             </tr>
                             <?php } ?>

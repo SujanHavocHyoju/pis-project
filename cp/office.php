@@ -119,7 +119,7 @@
                             <td ><span class="preeti"><?php echo $row["di_name"];?></span></td>
 
                             <td align="center" width="10%"><p><input type="button" onclick="window.location.href='dashboard.php?action=editoffice&id=<?php echo $row['id'];?>'" class="edit" value=' सम्पादन गर्ने '></p></td>
-                            <td align="center" width="10%"><p><a onclick="return validateForm()" href="deloffice.php?id=1" class="delete">मेट्ने</a></p></td>
+                            <td align="center" width="10%"><p><input type="button" ' onclick="return validateForm()"  class="delete" value=" मेट्ने "></p></td>
                         </tr>
                             <?php } ?>
                         

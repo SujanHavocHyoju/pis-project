@@ -14,25 +14,6 @@
         $message = $utils->errorMessage($_GET['error']);
     }
     if(isset($_POST['adduser'])){
-        // $username = $_POST['txtuname'];
-        // $password = $_POST['txtupass'];
-        // $full_name = $_POST['txtname'];
-        // if(!isset($_POST['txtofficecode'])){
-        //     $message = "Select office name";
-        // }else{
-        //     $user_type = $_POST['user_type'];
-        //     $office_id = $_POST['txtofficecode'];
-        //     $result = $dbc->insertUser($username,$password,$full_name,$user_type,$office_id);
-        //     if($result>0){
-        //         $message = $utils->successMessage($full_name." दर्ता भैसाकेको छ!");
-        //     }
-        //     else if($result == -1){
-        //         $message =$utils->infoMessage($utils->alreadyExists("",$full_name));
-        //     }
-        //     else{
-        //         $message = $utils->errorMessage($utils->error("",$full_name));
-        //     }
-        // }
         $sql = $dbc->selectUserByUserType($_POST['user_type']);
     }else{
         $sql = $dbc->selectUser();
@@ -103,11 +84,11 @@
                                  ?>
                                 </td>
 
-                                <td align="center"><p><a href="dashboard.php?action=edituser&id=<?php echo $row['id'];?>" class="edit"> सम्पादन गर्ने </a></p></td>
-                                <td align="center"><p><a href="dashboard.php?action=changepassword&id=<?php echo $row['id'];?>" class="edit"> पासवर्ड परिवर्तन गर्ने </a></p>
+                                <td align="center"><p><input type="button" onclick="window.location.href='dashboard.php?action=edituser&id=<?php echo $row['id'];?>'" class="edit" value=" सम्पादन गर्ने "/></p></td>
+                                <td align="center"><p><input type="button" onclick="window.location.href='dashboard.php?action=changepassword&id=<?php echo $row['id'];?>'" class="edit" value=" पासवर्ड परिवर्तन गर्ने "/></p>
                                 </td>
-                                <td align="center"><p><a onclick="return validateForm()" href="dashboard.php?action=users&type=del&id=<?php echo $row['id'];?>&ut=<?php echo $row['user_type'];?>"
-                                                         class="delete"> मेट्ने </a></p></td>
+                                <td align="center"><p><input type="button" onclick="return validateForm()" href="#"
+                                                         class="delete" value=" मेट्ने " disabled/></p></td>
 
                             </tr>
                             <?php }?>

@@ -66,6 +66,7 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
             border-radius: 4px;
         }
     </style>
+	<link rel="shortcut icon" href="../public/img/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 <br />

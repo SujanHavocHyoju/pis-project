@@ -45,13 +45,13 @@ if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
         $objPHPExcel->setActiveSheetIndex()->setCellValue('L5',"भारित");
         $objPHPExcel->setActiveSheetIndex()
         ->mergeCells('M4:O4');
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('M4',"तेश्रो चौमासिक लक्ष");
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('M4',"प्रथम चौमासिक लक्ष");
         $objPHPExcel->setActiveSheetIndex()->setCellValue('M5',"भौतिक परिमाण");
         $objPHPExcel->setActiveSheetIndex()->setCellValue('N5',"भार");
         $objPHPExcel->setActiveSheetIndex()->setCellValue('L5',"बजेट");
         $objPHPExcel->setActiveSheetIndex()
         ->mergeCells('P4:T4');
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('P4',"तेश्रो चौमासिक प्रगति");
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('P4',"प्रथम चौमासिक प्रगति");
         $objPHPExcel->setActiveSheetIndex()->setCellValue('P5',"भौतिक परिमाण");
         $objPHPExcel->setActiveSheetIndex()->setCellValue('Q5',"भौतिक प्रगति प्रतिशत");
         $objPHPExcel->setActiveSheetIndex()->setCellValue('R5',"खर्च रकम");

@@ -86,10 +86,10 @@ if(isset($_GET['error'])){
                                 <td><span class="siddhi"><?php echo $row["code"] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['name_en'] ?></span></td>
-                                <td align="center" ><p><a href="dashboard.php?action=editmainactivity&id=<?php echo $row['id']?>" class="edit">सम्पादन गर्ने</a></p></td>
+                                <td align="center" ><p><input type="button" onclick="window.location.href='dashboard.php?action=editmainactivity&id=<?php echo $row['id']?>'" class="edit" value=" सम्पादन गर्ने "/></p></td>
 
-                                <td align="center" ><p><a onclick="return validateForm()" href="#" class="delete"> मेट्ने </a></p></td>
-                                <td align="center" ><p><a href="dashboard.php?action=subActivity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $row['id'] ?>" class="delete">सहायक क्रियाकलाप थप गर्ने</a></p></td>
+                                <td align="center" ><p><input type="button" disabled onclick="return validateForm()" href="#" class="delete" value=" मेट्ने "/></p></td>
+                                <td align="center" ><p><input type="button" onclick="window.location.href='dashboard.php?action=subActivity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $row['id'] ?>'" class="delete" value=" सहायक क्रियाकलाप थप गर्ने "/></p></td>
                             </tr>
                             <?php } ?>
                         </table>

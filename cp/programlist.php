@@ -38,7 +38,7 @@
                             <td><span class="siddhi"><?php echo $row['code'] ?></span></td>
                             <td width="30%"><span class="preeti"><?php echo $row['name_np'] ?></span></td>
                             <td width="30%"><span class="preeti"><?php echo $row['name_en'] ?></span></td>
-                            <td align="center" ><p><a href="dashboard.php?action=mainActivity&pid=<?php echo $row['id'] ?>" class="edit">क्रियाकलाप विवरण प्रविष्टि गर्ने</a></p></td>
+                            <td align="center" ><p><input type="button" onclick="window.location.href='dashboard.php?action=mainActivity&pid=<?php echo $row['id'] ?>'" class="edit" value=" क्रियाकलाप विवरण प्रविष्टि गर्ने "/></p></td>
                         </tr>
                         <?php } ?>
                     </table>

@@ -38,9 +38,9 @@
                                     <td ><span class="preeti"><?php echo $row["di_name"];?></span></td>
                                 </td>
                                 <td align="center" width="30%">
-                                    <span class="preeti"><a
-                                                href="dashboard.php?action=entryTwo&oid=<?php echo $row['id']?>&name=<?php echo $row['name_np'] ?>"
-                                                class="edit" name="entry">प्रगति विवरण प्रविष्टि गर्नुहोस</a></span>
+                                    <span class="preeti"><input type="button"   
+                                                onclick="window.location.href='dashboard.php?action=entryTwo&oid=<?php echo $row['id']?>&name=<?php echo $row['name_np'] ?>'"
+                                                class="edit" name="entry" value=" प्रगति विवरण प्रविष्टि गर्नुहोस "></span>
                                 </td>
                             </tr>
                             <?php
