@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae5fcf5c-b78a-492c-a5fd-fce9041f84de" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/finalreport.php" afterPath="$PROJECT_DIR$/cp/finalreport.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/class/common.php" afterPath="$PROJECT_DIR$/class/common.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/common.php" afterPath="$PROJECT_DIR$/cp/common.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,10 +32,10 @@
       <file leaf-file-name="activitywise.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cp/activitywise.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state relative-caret-position="0">
+              <caret line="0" column="28" lean-forward="true" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
               <folding>
-                <marker date="1510066225018" expanded="true" signature="926:969" ph="..." />
+                <marker date="1510667941505" expanded="true" signature="926:969" ph="..." />
               </folding>
             </state>
           </provider>
@@ -63,29 +64,32 @@
       <file leaf-file-name="activitywisereport.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cp/activitywisereport.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2328">
-              <caret line="97" column="35" lean-forward="true" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+            <state relative-caret-position="301">
+              <caret line="96" column="74" lean-forward="false" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="74" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="backup.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cp/backup.php">
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cp/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-329">
+              <caret line="130" column="18" lean-forward="false" selection-start-line="130" selection-start-column="18" selection-end-line="130" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="finalreport.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="finalreport.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cp/finalreport.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="173" column="29" lean-forward="false" selection-start-line="173" selection-start-column="29" selection-end-line="173" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="283">
+              <caret line="178" column="43" lean-forward="false" selection-start-line="178" selection-start-column="43" selection-end-line="178" selection-end-column="43" />
+              <folding>
+                <marker date="1510667941517" expanded="true" signature="9862:10001" ph="..." />
+                <marker date="1510667941517" expanded="true" signature="9903:9990" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/cp/mainActivity.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1968">
-              <caret line="82" column="69" lean-forward="true" selection-start-line="81" selection-start-column="28" selection-end-line="82" selection-end-column="69" />
+              <caret line="82" column="69" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="82" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -113,53 +117,110 @@
       <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/class/common.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2879">
-              <caret line="973" column="13" lean-forward="false" selection-start-line="973" selection-start-column="13" selection-end-line="973" selection-end-column="13" />
+            <state relative-caret-position="-1377">
+              <caret line="749" column="128" lean-forward="false" selection-start-line="749" selection-start-column="128" selection-end-line="749" selection-end-column="128" />
               <folding>
-                <marker date="1510460715032" expanded="true" signature="744:831" ph="SELECT * FRO... tbl_users" />
-                <marker date="1510460715032" expanded="true" signature="993:1019" ph="SELECT * FRO... tbl_programs" />
-                <marker date="1510460715032" expanded="true" signature="1128:1155" ph="SELECT * FRO... tbl_districts" />
-                <marker date="1510460715032" expanded="true" signature="1253:1317" ph="SELECT * FRO... tbl_programs" />
-                <marker date="1510460715032" expanded="true" signature="1458:1509" ph="SELECT * FRO... tbl_programs" />
-                <marker date="1510460715032" expanded="true" signature="1616:1863" ph="SELECT lo.id... tbl_local_offices" />
-                <marker date="1510460715032" expanded="true" signature="1973:2218" ph="SELECT eo.id... tbl_edu_offices" />
-                <marker date="1510460715032" expanded="true" signature="2334:2373" ph="SELECT * fro... tbl_edu_offices" />
-                <marker date="1510460715032" expanded="true" signature="2520:2616" ph="UPDATE `db_p... " />
-                <marker date="1510460715032" expanded="true" signature="3039:3090" ph="Select COUNT... tbl_edu_offices" />
-                <marker date="1510460715032" expanded="true" signature="3354:3407" ph="Select COUNT... tbl_local_offices" />
-                <marker date="1510460715032" expanded="true" signature="3771:3875" ph="INSERT INTO `db_pis`.`tbl_local_offices`... " />
-                <marker date="1510460715032" expanded="true" signature="4276:4374" ph="UPDATE `db_p... " />
-                <marker date="1510460715032" expanded="true" signature="4896:5019" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
-                <marker date="1510460715032" expanded="true" signature="5451:5648" ph="SELECT eo.id... tbl_edu_offices" />
-                <marker date="1510460715032" expanded="true" signature="5776:6062" ph="SELECT lo.id... tbl_local_offices" />
-                <marker date="1510460715032" expanded="true" signature="6220:6285" ph="Select COUNT... tbl_programs" />
-                <marker date="1510460715032" expanded="true" signature="6651:6749" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
-                <marker date="1510460715032" expanded="true" signature="7173:7268" ph="UPDATE `db_p... " />
-                <marker date="1510460715032" expanded="true" signature="7709:7766" ph="Select COUNT... tbl_users" />
-                <marker date="1510460715032" expanded="true" signature="8171:8304" ph="INSERT INTO `db_pis`.`tbl_users`... " />
-                <marker date="1510460715032" expanded="true" signature="8855:8895" ph="SELECT * FRO... tbl_users" />
-                <marker date="1510460715032" expanded="true" signature="9140:9203" ph="UPDATE `db_p... " />
-                <marker date="1510460715032" expanded="true" signature="9619:9735" ph="UPDATE `db_p... " />
-                <marker date="1510460715032" expanded="true" signature="10245:10293" ph="SELECT * FRO... tbl_local_offices" />
-                <marker date="1510460715032" expanded="true" signature="10413:10472" ph="SELECT * FRO... tbl_main_activities" />
-                <marker date="1510460715032" expanded="true" signature="10588:10652" ph="SELECT * FRO... tbl_sub_activities" />
-                <marker date="1510460715032" expanded="true" signature="10765:10824" ph="SELECT * FRO... tbl_activities" />
-                <marker date="1510460715032" expanded="true" signature="10943:11001" ph="SELECT * FRO... tbl_main_activities" />
-                <marker date="1510460715032" expanded="true" signature="11119:11176" ph="SELECT * FRO... tbl_sub_activities" />
-                <marker date="1510460715032" expanded="true" signature="11305:11364" ph="Select COUNT... tbl_main_activities" />
-                <marker date="1510460715032" expanded="true" signature="11726:11862" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
-                <marker date="1510460715032" expanded="true" signature="12343:12434" ph="UPDATE `db_p... " />
-                <marker date="1510460715032" expanded="true" signature="12867:12923" ph="DELETE FROM " />
-                <marker date="1510460715032" expanded="true" signature="13178:13236" ph="Select COUNT... tbl_sub_activities" />
-                <marker date="1510460715032" expanded="true" signature="13597:13733" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
-                <marker date="1510460715032" expanded="true" signature="14210:14300" ph="UPDATE `db_p... " />
-                <marker date="1510460715032" expanded="true" signature="14738:14792" ph="Select COUNT... tbl_activities" />
-                <marker date="1510460715032" expanded="true" signature="15179:15327" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
-                <marker date="1510460715032" expanded="true" signature="15879:15975" ph="UPDATE `db_p... " />
-                <marker date="1510460715032" expanded="true" signature="49365:49405" ph="SELECT * FRO... tbl_current_reports" />
-                <marker date="1510460715032" expanded="true" signature="49519:49597" ph="SELECT id, c... tbl_activities" />
-                <marker date="1510460715032" expanded="true" signature="49712:49765" ph="SELECT * FRO... tbl_activities" />
-                <marker date="1510460715032" expanded="true" signature="49800:49844" ph="/*Creating t... " />
+                <marker date="1510669475657" expanded="true" signature="744:831" ph="SELECT * FRO... tbl_users" />
+                <marker date="1510669475657" expanded="true" signature="993:1019" ph="SELECT * FRO... tbl_programs" />
+                <marker date="1510669475657" expanded="true" signature="1128:1155" ph="SELECT * FRO... tbl_districts" />
+                <marker date="1510669475657" expanded="true" signature="1253:1317" ph="SELECT * FRO... tbl_programs" />
+                <marker date="1510669475657" expanded="true" signature="1458:1509" ph="SELECT * FRO... tbl_programs" />
+                <marker date="1510669475657" expanded="true" signature="1616:1863" ph="SELECT lo.id... tbl_local_offices" />
+                <marker date="1510669475657" expanded="true" signature="1973:2218" ph="SELECT eo.id... tbl_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="2334:2373" ph="SELECT * fro... tbl_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="2520:2616" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="3039:3090" ph="Select COUNT... tbl_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="3354:3407" ph="Select COUNT... tbl_local_offices" />
+                <marker date="1510669475657" expanded="true" signature="3771:3875" ph="INSERT INTO `db_pis`.`tbl_local_offices`... " />
+                <marker date="1510669475657" expanded="true" signature="4276:4374" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="4896:5019" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
+                <marker date="1510669475657" expanded="true" signature="5451:5648" ph="SELECT eo.id... tbl_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="5776:6062" ph="SELECT lo.id... tbl_local_offices" />
+                <marker date="1510669475657" expanded="true" signature="6220:6285" ph="Select COUNT... tbl_programs" />
+                <marker date="1510669475657" expanded="true" signature="6651:6749" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
+                <marker date="1510669475657" expanded="true" signature="7173:7268" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="7709:7766" ph="Select COUNT... tbl_users" />
+                <marker date="1510669475657" expanded="true" signature="8171:8304" ph="INSERT INTO `db_pis`.`tbl_users`... " />
+                <marker date="1510669475657" expanded="true" signature="8855:8895" ph="SELECT * FRO... tbl_users" />
+                <marker date="1510669475657" expanded="true" signature="9140:9203" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="9619:9735" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="10245:10293" ph="SELECT * FRO... tbl_local_offices" />
+                <marker date="1510669475657" expanded="true" signature="10413:10472" ph="SELECT * FRO... tbl_main_activities" />
+                <marker date="1510669475657" expanded="true" signature="10588:10652" ph="SELECT * FRO... tbl_sub_activities" />
+                <marker date="1510669475657" expanded="true" signature="10765:10824" ph="SELECT * FRO... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="10943:11001" ph="SELECT * FRO... tbl_main_activities" />
+                <marker date="1510669475657" expanded="true" signature="11119:11176" ph="SELECT * FRO... tbl_sub_activities" />
+                <marker date="1510669475657" expanded="true" signature="11305:11364" ph="Select COUNT... tbl_main_activities" />
+                <marker date="1510669475657" expanded="true" signature="11726:11862" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
+                <marker date="1510669475657" expanded="true" signature="12343:12434" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="12867:12923" ph="DELETE FROM " />
+                <marker date="1510669475657" expanded="true" signature="13178:13236" ph="Select COUNT... tbl_sub_activities" />
+                <marker date="1510669475657" expanded="true" signature="13597:13733" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
+                <marker date="1510669475657" expanded="true" signature="14210:14300" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="14738:14792" ph="Select COUNT... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="15179:15327" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
+                <marker date="1510669475657" expanded="true" signature="15879:15975" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="16466:16630" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="16751:16919" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="17041:17173" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="17309:17547" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="17684:17875" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="18006:18201" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="18307:18473" ph="SELECT u.use... tbl_users" />
+                <marker date="1510669475657" expanded="true" signature="18578:18673" ph="SELECT id,us... tbl_users" />
+                <marker date="1510669475657" expanded="true" signature="18876:18928" ph="SELECT name_... tbl_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="19068:19122" ph="SELECT name_... tbl_local_offices" />
+                <marker date="1510669475657" expanded="true" signature="19294:19418" ph="SELECT o.nam... tbl_local_offices" />
+                <marker date="1510669475657" expanded="true" signature="19567:19743" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="20273:20456" ph="UPDATE `db_p... " />
+                <marker date="1510669475657" expanded="true" signature="20911:20947" ph="SELECT * FRO... tbl_fiscal_year" />
+                <marker date="1510669475657" expanded="true" signature="21146:21215" ph="Select COUNT... tbl_fiscal_year" />
+                <marker date="1510669475657" expanded="true" signature="21591:21659" ph="INSERT INTO `db_pis`.`tbl_fiscal_year`... " />
+                <marker date="1510669475657" expanded="true" signature="21892:21938" ph="SELECT * fro... tbl_fiscal_year" />
+                <marker date="1510669475657" expanded="true" signature="22085:22131" ph="DELETE FROM " />
+                <marker date="1510669475657" expanded="true" signature="23365:23395" ph="SELECT * FRO... ${$table}" />
+                <marker date="1510669475657" expanded="true" signature="26898:26998" ph="SELECT id,us... tbl_users" />
+                <marker date="1510669475657" expanded="true" signature="27075:27163" ph="SELECT count... tbl_transaction_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="27299:27446" ph="SELECT count... tbl_transaction_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="27588:27660" ph="SELECT * FRO... tbl_sub_activities" />
+                <marker date="1510669475657" expanded="true" signature="27799:28168" ph="SELECT SUM(y... tbl_transaction_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="28289:28329" ph="SELECT * FRO... tbl_main_activities" />
+                <marker date="1510669475657" expanded="true" signature="28463:29236" ph="SELECT act.i... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="29384:30192" ph="SELECT act.i... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="30358:30749" ph="SELECT eo.na... tbl_transaction_edu_offices" />
+                <marker date="1510669475657" expanded="true" signature="30938:31405" ph="SELECT lo.na... tbl_transaction_local_offices" />
+                <marker date="1510669475657" expanded="true" signature="31560:31625" ph="SELECT code tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="31753:34467" ph="SELECT SUM(M... main_id" />
+                <marker date="1510669475657" expanded="true" signature="32148:34457" ph="SELECT main_... main_id" />
+                <marker date="1510669475657" expanded="true" signature="32629:34425" ph="SELECT main_... id" />
+                <marker date="1510669475657" expanded="true" signature="33180:34398" ph="SELECT main.... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="34654:36947" ph="SELECT main_... main_id" />
+                <marker date="1510669475657" expanded="true" signature="35119:36915" ph="SELECT main_... id" />
+                <marker date="1510669475657" expanded="true" signature="35670:36888" ph="SELECT main.... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="37083:38562" ph="SELECT sub_c... code" />
+                <marker date="1510669475657" expanded="true" signature="37461:38534" ph="SELECT sub.c... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="38781:39643" ph="SELECT act.n... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="40199:40953" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="41785:42754" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="43747:45681" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="47815:48482" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="49295:49335" ph="SELECT * FRO... tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="49415:52153" ph="SELECT SUM(M... main_id" />
+                <marker date="1510669475657" expanded="true" signature="49810:52143" ph="SELECT main_... main_id" />
+                <marker date="1510669475657" expanded="true" signature="50291:52111" ph="SELECT main_... id" />
+                <marker date="1510669475657" expanded="true" signature="50842:52084" ph="SELECT main.... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="52345:54662" ph="SELECT main_... main_id" />
+                <marker date="1510669475657" expanded="true" signature="52810:54630" ph="SELECT main_... id" />
+                <marker date="1510669475657" expanded="true" signature="53361:54603" ph="SELECT main.... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="54811:56321" ph="SELECT sub_c... code" />
+                <marker date="1510669475657" expanded="true" signature="55189:56293" ph="SELECT sub.c... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="56553:57446" ph="SELECT act.n... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="58012:58766" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="59604:60573" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="61572:63506" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="65645:66312" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1510669475657" expanded="true" signature="67129:67209" ph="SELECT id, c... tbl_activities" />
+                <marker date="1510669475657" expanded="true" signature="67324:67377" ph="SELECT * FRO... tbl_activities" />
               </folding>
             </state>
           </provider>
@@ -168,40 +229,40 @@
       <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cp/common.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5232">
-              <caret line="218" column="27" lean-forward="false" selection-start-line="218" selection-start-column="27" selection-end-line="218" selection-end-column="27" />
+            <state relative-caret-position="24">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <marker date="1509995253626" expanded="true" signature="710:797" ph="SELECT * FRO... tbl_users" />
-                <marker date="1509995253626" expanded="true" signature="954:980" ph="SELECT * FRO... tbl_programs" />
-                <marker date="1509995253626" expanded="true" signature="1088:1139" ph="SELECT * FRO... tbl_programs" />
-                <marker date="1509995253626" expanded="true" signature="1241:1398" ph="SELECT lo.id... tbl_local_offices" />
-                <marker date="1509995253626" expanded="true" signature="1502:1649" ph="SELECT eo.id... tbl_edu_offices" />
-                <marker date="1509995253626" expanded="true" signature="1759:1798" ph="SELECT * fro... tbl_edu_offices" />
-                <marker date="1509995253626" expanded="true" signature="1934:2040" ph="UPDATE `db_p... " />
-                <marker date="1509995253626" expanded="true" signature="2489:2634" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
-                <marker date="1509995253626" expanded="true" signature="3095:3178" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
-                <marker date="1509995253626" expanded="true" signature="3481:3563" ph="UPDATE `db_p... " />
-                <marker date="1509995253626" expanded="true" signature="3939:3970" ph="SELECT * FRO... tbl_local_offices" />
-                <marker date="1509995253626" expanded="true" signature="4084:4143" ph="SELECT * FRO... tbl_main_activities" />
-                <marker date="1509995253626" expanded="true" signature="4254:4318" ph="SELECT * FRO... tbl_sub_activities" />
-                <marker date="1509995253626" expanded="true" signature="4426:4485" ph="SELECT * FRO... tbl_activities" />
-                <marker date="1509995253626" expanded="true" signature="4599:4657" ph="SELECT * FRO... tbl_main_activities" />
-                <marker date="1509995253626" expanded="true" signature="4770:4827" ph="SELECT * FRO... tbl_sub_activities" />
-                <marker date="1509995253626" expanded="true" signature="4940:5057" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
-                <marker date="1509995253626" expanded="true" signature="5420:5498" ph="UPDATE `db_p... " />
-                <marker date="1509995253626" expanded="true" signature="5880:5936" ph="DELETE FROM " />
-                <marker date="1509995253626" expanded="true" signature="6192:6313" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
-                <marker date="1509995253626" expanded="true" signature="6672:6749" ph="UPDATE `db_p... " />
-                <marker date="1509995253626" expanded="true" signature="7172:7301" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
-                <marker date="1509995253626" expanded="true" signature="7750:7833" ph="UPDATE `db_p... " />
-                <marker date="1509995253626" expanded="true" signature="8275:8437" ph="SELECT a.nam... tbl_activities" />
-                <marker date="1509995253626" expanded="true" signature="8552:8718" ph="SELECT a.nam... tbl_activities" />
-                <marker date="1509995253626" expanded="true" signature="8849:9038" ph="SELECT a.nam... tbl_activities" />
-                <marker date="1509995253626" expanded="true" signature="9164:9357" ph="SELECT a.nam... tbl_activities" />
-                <marker date="1509995253626" expanded="true" signature="9457:9623" ph="SELECT u.use... tbl_users" />
-                <marker date="1509995253626" expanded="true" signature="9744:9868" ph="SELECT o.nam... tbl_local_offices" />
-                <marker date="1509995253626" expanded="true" signature="10012:10188" ph="UPDATE `db_p... " />
-                <marker date="1509995253626" expanded="true" signature="10708:10891" ph="UPDATE `db_p... " />
+                <marker date="1510668963293" expanded="true" signature="709:796" ph="SELECT * FRO... tbl_users" />
+                <marker date="1510668963293" expanded="true" signature="953:979" ph="SELECT * FRO... tbl_programs" />
+                <marker date="1510668963293" expanded="true" signature="1087:1138" ph="SELECT * FRO... tbl_programs" />
+                <marker date="1510668963293" expanded="true" signature="1240:1397" ph="SELECT lo.id... tbl_local_offices" />
+                <marker date="1510668963293" expanded="true" signature="1501:1648" ph="SELECT eo.id... tbl_edu_offices" />
+                <marker date="1510668963293" expanded="true" signature="1758:1797" ph="SELECT * fro... tbl_edu_offices" />
+                <marker date="1510668963293" expanded="true" signature="1933:2039" ph="UPDATE `db_p... " />
+                <marker date="1510668963293" expanded="true" signature="2488:2633" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
+                <marker date="1510668963293" expanded="true" signature="3094:3177" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
+                <marker date="1510668963293" expanded="true" signature="3480:3562" ph="UPDATE `db_p... " />
+                <marker date="1510668963293" expanded="true" signature="3938:3969" ph="SELECT * FRO... tbl_local_offices" />
+                <marker date="1510668963293" expanded="true" signature="4083:4142" ph="SELECT * FRO... tbl_main_activities" />
+                <marker date="1510668963293" expanded="true" signature="4253:4317" ph="SELECT * FRO... tbl_sub_activities" />
+                <marker date="1510668963293" expanded="true" signature="4425:4484" ph="SELECT * FRO... tbl_activities" />
+                <marker date="1510668963293" expanded="true" signature="4598:4656" ph="SELECT * FRO... tbl_main_activities" />
+                <marker date="1510668963293" expanded="true" signature="4769:4826" ph="SELECT * FRO... tbl_sub_activities" />
+                <marker date="1510668963293" expanded="true" signature="4939:5056" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
+                <marker date="1510668963293" expanded="true" signature="5419:5497" ph="UPDATE `db_p... " />
+                <marker date="1510668963293" expanded="true" signature="5879:5935" ph="DELETE FROM " />
+                <marker date="1510668963293" expanded="true" signature="6191:6312" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
+                <marker date="1510668963293" expanded="true" signature="6671:6748" ph="UPDATE `db_p... " />
+                <marker date="1510668963293" expanded="true" signature="7171:7300" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
+                <marker date="1510668963293" expanded="true" signature="7749:7832" ph="UPDATE `db_p... " />
+                <marker date="1510668963293" expanded="true" signature="8274:8436" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510668963293" expanded="true" signature="8551:8717" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510668963293" expanded="true" signature="8848:9037" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510668963293" expanded="true" signature="9163:9356" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1510668963293" expanded="true" signature="9456:9622" ph="SELECT u.use... tbl_users" />
+                <marker date="1510668963293" expanded="true" signature="9743:9867" ph="SELECT o.nam... tbl_local_offices" />
+                <marker date="1510668963293" expanded="true" signature="10011:10187" ph="UPDATE `db_p... " />
+                <marker date="1510668963293" expanded="true" signature="10707:10890" ph="UPDATE `db_p... " />
               </folding>
             </state>
           </provider>
@@ -211,8 +272,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selectAll</find>
-      <find>$this-&gt;</find>
       <find>i</find>
       <find>while</find>
       <find>entryThree</find>
@@ -241,6 +300,8 @@
       <find>localhost</find>
       <find>select</find>
       <find>&gt; 0</find>
+      <find>a</find>
+      <find>selectActivityWiseReportEdu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -258,7 +319,6 @@
         <option value="$PROJECT_DIR$/cp/entryTwo.php" />
         <option value="$PROJECT_DIR$/cp/entryThree.php" />
         <option value="$PROJECT_DIR$/cp/activitywiseexcel.php" />
-        <option value="$PROJECT_DIR$/cp/common.php" />
         <option value="$PROJECT_DIR$/cp/activitywise.php" />
         <option value="$PROJECT_DIR$/class/Report.php" />
         <option value="$PROJECT_DIR$/cp/testing.php" />
@@ -267,8 +327,9 @@
         <option value="$PROJECT_DIR$/cp/officewisereport.php" />
         <option value="$PROJECT_DIR$/cp/progressreport.php" />
         <option value="$PROJECT_DIR$/cp/dashboard.php" />
-        <option value="$PROJECT_DIR$/class/common.php" />
         <option value="$PROJECT_DIR$/cp/finalreport.php" />
+        <option value="$PROJECT_DIR$/cp/common.php" />
+        <option value="$PROJECT_DIR$/class/common.php" />
       </list>
     </option>
   </component>
@@ -307,6 +368,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,15 +396,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="common&#9;FILE&#9;file://C:/wamp64/www/pis-project/class/common.php&#10;activity&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/mainActivity.php&#10;dashboard&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;commo&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/common.php&#10;dash&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;activ&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;dashb&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;dashba&#9;null&#9;null&#10;suba&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/subActivity.php&#10;testing&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/testing.php&#10;dashboa&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;com&#9;FILE&#9;file://C:/wamp64/www/pis-project/class/common.php&#10;comm&#9;ACTION&#9;CheckinProject&#10;entrythree&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entryThree.php&#10;entryTwo&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entryTwo.php&#10;entryLocal&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entryLocal.php&#10;entry.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entry.php&#10;logout.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/logout.php&#10;login&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/loginCheck.php&#10;dashbo&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/dashboard.php&#10;style.css&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/public/css/style.css&#10;program.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/program.php&#10;entry&#9;FILE&#9;file://C:/wamp64/www/git/pis-project/cp/entry.php" />
+    <property name="SearchEverywhereHistoryKey" value="activi&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;activitywise&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywise.php&#10;dash&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;activity&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;class/comm&#9;FILE&#9;file://C:/wamp64/www/pis-project/class/common.php&#10;com&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/common.php&#10;common&#9;FILE&#9;file://C:/wamp64/www/pis-project/class/common.php&#10;dashboard&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;commo&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/common.php&#10;activ&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;dashb&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;dashba&#9;null&#9;null&#10;suba&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/subActivity.php&#10;testing&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/testing.php&#10;dashboa&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;comm&#9;ACTION&#9;CheckinProject&#10;entrythree&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entryThree.php&#10;entryTwo&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entryTwo.php&#10;entryLocal&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entryLocal.php&#10;entry.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entry.php&#10;logout.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/logout.php&#10;login&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/loginCheck.php&#10;dashbo&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/dashboard.php&#10;style.css&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/public/css/style.css&#10;program.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/program.php&#10;entry&#9;FILE&#9;file://C:/wamp64/www/git/pis-project/cp/entry.php" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -382,11 +443,12 @@
       <workItem from="1510421193950" duration="882000" />
       <workItem from="1510454423052" duration="3324000" />
       <workItem from="1510458726616" duration="1735000" />
+      <workItem from="1510668889937" duration="1338000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72699000" />
+    <option name="totallyTimeSpent" value="74037000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -399,7 +461,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -408,7 +469,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44481236" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44481236" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -474,50 +535,107 @@
         <state relative-caret-position="2544">
           <caret line="106" column="13" lean-forward="false" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="13" />
           <folding>
-            <marker date="1510460715032" expanded="true" signature="744:831" ph="SELECT * FRO... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="993:1019" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1128:1155" ph="SELECT * FRO... tbl_districts" />
-            <marker date="1510460715032" expanded="true" signature="1253:1317" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1458:1509" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1616:1863" ph="SELECT lo.id... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="1973:2218" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="2334:2373" ph="SELECT * fro... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="2520:2616" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="3039:3090" ph="Select COUNT... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="3354:3407" ph="Select COUNT... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="3771:3875" ph="INSERT INTO `db_pis`.`tbl_local_offices`... " />
-            <marker date="1510460715032" expanded="true" signature="4276:4374" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="4896:5019" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
-            <marker date="1510460715032" expanded="true" signature="5451:5648" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="5776:6062" ph="SELECT lo.id... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="6220:6285" ph="Select COUNT... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="6651:6749" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
-            <marker date="1510460715032" expanded="true" signature="7173:7268" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="7709:7766" ph="Select COUNT... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="8171:8304" ph="INSERT INTO `db_pis`.`tbl_users`... " />
-            <marker date="1510460715032" expanded="true" signature="8855:8895" ph="SELECT * FRO... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="9140:9203" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="9619:9735" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="10245:10293" ph="SELECT * FRO... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="10413:10472" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="10588:10652" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="10765:10824" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="10943:11001" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="11119:11176" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="11305:11364" ph="Select COUNT... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="11726:11862" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="12343:12434" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="12867:12923" ph="DELETE FROM " />
-            <marker date="1510460715032" expanded="true" signature="13178:13236" ph="Select COUNT... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="13597:13733" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="14210:14300" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="14738:14792" ph="Select COUNT... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="15179:15327" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="15879:15975" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="49365:49405" ph="SELECT * FRO... tbl_current_reports" />
-            <marker date="1510460715032" expanded="true" signature="49519:49597" ph="SELECT id, c... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="49712:49765" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="49800:49844" ph="/*Creating t... " />
+            <marker date="1510669475657" expanded="true" signature="744:831" ph="SELECT * FRO... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="993:1019" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1128:1155" ph="SELECT * FRO... tbl_districts" />
+            <marker date="1510669475657" expanded="true" signature="1253:1317" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1458:1509" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1616:1863" ph="SELECT lo.id... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="1973:2218" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="2334:2373" ph="SELECT * fro... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="2520:2616" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="3039:3090" ph="Select COUNT... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="3354:3407" ph="Select COUNT... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="3771:3875" ph="INSERT INTO `db_pis`.`tbl_local_offices`... " />
+            <marker date="1510669475657" expanded="true" signature="4276:4374" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="4896:5019" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
+            <marker date="1510669475657" expanded="true" signature="5451:5648" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="5776:6062" ph="SELECT lo.id... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="6220:6285" ph="Select COUNT... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="6651:6749" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
+            <marker date="1510669475657" expanded="true" signature="7173:7268" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="7709:7766" ph="Select COUNT... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="8171:8304" ph="INSERT INTO `db_pis`.`tbl_users`... " />
+            <marker date="1510669475657" expanded="true" signature="8855:8895" ph="SELECT * FRO... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="9140:9203" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="9619:9735" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="10245:10293" ph="SELECT * FRO... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="10413:10472" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="10588:10652" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="10765:10824" ph="SELECT * FRO... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="10943:11001" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="11119:11176" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="11305:11364" ph="Select COUNT... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="11726:11862" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="12343:12434" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="12867:12923" ph="DELETE FROM " />
+            <marker date="1510669475657" expanded="true" signature="13178:13236" ph="Select COUNT... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="13597:13733" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="14210:14300" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="14738:14792" ph="Select COUNT... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="15179:15327" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="15879:15975" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="16466:16630" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="16751:16919" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17041:17173" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17309:17547" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17684:17875" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="18006:18201" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="18307:18473" ph="SELECT u.use... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="18578:18673" ph="SELECT id,us... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="18876:18928" ph="SELECT name_... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="19068:19122" ph="SELECT name_... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="19294:19418" ph="SELECT o.nam... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="19567:19743" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="20273:20456" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="20911:20947" ph="SELECT * FRO... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="21146:21215" ph="Select COUNT... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="21591:21659" ph="INSERT INTO `db_pis`.`tbl_fiscal_year`... " />
+            <marker date="1510669475657" expanded="true" signature="21892:21938" ph="SELECT * fro... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="22085:22131" ph="DELETE FROM " />
+            <marker date="1510669475657" expanded="true" signature="23365:23395" ph="SELECT * FRO... ${$table}" />
+            <marker date="1510669475657" expanded="true" signature="26898:26998" ph="SELECT id,us... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="27075:27163" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="27299:27446" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="27588:27660" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="27799:28168" ph="SELECT SUM(y... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="28289:28329" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="28463:29236" ph="SELECT act.i... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="29384:30192" ph="SELECT act.i... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="30358:30749" ph="SELECT eo.na... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="30938:31405" ph="SELECT lo.na... tbl_transaction_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="31560:31625" ph="SELECT code tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="31753:34467" ph="SELECT SUM(M... main_id" />
+            <marker date="1510669475657" expanded="true" signature="32148:34457" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="32629:34425" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="33180:34398" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="34654:36947" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="35119:36915" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="35670:36888" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="37083:38562" ph="SELECT sub_c... code" />
+            <marker date="1510669475657" expanded="true" signature="37461:38534" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="38781:39643" ph="SELECT act.n... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="40199:40953" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="41785:42754" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="43747:45681" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="47815:48482" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="49295:49335" ph="SELECT * FRO... tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="49415:52153" ph="SELECT SUM(M... main_id" />
+            <marker date="1510669475657" expanded="true" signature="49810:52143" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="50291:52111" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="50842:52084" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="52345:54662" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="52810:54630" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="53361:54603" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="54811:56321" ph="SELECT sub_c... code" />
+            <marker date="1510669475657" expanded="true" signature="55189:56293" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="56553:57446" ph="SELECT act.n... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="58012:58766" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="59604:60573" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="61572:63506" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="65645:66312" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="67129:67209" ph="SELECT id, c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="67324:67377" ph="SELECT * FRO... tbl_activities" />
           </folding>
         </state>
       </provider>
@@ -605,50 +723,107 @@
         <state relative-caret-position="1800">
           <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
           <folding>
-            <marker date="1510460715032" expanded="true" signature="744:831" ph="SELECT * FRO... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="993:1019" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1128:1155" ph="SELECT * FRO... tbl_districts" />
-            <marker date="1510460715032" expanded="true" signature="1253:1317" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1458:1509" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1616:1863" ph="SELECT lo.id... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="1973:2218" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="2334:2373" ph="SELECT * fro... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="2520:2616" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="3039:3090" ph="Select COUNT... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="3354:3407" ph="Select COUNT... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="3771:3875" ph="INSERT INTO `db_pis`.`tbl_local_offices`... " />
-            <marker date="1510460715032" expanded="true" signature="4276:4374" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="4896:5019" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
-            <marker date="1510460715032" expanded="true" signature="5451:5648" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="5776:6062" ph="SELECT lo.id... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="6220:6285" ph="Select COUNT... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="6651:6749" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
-            <marker date="1510460715032" expanded="true" signature="7173:7268" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="7709:7766" ph="Select COUNT... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="8171:8304" ph="INSERT INTO `db_pis`.`tbl_users`... " />
-            <marker date="1510460715032" expanded="true" signature="8855:8895" ph="SELECT * FRO... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="9140:9203" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="9619:9735" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="10245:10293" ph="SELECT * FRO... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="10413:10472" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="10588:10652" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="10765:10824" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="10943:11001" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="11119:11176" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="11305:11364" ph="Select COUNT... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="11726:11862" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="12343:12434" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="12867:12923" ph="DELETE FROM " />
-            <marker date="1510460715032" expanded="true" signature="13178:13236" ph="Select COUNT... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="13597:13733" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="14210:14300" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="14738:14792" ph="Select COUNT... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="15179:15327" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="15879:15975" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="49365:49405" ph="SELECT * FRO... tbl_current_reports" />
-            <marker date="1510460715032" expanded="true" signature="49519:49597" ph="SELECT id, c... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="49712:49765" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="49800:49844" ph="/*Creating t... " />
+            <marker date="1510669475657" expanded="true" signature="744:831" ph="SELECT * FRO... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="993:1019" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1128:1155" ph="SELECT * FRO... tbl_districts" />
+            <marker date="1510669475657" expanded="true" signature="1253:1317" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1458:1509" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1616:1863" ph="SELECT lo.id... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="1973:2218" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="2334:2373" ph="SELECT * fro... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="2520:2616" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="3039:3090" ph="Select COUNT... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="3354:3407" ph="Select COUNT... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="3771:3875" ph="INSERT INTO `db_pis`.`tbl_local_offices`... " />
+            <marker date="1510669475657" expanded="true" signature="4276:4374" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="4896:5019" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
+            <marker date="1510669475657" expanded="true" signature="5451:5648" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="5776:6062" ph="SELECT lo.id... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="6220:6285" ph="Select COUNT... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="6651:6749" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
+            <marker date="1510669475657" expanded="true" signature="7173:7268" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="7709:7766" ph="Select COUNT... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="8171:8304" ph="INSERT INTO `db_pis`.`tbl_users`... " />
+            <marker date="1510669475657" expanded="true" signature="8855:8895" ph="SELECT * FRO... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="9140:9203" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="9619:9735" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="10245:10293" ph="SELECT * FRO... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="10413:10472" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="10588:10652" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="10765:10824" ph="SELECT * FRO... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="10943:11001" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="11119:11176" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="11305:11364" ph="Select COUNT... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="11726:11862" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="12343:12434" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="12867:12923" ph="DELETE FROM " />
+            <marker date="1510669475657" expanded="true" signature="13178:13236" ph="Select COUNT... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="13597:13733" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="14210:14300" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="14738:14792" ph="Select COUNT... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="15179:15327" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="15879:15975" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="16466:16630" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="16751:16919" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17041:17173" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17309:17547" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17684:17875" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="18006:18201" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="18307:18473" ph="SELECT u.use... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="18578:18673" ph="SELECT id,us... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="18876:18928" ph="SELECT name_... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="19068:19122" ph="SELECT name_... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="19294:19418" ph="SELECT o.nam... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="19567:19743" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="20273:20456" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="20911:20947" ph="SELECT * FRO... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="21146:21215" ph="Select COUNT... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="21591:21659" ph="INSERT INTO `db_pis`.`tbl_fiscal_year`... " />
+            <marker date="1510669475657" expanded="true" signature="21892:21938" ph="SELECT * fro... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="22085:22131" ph="DELETE FROM " />
+            <marker date="1510669475657" expanded="true" signature="23365:23395" ph="SELECT * FRO... ${$table}" />
+            <marker date="1510669475657" expanded="true" signature="26898:26998" ph="SELECT id,us... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="27075:27163" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="27299:27446" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="27588:27660" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="27799:28168" ph="SELECT SUM(y... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="28289:28329" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="28463:29236" ph="SELECT act.i... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="29384:30192" ph="SELECT act.i... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="30358:30749" ph="SELECT eo.na... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="30938:31405" ph="SELECT lo.na... tbl_transaction_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="31560:31625" ph="SELECT code tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="31753:34467" ph="SELECT SUM(M... main_id" />
+            <marker date="1510669475657" expanded="true" signature="32148:34457" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="32629:34425" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="33180:34398" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="34654:36947" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="35119:36915" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="35670:36888" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="37083:38562" ph="SELECT sub_c... code" />
+            <marker date="1510669475657" expanded="true" signature="37461:38534" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="38781:39643" ph="SELECT act.n... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="40199:40953" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="41785:42754" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="43747:45681" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="47815:48482" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="49295:49335" ph="SELECT * FRO... tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="49415:52153" ph="SELECT SUM(M... main_id" />
+            <marker date="1510669475657" expanded="true" signature="49810:52143" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="50291:52111" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="50842:52084" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="52345:54662" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="52810:54630" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="53361:54603" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="54811:56321" ph="SELECT sub_c... code" />
+            <marker date="1510669475657" expanded="true" signature="55189:56293" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="56553:57446" ph="SELECT act.n... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="58012:58766" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="59604:60573" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="61572:63506" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="65645:66312" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="67129:67209" ph="SELECT id, c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="67324:67377" ph="SELECT * FRO... tbl_activities" />
           </folding>
         </state>
       </provider>
@@ -767,14 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cp/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="128" column="128" lean-forward="false" selection-start-line="128" selection-start-column="128" selection-end-line="128" selection-end-column="128" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cp/testing.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -820,46 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cp/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5232">
-          <caret line="218" column="27" lean-forward="false" selection-start-line="218" selection-start-column="27" selection-end-line="218" selection-end-column="27" />
-          <folding>
-            <marker date="1509995253626" expanded="true" signature="710:797" ph="SELECT * FRO... tbl_users" />
-            <marker date="1509995253626" expanded="true" signature="954:980" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1509995253626" expanded="true" signature="1088:1139" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1509995253626" expanded="true" signature="1241:1398" ph="SELECT lo.id... tbl_local_offices" />
-            <marker date="1509995253626" expanded="true" signature="1502:1649" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1509995253626" expanded="true" signature="1759:1798" ph="SELECT * fro... tbl_edu_offices" />
-            <marker date="1509995253626" expanded="true" signature="1934:2040" ph="UPDATE `db_p... " />
-            <marker date="1509995253626" expanded="true" signature="2489:2634" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
-            <marker date="1509995253626" expanded="true" signature="3095:3178" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
-            <marker date="1509995253626" expanded="true" signature="3481:3563" ph="UPDATE `db_p... " />
-            <marker date="1509995253626" expanded="true" signature="3939:3970" ph="SELECT * FRO... tbl_local_offices" />
-            <marker date="1509995253626" expanded="true" signature="4084:4143" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1509995253626" expanded="true" signature="4254:4318" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1509995253626" expanded="true" signature="4426:4485" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1509995253626" expanded="true" signature="4599:4657" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1509995253626" expanded="true" signature="4770:4827" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1509995253626" expanded="true" signature="4940:5057" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
-            <marker date="1509995253626" expanded="true" signature="5420:5498" ph="UPDATE `db_p... " />
-            <marker date="1509995253626" expanded="true" signature="5880:5936" ph="DELETE FROM " />
-            <marker date="1509995253626" expanded="true" signature="6192:6313" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
-            <marker date="1509995253626" expanded="true" signature="6672:6749" ph="UPDATE `db_p... " />
-            <marker date="1509995253626" expanded="true" signature="7172:7301" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
-            <marker date="1509995253626" expanded="true" signature="7750:7833" ph="UPDATE `db_p... " />
-            <marker date="1509995253626" expanded="true" signature="8275:8437" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1509995253626" expanded="true" signature="8552:8718" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1509995253626" expanded="true" signature="8849:9038" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1509995253626" expanded="true" signature="9164:9357" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1509995253626" expanded="true" signature="9457:9623" ph="SELECT u.use... tbl_users" />
-            <marker date="1509995253626" expanded="true" signature="9744:9868" ph="SELECT o.nam... tbl_local_offices" />
-            <marker date="1509995253626" expanded="true" signature="10012:10188" ph="UPDATE `db_p... " />
-            <marker date="1509995253626" expanded="true" signature="10708:10891" ph="UPDATE `db_p... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cp/activitywiseexcel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -876,89 +1003,197 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cp/activitywise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding>
-            <marker date="1510066225018" expanded="true" signature="926:969" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cp/mainActivity.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1968">
-          <caret line="82" column="69" lean-forward="true" selection-start-line="81" selection-start-column="28" selection-end-line="82" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2879">
-          <caret line="973" column="13" lean-forward="false" selection-start-line="973" selection-start-column="13" selection-end-line="973" selection-end-column="13" />
-          <folding>
-            <marker date="1510460715032" expanded="true" signature="744:831" ph="SELECT * FRO... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="993:1019" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1128:1155" ph="SELECT * FRO... tbl_districts" />
-            <marker date="1510460715032" expanded="true" signature="1253:1317" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1458:1509" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="1616:1863" ph="SELECT lo.id... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="1973:2218" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="2334:2373" ph="SELECT * fro... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="2520:2616" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="3039:3090" ph="Select COUNT... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="3354:3407" ph="Select COUNT... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="3771:3875" ph="INSERT INTO `db_pis`.`tbl_local_offices`... " />
-            <marker date="1510460715032" expanded="true" signature="4276:4374" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="4896:5019" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
-            <marker date="1510460715032" expanded="true" signature="5451:5648" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1510460715032" expanded="true" signature="5776:6062" ph="SELECT lo.id... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="6220:6285" ph="Select COUNT... tbl_programs" />
-            <marker date="1510460715032" expanded="true" signature="6651:6749" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
-            <marker date="1510460715032" expanded="true" signature="7173:7268" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="7709:7766" ph="Select COUNT... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="8171:8304" ph="INSERT INTO `db_pis`.`tbl_users`... " />
-            <marker date="1510460715032" expanded="true" signature="8855:8895" ph="SELECT * FRO... tbl_users" />
-            <marker date="1510460715032" expanded="true" signature="9140:9203" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="9619:9735" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="10245:10293" ph="SELECT * FRO... tbl_local_offices" />
-            <marker date="1510460715032" expanded="true" signature="10413:10472" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="10588:10652" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="10765:10824" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="10943:11001" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="11119:11176" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="11305:11364" ph="Select COUNT... tbl_main_activities" />
-            <marker date="1510460715032" expanded="true" signature="11726:11862" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="12343:12434" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="12867:12923" ph="DELETE FROM " />
-            <marker date="1510460715032" expanded="true" signature="13178:13236" ph="Select COUNT... tbl_sub_activities" />
-            <marker date="1510460715032" expanded="true" signature="13597:13733" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="14210:14300" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="14738:14792" ph="Select COUNT... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="15179:15327" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
-            <marker date="1510460715032" expanded="true" signature="15879:15975" ph="UPDATE `db_p... " />
-            <marker date="1510460715032" expanded="true" signature="49365:49405" ph="SELECT * FRO... tbl_current_reports" />
-            <marker date="1510460715032" expanded="true" signature="49519:49597" ph="SELECT id, c... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="49712:49765" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1510460715032" expanded="true" signature="49800:49844" ph="/*Creating t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cp/activitywisereport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2328">
-          <caret line="97" column="35" lean-forward="true" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+          <caret line="82" column="69" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="82" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cp/finalreport.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="173" column="29" lean-forward="false" selection-start-line="173" selection-start-column="29" selection-end-line="173" selection-end-column="29" />
+        <state relative-caret-position="283">
+          <caret line="178" column="43" lean-forward="false" selection-start-line="178" selection-start-column="43" selection-end-line="178" selection-end-column="43" />
+          <folding>
+            <marker date="1510667941517" expanded="true" signature="9862:10001" ph="..." />
+            <marker date="1510667941517" expanded="true" signature="9903:9990" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1510668963293" expanded="true" signature="709:796" ph="SELECT * FRO... tbl_users" />
+            <marker date="1510668963293" expanded="true" signature="953:979" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510668963293" expanded="true" signature="1087:1138" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510668963293" expanded="true" signature="1240:1397" ph="SELECT lo.id... tbl_local_offices" />
+            <marker date="1510668963293" expanded="true" signature="1501:1648" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1510668963293" expanded="true" signature="1758:1797" ph="SELECT * fro... tbl_edu_offices" />
+            <marker date="1510668963293" expanded="true" signature="1933:2039" ph="UPDATE `db_p... " />
+            <marker date="1510668963293" expanded="true" signature="2488:2633" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
+            <marker date="1510668963293" expanded="true" signature="3094:3177" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
+            <marker date="1510668963293" expanded="true" signature="3480:3562" ph="UPDATE `db_p... " />
+            <marker date="1510668963293" expanded="true" signature="3938:3969" ph="SELECT * FRO... tbl_local_offices" />
+            <marker date="1510668963293" expanded="true" signature="4083:4142" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510668963293" expanded="true" signature="4253:4317" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510668963293" expanded="true" signature="4425:4484" ph="SELECT * FRO... tbl_activities" />
+            <marker date="1510668963293" expanded="true" signature="4598:4656" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510668963293" expanded="true" signature="4769:4826" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510668963293" expanded="true" signature="4939:5056" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
+            <marker date="1510668963293" expanded="true" signature="5419:5497" ph="UPDATE `db_p... " />
+            <marker date="1510668963293" expanded="true" signature="5879:5935" ph="DELETE FROM " />
+            <marker date="1510668963293" expanded="true" signature="6191:6312" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
+            <marker date="1510668963293" expanded="true" signature="6671:6748" ph="UPDATE `db_p... " />
+            <marker date="1510668963293" expanded="true" signature="7171:7300" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
+            <marker date="1510668963293" expanded="true" signature="7749:7832" ph="UPDATE `db_p... " />
+            <marker date="1510668963293" expanded="true" signature="8274:8436" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510668963293" expanded="true" signature="8551:8717" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510668963293" expanded="true" signature="8848:9037" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510668963293" expanded="true" signature="9163:9356" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510668963293" expanded="true" signature="9456:9622" ph="SELECT u.use... tbl_users" />
+            <marker date="1510668963293" expanded="true" signature="9743:9867" ph="SELECT o.nam... tbl_local_offices" />
+            <marker date="1510668963293" expanded="true" signature="10011:10187" ph="UPDATE `db_p... " />
+            <marker date="1510668963293" expanded="true" signature="10707:10890" ph="UPDATE `db_p... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/activitywise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="28" lean-forward="true" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+          <folding>
+            <marker date="1510667941505" expanded="true" signature="926:969" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/activitywisereport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="96" column="74" lean-forward="false" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/class/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1377">
+          <caret line="749" column="128" lean-forward="false" selection-start-line="749" selection-start-column="128" selection-end-line="749" selection-end-column="128" />
+          <folding>
+            <marker date="1510669475657" expanded="true" signature="744:831" ph="SELECT * FRO... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="993:1019" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1128:1155" ph="SELECT * FRO... tbl_districts" />
+            <marker date="1510669475657" expanded="true" signature="1253:1317" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1458:1509" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="1616:1863" ph="SELECT lo.id... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="1973:2218" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="2334:2373" ph="SELECT * fro... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="2520:2616" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="3039:3090" ph="Select COUNT... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="3354:3407" ph="Select COUNT... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="3771:3875" ph="INSERT INTO `db_pis`.`tbl_local_offices`... " />
+            <marker date="1510669475657" expanded="true" signature="4276:4374" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="4896:5019" ph="INSERT INTO `db_pis`.`tbl_edu_offices`... " />
+            <marker date="1510669475657" expanded="true" signature="5451:5648" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="5776:6062" ph="SELECT lo.id... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="6220:6285" ph="Select COUNT... tbl_programs" />
+            <marker date="1510669475657" expanded="true" signature="6651:6749" ph="INSERT INTO `db_pis`.`tbl_programs`... " />
+            <marker date="1510669475657" expanded="true" signature="7173:7268" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="7709:7766" ph="Select COUNT... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="8171:8304" ph="INSERT INTO `db_pis`.`tbl_users`... " />
+            <marker date="1510669475657" expanded="true" signature="8855:8895" ph="SELECT * FRO... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="9140:9203" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="9619:9735" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="10245:10293" ph="SELECT * FRO... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="10413:10472" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="10588:10652" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="10765:10824" ph="SELECT * FRO... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="10943:11001" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="11119:11176" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="11305:11364" ph="Select COUNT... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="11726:11862" ph="INSERT INTO `db_pis`.`tbl_main_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="12343:12434" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="12867:12923" ph="DELETE FROM " />
+            <marker date="1510669475657" expanded="true" signature="13178:13236" ph="Select COUNT... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="13597:13733" ph="INSERT INTO `db_pis`.`tbl_sub_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="14210:14300" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="14738:14792" ph="Select COUNT... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="15179:15327" ph="INSERT INTO `db_pis`.`tbl_activities`... " />
+            <marker date="1510669475657" expanded="true" signature="15879:15975" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="16466:16630" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="16751:16919" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17041:17173" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17309:17547" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="17684:17875" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="18006:18201" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="18307:18473" ph="SELECT u.use... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="18578:18673" ph="SELECT id,us... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="18876:18928" ph="SELECT name_... tbl_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="19068:19122" ph="SELECT name_... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="19294:19418" ph="SELECT o.nam... tbl_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="19567:19743" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="20273:20456" ph="UPDATE `db_p... " />
+            <marker date="1510669475657" expanded="true" signature="20911:20947" ph="SELECT * FRO... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="21146:21215" ph="Select COUNT... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="21591:21659" ph="INSERT INTO `db_pis`.`tbl_fiscal_year`... " />
+            <marker date="1510669475657" expanded="true" signature="21892:21938" ph="SELECT * fro... tbl_fiscal_year" />
+            <marker date="1510669475657" expanded="true" signature="22085:22131" ph="DELETE FROM " />
+            <marker date="1510669475657" expanded="true" signature="23365:23395" ph="SELECT * FRO... ${$table}" />
+            <marker date="1510669475657" expanded="true" signature="26898:26998" ph="SELECT id,us... tbl_users" />
+            <marker date="1510669475657" expanded="true" signature="27075:27163" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="27299:27446" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="27588:27660" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1510669475657" expanded="true" signature="27799:28168" ph="SELECT SUM(y... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="28289:28329" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1510669475657" expanded="true" signature="28463:29236" ph="SELECT act.i... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="29384:30192" ph="SELECT act.i... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="30358:30749" ph="SELECT eo.na... tbl_transaction_edu_offices" />
+            <marker date="1510669475657" expanded="true" signature="30938:31405" ph="SELECT lo.na... tbl_transaction_local_offices" />
+            <marker date="1510669475657" expanded="true" signature="31560:31625" ph="SELECT code tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="31753:34467" ph="SELECT SUM(M... main_id" />
+            <marker date="1510669475657" expanded="true" signature="32148:34457" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="32629:34425" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="33180:34398" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="34654:36947" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="35119:36915" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="35670:36888" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="37083:38562" ph="SELECT sub_c... code" />
+            <marker date="1510669475657" expanded="true" signature="37461:38534" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="38781:39643" ph="SELECT act.n... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="40199:40953" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="41785:42754" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="43747:45681" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="47815:48482" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="49295:49335" ph="SELECT * FRO... tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="49415:52153" ph="SELECT SUM(M... main_id" />
+            <marker date="1510669475657" expanded="true" signature="49810:52143" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="50291:52111" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="50842:52084" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="52345:54662" ph="SELECT main_... main_id" />
+            <marker date="1510669475657" expanded="true" signature="52810:54630" ph="SELECT main_... id" />
+            <marker date="1510669475657" expanded="true" signature="53361:54603" ph="SELECT main.... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="54811:56321" ph="SELECT sub_c... code" />
+            <marker date="1510669475657" expanded="true" signature="55189:56293" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="56553:57446" ph="SELECT act.n... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="58012:58766" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="59604:60573" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="61572:63506" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="65645:66312" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1510669475657" expanded="true" signature="67129:67209" ph="SELECT id, c... tbl_activities" />
+            <marker date="1510669475657" expanded="true" signature="67324:67377" ph="SELECT * FRO... tbl_activities" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-329">
+          <caret line="130" column="18" lean-forward="false" selection-start-line="130" selection-start-column="18" selection-end-line="130" selection-end-column="18" />
           <folding />
         </state>
       </provider>
