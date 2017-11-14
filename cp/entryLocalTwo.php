@@ -92,6 +92,7 @@
 <?php echo '<script>
     $("#create_excel").click(function(){
             var page ="excelreport.php?lid='.$_GET["oid"].'&o_name='.$_GET['name'].'&f_year=आ.व. : 2073/74";
+            console.log(page);
             window.location=page;
     });
 </script>';?>

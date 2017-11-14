@@ -94,7 +94,7 @@ else{
 
                                     <td align="center"><p><a onclick="return validateForm()" href="#"
                                                              class="delete">Delete</a></p></td>
-                                    <td align="center"><p><a href="dashboard.php?action=activity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $_GET['mid'] ?>&sid=<?php echo $row['id']?>" class="delete">Add
+                                    <td align="center"><p><a href="dashboard.php?action=activity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $_GET['mid'] ?>&sid=<?php echo $row['code']?>" class="delete">Add
                                                 Activity</a></p></td>
                                 </tr>
                                 <?php

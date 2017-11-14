@@ -12,7 +12,7 @@ if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
             $sql = $dbc->selectTransactionGovernment($_GET['eid']);
         }
         if(isset($_GET['lid'])){
-            $sql = $dbc->selectTransactionLocal($_GET['lid']);
+            $sql = $dbc->selectLocalOfficeTransaction($_GET['lid']);
         }
         $objPHPExcel->setActiveSheetIndex()
         ->mergeCells('C3:C4');
