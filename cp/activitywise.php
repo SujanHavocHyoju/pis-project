@@ -3,7 +3,7 @@
 <?php if (isset($_POST['btnfind'])) {
     $aid = $_POST['activitycode'];
     $acode = mysqli_fetch_assoc($dbc->selectActivityCode($aid));
-    echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=activitywisereport&aid=" . $aid . "&acode=" . $acode['code']. "';</script>";
+    echo "<script>location.href='dashboard.php?action=activitywisereport&aid=" . $aid . "&acode=" . $acode['code']. "';</script>";
 } ?>
 
 <div id="skip-menu"></div>

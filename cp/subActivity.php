@@ -50,7 +50,7 @@ else{
                         <table width="100%" align="center" border="1" class="table">
 
                             <tr>
-                                <th align="right" colspan="5"><span class="preeti"><a href="mainactivity.php">Back to Main Page</a></span>
+                                <th align="right" colspan="5"><span class="preeti"><a href="#" onclick="return back();">अघिल्लो पृष्टमा जाने</a></span>
                                 </th>
 
 
@@ -94,7 +94,7 @@ else{
 
                                     <td align="center"><p><input type="button" onclick="return validateForm()" href="#"
                                                              class="delete" disabled  value=" मेट्ने "></p></td>
-                                    <td align="center"><p><input type="button"  onclick="window.location.href='dashboard.php?action=activity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $_GET['mid'] ?>&sid=<?php echo $row['code']?>'" class="delete" value="Add Activity"/>
+                                    <td align="center"><p><input type="button"  onclick="window.location.href='dashboard.php?action=activity&pid=<?php echo $_GET['pid']?>&mid=<?php echo $_GET['mid'] ?>&sid=<?php echo $row['code']?>'" class="delete" value=" क्रियाकलाप थप गर्ने "/>
                                                 </p></td>
                                 </tr>
                                 <?php

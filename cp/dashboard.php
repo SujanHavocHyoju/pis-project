@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include('../class/common.php');
 include('../class/utils.php');
 if(!isset($_SESSION['username']) || !isset($_SESSION['user_type']))
@@ -35,11 +36,14 @@ echo "<script>window.location='login.php';</script>";
     <link rel="shortcut icon" href="../public/img/favicon.ico" type="image/x-icon"/>
     <script>
         function validateForm() {
-            var agree = confirm("मेट्ने सुबिधा उपलव्ध छैन ");
+            var agree = confirm("");
             if (agree)
                 return true;
             else
                 return false;
+        }
+        function back(){
+            window.history.go(-1);
         }
     </script>
     <title>शिक्षा विभाग</title>
@@ -97,7 +101,7 @@ echo "<script>window.location='login.php';</script>";
                     <li><a href="dashboard.php?action=program" title="" class="preeti none"
                            style="font-size:14px; font-weight:normal">कार्यक्रम प्रविष्टी</a></li>
                     
-                     <li class="sub-office"><a href="dashboard.php?action=eduoffice" title="" class="preeti none" style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय प्रविष्टि </a></li><li class="sub-office"><a href="dashboard.php?action=office" title="" class="preeti none" style="font-size:14px; font-weight:normal">स्थानीय कार्यालय प्रविष्टि </a></li>
+                     <li class="sub-office"><a href="dashboard.php?action=eduoffice" title="" class="preeti none" style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय प्रविष्टि </a></li><li class="sub-office"><a href="dashboard.php?action=office" title="" class="preeti none" style="font-size:14px; font-weight:normal">स्थानीय निकाय प्रविष्टि </a></li>
                     
                     <li><a href="dashboard.php?action=users" title="" class="preeti none"
                            style="font-size:14px; font-weight:normal">प्रयोगकर्ता
@@ -122,7 +126,7 @@ echo "<script>window.location='login.php';</script>";
                            style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय</a></li>
                    
                     <li><a href="dashboard.php?action=entryLocal" class="preeti none"
-                           style="font-size:14px; font-weight:normal">स्थानीय कार्यालय</a></li>
+                           style="font-size:14px; font-weight:normal">स्थानीय निकाय</a></li>
                     </li>
                 </ul>
             </li>
@@ -130,10 +134,13 @@ echo "<script>window.location='login.php';</script>";
 
             <li><a href="#">प्रतिवेदनहरु</a>
                 <ul>
-
-
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport">कार्यक्रमगत
-                            एकमुष्ट प्रतिवेदन</a></li>
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=360140">
+                    केन्द्रस्तर एकमुष्ठ प्रतिवेदन 
+                    </a></li>
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=350806" >
+                    जिल्लास्तर एकमुष्ठ प्रतिवेदन </a></li>
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=0" >
+                    स्थानीय एकमुष्ठ प्रतिवेदन </a></li>
                     <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=officewise">कार्यालयगत
                             प्रतिवेदन</a></li>
                     <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=activitywise">क्रियाकलापगत
@@ -164,16 +171,31 @@ echo "<script>window.location='login.php';</script>";
     </div>
     <?php endif; ?>
         <!-- Menu end -->
-<!--FOR EDU-LOCAL-OFFICE-->
-<?php if($_SESSION['user_type'] != 0):
+<!--FOR ED-OFFICE-->
+<?php if($_SESSION['user_type'] == 1):
     $edu_office_url = "dashboard.php?action=entryTwo&oid=".$_SESSION['office_id']."&name=".$_SESSION['office_name'];
-    $local_office_url = "dashboard.php?action=entryLocalTwo&oid=".$_SESSION['office_id']."&name=".$_SESSION['office_name'];
+    
     ?>
     <div class="white">
         <!-- Menu -->
         <ul id="mega-menu-1" class="mega-menu">
             <li><a href="dashboard.php?action=home" class="active">गृहपृष्ठ</a></li>
-            <li><a href="<?php echo $_SESSION['user_type'] ==1 ? $edu_office_url:$local_office_url?>">प्रगति प्रविष्टि</a></li>
+            <?php if($_SESSION['office_id']<75):?>
+            <li><a href="#">प्रगति प्रविष्टि</a>
+                <ul>
+                    
+                    <li><a href="<?php echo  $edu_office_url?>" class="preeti none"
+                           style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय</a></li>
+                   
+                    <li><a href="dashboard.php?action=entryLocal&district_id=<?php echo $_SESSION['district_id'];?>" class="preeti none"
+                           style="font-size:14px; font-weight:normal">स्थानीय निकाय</a></li>
+                    </li>
+                </ul>
+            </li>
+            <?php  endif;?>
+            <?php if($_SESSION['office_id']>75):?>
+            <li><a href="<?php echo  $edu_office_url?>">प्रगति प्रविष्टि</a></li>
+            <?php  endif;?>
             <li><a href="#">अन्य प्रयोग</a>
                 <ul>
 
@@ -187,7 +209,30 @@ echo "<script>window.location='login.php';</script>";
         </ul>
     </div>
     <?php endif; ?>
-        <!--END FOR EDU LOCAL OFFICE-->
+        <!--END FOR EDU OFFICE-->
+        <!--FOR LOCAL-OFFICE-->
+    <?php if($_SESSION['user_type'] == 2):
+    
+    $local_office_url = "dashboard.php?action=entryLocalTwo&oid=".$_SESSION['office_id']."&name=".$_SESSION['office_name'];
+    ?>
+    <div class="white">
+        <!-- Menu -->
+        <ul id="mega-menu-1" class="mega-menu">
+            <li><a href="dashboard.php?action=home" class="active">गृहपृष्ठ</a></li>
+            <li><a href="<?php echo $local_office_url?>">प्रगति प्रविष्टि</a></li>
+            <li><a href="#">अन्य प्रयोग</a>
+                <ul>
+
+                    <li><a href="dashboard.php?action=changepassword" class="preeti none" style="font-size:14px; font-weight:normal">पासवर्ड
+                            परिवर्तन</a></li>
+                    <li><a href="dashboard.php?action=logout" class="preeti none"
+                           style="font-size:14px; font-weight:normal">लग आउट</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <?php endif; ?>
 
 </div>    <!-- Header end -->
 
@@ -202,8 +247,34 @@ if (isset($_GET['action']) and !empty($_GET['action'])) {
                 include($page);
                 break;
             case 1:
-                $rba_for_edu = array('entryTwo.php','entryThree.php','home.php','changepassword.php','logout.php');
+                $rba_for_edu = array('entryLocal.php','entryLocalTwo.php','entryLocalThree.php','entryTwo.php','entryThree.php','home.php','changepassword.php','logout.php');
                 if(in_array($page,$rba_for_edu)){
+                    if($page=='entryLocal.php'){
+                            if($_GET["district_id"]==$_SESSION['district_id']){
+                                include($page);
+                                break;
+                            }else{
+                                echo "<script>location.href='dashboard.php?action=home';</script>";
+                            }
+                    }
+                    if($page=='entryLocalTwo.php'){
+                        if(isset($_SESSION['district_id'])){
+                            include($page);
+                            break;
+                        }
+                        else{
+                            echo "<script>location.href='dashboard.php?action=home';</script>";
+                        } 
+                    }
+                    if($page=='entryLocalThree.php'){
+                        if(isset($_SESSION['district_id'])){
+                            include($page);
+                            break;
+                        }
+                        else{
+                            echo "<script>location.href='dashboard.php?action=home';</script>";
+                        }
+                    }
                     if($page=='entryThree.php'){
                         if($_GET['oid']==$_SESSION['office_id']){
                             include($page);
@@ -272,7 +343,7 @@ if (isset($_GET['action']) and !empty($_GET['action'])) {
 <!-- Footer -->
 <div id="footer">
     <div id="footer-in">
-        <p class="footer-left">&copy; <a href="#">शिक्षा विभाग</a>, <span class="siddhi">2074/75. </span></p>
+        <p class="footer-left">&copy; <a href="#">शिक्षा विभाग</a>, <span class="siddhi"><?php echo $_SESSION['fiscal_year'] ?></span></p>
     </div>
 </div>
 <!-- Footer end -->

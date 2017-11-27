@@ -17,8 +17,8 @@ if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
         }else{
             $objPHPExcel->setActiveSheetIndex()->setCellValue('D1',"प्रगति प्रतिवेदन ");
         }
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D2',"आ.व. २०७३/७४ (जिल्लास्तर) ");
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D3',"कार्यक्रम : ३५०८०६ (विद्यालयक्षेत्र विकास कार्यक्रम)");
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('D2',"आ.व. ".$_SESSION['fiscal_year']." (जिल्लास्तर) ");
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('D3',"कार्यक्रम : ".$_GET['pid']==0?'':$_GET['pid']." (विद्यालयक्षेत्र विकास कार्यक्रम)");
         $objPHPExcel->setActiveSheetIndex()
         ->mergeCells('A4:A5');
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A4',"कार्यक्रम सँकेत न.");
@@ -70,25 +70,21 @@ if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
             ->setCellValue('F'.$i,$row['yearly_weight'])
             ->setCellValue('G'.$i,$row['yearly_alloc_budget'])
             ->setCellValue('H'.$i,$row['yearly_progress_qty'])
-            ->setCellValue('I'.$i,$row['yearly_progress_qty_percent'])
+            ->setCellValue('I'.$i,$row['yearly_progress_qty_percentage'])
             ->setCellValue('J'.$i,$row['yearly_progress_expenditure'])
-            ->setCellValue('K'.$i,$row['yearly_progress_expenditure_percent'])
-            ->setCellValue('L'.$i,$row['yearly_progress_weighted'])
+            ->setCellValue('K'.$i,$row['yearly_progress_expenditure_percentage'])
+            ->setCellValue('L'.$i,$row['yearly_progress_weight'])
             ->setCellValue('M'.$i,$row['qtr_alloc_qty'])
             ->setCellValue('N'.$i,$row['qtr_alloc_weight'])
             ->setCellValue('O'.$i,$row['qtr_alloc_budget'])
             ->setCellValue('P'.$i,$row['qtr_progress_qty'])
-            ->setCellValue('Q'.$i,$row['qtr_progress_qty_percent'])
+            ->setCellValue('Q'.$i,$row['qtr_progress_qty_percentage'])
             ->setCellValue('R'.$i,$row['qtr_progress_expenditure'])
-            ->setCellValue('S'.$i,$row['qtr_progress_expenditure_percent'])
-            ->setCellValue('T'.$i,$row['qtr_progress_expenditure_weighted']);
+            ->setCellValue('S'.$i,$row['qtr_progress_expenditure_percentage'])
+            ->setCellValue('T'.$i,$row['qtr_progress_expenditure_weight']);
         }
-        header('Content-Type: application/vnd.ms-excel');
-       if(isset($_GET['o_name'])){
-        header('Content-Disposition: attachment;filename="pis-report-final-for-'.$_GET['o_name'].'.xls"');
-       }else{
-        header('Content-Disposition: attachment;filename="pis-report-final.xls"');
-       }
+       
+       
         header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');
@@ -98,13 +94,20 @@ if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
         header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
         header ('Pragma: public'); // HTTP/1.0
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        ob_end_clean();
+        if(isset($_GET['o_name'])){
+            header('Content-Disposition: attachment;filename="pis-report-final-for-'.$_GET['o_name'].'.xlsx"');
+        }else{
+            header('Content-Disposition: attachment;filename="pis-report-final.xlsx"');
+        }
+        header('Content-Type: application/vnd.ms-excel');
         $objWriter->save('php://output');
     }else{
-        echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home';</script>";
+        echo "<script>location.href='dashboard.php?action=home';</script>";
     }
 }
 else{
-    echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home';</script>";
+    echo "<script>location.href='dashboard.php?action=home';</script>";
 }
 
 ?>

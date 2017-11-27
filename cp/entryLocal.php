@@ -1,4 +1,10 @@
-
+<?php 
+    if(isset($_GET['district_id'])){
+        $sql = $dbc->selectLocalOfficeWithDistrictId($_GET['district_id']);
+    }else{
+        $sql = $dbc->selectLocalOffice();
+    }
+?>
 
 <div id="skip-menu"></div>
 
@@ -9,7 +15,7 @@
         <!-- Content left -->
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
-                <h3 class="line"><span class="preeti" style="font-size:23px;">स्थानीय कार्यालय  </span></h3>
+                <h3 class="line"><span class="preeti" style="font-size:23px;">स्थानीय निकाय  </span></h3>
                 <h4 class="line"><span class="preeti" style="font-size:23px;">आ.व. <?php echo $_SESSION['fiscal_year'];?> </span></h4>
 
                 <!-- My latest work -->
@@ -27,7 +33,7 @@
                         </tr>
                         <?php
                         $i = 1;
-                        $sql = $dbc->selectLocalOffice();
+                        
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>
                             <tr>
@@ -43,7 +49,7 @@
                                 <td align="center" width="30%">
                                     <span class="preeti"><input type="button"   
                                     onclick="window.location.href='dashboard.php?action=entryLocalTwo&oid=<?php echo $row['id']?>&name=<?php echo $row['name_np'] ?>'"
-                                                class="edit" name="entry"/ value="परगति विवरण प्रविष्टि गर्नुहोस "></span>
+                                                class="edit" name="entry"/ value="प्रगति विवरण प्रविष्टि गर्नुहोस "></span>
                                 </td>
                             </tr>
                             <?php

@@ -15,17 +15,17 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
 
-                <h3 align="center"><span class="preeti" style="font-size:20px; text-align: center">
+                <h3 align="center"><p class="preeti" style="font-size:20px; text-align: center">
                      नेपाल सरकार
                      शिक्षा मन्त्रालय
                      शिक्षा विभाग
 
-                    </span>
+</p>
                 </h3>
 
                 <h3 class="line">
-                    <span class="preeti" style="font-size:23px;">
-                    </span>
+                    <p class="preeti" style="font-size:23px;">
+</p>
                 </h3>
 
                 <!-- My latest work -->
@@ -42,7 +42,7 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
                         <tr>
 
                             <td colspan="14" style="text-align: center;">
-                                आ.व. &#2408;&#2406;&#2413;&#2409;/&#2413;&#2410; (जिल्लास्तर)
+                                आ.व. <?php echo $_SESSION["fiscal_year"];?> (जिल्लास्तर)
                             </td>
                         </tr>
 
@@ -59,13 +59,13 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
                     <form name="del" action="" method="post">
                         <table width="100%" align="center" border="1" class="table">
                             <tr>
-                                <td rowspan="2" align="center"><span class="preeti">सि. न.</span></td>
+                                <td rowspan="2" align="center"><span class="preeti">सि. नं.</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">कार्यक्रम/क्रियाकलाप</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">एकाई</span></td>
                                 <td colspan="4" align="center"><span class="preeti">वार्षिक लक्ष</span></td>
                                 <td colspan="4" align="center"><span class="preeti">वार्षिक प्रगति</span></td>
-                                <td colspan="3" align="center"><span class="preeti">तेश्रो चौमासिक लक्ष</span></td>
-                                <td colspan="4" align="center"><span class="preeti">तेश्रो चौमासिक प्रगति</span></td>
+                                <td colspan="3" align="center"><span class="preeti">प्रथम चौमासिक लक्ष</span></td>
+                                <td colspan="4" align="center"><span class="preeti">प्रथम चौमासिक प्रगति</span></td>
 
 
                             </tr>
@@ -103,8 +103,8 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
                                     <?php
                                     $percentageYearlyQty = $row['yearly_alloc_qty'] == 0 || $row['yearly_progress_qty'] == 0 ? 0 : $row['yearly_progress_qty'] / $row['yearly_alloc_qty'] * 100;
                                     $percentageYearlyExpenditure = $row['yearly_alloc_budget'] == 0 || $row['yearly_progress_expenditure'] == 0 ? 0 : $row['yearly_progress_expenditure'] / $row['yearly_alloc_budget'] * 100;
-                                    $percentageQThreeQty = $row['q3_alloc_qty'] == 0 || $row['q3_progress_qty'] == 0 ? 0 : $row['q3_progress_qty'] / $row['q3_alloc_qty'] * 100;
-                                    $percentageQThreeExpenditure = $row['q3_alloc_budget'] == 0 || $row['q3_progress_expenditure'] == 0 ? 0 : $row['q3_progress_expenditure'] / $row['q3_alloc_budget'] * 100;
+                                    $percentageQThreeQty = $row['q1_alloc_qty'] == 0 || $row['q1_progress_qty'] == 0 ? 0 : $row['q1_progress_qty'] / $row['q1_alloc_qty'] * 100;
+                                    $percentageQThreeExpenditure = $row['q1_alloc_budget'] == 0 || $row['q1_progress_expenditure'] == 0 ? 0 : $row['q1_progress_expenditure'] / $row['q1_alloc_budget'] * 100;
                                     ?>
 
                                     <td><span class="siddhi"><?php echo $i++ ?></span></td>
@@ -133,21 +133,21 @@ $activity = mysqli_fetch_array($dbc->selectOneActivity($activity_id));
                                     </td>
 
 
-                                    <td align="right"><span class="preeti"><?php echo $row['q3_alloc_qty'] ?></span>
+                                    <td align="right"><span class="preeti"><?php echo $row['q1_alloc_qty'] ?></span>
                                     </td>
 
                                     <td align="right"><span class="preeti"></span></td>
-                                    <td align="right"><span class="preeti"><?php echo $row['q3_alloc_budget'] ?></span>
+                                    <td align="right"><span class="preeti"><?php echo $row['q1_alloc_budget'] ?></span>
                                     </td>
 
-                                    <td align="right"><span class="preeti"><?php echo $row['q3_progress_qty'] ?></span>
+                                    <td align="right"><span class="preeti"><?php echo $row['q1_progress_qty'] ?></span>
                                     </td>
                                     <td align="right"><span
                                                 class="preeti"><?php echo $percentageQThreeQty ?></span>
                                     </td>
 
                                     <td align="right"><span
-                                                class="preeti"><?php echo $row['q3_progress_expenditure'] ?></span></td>
+                                                class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
                                     <td align="right"><span
                                                 class="preeti"><?php echo $percentageQThreeExpenditure ?></span>
                                     </td>

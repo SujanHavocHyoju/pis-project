@@ -14,7 +14,7 @@
         $message = $utils->errorMessage($_GET['error']);
     }
     if(isset($_POST['adduser'])){
-        $sql = $dbc->selectUserByUserType($_POST['user_type']);
+        $sql = $dbc->selectUserByFullName($_POST['search']);
     }else{
         $sql = $dbc->selectUser();
     }
@@ -31,9 +31,20 @@
                 <div class="galerie">
 
                     <p><?php echo  isset($message)?$message:"";?></p>
-                    <form action="http://localhost/pis-project/cp/dashboard.php?action=users" method="post">
-
-                        <table width="80%" align="center" border="1" class="table">
+                    <form action="dashboard.php?action=users" method="post">
+                    
+                        <table width="100%" align="center" border="1" class="table">
+                            <tr>
+                                <td width="100%"> <div class="search-box">
+                                <input type="text" name="search" id="search_text" autocomplete="off" placeholder="नेपाली भाषामा खोज्नुहोस् ..." class="form-control" />  
+                                <div class="result" id="result"></div>    
+                            </div></td>
+                            <td>
+                            <input type="submit" name="adduser" value="  खोजी गर्ने  " style="height:30px; width:120px;" />
+                            </td>
+                        </tr>
+                        </table>
+                        <table width="100%" align="center" border="1" class="table">
                             <tr>
 
                                 <th align="center">युजरनेम (Username)</th>
@@ -45,28 +56,7 @@
                                 <th></th>
 
                             </tr>
-                            
-                            <tr>
-
-                                <th>
-                                </th>
-                                <th></th>
-                                <th>
-                                </th>
-                                <th>
-                                <select name="user_type" style="height:30px; width:200px;" id='office_type'>
-                                    <option selected disabled>कार्यालयको प्रकार</option>
-                                    <option value="1">शैक्षिक कार्यालय</option>
-                                    <option value="2">स्थानीय कार्यालय </option>
-                                </select>
-                                     
-                               
-                                </th>
-                                <th colspan="3" align="center"><input type="submit" name="adduser" value="  खोजी गर्ने  "
-                                                       style="height:30px; width:120px;" /></th>
-
-
-                            </tr>
+                           
                             <?php 
                                 while($row = mysqli_fetch_array($sql)){
                             ?>
@@ -100,18 +90,53 @@
                 <!-- My latest work end -->
             </div>
 <script>
-    $("#office_type").change(function(){
-        var office_type = $("#office_type").val();
-        $("#officetypestore").val(office_type);
-        console.log(office_type);
-        $.ajax({
-            url:"officelist.php",
-            type : 'POST',
-            data :"data="+office_type,
-            success: function(response){
-                        $('#txtofficecode').html(response);
+    // $("#office_type").change(function(){
+    //     var office_type = $("#office_type").val();
+    //     $("#officetypestore").val(office_type);
+    //     console.log(office_type);
+    //     $.ajax({
+    //         url:"officelist.php",
+    //         type : 'POST',
+    //         data :"data="+office_type,
+    //         success: function(response){
+    //                     $('#txtofficecode').html(response);
                 
-            }
+    //         }
+    //     });
+    // });
+
+    $(document).ready(function(){  
+		$('#search_text').keyup(function(){  
+			var txt = $(this).val();  
+			if(txt != '')  
+			{  
+                console.log(txt);
+                $.ajax({  
+                     url:"fetch.php",  
+                     method:"post",  
+                     data:{search:txt},  
+                     dataType:"text",  
+                     success:function(data)  
+                     {  
+                          $('.result').html(data);  
+                     }  
+                });  
+			}  
+			else  
+			{  
+                $('.result').html('');                 
+			}  
+		});
+        $("body").click(function(e){
+            console.log(e.target.tagName);
+           if(e.target.tagName != "P"){
+                $('.result').html(''); 
+           }
+        
         });
-    });
+		$(document).on("click", ".result p", function(){
+			$(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+			$(this).parent(".result").empty();
+		});		
+	});
 </script>

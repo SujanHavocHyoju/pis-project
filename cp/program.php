@@ -1,4 +1,5 @@
 <?php 
+    include('../class/checker.php');
     if(isset($_GET['message'])){
         $message =$utils->successMessage($_GET['message']);
     }

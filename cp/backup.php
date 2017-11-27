@@ -7,7 +7,7 @@ if(isset($_SESSION['user_type'])){
         $host= "127.0.0.1";
         $user="root";
         $pass = "";
-        $name="db_pis";
+        $name="pisdoego_db_pis";
         $result = $dbc->EXPORT_TABLES($host,$user,$pass,$name);
         if($result){
             echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home&m=here';</script>";

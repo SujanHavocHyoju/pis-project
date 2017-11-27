@@ -91,7 +91,12 @@
 </div>
 <?php echo '<script>
     $("#create_excel").click(function(){
-            var page ="excelreport.php?eid='.$_GET["oid"].'&o_name='.$_GET['name'].'&f_year=आ.व. : 2073/74";
-            window.location=page;
+   //         var page ="excelreport.php?eid='.$_GET["oid"].'&o_name='.$_GET['name'].'&f_year=आ.व. : 2073/74";
+     //       window.location=page;
+     var agree = confirm("== कृपया माफ गर्नु होला । मंसिर १० गते पछि मात्र प्रतिबेदन डाउनलोड गर्नुहोला ====");
+     if (agree)
+         return true;
+     else
+         return false;
     });
 </script>';?>

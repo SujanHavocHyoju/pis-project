@@ -1,10 +1,9 @@
 <?php
-include('report.php');
 /*Declaring the constant keyword */
 define('DB_SERVER', '127.0.0.1');
 define('DB_USER', 'root');
 define('DB_PASS', 'admin');
-define('DB_NAME', 'db_pis');
+define('DB_NAME', 'pisdoego_db_pis');
 
 class DB_dbc
 {
@@ -17,7 +16,7 @@ class DB_dbc
         mysqli_query($this->dbc, "set character_set_client='utf8'");
         mysqli_query($this->dbc, "set character_set_results='utf8'");
         mysqli_query($this->dbc, "set collation_connection='utf8_general_ci'");
-        mysqli_select_db($this->dbc, 'db_pis');
+        mysqli_select_db($this->dbc, 'pisdoego_db_pis');
     }
 
     function selectUserLogin($username, $password)
@@ -71,7 +70,7 @@ class DB_dbc
 
     function updateEduOffice($sn, $office_name_np, $office_name_ep, $region)
     {
-        $query = sprintf("UPDATE `db_pis`.`tbl_edu_offices` SET name_np='%s',name_en='%s',district_id='%s' where id = '%s'",
+        $query = sprintf("UPDATE `pisdoego_db_pis`.`tbl_edu_offices` SET name_np='%s',name_en='%s',district_id='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc, $office_name_np),
             mysqli_real_escape_string($this->dbc, $office_name_ep),
             mysqli_real_escape_string($this->dbc, $region),
@@ -106,7 +105,7 @@ class DB_dbc
         if ($this->isLocalOfficeExists($sn)) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_local_bodies` (`name_np`, `name_en`, `district_id`) VALUES ('%s', '%s', '%s');",
+            $query = sprintf("INSERT INTO `pisdoego_db_pis`.`tbl_local_bodies` (`name_np`, `name_en`, `district_id`) VALUES ('%s', '%s', '%s');",
                 mysqli_real_escape_string($this->dbc, $name_np),
                 mysqli_real_escape_string($this->dbc, $name_en),
                 mysqli_real_escape_string($this->dbc, $district_id));
@@ -117,7 +116,7 @@ class DB_dbc
 
     function updateLocalOffice($sn, $name_np, $name_en, $district_id)
     {
-        $query = sprintf("UPDATE `db_pis`.`tbl_local_bodies` SET name_np='%s',name_en='%s',district_id='%s' where id = '%s'",
+        $query = sprintf("UPDATE `pisdoego_db_pis`.`tbl_local_bodies` SET name_np='%s',name_en='%s',district_id='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc, $name_np),
             mysqli_real_escape_string($this->dbc, $name_en),
             mysqli_real_escape_string($this->dbc, $district_id),
@@ -131,7 +130,7 @@ class DB_dbc
         if ($this->isEduOfficeExists($sn)) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_edu_offices` (`name_np`, `name_en`, `province_id`, `district_id`) VALUES ('%s', '%s', '%s', '%s');",
+            $query = sprintf("INSERT INTO `pisdoego_db_pis`.`tbl_edu_offices` (`name_np`, `name_en`, `province_id`, `district_id`) VALUES ('%s', '%s', '%s', '%s');",
                 mysqli_real_escape_string($this->dbc, $office_name_np),
                 mysqli_real_escape_string($this->dbc, $office_name_ep),
                 mysqli_real_escape_string($this->dbc, '0'),
@@ -168,7 +167,7 @@ class DB_dbc
         if ($this->isProgramExist($exp_head_code)) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_programs` (`name_np`, `exp_head_code`,`name_en`) VALUES ('%s','%s','%s')",
+            $query = sprintf("INSERT INTO `pisdoego_db_pis`.`tbl_programs` (`name_np`, `exp_head_code`,`name_en`) VALUES ('%s','%s','%s')",
                 mysqli_real_escape_string($this->dbc, $program),
                 mysqli_real_escape_string($this->dbc, $exp_head_code),
                 mysqli_real_escape_string($this->dbc, $program_en)
@@ -180,7 +179,7 @@ class DB_dbc
 
     function updateProgram($id, $exp_head_code, $program_name, $program_en)
     {
-        $query = sprintf("UPDATE  `db_pis`.`tbl_programs` set exp_head_code='%s', name_np='%s',name_en='%s' where id='%s'",
+        $query = sprintf("UPDATE  `pisdoego_db_pis`.`tbl_programs` set exp_head_code='%s', name_np='%s',name_en='%s' where id='%s'",
             mysqli_real_escape_string($this->dbc, $exp_head_code),
             mysqli_real_escape_string($this->dbc, $program_name),
             mysqli_real_escape_string($this->dbc, $program_en),
@@ -208,7 +207,7 @@ class DB_dbc
         if ($is_user) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_users` (`username`, `password`, `fullname`, `user_type`, `office_id`) VALUES ('%s', '%s', '%s', '%s', '%s');",
+            $query = sprintf("INSERT INTO `pisdoego_db_pis`.`tbl_users` (`username`, `password`, `fullname`, `user_type`, `office_id`) VALUES ('%s', '%s', '%s', '%s', '%s');",
                 mysqli_real_escape_string($this->dbc, $username),
                 mysqli_real_escape_string($this->dbc, crypt($password, 'st')),
                 mysqli_real_escape_string($this->dbc, $full_name),
@@ -223,7 +222,7 @@ class DB_dbc
     function selectOneUser($id)
     {
         $res = mysqli_query(
-            $this->dbc, 'SELECT * FROM db_pis.tbl_users where id=' . $id . ';'
+            $this->dbc, 'SELECT * FROM pisdoego_db_pis.tbl_users where id=' . $id . ';'
         );
         return $res;
     }
@@ -233,7 +232,7 @@ class DB_dbc
         $length = 8;
         $randomletter = trim(substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, $length));
         $query = sprintf(
-            "UPDATE `db_pis`.`tbl_users` SET `password`='%s' WHERE `id`='%s';",
+            "UPDATE `pisdoego_db_pis`.`tbl_users` SET `password`='%s' WHERE `id`='%s';",
             mysqli_real_escape_string($this->dbc, crypt($randomletter, 'st')),
             mysqli_real_escape_string($this->dbc, $id)
         );
@@ -249,7 +248,7 @@ class DB_dbc
     {
 
         $query = sprintf(
-            "UPDATE `db_pis`.`tbl_users` SET `username`='%s', `fullname`='%s', `user_type`='%s', `office_id`='%s' WHERE `id`='%s';",
+            "UPDATE `pisdoego_db_pis`.`tbl_users` SET `username`='%s', `fullname`='%s', `user_type`='%s', `office_id`='%s' WHERE `id`='%s';",
             mysqli_real_escape_string($this->dbc, $username),
             mysqli_real_escape_string($this->dbc, $fullname),
             mysqli_real_escape_string($this->dbc, $user_type),
@@ -315,7 +314,7 @@ class DB_dbc
         if ($this->isMainActivityExists($id)) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_main_activities` (`name_np`,`name_en`, `code`, `program_id`) VALUES         
+            $query = sprintf("INSERT INTO `pisdoego_db_pis`.`tbl_main_activities` (`name_np`,`name_en`, `code`, `program_id`) VALUES         
             ('%s','%s','%s','%s')",
                 mysqli_real_escape_string($this->dbc, $name),
                 mysqli_real_escape_string($this->dbc, $name_en),
@@ -328,7 +327,7 @@ class DB_dbc
 
     function updateMainActivity($id, $main_activity_code, $main_activity_name, $name_en)
     {
-        $query = sprintf("UPDATE `db_pis`.`tbl_main_activities` set name_np='%s',code='%s',name_en='%s' where id='%s'",
+        $query = sprintf("UPDATE `pisdoego_db_pis`.`tbl_main_activities` set name_np='%s',code='%s',name_en='%s' where id='%s'",
             mysqli_real_escape_string($this->dbc, $main_activity_name),
             mysqli_real_escape_string($this->dbc, $main_activity_code),
             mysqli_real_escape_string($this->dbc, $name_en),
@@ -339,7 +338,7 @@ class DB_dbc
 
     function deleteMainActivity($main_activity_code)
     {
-        $query = sprintf("DELETE FROM `db_pis`.`tbl_main_activities` where id='%s'",
+        $query = sprintf("DELETE FROM `pisdoego_db_pis`.`tbl_main_activities` where id='%s'",
             mysqli_real_escape_string($this->dbc, $main_activity_code));
         $result = mysqli_query($this->dbc, $query);
         return $result;
@@ -360,7 +359,7 @@ class DB_dbc
         if ($this->isSubActivityExists($code)) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_sub_activities` (`code`, `name_np`, `main_activity_id`,`name_en`) VALUES        
+            $query = sprintf("INSERT INTO `pisdoego_db_pis`.`tbl_sub_activities` (`code`, `name_np`, `main_activity_id`,`name_en`) VALUES        
         ('%s','%s','%s','%s')",
                 mysqli_real_escape_string($this->dbc, $code),
                 mysqli_real_escape_string($this->dbc, $name),
@@ -373,7 +372,7 @@ class DB_dbc
 
     function updateSubActivity($id, $sub_activity_code, $sub_activity_name, $name_en)
     {
-        $query = sprintf("UPDATE `db_pis`.`tbl_sub_activities` set name_np='%s',code='%s',name_en='%s' where id='%s'",
+        $query = sprintf("UPDATE `pisdoego_db_pis`.`tbl_sub_activities` set name_np='%s',code='%s',name_en='%s' where id='%s'",
             mysqli_real_escape_string($this->dbc, $sub_activity_name),
             mysqli_real_escape_string($this->dbc, $sub_activity_code),
             mysqli_real_escape_string($this->dbc, $name_en),
@@ -397,7 +396,7 @@ class DB_dbc
         if ($this->isActivityExist($activity_code)) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_activities` (`name_np`, `code`, `sub_activity_code`, `unit`,`name_en`) VALUES        
+            $query = sprintf("INSERT INTO `pisdoego_db_pis`.`tbl_activities` (`name_np`, `code`, `sub_activity_code`, `unit`,`name_en`) VALUES        
             ('%s','%s','%s','%s','%s')",
                 mysqli_real_escape_string($this->dbc, $activity_name),
                 mysqli_real_escape_string($this->dbc, $activity_code),
@@ -411,7 +410,7 @@ class DB_dbc
 
     function updateActivity($id, $activity_code, $activity_name, $unit, $name_en)
     {
-        $query = sprintf("UPDATE `db_pis`.`tbl_activities` set name_np='%s',unit='%s',code='%s',name_en='%s' where id='%s'",
+        $query = sprintf("UPDATE `pisdoego_db_pis`.`tbl_activities` set name_np='%s',unit='%s',code='%s',name_en='%s' where id='%s'",
             mysqli_real_escape_string($this->dbc, $activity_name),
             mysqli_real_escape_string($this->dbc, $unit),
             mysqli_real_escape_string($this->dbc, $activity_code),
@@ -460,7 +459,11 @@ class DB_dbc
         $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_code WHERE tl.local_office_id = '$oid' AND tl.id= '$tlid' LIMIT 1");
         return $res;
     }
-
+    function selectUserByFullName($name){
+        $res = mysqli_query($this->dbc, "select id,username,fullname,user_type,office_id  from tbl_users where fullname LIKE '%".trim($name)."%' and not user_type = '0';");
+        
+        return $res;
+    }
     function selectUsers()
     {
         $res = mysqli_query($this->dbc, "SELECT u.username, u.password, CONCAT(u.firstname, ' ', u.lastname) AS fullname, o.name_np FROM tbl_users AS u INNER JOIN tbl_local_bodies AS o ON a.office_id = o.id");
@@ -469,7 +472,7 @@ class DB_dbc
 
     function selectUser()
     {
-        $res = mysqli_query($this->dbc, "SELECT id,username,fullname,user_type,office_id FROM db_pis.tbl_users where not user_type = '0';");
+        $res = mysqli_query($this->dbc, "SELECT id,username,fullname,user_type,office_id FROM pisdoego_db_pis.tbl_users where not user_type = '0';");
         return $res;
     }
 
@@ -477,12 +480,12 @@ class DB_dbc
     {
         if ($user_type == 1) {
             $res = mysqli_query(
-                $this->dbc, 'SELECT name_np FROM db_pis.tbl_edu_offices where id=' . $office_id . ';'
+                $this->dbc, 'SELECT name_np FROM pisdoego_db_pis.tbl_edu_offices where id=' . $office_id . ';'
             );
             return $res;
         } else {
             $res = mysqli_query(
-                $this->dbc, 'SELECT name_np FROM db_pis.tbl_local_bodies where id=' . $office_id . ';'
+                $this->dbc, 'SELECT name_np FROM pisdoego_db_pis.tbl_local_bodies where id=' . $office_id . ';'
             );
             return $res;
         }
@@ -497,7 +500,7 @@ class DB_dbc
 
     function updateGovernmentTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid)
     {
-        $sql = sprintf("UPDATE `db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q1_progress_expenditure='%s',q1_progress_qty='%s' where id = '%s'",
+        $sql = sprintf("UPDATE `pisdoego_db_pis` .`tbl_transaction_edu_offices` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q1_progress_expenditure='%s',q1_progress_qty='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc, $txtpyearqty),
             mysqli_real_escape_string($this->dbc, $txtpyearbudget),
             mysqli_real_escape_string($this->dbc, $txtpttbudget),
@@ -509,7 +512,7 @@ class DB_dbc
 
     function updateLocalTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid)
     {
-        $sql = sprintf("UPDATE `db_pis`.`tbl_transaction_local_offices` set yearly_progress_qty_expenditure = '%s',yearly_progress_expenditure='%s',q1_expenditure='%s',q1_qty_expenditure='%s' where id = '%s'",
+        $sql = sprintf("UPDATE `pisdoego_db_pis`.`tbl_transaction_local_offices` set yearly_progress_qty_expenditure = '%s',yearly_progress_expenditure='%s',q1_expenditure='%s',q1_qty_expenditure='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc, $txtpyearqty),
             mysqli_real_escape_string($this->dbc, $txtpyearbudget),
             mysqli_real_escape_string($this->dbc, $txtpttbudget),
@@ -521,7 +524,7 @@ class DB_dbc
 
     function selectFiscalYear()
     {
-        $query = "SELECT * FROM db_pis.tbl_fiscal_year;";
+        $query = "SELECT * FROM pisdoego_db_pis.tbl_fiscal_year;";
         $result = mysqli_query($this->dbc, $query);
         return $result;
     }
@@ -542,7 +545,7 @@ class DB_dbc
         if ($result) {
             return -1;
         } else {
-            $query = sprintf("INSERT INTO `db_pis`.`tbl_fiscal_year` (`fiscal_year`) VALUES ('%s');",
+            $query = sprintf("INSERT INTO `pisdoego_db_pis`.`tbl_fiscal_year` (`fiscal_year`) VALUES ('%s');",
                 mysqli_real_escape_string($this->dbc, $fiscal_year));
             $res = mysqli_query($this->dbc, $query);
             return $res;
@@ -558,7 +561,7 @@ class DB_dbc
 
     function deleteUser($id)
     {
-        $query = sprintf("DELETE FROM `db_pis`.`tbl_users` where id='%s'",
+        $query = sprintf("DELETE FROM `pisdoego_db_pis`.`tbl_users` where id='%s'",
             mysqli_real_escape_string($this->dbc, $id));
         $result = mysqli_query($this->dbc, $query);
         return $result;
@@ -566,7 +569,7 @@ class DB_dbc
 
     function EXPORT_TABLES($host, $user, $pass, $name, $tables = false, $backup_name = false)
     {
-        set_time_limit(3000);
+        //set_time_limit(3000);
         $mysqli = new mysqli($host, $user, $pass, $name);
         $mysqli->select_db($name);
         $mysqli->query("SET NAMES 'utf8'");
@@ -658,24 +661,24 @@ class DB_dbc
 
     function selectUserByUserType($user_type)
     {
-        return mysqli_query($this->dbc, "SELECT id,username,fullname,user_type,office_id FROM db_pis.tbl_users where user_type = '$user_type';");
+        return mysqli_query($this->dbc, "SELECT id,username,fullname,user_type,office_id FROM pisdoego_db_pis.tbl_users where user_type = '$user_type';");
     }
 
     function countActivities($office_id)
     {
-        $query = "SELECT count(*) FROM db_pis.tbl_transaction_edu_offices where edu_office_id='$office_id';";
+        $query = "SELECT count(*) FROM pisdoego_db_pis.tbl_transaction_edu_offices where edu_office_id='$office_id';";
         return mysqli_query($this->dbc, $query);
     }
 
     function countActiviesWhichIsUnDone($office_id)
     {
-        $query = "SELECT count(*) FROM db_pis.tbl_transaction_edu_offices where edu_office_id='$office_id' and q1_progress_qty='0' and q1_progress_expenditure='0.00';";
+        $query = "SELECT count(*) FROM pisdoego_db_pis.tbl_transaction_edu_offices where edu_office_id='$office_id' and q1_progress_qty='0' and q1_progress_expenditure='0.00';";
         return mysqli_query($this->dbc, $query);
     }
 
     function selectSubActivityByMainActivityCode($m_code)
     {
-        $query = "SELECT * FROM db_pis.tbl_sub_activities where main_activity_id='$m_code';";
+        $query = "SELECT * FROM pisdoego_db_pis.tbl_sub_activities where main_activity_id='$m_code';";
         return mysqli_query($this->dbc, $query);
     }
 
@@ -685,13 +688,13 @@ class DB_dbc
         SUM(yearly_progress_qty) as sypq,SUM(yearly_progress_expenditure) as sype,
         SUM(q1_alloc_qty) as sqaq,SUM(q1_alloc_budget) as sqab,
         SUM(q1_progress_qty) as sqpq, SUM(q1_progress_expenditure) as sqpe
-         FROM db_pis.tbl_transaction_edu_offices where activity_id='$a_code';";
+         FROM pisdoego_db_pis.tbl_transaction_edu_offices where activity_id='$a_code';";
         return mysqli_query($this->dbc, $query);
     }
 
     function selectAllMainActivity()
     {
-        $query = "SELECT * FROM db_pis.tbl_main_activities;";
+        $query = "SELECT * FROM pisdoego_db_pis.tbl_main_activities;";
         return mysqli_query($this->dbc, $query);
     }
 
@@ -743,10 +746,10 @@ teo.yearly_alloc_qty,
 teo.yearly_alloc_budget, 
 teo.yearly_progress_qty, 
 teo.yearly_progress_expenditure, 
-teo.q3_alloc_qty, 
-teo.q3_alloc_budget, 
-teo.q3_progress_qty, 
-teo.q3_progress_expenditure 
+teo.q1_alloc_qty, 
+teo.q1_alloc_budget, 
+teo.q1_progress_qty, 
+teo.q1_progress_expenditure 
 FROM `tbl_transaction_edu_offices` AS teo INNER JOIN tbl_edu_offices AS eo ON eo.id = teo.edu_office_id where teo.`activity_code` = '$activity_id';";
         $result = mysqli_query($this->dbc, $query);
         return $result;
@@ -761,10 +764,10 @@ FROM `tbl_transaction_edu_offices` AS teo INNER JOIN tbl_edu_offices AS eo ON eo
     teo.yearly_alloc_budget,
     teo.yearly_progress_qty,
     teo.yearly_progress_expenditure,
-    teo.q3_alloc_qty,
-    teo.q3_alloc_budget,
-    teo.q3_progress_qty,
-    teo.q3_progress_expenditure
+    teo.q1_alloc_qty,
+    teo.q1_alloc_budget,
+    teo.q1_progress_qty,
+    teo.q1_progress_expenditure
 FROM
     `tbl_transaction_local_offices` AS teo
 INNER JOIN
@@ -783,7 +786,7 @@ HAVING `activity_id` = '$activity_id'";
         $result = mysqli_query($this->dbc, $query);
         return $result;
     }
-    function sumOfTotal(){
+    function sumOfTotal($pid){
         $sql = "SELECT
                SUM(Main_syag) as agr_syag, 
                SUM(Main_syab) as agr_syab, 
@@ -836,6 +839,7 @@ HAVING `activity_id` = '$activity_id'";
                                 left join tbl_main_activities as main on main.id= sub.main_activity_id
                                 left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                     where main.id=sub.main_activity_id
+                                        and tl.project_id='$pid'
                                         GROUP BY
                                         act.id
                                         ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id) as T_AGR ;";
@@ -843,7 +847,7 @@ HAVING `activity_id` = '$activity_id'";
         $res= mysqli_query($this->dbc,$sql);
         return $res;
     }
-    function sumOfMainActivity()
+    function sumOfMainActivity($pid)
     {
         $sql = "SELECT 
         main_id, 
@@ -887,6 +891,7 @@ HAVING `activity_id` = '$activity_id'";
                                 left join tbl_main_activities as main on main.id= sub.main_activity_id
                                 left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                     where main.id=sub.main_activity_id
+                                        and tl.project_id='$pid'
                                         GROUP BY
                                         act.id
                                         ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id;";
@@ -895,7 +900,7 @@ HAVING `activity_id` = '$activity_id'";
         return $res;
     }
 
-    function sumOfSubActivity($id)
+    function sumOfSubActivity($id,$pid)
     {
         $sql = "SELECT 
             sub_code, 
@@ -925,16 +930,17 @@ HAVING `activity_id` = '$activity_id'";
                         left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                 where main.id='$id' and
                                 sub.code=act.sub_activity_code
+                                and tl.project_id='$pid'
                                 GROUP BY sub.id
                                 ORDER BY sub.id ASC) as T_SUB GROUP BY sub_code;";
-
+        //echo $sql;
         mysqli_query($this->dbc, "SET sql_mode = '';");
         $res = mysqli_query($this->dbc, $sql);
         return $res;
 
     }
 
-    function sumofActivity($main_activity, $sub_activity)
+    function sumofActivity($main_activity, $sub_activity,$pid)
     {
         $query = "SELECT 
         act.name_np as act_name_np,
@@ -953,180 +959,439 @@ HAVING `activity_id` = '$activity_id'";
             left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
             where main.id='$main_activity' and
             sub.code='$sub_activity'
+            and tl.project_id='$pid'
             GROUP BY
             act.id
             ORDER BY act.id ASC;";
-        //mysqli_query($this->dbc,"SET sql_mode = '';");
+        mysqli_query($this->dbc,"SET sql_mode = '';");
         $res = mysqli_query($this->dbc, $query);
         return $res;
 
     }
+    function sumOfLocalTotal(){
+        $query = "SELECT 
+            SUM(syaq) as agr_syag, 
+            SUM(syab) as agr_syab, 
+            SUM(sypq) as agr_sypq, 
+            SUM(sype) as agr_sype, 
+            SUM(sqaq) as agr_sqaq, 
+            SUM(sqab) as agr_sqab, 
+            SUM(sqpq) as agr_sqpq, 
+            SUM(sqpe) as agr_sqpe 
+            FROM 
+                (SELECT 
+        act.desc_np as act_name_np,
+        act.local_activity3_code as act_code,
+        SUM(tl.yearly_alloc_qty) as syaq,
+        SUM(tl.yearly_alloc_budget) as syab,
+        SUM(tl.yearly_progress_qty) as sypq,
+        SUM(tl.yearly_progress_expenditure) as sype,
+        SUM(tl.q1_alloc_qty) as sqaq,
+        SUM(tl.q1_alloc_budget) as sqab,
+        SUM(tl.q1_progress_qty) as sqpq, 
+        SUM(tl.q1_progress_expenditure) as sqpe
+        from tbl_local_bodies_activities4 as act
+            left join tbl_transaction_local_bodies as tl on tl.local_body_activity4_id=act.id
+            GROUP BY
+            act.id
+            ORDER BY act.id ASC) as T_AGR ;
+        ";
+        mysqli_query($this->dbc,"SET sql_mode = '';");
+        $res = mysqli_query($this->dbc, $query);
+        return $res;
 
-    function generateFinalReport()
-    {
-       
-        $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+    }
+    function sumOfLocalActivity(){
+        $query = "SELECT 
+        act.desc_np as act_name_np,
+        act.local_activity3_code as act_code,
+        SUM(tl.yearly_alloc_qty) as syaq,
+        SUM(tl.yearly_alloc_budget) as syab,
+        SUM(tl.yearly_progress_qty) as sypq,
+        SUM(tl.yearly_progress_expenditure) as sype,
+        SUM(tl.q1_alloc_qty) as sqaq,
+        SUM(tl.q1_alloc_budget) as sqab,
+        SUM(tl.q1_progress_qty) as sqpq, 
+        SUM(tl.q1_progress_expenditure) as sqpe
+        from tbl_local_bodies_activities4 as act
+            left join tbl_transaction_local_bodies as tl on tl.local_body_activity4_id=act.id
+            GROUP BY
+            act.id
+            ORDER BY act.id ASC;";
+            mysqli_query($this->dbc,"SET sql_mode = '';");
+        $res = mysqli_query($this->dbc, $query);
+        return $res;
+
+    }
+    function generateLocalFinalReport(){
+        //set_time_limit(3000);
+        $resultFinal = mysqli_fetch_array($this->sumOfLocalTotal());
+        $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
         $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
         if ($resultForTruncate > 0) {
-            $queryForMainActivity = $this->sumOfMainActivity();
+            $resultFromSubQueries = $this->sumOfLocalActivity();
+            while ($raa = mysqli_fetch_array($resultFromSubQueries)) {
+                $yearlyWeight =  ($raa['syab'] / $resultFinal['agr_syab'])*100;
+                if($raa['syaq']!=0){
+                    $yearlyProgressQtyPer = ($raa['sypq']/$raa['syaq'])*100;
+                }else{
+                    $yearlyProgressQtyPer = 0;
+                }
+                if($raa['syab']!=0){
+                    $yearlyExpProPer = ($raa['sype']/$raa['syab'])/100;
+                }else{
+                    $yearlyExpProPer =0;
+                }
+                if($resultFinal['agr_sqaq']!=0){
+                    $qtrAllocWeight = ($raa['sqaq'] / $resultFinal['agr_sqaq'])*100;
+                }else{
+                    $qtrAllocWeight = 0;
+               }
+                
+                if($raa['sqaq']!=0){
+                    $qtrProgressQtyPer = ($raa['sqpq']/$raa['sqaq'])*100;
+                }else{
+                    $qtrProgressQtyPer = 0;
+                }
+                if($raa['sqab']!=0){
+                    $qtrExpProPer = ($raa['sqpe']/$raa['sqab'])/100;
+                }else{
+                    $qtrExpProPer = 0;
+                }
+                
+                $queryToInsertAct = sprintf(
+                    "INSERT INTO 
+                `pisdoego_db_pis`.`tbl_current_reports` 
+                (`activity_number`, 
+                `yearly_alloc_qty`, 
+                `yearly_weight`, 
+                `yearly_alloc_budget`, 
+                `yearly_progress_qty`, 
+                `yearly_progress_qty_percentage`, 
+                `yearly_progress_expenditure`, 
+                `yearly_progress_expenditure_percentage`, 
+                `yearly_progress_weight`, 
+                `qtr_alloc_qty`, 
+                `qtr_alloc_weight`, 
+                `qtr_alloc_budget`, 
+                `qtr_progress_qty`, 
+                `qtr_progress_qty_percentage`, 
+                `qtr_progress_expenditure`, 
+                `qtr_progress_expenditure_percentage`, 
+                `qtr_progress_expenditure_weight`, 
+                `name_np`,
+                `status`) 
+                VALUES (
+                '%s', 
+                '%s',
+                '%s', 
+                '%s',  
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s',  
+                '%s', 
+                '%s',  
+                '%s', 
+                '%s', 
+                '%s',
+                '2')",
+                    mysqli_real_escape_string($this->dbc, $raa['act_code']),
+                    mysqli_real_escape_string($this->dbc, $raa['syaq']),
+                    mysqli_real_escape_string($this->dbc, $yearlyWeight),
+                    mysqli_real_escape_string($this->dbc, $raa['syab']),
+                    mysqli_real_escape_string($this->dbc, $raa['sypq']),
+                    mysqli_real_escape_string($this->dbc, $yearlyProgressQtyPer),
+                    mysqli_real_escape_string($this->dbc, $raa['sype']),
+                    mysqli_real_escape_string($this->dbc, $yearlyExpProPer),
+                    mysqli_real_escape_string($this->dbc, ($yearlyProgressQtyPer/100)*$yearlyWeight),
+                    mysqli_real_escape_string($this->dbc, $raa['sqaq']),
+                    mysqli_real_escape_string($this->dbc, $qtrAllocWeight),
+                    mysqli_real_escape_string($this->dbc, $raa['sqab']),
+                    mysqli_real_escape_string($this->dbc, $raa['sqpq']),
+                    mysqli_real_escape_string($this->dbc, $qtrProgressQtyPer),
+                    mysqli_real_escape_string($this->dbc, $raa['sqpe']),
+                    mysqli_real_escape_string($this->dbc, $qtrExpProPer),
+                    mysqli_real_escape_string($this->dbc, ($qtrProgressQtyPer/100)*$qtrAllocWeight),
+                    mysqli_real_escape_string($this->dbc, $raa['act_name_np'])
+                );
+                $resultFrom = mysqli_query($this->dbc, $queryToInsertAct);
+                    if($resultFrom<0){
+                    $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
+                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                    return false;
+                }
+            }
+            $queryToFinal = sprintf("INSERT INTO 
+            `pisdoego_db_pis`.`tbl_current_reports` 
+            (`activity_number`, 
+            `yearly_weight`, 
+            `yearly_alloc_budget`, 
+            `yearly_progress_expenditure`, 
+            `yearly_progress_expenditure_percentage`, 
+            `qtr_alloc_weight`, 
+            `qtr_alloc_budget`, 
+            `qtr_progress_expenditure`, 
+            `qtr_progress_expenditure_percentage`, 
+            `name_np`,
+            `status`) VALUES 
+            ('', 
+            '0', 
+            '%s', 
+            '%s', 
+            '0', 
+            '0', 
+            '%s', 
+            '%s',
+            '0', 
+            'कूल जम्मा',
+            '4')",
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_syab']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sype']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sqab']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sqpe']));
+                $resultToFinale = mysqli_query($this->dbc, $queryToFinal);
+            return true;
+            }
+        else{
+            return false;
+        }
+
+    }
+    function generateFinalReport($pid)
+    {
+        //set_time_limit(3000);
+        $resultFinal = mysqli_fetch_array($this->sumOfTotal($pid));
+        $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
+        $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+        if ($resultForTruncate > 0) {
+            $queryForMainActivity = $this->sumOfMainActivity($pid);
             while ($rma = mysqli_fetch_array($queryForMainActivity)) {
+                $yearlyMainWeight =  ($rma['Main_syab'] / $resultFinal['agr_syab'])*100;
+                $yearlyExpProPerMain = ($rma['Main_sype']/$rma['Main_syab'])/100;
+                $qtrAllocWeighMain = ($rma['Main_sqaq'] / $resultFinal['agr_sqaq'])*100;
+                if($rma['Main_sqab']!=0){
+                    $qtrExpProPerMain= ($rma['Main_sqpe']/$rma['Main_sqab'])/100;
+                }
+                else{
+                    $qtrExpProPerMain=0;
+                }
                 $queryToInsertForMain = sprintf("INSERT INTO 
-                `db_pis`.`tbl_current_reports` 
+                `pisdoego_db_pis`.`tbl_current_reports` 
                 (`activity_number`, 
                 `yearly_weight`, 
                 `yearly_alloc_budget`, 
                 `yearly_progress_expenditure`, 
-                `yearly_progress_expenditure_percent`, 
+                `yearly_progress_expenditure_percentage`, 
                 `qtr_alloc_weight`, 
                 `qtr_alloc_budget`, 
                 `qtr_progress_expenditure`, 
-                `qtr_progress_expenditure_percent`, 
+                `qtr_progress_expenditure_percentage`, 
                 `name_np`,
                 `status`) VALUES 
-                ('%s', 
-                '0', 
+                (
                 '%s', 
                 '%s', 
-                '0', 
-                '0', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
                 '%s', 
                 '%s',
-                '0', 
+                '%s', 
                 '%s',
                 '0')",
                     mysqli_real_escape_string($this->dbc, $rma['main_id']),
+                    mysqli_real_escape_string($this->dbc, $yearlyMainWeight),
                     mysqli_real_escape_string($this->dbc, $rma['Main_syab']),
                     mysqli_real_escape_string($this->dbc, $rma['Main_sype']),
+                    mysqli_real_escape_string($this->dbc, $yearlyExpProPerMain),
+                    mysqli_real_escape_string($this->dbc, $qtrAllocWeighMain),
                     mysqli_real_escape_string($this->dbc, $rma['Main_sqab']),
                     mysqli_real_escape_string($this->dbc, $rma['Main_sqpe']),
+                    mysqli_real_escape_string($this->dbc, $qtrExpProPerMain),
                     mysqli_real_escape_string($this->dbc, $rma['main_name_np']));
                 $resultFromMain = mysqli_query($this->dbc, $queryToInsertForMain);
+                
                 if ($resultFromMain > 0) {
-                    $resultForQuery = $this->sumOfSubActivity($rma['main_id']);
+                    $resultForQuery = $this->sumOfSubActivity($rma['main_id'],$pid);
                     while ($rsa = mysqli_fetch_array($resultForQuery)) {
-                       
+                        $yearlySubWeight =  ($rsa['sub_syab'] / $resultFinal['agr_syab'])*100;
+                        $yearlyExpProPerSub = ($rsa['sub_sype']/$rsa['sub_syab'])/100;
+                        $qtrAllocWeighSUB = ($rsa['sub_sqaq'] / $resultFinal['agr_sqaq'])*100;
+                        if($rsa['sub_sqab']!=0){
+                            $qtrExpProPerSub = ($rsa['sub_sqpe']/$rsa['sub_sqab'])/100;
+                        }
+                        else{
+                            $qtrExpProPerSub = 0;
+                        }
                         $queryToInsertForSub = sprintf("INSERT INTO 
-                        `db_pis`.`tbl_current_reports` 
+                        `pisdoego_db_pis`.`tbl_current_reports` 
                         (`activity_number`, 
                         `yearly_weight`, 
                         `yearly_alloc_budget`,                                
                         `yearly_progress_expenditure`, 
-                        `yearly_progress_expenditure_percent`, 
+                        `yearly_progress_expenditure_percentage`, 
                         `qtr_alloc_weight`, 
                         `qtr_alloc_budget`, 
                         `qtr_progress_expenditure`, 
-                        `qtr_progress_expenditure_percent`, 
+                        `qtr_progress_expenditure_percentage`, 
                         `name_np`,
                         `status`) VALUES 
                         ('%s', 
-                        '0', 
                         '%s', 
                         '%s', 
-                        '0', 
-                        '0', 
+                        '%s', 
+                        '%s', 
+                        '%s', 
                         '%s', 
                         '%s',
-                        '0', 
+                        '%s', 
                         '%s',
                         '1')",
                             mysqli_real_escape_string($this->dbc, $rsa['sub_code']),
+                            mysqli_real_escape_string($this->dbc, $yearlySubWeight),
                             mysqli_real_escape_string($this->dbc, $rsa['sub_syab']),
                             mysqli_real_escape_string($this->dbc, $rsa['sub_sype']),
+                            mysqli_real_escape_string($this->dbc, $yearlyExpProPerSub),
+                            mysqli_real_escape_string($this->dbc, $qtrAllocWeighSUB),
                             mysqli_real_escape_string($this->dbc, $rsa['sub_sqab']),
                             mysqli_real_escape_string($this->dbc, $rsa['sub_sqpe']),
+                            mysqli_real_escape_string($this->dbc, $qtrExpProPerSub),
                             mysqli_real_escape_string($this->dbc, $rsa['sub_name_np']));
                         $resultFromSub = mysqli_query($this->dbc, $queryToInsertForSub);
-                   
+                        
                       
                         if ($resultFromSub > 0) {
-                            $resultFromSubQueries = $this->sumofActivity($rma['main_id'], $rsa['sub_code']);
+                            $resultFromSubQueries = $this->sumofActivity($rma['main_id'], $rsa['sub_code'],$pid);
                             while ($raa = mysqli_fetch_array($resultFromSubQueries)) {
+                                $yearlyWeight =  ($raa['syab'] / $resultFinal['agr_syab'])*100;
+                                if($raa['syaq']!=0){
+                                    $yearlyProgressQtyPer = ($raa['sypq']/$raa['syaq'])*100;
+                                }else{
+                                    $yearlyProgressQtyPer = 0;
+                                }
+                                if($raa['syab']!=0){
+                                    $yearlyExpProPer = ($raa['sype']/$raa['syab'])/100;
+                                }else{
+                                    $yearlyExpProPer =0;
+                                }
+                                if($resultFinal['agr_sqaq']!=0){
+                                    $qtrAllocWeight = ($raa['sqaq'] / $resultFinal['agr_sqaq'])*100;
+                                }else{
+                                    $qtrAllocWeight = 0;
+                               }
+                                
+                                if($raa['sqaq']!=0){
+                                    $qtrProgressQtyPer = ($raa['sqpq']/$raa['sqaq'])*100;
+                                }else{
+                                    $qtrProgressQtyPer = 0;
+                                }
+                                if($raa['sqab']!=0){
+                                    $qtrExpProPer = ($raa['sqpe']/$raa['sqab'])/100;
+                                }else{
+                                    $qtrExpProPer = 0;
+                                }
+                                
                                 $queryToInsertAct = sprintf(
                                     "INSERT INTO 
-                                `db_pis`.`tbl_current_reports` 
+                                `pisdoego_db_pis`.`tbl_current_reports` 
                                 (`activity_number`, 
                                 `yearly_alloc_qty`, 
                                 `yearly_weight`, 
                                 `yearly_alloc_budget`, 
                                 `yearly_progress_qty`, 
-                                `yearly_progress_qty_percent`, 
+                                `yearly_progress_qty_percentage`, 
                                 `yearly_progress_expenditure`, 
-                                `yearly_progress_expenditure_percent`, 
-                                `yearly_progress_weighted`, 
+                                `yearly_progress_expenditure_percentage`, 
+                                `yearly_progress_weight`, 
                                 `qtr_alloc_qty`, 
                                 `qtr_alloc_weight`, 
                                 `qtr_alloc_budget`, 
                                 `qtr_progress_qty`, 
-                                `qtr_progress_qty_percent`, 
+                                `qtr_progress_qty_percentage`, 
                                 `qtr_progress_expenditure`, 
-                                `qtr_progress_expenditure_percent`, 
-                                `qtr_progress_expenditure_weighted`, 
+                                `qtr_progress_expenditure_percentage`, 
+                                `qtr_progress_expenditure_weight`, 
                                 `name_np`,
                                 `status`) 
                                 VALUES (
                                 '%s', 
                                 '%s',
-                                '0', 
-                                '%s',  
-                                '%s', 
-                                '0', 
-                                '%s', 
-                                '0', 
-                                '0', 
-                                '%s', 
-                                '0', 
                                 '%s', 
                                 '%s',  
-                                '0', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
                                 '%s',  
-                                '0', 
-                                '0', 
+                                '%s', 
+                                '%s',  
+                                '%s', 
+                                '%s', 
                                 '%s',
                                 '2')",
                                     mysqli_real_escape_string($this->dbc, $raa['act_code']),
                                     mysqli_real_escape_string($this->dbc, $raa['syaq']),
+                                    mysqli_real_escape_string($this->dbc, $yearlyWeight),
                                     mysqli_real_escape_string($this->dbc, $raa['syab']),
                                     mysqli_real_escape_string($this->dbc, $raa['sypq']),
+                                    mysqli_real_escape_string($this->dbc, $yearlyProgressQtyPer),
                                     mysqli_real_escape_string($this->dbc, $raa['sype']),
+                                    mysqli_real_escape_string($this->dbc, $yearlyExpProPer),
+                                    mysqli_real_escape_string($this->dbc, ($yearlyProgressQtyPer/100)*$yearlyWeight),
                                     mysqli_real_escape_string($this->dbc, $raa['sqaq']),
+                                    mysqli_real_escape_string($this->dbc, $qtrAllocWeight),
                                     mysqli_real_escape_string($this->dbc, $raa['sqab']),
                                     mysqli_real_escape_string($this->dbc, $raa['sqpq']),
+                                    mysqli_real_escape_string($this->dbc, $qtrProgressQtyPer),
                                     mysqli_real_escape_string($this->dbc, $raa['sqpe']),
+                                    mysqli_real_escape_string($this->dbc, $qtrExpProPer),
+                                    mysqli_real_escape_string($this->dbc, ($qtrProgressQtyPer/100)*$qtrAllocWeight),
                                     mysqli_real_escape_string($this->dbc, $raa['act_name_np'])
                                 );
                                 
                                 $resultFrom = mysqli_query($this->dbc, $queryToInsertAct);
-                                if($resultFrom<0){
-                                    $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                                    if($resultFrom<0){
+                                    $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
                                     $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
                                     return false;
                                 }
                             }
                         }else{
-                            $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                            $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
                             $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
                             return false; 
                         }
                     }
                 }else{
-                    $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                    $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
                                     $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
                                     return false;
                 }
 
             }
-            $resultFinal = mysqli_fetch_array($this->sumOfTotal());
+            
             $queryToFinal = sprintf("INSERT INTO 
-            `db_pis`.`tbl_current_reports` 
+            `pisdoego_db_pis`.`tbl_current_reports` 
             (`activity_number`, 
             `yearly_weight`, 
             `yearly_alloc_budget`, 
             `yearly_progress_expenditure`, 
-            `yearly_progress_expenditure_percent`, 
+            `yearly_progress_expenditure_percentage`, 
             `qtr_alloc_weight`, 
             `qtr_alloc_budget`, 
             `qtr_progress_expenditure`, 
-            `qtr_progress_expenditure_percent`, 
+            `qtr_progress_expenditure_percentage`, 
             `name_np`,
             `status`) VALUES 
             ('', 
@@ -1149,7 +1414,7 @@ HAVING `activity_id` = '$activity_id'";
                 
                 return true;
             }else{
-                $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
                 $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
                 return false;
             }
@@ -1159,7 +1424,7 @@ HAVING `activity_id` = '$activity_id'";
     }
 
     function selectAllFinalReport(){
-        $res = mysqli_query($this->dbc, "SELECT * FROM db_pis.tbl_current_reports;");
+        $res = mysqli_query($this->dbc, "SELECT * FROM pisdoego_db_pis.tbl_current_reports;");
         return $res;
     }
     function sumOfEOTotal($id){
@@ -1340,26 +1605,25 @@ HAVING `activity_id` = '$activity_id'";
         return $res;
 
     }
-
     function generateEOFinalReport($id)
     {
        
-        $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+        $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
         $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
         if ($resultForTruncate > 0) {
             $queryForMainActivity = $this->sumOfEOMainActivity($id);
             while ($rma = mysqli_fetch_array($queryForMainActivity)) {
                 $queryToInsertForMain = sprintf("INSERT INTO 
-                `db_pis`.`tbl_current_reports` 
+                `pisdoego_db_pis`.`tbl_current_reports` 
                 (`activity_number`, 
                 `yearly_weight`, 
                 `yearly_alloc_budget`, 
                 `yearly_progress_expenditure`, 
-                `yearly_progress_expenditure_percent`, 
+                `yearly_progress_expenditure_percentage`, 
                 `qtr_alloc_weight`, 
                 `qtr_alloc_budget`, 
                 `qtr_progress_expenditure`, 
-                `qtr_progress_expenditure_percent`, 
+                `qtr_progress_expenditure_percentage`, 
                 `name_np`,
                 `status`) VALUES 
                 ('%s', 
@@ -1385,16 +1649,16 @@ HAVING `activity_id` = '$activity_id'";
                     while ($rsa = mysqli_fetch_array($resultForQuery)) {
                        
                         $queryToInsertForSub = sprintf("INSERT INTO 
-                        `db_pis`.`tbl_current_reports` 
+                        `pisdoego_db_pis`.`tbl_current_reports` 
                         (`activity_number`, 
                         `yearly_weight`, 
                         `yearly_alloc_budget`,                                
                         `yearly_progress_expenditure`, 
-                        `yearly_progress_expenditure_percent`, 
+                        `yearly_progress_expenditure_percentage`, 
                         `qtr_alloc_weight`, 
                         `qtr_alloc_budget`, 
                         `qtr_progress_expenditure`, 
-                        `qtr_progress_expenditure_percent`, 
+                        `qtr_progress_expenditure_percentage`, 
                         `name_np`,
                         `status`) VALUES 
                         ('%s', 
@@ -1422,24 +1686,24 @@ HAVING `activity_id` = '$activity_id'";
                             while ($raa = mysqli_fetch_array($resultFromSubQueries)) {
                                 $queryToInsertAct = sprintf(
                                     "INSERT INTO 
-                                `db_pis`.`tbl_current_reports` 
+                                `pisdoego_db_pis`.`tbl_current_reports` 
                                 (`activity_number`, 
                                 `yearly_alloc_qty`, 
                                 `yearly_weight`, 
                                 `yearly_alloc_budget`, 
                                 `yearly_progress_qty`, 
-                                `yearly_progress_qty_percent`, 
+                                `yearly_progress_qty_percentage`, 
                                 `yearly_progress_expenditure`, 
-                                `yearly_progress_expenditure_percent`, 
-                                `yearly_progress_weighted`, 
+                                `yearly_progress_expenditure_percentage`, 
+                                `yearly_progress_weight`, 
                                 `qtr_alloc_qty`, 
                                 `qtr_alloc_weight`, 
                                 `qtr_alloc_budget`, 
                                 `qtr_progress_qty`, 
-                                `qtr_progress_qty_percent`, 
+                                `qtr_progress_qty_percentage`, 
                                 `qtr_progress_expenditure`, 
-                                `qtr_progress_expenditure_percent`, 
-                                `qtr_progress_expenditure_weighted`, 
+                                `qtr_progress_expenditure_percentage`, 
+                                `qtr_progress_expenditure_weight`, 
                                 `name_np`,
                                 `status`) 
                                 VALUES (
@@ -1476,19 +1740,19 @@ HAVING `activity_id` = '$activity_id'";
                                 
                                 $resultFrom = mysqli_query($this->dbc, $queryToInsertAct);
                                 if($resultFrom<0){
-                                    $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                                    $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
                                     $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
                                     return false;
                                 }
                             }
                         }else{
-                            $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                            $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
                             $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
                             return false; 
                         }
                     }
                 }else{
-                    $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                    $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
                                     $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
                                     return false;
                 }
@@ -1496,16 +1760,16 @@ HAVING `activity_id` = '$activity_id'";
             }
             $resultFinal = mysqli_fetch_array($this->sumOfEOTotal($id));
             $queryToFinal = sprintf("INSERT INTO 
-            `db_pis`.`tbl_current_reports` 
+            `pisdoego_db_pis`.`tbl_current_reports` 
             (`activity_number`, 
             `yearly_weight`, 
             `yearly_alloc_budget`, 
             `yearly_progress_expenditure`, 
-            `yearly_progress_expenditure_percent`, 
+            `yearly_progress_expenditure_percentage`, 
             `qtr_alloc_weight`, 
             `qtr_alloc_budget`, 
             `qtr_progress_expenditure`, 
-            `qtr_progress_expenditure_percent`, 
+            `qtr_progress_expenditure_percentage`, 
             `name_np`,
             `status`) VALUES 
             ('', 
@@ -1528,7 +1792,7 @@ HAVING `activity_id` = '$activity_id'";
                 
                 return true;
             }else{
-                $queryForTruncate = "truncate `db_pis`.`tbl_current_reports`;";
+                $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_current_reports`;";
                 $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
                 return false;
             }
@@ -1555,7 +1819,10 @@ HAVING `activity_id` = '$activity_id'";
         $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_bodies as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id");
         return $res;
     }
-
+    function selectLocalOfficeWithDistrictId($district_id){
+        $res = mysqli_query($this->dbc, "SELECT lo.id,lo.code,lo.name_np,lo.name_en,d.name_np as 'd_name', di.name_np as di_name FROM tbl_local_bodies as lo LEFT JOIN tbl_districts AS di ON lo.district_id = di.id LEFT JOIN tbl_developement_regions as d on d.id = di.development_region_id where lo.district_id='$district_id'");
+        return $res;
+    }
     function selectLocalOfficeTransaction($oid){
         $res = mysqli_query($this->dbc, "SELECT a.desc_np, a.local_activity3_code, a.local_activity3_desc_np, a.id, tl.* FROM tbl_local_bodies_activities4 AS a INNER JOIN tbl_transaction_local_bodies AS tl ON a.id = tl.local_body_activity4_id WHERE tl.local_body_id = '$oid'");
         return $res;
@@ -1567,16 +1834,30 @@ HAVING `activity_id` = '$activity_id'";
         return $res;
     }
 
-    function updateOneLocalTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid)
+    function updateOneLocalTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid,$yearlyAllocQty,$quaterAllocWty)
     {
-        $sql = sprintf("UPDATE `db_pis`.`tbl_transaction_local_bodies` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q1_progress_expenditure='%s',q1_progress_qty='%s' where id = '%s'",
+        $sql = sprintf("UPDATE `pisdoego_db_pis`.`tbl_transaction_local_bodies` set yearly_progress_qty = '%s',yearly_progress_expenditure='%s',q1_progress_expenditure='%s',q1_progress_qty='%s',yearly_alloc_qty='%s',q1_alloc_qty='%s' where id = '%s'",
             mysqli_real_escape_string($this->dbc, $txtpyearqty),
             mysqli_real_escape_string($this->dbc, $txtpyearbudget),
             mysqli_real_escape_string($this->dbc, $txtpttbudget),
             mysqli_real_escape_string($this->dbc, $txtpttqty),
+            mysqli_real_escape_string($this->dbc, $yearlyAllocQty),
+            mysqli_real_escape_string($this->dbc, $quaterAllocWty),
             mysqli_real_escape_string($this->dbc, $tlid));
         $res = mysqli_query($this->dbc, $sql);
+        echo $sql;
         return $res;
+    }
+    function updatePassword(){
+        $sql = "SELECT * FROM pisdoego_db_pis.tbl_users where user_type=1;";
+        $result = mysqli_query($this->dbc,$sql);
+        while($row = mysqli_fetch_array($result)){
+            $sqlu = sprintf("UPDATE pisdoego_db_pis.tbl_users set password = '%s' where id = '%s';",
+                mysqli_real_escape_string($this->dbc, crypt(trim($row['password']), 'st')),
+                mysqli_real_escape_string($this->dbc, $row['id'])
+            );
+            $res = mysqli_query($this->dbc,$sqlu);     
+        }
     }
 
 

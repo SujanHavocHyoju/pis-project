@@ -18,7 +18,7 @@
 
                 <!-- My latest work -->
                 <div class="galerie preeti" >
-                    कार्यालय : <?php echo $_GET['name'] ?><br>आ.व. : <?php echo $_SESSION['fiscal_year'];?><br>
+                स्थानीय निकाय : <?php echo $_GET['name'] ?><br>आ.व. : <?php echo $_SESSION['fiscal_year'];?><br>
                     <p align="right"><a href="dashboard.php?action=entryLocal">अघिल्लो पेजमा जाने</a> || <a href="#" id="create_excel">प्रतिवेदन डाउनलोड गर्ने</a></p>
                     <p><?php echo isset($message)?$message:"";?></p>
                     <form name="del" action="" method="post">
@@ -94,8 +94,13 @@
 
 <?php echo '<script>
     $("#create_excel").click(function(){
-            var page ="excelreport.php?lid='.$_GET["oid"].'&o_name='.$_GET['name'].'&f_year=आ.व. : 2073/74";
-            console.log(page);
-            window.location=page;
+        var agree = confirm("== कृपया माफ गर्नु होला । मंसिर १० गते पछि मात्र प्रतिबेदन डाउनलोड गर्नुहोला ====");
+        if (agree)
+            return true;
+        else
+            return false;
+            // var page ="excelreport.php?lid='.$_GET["oid"].'&o_name='.$_GET['name'].'&f_year=आ.व. : 2073/74";
+            // console.log(page);
+            // window.location=page;
     });
 </script>';?>

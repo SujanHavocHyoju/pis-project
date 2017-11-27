@@ -64,8 +64,7 @@ if(isset($_SESSION['user_type'])){
             ->setCellValue('L'.$i,$row['q1_progress_qty'])
             ->setCellValue('M'.$i,$row['q1_progress_expenditure']);
         }
-        header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xls"');
+        
         header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');
@@ -75,6 +74,10 @@ if(isset($_SESSION['user_type'])){
         header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
         header ('Pragma: public'); // HTTP/1.0
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        ob_end_clean();
+        //we will be outputing an excel file
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xlsx"');
         $objWriter->save('php://output');
     }else{
         echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home';</script>";

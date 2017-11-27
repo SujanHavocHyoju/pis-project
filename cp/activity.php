@@ -1,3 +1,4 @@
+
 <div id="skip-menu"></div>
 <?php
 if(isset($_GET['message'])){
@@ -49,7 +50,7 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
                         सहायक क्रियाकलाप : <?php echo $subActivity['name_np'] ?>                        </p>
 
                         <p><?php echo isset($message)?$message:"";?></p>
-                    <form action="http://localhost/pis-project/cp/dashboard.php?action=activity&pid=<?php echo $program_code."&mid=".$main_id."&sid=".$sub_id;?>" method="post">
+                    <form action="dashboard.php?action=activity&pid=<?php echo $program_code."&mid=".$main_id."&sid=".$sub_id;?>" method="post">
 
                         <table align="center" border="1" class="table">
 
@@ -57,7 +58,7 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
      
 
 
-                            <th  >&nbsp;</th>                           <th  align="right" colspan="5"><span class="preeti"><a href="subactivity.php">Back to Main Page</a></span></th>
+                            <th  >&nbsp;</th>                           <th  align="right" colspan="5"><span class="preeti"><a href="#" onclick="return back();"> अघिल्लो पृष्टमा जाने </a></span></th>
 
 
                             </tr>
@@ -99,7 +100,7 @@ if(isset($_GET['pid'])&&isset($_GET['mid'])&&isset($_GET['sid'])){
                                 <td><span class="siddhi"><?php echo $row['name_en'] ?></span></td>
                                 <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
 
-                                <td align="center" ><p><input type="button" onclick="window.location.href='dashboard.php?action=editactivity&id=<?php echo $row['id'];?>&code=<?php echo $row['code'] ?>,&a_name=<?php echo $row['name_np'] ?>&a_name_en=<?php echo $row['name_en'] ?>&qty=<?php echo $row['unit'] ?>&pid=<?php echo $program_code?>&mid=<?php echo $main_id?>&sid=<?php echo $sub_id?>'" class="edit" value=" Edit "></p></td>
+                                <td align="center" ><p><input type="button" onclick="window.location.href='dashboard.php?action=editactivity&id=<?php echo $row['id'];?>&code=<?php echo $row['code'] ?>,&a_name=<?php echo $row['name_np'] ?>&a_name_en=<?php echo $row['name_en'] ?>&qty=<?php echo $row['unit'] ?>&pid=<?php echo $program_code?>&mid=<?php echo $main_id?>&sid=<?php echo $sub_id?>'" class="edit" value=" सम्पादन गर्ने "></p></td>
 
                                 <td align="center" ><p><input type="button"  onclick="return validateForm()" value=" मेट्ने " disabled class="delete"/></p></td>
 

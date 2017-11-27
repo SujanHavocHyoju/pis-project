@@ -2,8 +2,6 @@
 session_start();
 include('../class/common.php');
 require_once "../class/PHPExcel.php";
-if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
-    if($_SESSION['user_type']==0){
         $objPHPExcel = new PHPExcel();
         $office_name = $_GET['o_name'];
         $fiscal_year = $_GET['f_year'];
@@ -52,19 +50,36 @@ if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
         $i=4;
         while($row = mysqli_fetch_array($sql)) {
             $i++;
-            $objPHPExcel->setActiveSheetIndex()
-            ->setCellValue('A'.$i,$row['code'])
-            ->setCellValue('B'.$i,$row['name_np'])
-            ->setCellValue('C'.$i,"")
-            ->setCellValue('D'.$i,$row['yearly_alloc_qty'])
-            ->setCellValue('E'.$i,$row['yearly_alloc_cost'])
-            ->setCellValue('F'.$i,$row['yearly_alloc_budget'])
-            ->setCellValue('G'.$i,$row['yearly_progress_qty'])
-            ->setCellValue('H'.$i,$row['yearly_progress_expenditure'])
-            ->setCellValue('I'.$i,$row['q1_alloc_qty'])
-            ->setCellValue('J'.$i,$row['q1_alloc_budget'])
-            ->setCellValue('K'.$i,$row['q1_progress_qty'])
-            ->setCellValue('L'.$i,$row['q1_progress_expenditure']);
+            if(isset($_GET['eid'])){
+                $objPHPExcel->setActiveSheetIndex()
+                ->setCellValue('A'.$i,$row['code'])
+                ->setCellValue('B'.$i,$row['name_np'])
+                ->setCellValue('C'.$i,"")
+                ->setCellValue('D'.$i,$row['yearly_alloc_qty'])
+                ->setCellValue('E'.$i,$row['yearly_alloc_cost'])
+                ->setCellValue('F'.$i,$row['yearly_alloc_budget'])
+                ->setCellValue('G'.$i,$row['yearly_progress_qty'])
+                ->setCellValue('H'.$i,$row['yearly_progress_expenditure'])
+                ->setCellValue('I'.$i,$row['q1_alloc_qty'])
+                ->setCellValue('J'.$i,$row['q1_alloc_budget'])
+                ->setCellValue('K'.$i,$row['q1_progress_qty'])
+                ->setCellValue('L'.$i,$row['q1_progress_expenditure']);
+            }
+            if(isset($_GET['lid'])){
+                $objPHPExcel->setActiveSheetIndex()
+                ->setCellValue('A'.$i,$row['local_activity3_code'])
+                ->setCellValue('B'.$i,$row['local_activity3_desc_np']."/".$row["desc_np"])
+                ->setCellValue('C'.$i,"")
+                ->setCellValue('D'.$i,$row['yearly_alloc_qty'])
+                ->setCellValue('E'.$i,$row['yearly_alloc_cost'])
+                ->setCellValue('F'.$i,$row['yearly_alloc_budget'])
+                ->setCellValue('G'.$i,$row['yearly_progress_qty'])
+                ->setCellValue('H'.$i,$row['yearly_progress_expenditure'])
+                ->setCellValue('I'.$i,$row['q1_alloc_qty'])
+                ->setCellValue('J'.$i,$row['q1_alloc_budget'])
+                ->setCellValue('K'.$i,$row['q1_progress_qty'])
+                ->setCellValue('L'.$i,$row['q1_progress_expenditure']);
+            }
         }
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xls"');
@@ -77,13 +92,10 @@ if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
         header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
         header ('Pragma: public'); // HTTP/1.0
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        ob_end_clean();
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xls"');
         $objWriter->save('php://output');
-    }else{
-        echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home';</script>";
-    }
-}
-else{
-    echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home';</script>";
-}
+    
 
 ?>

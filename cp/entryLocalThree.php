@@ -1,27 +1,43 @@
 <div id="skip-menu"></div>
 <?php $row = mysqli_fetch_array($dbc->selectOneTransactionForLocal($_GET['oid'], $_GET['tlid']));
+$yearlyAllocProgressQty = $row['yearly_progress_qty'];
+$yearlyAllocProgressBud = $row['yearly_progress_expenditure'];
+$qtrQty = $row['q1_progress_qty'];
+$qtrBudget = $row['q1_progress_expenditure'];
+$yearlyAllocQty = $row['yearly_alloc_qty'];
+$qtrAllocQty = $row['q1_alloc_qty'];
 if (isset($_POST['btnaddprogress'])) {
-
-
-    /*    $edit = "update tbl_transaction_local set
-    yearly_progress_qty_expenditure ='" . $_POST['txtpyearqty'] . "',
-    yearly_progress_expenditure='" . $_POST['txtpyearbudget'] . "',
-    q3_expenditure='" . $_POST['txtpttbudget'] . "',
-    q3_qty_expenditure='" . $_POST['txtpttqty'] . "' where id=" . $_GET['tlid'];
-        echo $edit;
-
-
-
-        var_dump($dbc);
-       $res= mysqli_query($dbc, $edit);
-        echo $res;*/
-
-    $res = $dbc->updateOneLocalTransaction($_POST['txtpyearqty'], $_POST['txtpyearbudget'], $_POST['txtpttbudget'], $_POST['txtpttqty'], $_GET['tlid']);
-    if($res){
-        $_SESSION["message"]=" लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
-        echo "<script>
-        window.history.go(-2);
-        </script>";
+    $yearlyAllocProgressQty = $_POST['txtpyearqty'];
+    $yearlyAllocProgressBud = $_POST['txtpyearbudget'];
+    $qtrQty = $_POST['txtpttqty'];
+    $qtrBudget = $_POST['txtpttbudget'];
+    $yearlyAllocQty = $_POST['txtayearqty'];
+    $qtrAllocQty = $_POST['txtqaloqty'];
+    if($yearlyAllocQty<$yearlyAllocProgressQty){
+        $message = $utils->errorMessage("वार्षिक लक्षको भौतिक परिमाण भन्दा प्रगतिको  भौतिक परिमाण रकम बढी हुन गएको छ!!");
+    }
+    else if($row['yearly_alloc_budget']<$yearlyAllocProgressBud){
+        $message = $utils->errorMessage("वार्षिक लक्षको बजेट भन्दा प्रगतिको बजेट रकम बढी हुन गएको छ!!");
+    }else if($qtrAllocQty<$qtrQty){
+        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष भौतिक परिमाण भन्दा प्रथम चौमासिक प्रगति भौतिक परिमाण रकम बढी हुन गएको छ!!");
+    }
+    else if($row['q1_alloc_budget']<$qtrBudget){
+        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष बजेट भन्दा प्रथम चौमासिक प्रगति बजेट रकम बढी हुन गएको छ!!");
+    }
+    else{
+        $res = $dbc->updateOneLocalTransaction($yearlyAllocProgressQty, 
+        $yearlyAllocProgressBud, 
+        $qtrBudget,
+        $qtrQty, 
+         $_GET['tlid'],
+         $yearlyAllocQty,
+         $qtrAllocQty);
+        if($res){
+            $_SESSION["message"]=" लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
+            echo "<script>
+            window.history.go(-2);
+            </script>";
+        }
     }
 }
 ?>
@@ -35,6 +51,7 @@ if (isset($_POST['btnaddprogress'])) {
             <div id="content-box-in-left-in">
                 <h3 class="line"><span class="preeti" style="font-size:23px;">प्रगति विवरण प्रविष्टि</span></h3>
                 <!-- My latest work -->
+                <p><?php echo isset($message)?$message:"";?></p>
                 <div class="galerie">
                     <form name="saveEntry" method="post">
                         <table width="120%" align="center" border="1" class="table">
@@ -63,7 +80,13 @@ if (isset($_POST['btnaddprogress'])) {
 
                             <tr>
                                 <td align="center"><span class="preeti">भौतिक परिमाण</span></td>
-                                <td><span class="siddhi"><?php echo $row['yearly_alloc_qty'] ?></span></td>
+                                <td><span class="siddhi">
+                                <input class="siddhi" size="30"
+                                                                maxlength="50"
+                                                                type="text"
+                                                                name="txtayearqty"
+                                                                value="<?php echo $yearlyAllocQty; ?>"/>
+                                </span></td>
                             </tr>
                             <tr>
                                 <td align="center"><span class="preeti">इकाइ लागत</span></td>
@@ -90,7 +113,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpyearqty"
-                                                                                               value="<?php echo $row['yearly_progress_qty'] ?>"/></span>
+                                                                                               value="<?php echo $yearlyAllocProgressQty ?>"/></span>
                                 </td>
 
                             </tr>
@@ -100,7 +123,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpyearbudget"
-                                                                                               value="<?php echo $row['yearly_progress_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $yearlyAllocProgressBud ?>"/></span>
                                 </td>
                             </tr>
                             <tr>
@@ -112,7 +135,13 @@ if (isset($_POST['btnaddprogress'])) {
                             <tr>
 
                                 <td align="center"><span class="preeti">भौतिक परिमाण</span></td>
-                                <td><span class="siddhi"><?php echo $row['q1_alloc_qty'] ?></span></td>
+                                <td><span class="siddhi">
+                                <input class="siddhi" size="30"
+                                                                maxlength="50"
+                                                                type="text"
+                                                                name="txtqaloqty"
+                                                                value="<?php echo $row['q1_alloc_qty'] ?>"/>
+                                </span></td>
 
                             </tr>
                             <tr>
@@ -134,7 +163,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttqty"
-                                                                                               value="<?php echo $row['q3_progress_qty'] ?>"/></span>
+                                                                                               value="<?php echo $qtrQty ?>"/></span>
                                 </td>
                             </tr>
                             <tr>
@@ -143,7 +172,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttbudget"
-                                                                                               value="<?php echo $row['q3_progress_expenditure'] ?>"/></span>
+                                                                                               value="<?php echo $qtrBudget ?>"/></span>
                                 </td>
                             </tr>
 

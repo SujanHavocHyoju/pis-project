@@ -3,25 +3,21 @@
 
 ?>
 
-<div id="skip-menu"></div>
-
-<!-- Content box -->
-<div id="content-box">
     <div id="content-box-in">
     
         <!-- Content left -->
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
             
-            <h3 class="line" align="center"><span class="preeti" style="font-size:16px;">
+            <h3 class="line" align="center"><p class="preeti" style="font-size:16px;">
                  नेपाल सरकार<br />
                  शिक्षा मन्त्रालय            <br />
                  शिक्षा विभाग  <br />
-                 <?php echo $_GET['o_name'];?>                   </span></h3>
+                 <?php echo $_GET['o_name'];?>                   </p></h3>
                 
-                <h3 class="line"><span class="preeti" style="font-size:23px;">
+                <h3 class="line"><p class="preeti" style="font-size:23px;">
                
-                </span></h3>
+</p></h3>
                     
                     <!-- My latest work -->
                     <div class="galerie preeti" >
@@ -35,7 +31,7 @@
     <tr>
         
         <td colspan="14" style="text-align: center;">
-            आ.व. &#2408;&#2406;&#2413;&#2409;/&#2413;&#2410; (जिल्लास्तर)</td>
+            आ.व. <?php echo $_SESSION["fiscal_year"];?> (जिल्लास्तर)</td>
     </tr>
     
     <tr>
@@ -52,7 +48,7 @@
                         <table align="center" border="1" class="table">
 
                             <tr>
-                                <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत न.</span></td>
+                                <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत नं.</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">कार्यक्रम/क्रियाकलाप</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">एकाई</span></td>
                                 <td colspan="4" align="center"><span class="preeti">वार्षिक लक्ष</span></td>
@@ -108,8 +104,8 @@
                                     ?>
 
                                     <tr bgcolor="<?php echo $row['color'] ?>" style="font-weight:bold;">
-                                        <td width="5%"><span class="siddhi"><?php echo $row['activity_number'] ?></span></td>
-                                        <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
+                                        <td align="left" width="5%"><span class="siddhi"><?php echo $row['activity_number'] ?></span></td>
+                                        <td align="left"><span><?php echo $row['name_np'] ?></span></td>
                                         <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
                                         <td><span class="siddhi"><?php echo $row['yearly_alloc_cost'] ?></span></td>
                                         <td align="right"><span
@@ -123,16 +119,16 @@
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['yearly_progress_qty'] ?></span></td>
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['yearly_progress_qty_percent'] ?></span>
+                                                    class="preeti"><?php echo $row['yearly_progress_qty_percentage'] ?></span>
                                         </td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span>
                                         </td>
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['yearly_progress_expenditure_percent'] ?></span>
+                                                    class="preeti"><?php echo $row['yearly_progress_expenditure_percentage'] ?></span>
                                         </td>
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['yearly_progress_weighted'] ?></span>
+                                                    class="preeti"><?php echo $row['yearly_progress_weight'] ?></span>
                                         </td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['qtr_alloc_qty'] ?></span>
@@ -149,17 +145,17 @@
                                         </td>
 
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['qtr_progress_qty_percent'] ?></span>
+                                                    class="preeti"><?php echo $row['qtr_progress_qty_percentage'] ?></span>
                                         </td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['qtr_progress_expenditure'] ?></span>
                                         </td>
 
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_percent'] ?></span>
+                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_percentage'] ?></span>
                                         </td>
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_weighted'] ?></span>
+                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_weight'] ?></span>
                                         </td>
 
                                     </tr>
@@ -173,12 +169,7 @@
                     <div class="cleaner">&nbsp;</div>
                 </div>
                 <!-- My latest work end -->
-            </div>
-        </div>
-        <!-- Content left end -->
-
-        <!-- Content right --><!-- Content right end -->
-        <div class="cleaner">&nbsp;</div>
+         
         <?php echo '<script>
     $("#create_excel").click(function(){
             var page ="finalreportexcel.php";

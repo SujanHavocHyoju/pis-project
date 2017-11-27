@@ -1,1 +1,5 @@
 Options -Indexes
+ErrorDocument 401 http://pis.doe.gov.np/cp/notfound.php
+ErrorDocument 403 http://pis.doe.gov.np/cp/notfound.php
+ErrorDocument 404 dashboard.php?action=notfound
+ErrorDocument 500 http://pis.doe.gov.np/cp/notfound.php

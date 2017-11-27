@@ -42,7 +42,7 @@
         <!-- Content left -->
         <div id="content-box-in-left">
             <div id="content-box-in-left-in">
-                <h3 class="line"><span class="preeti" style="font-size:23px;">शैक्षिक कार्यालय प्रविष्टि </span></h3>
+                <h3 class="line"><span class="preeti" style="font-size:23px;">स्थानीय निकाय प्रविष्टि </span></h3>
 
                 <!-- My latest work -->
                 <div class="galerie">

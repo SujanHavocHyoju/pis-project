@@ -1,27 +1,34 @@
 <?php
-
-
+    if($_GET["project_id"]!=0){
+        $result = $dbc->generateFinalReport($_GET['project_id']);
+    }
+    else if(isset($_GET['project_id'])){
+        $result = $dbc->generateLocalFinalReport();
+    }
+    else{
+        echo "<script>window.history.back();</script>";
+    }
 ?>
-
 <div id="skip-menu"></div>
 <!-- Content box -->
 
+<div id="content-box-in">
 
-        <!-- Content left -->
-        <div id="content-box-in-left">
-            <div id="content-box-in-left-in">
+    <!-- Content left -->
+    <div id="content-box-in-left">
+        <div id="content-box-in-left-in">
 
-                <h3 class="line" align="center"><span class="preeti" style="font-size:16px;">
+                <h3 class="line" align="center"><p class="preeti" style="font-size:16px;">
                      नेपाल सरकार<br/>
                      शिक्षा मन्त्रालय            <br/>
                      शिक्षा विभाग  <br/>
 
-                    </span></h3>
+</p></h3>
 
-                <h3 class="line"><span class="preeti" style="font-size:23px;">
+                <h3 class="line"><p class="preeti" style="font-size:23px;">
 
 
-                    </span></h3>
+</p></h3>
 
                 <!-- My latest work -->
                 <div class="galerie preeti">
@@ -37,12 +44,12 @@
                         <tr>
 
                             <td colspan="14" style="text-align: center;">
-                                आ.व. &#2408;&#2406;&#2413;&#2409;/&#2413;&#2410; (जिल्लास्तर)
+                                आ.व. <?php echo $_SESSION["fiscal_year"];?> (जिल्लास्तर)
                             </td>
                         </tr>
 
                         <tr>
-                            <td colspan="14">कार्यक्रम : ३५०८०६ (विद्यालयक्षेत्र विकास कार्यक्रम)</td>
+                            <td colspan="14">कार्यक्रम : <?php echo $_GET['project_id']!=0?$_GET['project_id']:"";?> (विद्यालयक्षेत्र विकास कार्यक्रम)</td>
                         </tr>
 
                         </tbody>
@@ -56,7 +63,7 @@
                         <table align="center" border="1" class="table">
 
                             <tr>
-                                <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत न.</span></td>
+                                <td rowspan="2" align="center"><span class="preeti">कार्यक्रम सँकेत नं.</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">कार्यक्रम/क्रियाकलाप</span></td>
                                 <td rowspan="2" align="center"><span class="preeti">एकाई</span></td>
                                 <td colspan="4" align="center"><span class="preeti">वार्षिक लक्ष</span></td>
@@ -94,10 +101,11 @@
 
                             <?php
 
-                            $result = $dbc->generateFinalReport();
+                            
                             if ($result) {
 
                                 $sql = $dbc->selectAllFinalReport();
+                                
                                 while ($row = mysqli_fetch_array($sql)) {
                                    
                                     if ($row['status'] == 0) {
@@ -113,10 +121,10 @@
                                     ?>
 
                                     <tr bgcolor="<?php echo $row['color'] ?>" style="font-weight:bold;">
-                                        <td width="5%"><span class="siddhi"><?php echo $row['activity_number'] ?></span></td>
-                                        <td><span class="siddhi"><?php echo $row['name_np'] ?></span></td>
-                                        <td><span class="siddhi"><?php echo $row['unit'] ?></span></td>
-                                        <td><span class="siddhi"><?php echo $row['yearly_alloc_cost'] ?></span></td>
+                                        <td align="left" width="5%"><span class="siddhi"><?php echo $row['activity_number'] ?></span></td>
+                                        <td align="left"><span><?php echo $row['name_np'] ?></span></td>
+                                        <td align="left"><span ><?php echo $row['unit'] ?></span></td>
+                                        <td align="left"><span><?php echo $row['yearly_alloc_cost'] ?></span></td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['yearly_alloc_qty'] ?></span>
                                         </td>
@@ -127,16 +135,16 @@
                                                     class="preeti"><?php echo $row['yearly_alloc_budget'] ?></span></td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['yearly_progress_qty'] ?></span></td>
-                                        <td align="right"><span class="preeti"><?php echo $row['yearly_progress_qty_percent'] ?></span>
+                                        <td align="right"><span class="preeti"><?php echo $row['yearly_progress_qty_percentage'] ?></span>
                                         </td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['yearly_progress_expenditure'] ?></span>
                                         </td>
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['yearly_progress_expenditure_percent'] ?></span>
+                                                    class="preeti"><?php echo $row['yearly_progress_expenditure_percentage'] ?></span>
                                         </td>
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['yearly_progress_weighted'] ?></span>
+                                                    class="preeti"><?php echo $row['yearly_progress_weight'] ?></span>
                                         </td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['qtr_alloc_qty'] ?></span>
@@ -153,17 +161,17 @@
                                         </td>
 
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['qtr_progress_qty_percent'] ?></span>
+                                                    class="preeti"><?php echo $row['qtr_progress_qty_percentage'] ?></span>
                                         </td>
                                         <td align="right"><span
                                                     class="preeti"><?php echo $row['qtr_progress_expenditure'] ?></span>
                                         </td>
 
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_percent'] ?></span>
+                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_percentage'] ?></span>
                                         </td>
                                         <td align="right"><span
-                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_weighted'] ?></span>
+                                                    class="preeti"><?php echo $row['qtr_progress_expenditure_weight'] ?></span>
                                         </td>
 
                                     </tr>
@@ -179,13 +187,14 @@
                 <!-- My latest work end -->
             </div>
         </div>
+        </div>
         <!-- Content left end -->
 
         <!-- Content right --><!-- Content right end -->
         <div class="cleaner">&nbsp;</div>
         <?php echo '<script>
     $("#create_excel").click(function(){
-            var page ="finalreportexcel.php";
+            var page ="finalreportexcel.php?pid='.$_GET['project_id'].'";
             window.location=page;
     });
 </script>';?>

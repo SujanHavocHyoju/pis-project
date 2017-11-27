@@ -1,8 +1,11 @@
 <?php
-    $dbc->generateEduOfficeUsers();
+    
     if(isset($_POST['message'])){
         $message = $utils->infoMessage($_POST['message'].' डेटाबेस जगेडा हुन्न सफल वयेको छ!!');
     }
+    if(!isset($_SESSION['fullname'])){
+        echo "<script>window.location='login.php';</script>";
+    }    
 ?>
 <div id="content-box">
     <div id="content-box-in">
@@ -12,7 +15,7 @@
             <div id="content-box-in-left-in">
                 <h3 class="line"><span>स्वागतम
                     (
-                    <?php echo $_SESSION['office_name'];?> 
+                    <?php echo empty($_SESSION['office_name'])?$_SESSION['fullname']:$_SESSION['office_name'];?> 
                     )
                     </span></h3>
                     <p><?php echo isset($message)?$message:"";?></p>
@@ -62,7 +65,7 @@
                     <li> ९. काम सकिएपछि आफ्नो कार्यालयको प्रगति प्रतिवेदन हेर्नका लागि त्यही पेजको माथि राखिएको <b><u>
                                 प्रतिवेदन डाउनलोड गर्ने </u></b> लिङ्कमा क्लिक गर्नुहोस । यसपछि तपाइको कार्यालयको प्रगति
                         प्रतिवेदन माइक्रोसफ्ट एक्सेल (Microsoft Excel) को फाइल डाउनलोड गरी आफुसँग राख्न सक्नुहुनेछ ।
-                    </li>http://localhost/pis-project/cp/dashboard.php?action=home
+                    </li>
                 </ul>
 
 

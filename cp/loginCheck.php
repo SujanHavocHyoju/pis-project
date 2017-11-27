@@ -25,16 +25,18 @@ if (isset($_POST['btnLogin'])) {
             $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
             if($row['user_type']!=0){
                 $_SESSION['office_id'] = ($_SESSION['user_type'] != 0) ? $row['office_id'] : null;
-                if($_SESSION['office_id']==1){
+                if($_SESSION['user_type']==1){
                     $_SESSION['is_edu']=true;
                     $officeResult=$dbc->selectOneEduOffice($_SESSION['office_id']); 
                 }
                 else{
                     $_SESSION['is_edu']=false;
-                    $officeResult=$dbc->selectOneEduOffice($_SESSION['office_id']); 
+                    $officeResult=$dbc->selectOneLocalOffice($_SESSION['office_id']); 
                 }
                 $resultOff = mysqli_fetch_array($officeResult);
                 $_SESSION['office_name'] = $resultOff['name_np'];
+                
+                $_SESSION['district_id'] = $resultOff['district_id'];
             }else{
                 $_SESSION['office_name'] = 'ADMIN';
             }
@@ -44,7 +46,7 @@ if (isset($_POST['btnLogin'])) {
                 header('location:dashboard.php');
             }
         } else {
-            header('location:login.php?error=तपाईको प्रयोगकर्ता नाम अथावा पासवर्ड मिल्न सकेन!!!');
+            header('location:login.php?error=तपाईको प्रयोगकर्ता नाम अथवा पासवर्ड मिल्न सकेन!!!');
         }
 
     }
