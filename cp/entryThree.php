@@ -5,25 +5,32 @@ $yearlyAllocProgressBud = $row['yearly_progress_expenditure'];
 $qtrQty = $row['q1_progress_qty'];
 $qtrBudget = $row['q1_progress_expenditure'];
 if (isset($_POST['btnaddprogress'])) {
-
     $yearlyAllocProgressQty = $_POST['txtpyearqty'];
     $yearlyAllocProgressBud = $_POST['txtpyearbudget'];
-    $qtrQty = $_POST['txtpttqty'];
-    $qtrBudget = $_POST['txtpttbudget'];
+    if(isset($_POST['txtpttqty'])){
+        $qtrQty = $_POST['txtpttqty'];
+        $qtrBudget = $_POST['txtpttbudget'];
+    }
     if($row['yearly_alloc_qty']<$yearlyAllocProgressQty){
         $message = $utils->errorMessage("वार्षिक लक्षको भौतिक परिमाण भन्दा प्रगतिको  भौतिक परिमाण रकम बढी हुन गएको छ!!");
     }
     else if($row['yearly_alloc_budget']<$yearlyAllocProgressBud){
         $message = $utils->errorMessage("वार्षिक लक्षको बजेट भन्दा प्रगतिको बजेट रकम बढी हुन गएको छ!!");
     }
-    else if($row['q1_alloc_qty']<$qtrQty){
-        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष भौतिक परिमाण भन्दा प्रथम चौमासिक प्रगति भौतिक परिमाण रकम बढी हुन गएको छ!!");
-    }
-    else if($row['q1_alloc_budget']<$qtrBudget){
-        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष बजेट भन्दा प्रथम चौमासिक प्रगति बजेट रकम बढी हुन गएको छ!!");
+    else if(isset($_POST['txtpttqty'])){
+        if($row['q1_alloc_qty']<$qtrQty){
+            $message = $utils->errorMessage("प्रथम चौमासिक लक्ष भौतिक परिमाण भन्दा प्रथम चौमासिक प्रगति भौतिक परिमाण रकम बढी हुन गएको छ!!");
+        }
+        else if($row['q1_alloc_budget']<$qtrBudget){
+            $message = $utils->errorMessage("प्रथम चौमासिक लक्ष बजेट भन्दा प्रथम चौमासिक प्रगति बजेट रकम बढी हुन गएको छ!!");
+        }
     }
     else{
-        $res = $dbc->updateGovernmentTransaction($_POST['txtpyearqty'], $_POST['txtpyearbudget'], $_POST['txtpttbudget'], $_POST['txtpttqty'], $_GET['tlid']);
+        $res = $dbc->updateGovernmentTransaction(
+            $yearlyAllocProgressQty, 
+            $yearlyAllocProgressBud,
+             $qtrBudget, 
+             $qtrQty, $_GET['tlid']);
         if($res){
             $_SESSION["message"]=" लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
             echo "<script>
@@ -109,6 +116,7 @@ if (isset($_POST['btnaddprogress'])) {
                                                                                                value="<?php echo $yearlyAllocProgressBud ?>"/></span>
                                 </td>
                             </tr>
+                            <?php if($row['q1_alloc_qty']!=0){?>
                             <tr>
 
                                 <td align="center" rowspan="3"><span class="preeti">प्रथम चौमासिक लक्ष</span></td>
@@ -155,7 +163,7 @@ if (isset($_POST['btnaddprogress'])) {
                                 </td>
                             </tr>
 
-
+                                <?php }?>
                             <tr>
                                 <td colspan="3" align="center" rowspan="2"><span class="preeti"><input type="submit"
                                                                                                        name="btnaddprogress"

@@ -13,27 +13,24 @@ if (isset($_POST['btnaddprogress'])) {
     $qtrBudget = $_POST['txtpttbudget'];
     $yearlyAllocQty = $_POST['txtayearqty'];
     $qtrAllocQty = $_POST['txtqaloqty'];
-    if($yearlyAllocQty<$yearlyAllocProgressQty){
+    if ($yearlyAllocQty < $yearlyAllocProgressQty) {
         $message = $utils->errorMessage("वार्षिक लक्षको भौतिक परिमाण भन्दा प्रगतिको  भौतिक परिमाण रकम बढी हुन गएको छ!!");
-    }
-    else if($row['yearly_alloc_budget']<$yearlyAllocProgressBud){
+    } else if ($row['yearly_alloc_budget'] < $yearlyAllocProgressBud) {
         $message = $utils->errorMessage("वार्षिक लक्षको बजेट भन्दा प्रगतिको बजेट रकम बढी हुन गएको छ!!");
-    }else if($qtrAllocQty<$qtrQty){
+    } else if ($qtrAllocQty < $qtrQty) {
         $message = $utils->errorMessage("प्रथम चौमासिक लक्ष भौतिक परिमाण भन्दा प्रथम चौमासिक प्रगति भौतिक परिमाण रकम बढी हुन गएको छ!!");
-    }
-    else if($row['q1_alloc_budget']<$qtrBudget){
+    } else if ($row['q1_alloc_budget'] < $qtrBudget) {
         $message = $utils->errorMessage("प्रथम चौमासिक लक्ष बजेट भन्दा प्रथम चौमासिक प्रगति बजेट रकम बढी हुन गएको छ!!");
-    }
-    else{
-        $res = $dbc->updateOneLocalTransaction($yearlyAllocProgressQty, 
-        $yearlyAllocProgressBud, 
-        $qtrBudget,
-        $qtrQty, 
-         $_GET['tlid'],
-         $yearlyAllocQty,
-         $qtrAllocQty);
-        if($res){
-            $_SESSION["message"]=" लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
+    } else {
+        $res = $dbc->updateOneLocalTransaction($yearlyAllocProgressQty,
+            $yearlyAllocProgressBud,
+            $qtrBudget,
+            $qtrQty,
+            $_GET['tlid'],
+            $yearlyAllocQty,
+            $qtrAllocQty);
+        if ($res) {
+            $_SESSION["message"] = " लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
             echo "<script>
             window.history.go(-2);
             </script>";
@@ -51,7 +48,7 @@ if (isset($_POST['btnaddprogress'])) {
             <div id="content-box-in-left-in">
                 <h3 class="line"><span class="preeti" style="font-size:23px;">प्रगति विवरण प्रविष्टि</span></h3>
                 <!-- My latest work -->
-                <p><?php echo isset($message)?$message:"";?></p>
+                <p><?php echo isset($message) ? $message : ""; ?></p>
                 <div class="galerie">
                     <form name="saveEntry" method="post">
                         <table width="120%" align="center" border="1" class="table">
@@ -82,10 +79,10 @@ if (isset($_POST['btnaddprogress'])) {
                                 <td align="center"><span class="preeti">भौतिक परिमाण</span></td>
                                 <td><span class="siddhi">
                                 <input class="siddhi" size="30"
-                                                                maxlength="50"
-                                                                type="text"
-                                                                name="txtayearqty"
-                                                                value="<?php echo $yearlyAllocQty; ?>"/>
+                                       maxlength="50"
+                                       type="text"
+                                       name="txtayearqty"
+                                       value="<?php echo $yearlyAllocQty; ?>"/>
                                 </span></td>
                             </tr>
                             <tr>
@@ -137,10 +134,10 @@ if (isset($_POST['btnaddprogress'])) {
                                 <td align="center"><span class="preeti">भौतिक परिमाण</span></td>
                                 <td><span class="siddhi">
                                 <input class="siddhi" size="30"
-                                                                maxlength="50"
-                                                                type="text"
-                                                                name="txtqaloqty"
-                                                                value="<?php echo $row['q1_alloc_qty'] ?>"/>
+                                       maxlength="50"
+                                       type="text"
+                                       name="txtqaloqty"
+                                       value="<?php echo $row['q1_alloc_qty'] ?>"/>
                                 </span></td>
 
                             </tr>
