@@ -3,7 +3,8 @@
         $message = $utils->infoMessage($_SESSION['message']);
         unset($_SESSION['message']);
     }
-
+    $sumOfSelectSumSql=$dbc->selectSumOfTransactionGovernment($_GET['oid']);
+    $resultOfSum = mysqli_fetch_array($sumOfSelectSumSql);
 ?>
 
 <div id="content-box">
@@ -75,6 +76,21 @@
                             onclick="window.location.href='dashboard.php?action=entryThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>&name=<?php echo $row['name_np'];?>'" class="delete" value=' प्रगति थप गर्ने '></p></td>
                         </tr>
                         <?php } ?>
+                        <tr bgcolor='#FFFF00'>
+                            <td><span class="siddhi"></span></td>
+                            <td><span class="siddhi">कूल जम्मा</span></td>
+                            <td><span class="siddhi"></span></td>
+                            <td align="right" style="width:0.4em;"><span class="preeti" ><?php echo $resultOfSum['yaq']; ?></span></td>
+                            <td align="right"><span class="preeti"><?php echo $resultOfSum['yac'] ?></span></td>
+                            <td align="right"><span class="preeti"><?php echo $resultOfSum['yab'] ?></span></td>
+                            <td align="right"  style="width:0.6em;"><span class="preeti"><?php echo $resultOfSum['ypq'] ?></span></td>
+                            <td align="right" ><span class="preeti"><?php echo $resultOfSum['ype'] ?></span></td>
+                            <td align="right" ><span class="preeti"><?php echo $resultOfSum['ype'] ?></span></td>
+                            <td align="right"><span class="preeti" style="width:0.6em;"><?php echo $resultOfSum['qaq'] ?></span></td>
+                            <td align="right"><span class="preeti"><?php echo $resultOfSum['qab'] ?></span></td>
+                            <td align="right"  style="width:0.6em;"><span class="preeti"><?php echo $resultOfSum['qpq'] ?></span></td>
+                            <td align="right" ><span class="preeti"><?php echo $resultOfSum['qpe'] ?></span></td>
+                        </tr>
                     </table>
                 </form>
                 <br />

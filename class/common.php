@@ -420,6 +420,23 @@ class DB_dbc
         return $result;
     }
 
+    function selectSumOfTransactionGovernment($office_id)
+    {
+        $query = "SELECT SUM(tl.yearly_alloc_qty) as yaq,
+            SUM(tl.yearly_alloc_cost) as yac,
+            SUM(tl.yearly_alloc_budget) as yab,
+            SUM(tl.yearly_progress_qty) as ypq,
+            SUM(tl.yearly_progress_expenditure) as ype,
+            SUM(tl.q1_alloc_qty) as qaq,
+            SUM(tl.q1_alloc_budget) as qab,
+            SUM(tl.q1_progress_qty) as qpq,
+            SUM(tl.q1_progress_expenditure) as qpe
+              FROM tbl_activities AS a 
+              INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code 
+              WHERE tl.edu_office_id = '$office_id'";
+        $res = mysqli_query($this->dbc, $query);
+        return $res;
+    }
 
     function selectTransactionGovernment($oid)
     {
@@ -430,6 +447,22 @@ class DB_dbc
     function selectTransactionLocal($oid)
     {
         $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_code WHERE tl.local_office_id = '$oid'");
+        return $res;
+    }
+    function selectSumOfTransactionLocal($oid){
+        $query = "SELECT 
+                    SUM(tl.yearly_alloc_qty) as yaq,
+                    SUM(tl.yearly_alloc_cost) as yac,
+                    SUM(tl.yearly_alloc_budget) as yab,
+                    SUM(tl.yearly_progress_qty) as ypq,
+                    SUM(tl.yearly_progress_expenditure) as ype,
+                    SUM(tl.q1_alloc_qty) as qaq,
+                    SUM(tl.q1_alloc_budget) as qab,
+                    SUM(tl.q1_progress_qty) as qpq,
+                    SUM(tl.q1_progress_expenditure) as qpe 
+                    FROM tbl_local_bodies_activities4 AS a INNER JOIN tbl_transaction_local_bodies AS tl ON a.id = tl.local_body_activity4_id 
+                    WHERE tl.local_body_id = '$oid'";
+        $res = mysqli_query($this->dbc, $query);
         return $res;
     }
 
