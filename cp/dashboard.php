@@ -180,7 +180,7 @@ echo "<script>window.location='login.php';</script>";
         <!-- Menu -->
         <ul id="mega-menu-1" class="mega-menu">
             <li><a href="dashboard.php?action=home" class="active">गृहपृष्ठ</a></li>
-            <?php if($_SESSION['office_id']<75):?>
+            <?php if($_SESSION['office_id']<=75):?>
             <li><a href="#">प्रगति प्रविष्टि</a>
                 <ul>
                     
@@ -193,7 +193,7 @@ echo "<script>window.location='login.php';</script>";
                 </ul>
             </li>
             <?php  endif;?>
-            <?php if($_SESSION['office_id']>75):?>
+            <?php if($_SESSION['office_id']>=76):?>
             <li><a href="<?php echo  $edu_office_url?>">प्रगति प्रविष्टि</a></li>
             <?php  endif;?>
             <li><a href="#">अन्य प्रयोग</a>
