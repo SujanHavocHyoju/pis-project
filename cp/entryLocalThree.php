@@ -15,13 +15,13 @@ if (isset($_POST['btnaddprogress'])) {
     $qtrAllocQty = $_POST['txtqaloqty'];
     $qtrTargetBudget = $_POST['txtqtargetbudget'];
     if ($yearlyAllocQty < $yearlyAllocProgressQty) {
-        $message = $utils->errorMessage("वार्षिक लक्षको भौतिक परिमाण भन्दा प्रगतिको  भौतिक परिमाण रकम बढी हुन गएको छ!!");
+        $message = $utils->errorMessage("वार्षिक लक्ष्यको भौतिक परिमाण भन्दा प्रगतिको  भौतिक परिमाण रकम बढी हुन गएको छ!!");
     } else if ($row['yearly_alloc_budget'] < $yearlyAllocProgressBud) {
-        $message = $utils->errorMessage("वार्षिक लक्षको बजेट भन्दा प्रगतिको बजेट रकम बढी हुन गएको छ!!");
+        $message = $utils->errorMessage("वार्षिक लक्ष्यको बजेट भन्दा प्रगतिको बजेट रकम बढी हुन गएको छ!!");
     } else if ($qtrAllocQty < $qtrQty) {
-        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष भौतिक परिमाण भन्दा प्रथम चौमासिक प्रगति भौतिक परिमाण रकम बढी हुन गएको छ!!");
+        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष्य भौतिक परिमाण भन्दा प्रथम चौमासिक प्रगति भौतिक परिमाण रकम बढी हुन गएको छ!!");
     } else if ($row['q1_alloc_budget'] < $qtrBudget) {
-        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष बजेट भन्दा प्रथम चौमासिक प्रगति बजेट रकम बढी हुन गएको छ!!");
+        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष्य बजेट भन्दा प्रथम चौमासिक प्रगति बजेट रकम बढी हुन गएको छ!!");
     } else {
         $res = $dbc->updateOneLocalTransaction($yearlyAllocProgressQty,
             $yearlyAllocProgressBud,
@@ -32,7 +32,7 @@ if (isset($_POST['btnaddprogress'])) {
             $qtrAllocQty,
             $qtrTargetBudget);
         if ($res) {
-            $_SESSION["message"] = " लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
+            $_SESSION["message"] = " लक्ष्य तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
             echo "<script>
             window.history.go(-2);
             </script>";
@@ -73,7 +73,7 @@ if (isset($_POST['btnaddprogress'])) {
                                 <td><span class="siddhi"></span></td>
                             </tr>
                             <tr>
-                                <td rowspan="4" align="center"><span class="preeti">वार्षिक लक्ष</span></td>
+                                <td rowspan="4" align="center"><span class="preeti">वार्षिक लक्ष्य</span></td>
 
                             </tr>
 
@@ -128,7 +128,7 @@ if (isset($_POST['btnaddprogress'])) {
                             </tr>
                             <tr>
 
-                                <td align="center" rowspan="3"><span class="preeti">प्रथम चौमासिक लक्ष.</span></td>
+                                <td align="center" rowspan="3"><span class="preeti">प्रथम चौमासिक लक्ष्य.</span></td>
 
                             </tr>
 

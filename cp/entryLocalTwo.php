@@ -31,10 +31,10 @@ if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
                                     <td rowspan="2" align="center"><span class="preeti">कार्यक्रम</span></td>
                                     <td rowspan="2" align="center"><span class="preeti">क्रियाकलाप</span></td>
                                     <td rowspan="2" align="center"><span class="preeti">इकाई</span></td>
-                                    <td colspan="3" align="center"><span class="preeti">वार्षिक लक्ष</span></td>
+                                    <td colspan="3" align="center"><span class="preeti">वार्षिक लक्ष्य</span></td>
 
                                     <td colspan="2" align="center"><span class="preeti">वार्षिक प्रगति</span></td>
-                                    <td colspan="2" align="center"><span class="preeti">प्रथम चौमासिक लक्ष</span></td>
+                                    <td colspan="2" align="center"><span class="preeti">प्रथम चौमासिक लक्ष्य</span></td>
                                     <td colspan="2" align="center"><span class="preeti">प्रथम चौमासिक प्रगति</span></td>
 
                                 </tr>

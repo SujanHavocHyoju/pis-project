@@ -101,7 +101,7 @@ echo "<script>window.location='login.php';</script>";
                     <li><a href="dashboard.php?action=program" title="" class="preeti none"
                            style="font-size:14px; font-weight:normal">कार्यक्रम प्रविष्टी</a></li>
                     
-                     <li class="sub-office"><a href="dashboard.php?action=eduoffice" title="" class="preeti none" style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय प्रविष्टि </a></li><li class="sub-office"><a href="dashboard.php?action=office" title="" class="preeti none" style="font-size:14px; font-weight:normal">स्थानीय निकाय प्रविष्टि </a></li>
+                     <li class="sub-office"><a href="dashboard.php?action=eduoffice" title="" class="preeti none" style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय प्रविष्टि </a></li><li class="sub-office"><a href="dashboard.php?action=office" title="" class="preeti none" style="font-size:14px; font-weight:normal">स्थानीय तह प्रविष्टि </a></li>
                     
                     <li><a href="dashboard.php?action=users" title="" class="preeti none"
                            style="font-size:14px; font-weight:normal">प्रयोगकर्ता
@@ -126,7 +126,7 @@ echo "<script>window.location='login.php';</script>";
                            style="font-size:14px; font-weight:normal">शैक्षिक कार्यालय</a></li>
                    
                     <li><a href="dashboard.php?action=entryLocal" class="preeti none"
-                           style="font-size:14px; font-weight:normal">स्थानीय निकाय</a></li>
+                           style="font-size:14px; font-weight:normal">स्थानीय तह</a></li>
                     </li>
                 </ul>
             </li>
