@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae5fcf5c-b78a-492c-a5fd-fce9041f84de" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="ae5fcf5c-b78a-492c-a5fd-fce9041f84de" name="Default" comment="If the target_qty or target_budget for particular quarter has zero, then do not allow users to enter the progress_qty or progress_expenditure">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pis-project.iml" afterPath="$PROJECT_DIR$/.idea/pis-project.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/entryLocalThree.php" afterPath="$PROJECT_DIR$/cp/entryLocalThree.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/entryLocalTwo.php" afterPath="$PROJECT_DIR$/cp/entryLocalTwo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/entryThree.php" afterPath="$PROJECT_DIR$/cp/entryThree.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,16 +28,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="activitywisereport.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cp/activitywisereport.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1632">
-              <caret line="96" column="71" lean-forward="false" selection-start-line="96" selection-start-column="71" selection-end-line="96" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="entryLocalTwo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cp/entryLocalTwo.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -75,8 +61,8 @@
       <file leaf-file-name="entryLocalThree.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cp/entryLocalThree.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2243">
-              <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+            <state relative-caret-position="697">
+              <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
               <folding>
                 <marker date="1511796651266" expanded="true" signature="1798:1855" ph="..." />
               </folding>
@@ -87,7 +73,7 @@
       <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/class/common.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="26843">
               <caret line="1579" column="0" lean-forward="false" selection-start-line="1579" selection-start-column="0" selection-end-line="1579" selection-end-column="0" />
               <folding />
             </state>
@@ -104,32 +90,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/.htaccess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cp/common.php">
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cp/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3281">
-              <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+            <state relative-caret-position="548">
+              <caret line="195" column="47" lean-forward="false" selection-start-line="195" selection-start-column="47" selection-end-line="195" selection-end-column="47" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pis-project.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/pis-project.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3604">
+              <caret line="212" column="2" lean-forward="false" selection-start-line="212" selection-start-column="2" selection-end-line="212" selection-end-column="2" />
+              <folding>
+                <marker date="1511877224281" expanded="true" signature="49042:49084" ph="..." />
+                <marker date="1511877224281" expanded="true" signature="49042:49102" ph="..." />
+                <marker date="1511877224281" expanded="true" signature="49042:49115" ph="..." />
+                <marker date="1511877224281" expanded="true" signature="49042:49130" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -197,14 +198,15 @@
         <option value="$PROJECT_DIR$/cp/activitywisereport.php" />
         <option value="$PROJECT_DIR$/cp/officewisereport.php" />
         <option value="$PROJECT_DIR$/cp/progressreport.php" />
-        <option value="$PROJECT_DIR$/cp/dashboard.php" />
         <option value="$PROJECT_DIR$/cp/finalreport.php" />
         <option value="$PROJECT_DIR$/cp/common.php" />
         <option value="$PROJECT_DIR$/cp/entryLocal.php" />
         <option value="$PROJECT_DIR$/class/common.php" />
         <option value="$PROJECT_DIR$/cp/entryLocalTwo.php" />
         <option value="$PROJECT_DIR$/cp/entryLocalThree.php" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/cp/dashboard.php" />
       </list>
     </option>
   </component>
@@ -224,11 +226,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
-    <include_path>
-      <path value="" />
-    </include_path>
-  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="248" />
     <option name="y" value="357" />
@@ -250,6 +248,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -258,13 +257,17 @@
               <item name="pis-project" type="b2602c69:ProjectViewProjectNode" />
               <item name="pis-project" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="pis-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pis-project" type="462c0819:PsiDirectoryNode" />
+              <item name="cp" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,6 +276,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/bs-workspace/NPL/compare&amp;search" />
     <property name="SearchEverywhereHistoryKey" value="activitywisere&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;activitywis&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;commo&#9;FILE&#9;file://C:/wamp64/www/pis-project/class/common.php&#10;localtwo&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/entryLocalTwo.php&#10;entryLocal&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/entryLocal.php&#10;activi&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;activitywise&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywise.php&#10;dash&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;activity&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;class/comm&#9;FILE&#9;file://C:/wamp64/www/pis-project/class/common.php&#10;com&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/common.php&#10;common&#9;FILE&#9;file://C:/wamp64/www/pis-project/class/common.php&#10;dashboard&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;activ&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/activitywisereport.php&#10;dashb&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;dashba&#9;null&#9;null&#10;suba&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/subActivity.php&#10;testing&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/testing.php&#10;dashboa&#9;FILE&#9;file://C:/wamp64/www/pis-project/cp/dashboard.php&#10;comm&#9;ACTION&#9;CheckinProject&#10;entrythree&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entryThree.php&#10;entryTwo&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entryTwo.php&#10;entry.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/entry.php&#10;logout.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/logout.php&#10;login&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/loginCheck.php&#10;dashbo&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/dashboard.php&#10;style.css&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/public/css/style.css&#10;program.&#9;FILE&#9;file://C:/wamp64/www/git-finalize/pis-project/cp/program.php&#10;entry&#9;FILE&#9;file://C:/wamp64/www/git/pis-project/cp/entry.php" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.idea/workspace.xml" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -286,11 +290,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Built-in Web Server.Unnamed">
-    <configuration name="Unnamed" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$">
-      <CommandLine workingDirectory="$PROJECT_DIR$" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -402,12 +402,28 @@
       <workItem from="1510458726616" duration="1735000" />
       <workItem from="1510668889937" duration="3219000" />
       <workItem from="1511796292517" duration="300000" />
-      <workItem from="1511796614569" duration="401000" />
+      <workItem from="1511796614569" duration="1526000" />
+      <workItem from="1511876668781" duration="577000" />
     </task>
+    <task id="LOCAL-00001" summary="If the target_qty or target_budget for particular quarter has zero, then do not allow users to enter the progress_qty or progress_expenditure">
+      <created>1511797212935</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1511797212935</updated>
+    </task>
+    <task id="LOCAL-00002" summary="DEOKANCHANPUR is not popping up any place for progress entry.">
+      <created>1511877239475</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1511877239475</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79139000" />
+    <option name="totallyTimeSpent" value="80841000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,29 +440,29 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893288" sideWeight="0.5033058" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5033058" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.4966942" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893288" sideWeight="0.4966942" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44444445" sideWeight="0.49338844" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25785124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26198348" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -457,6 +473,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="If the target_qty or target_budget for particular quarter has zero, then do not allow users to enter the progress_qty or progress_expenditure" />
+    <MESSAGE value="DEOKANCHANPUR is not popping up any place for progress entry." />
+    <option name="LAST_COMMIT_MESSAGE" value="DEOKANCHANPUR is not popping up any place for progress entry." />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="2" />
@@ -464,20 +485,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cp/entry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="35" column="115" lean-forward="false" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cp/program.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cp/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -713,14 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cp/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2091">
-          <caret line="123" column="20" lean-forward="false" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cp/activitywiseexcel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -747,7 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3281">
           <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -755,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1632">
           <caret line="96" column="71" lean-forward="false" selection-start-line="96" selection-start-column="71" selection-end-line="96" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -793,8 +790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cp/entryLocalThree.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2243">
-          <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        <state relative-caret-position="697">
+          <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
           <folding>
             <marker date="1511796651266" expanded="true" signature="1798:1855" ph="..." />
           </folding>
@@ -803,7 +800,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/class/common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="26843">
           <caret line="1579" column="0" lean-forward="false" selection-start-line="1579" selection-start-column="0" selection-end-line="1579" selection-end-column="0" />
           <folding />
         </state>
@@ -817,10 +814,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/pis-project.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3604">
+          <caret line="212" column="2" lean-forward="false" selection-start-line="212" selection-start-column="2" selection-end-line="212" selection-end-column="2" />
+          <folding>
+            <marker date="1511877224281" expanded="true" signature="49042:49084" ph="..." />
+            <marker date="1511877224281" expanded="true" signature="49042:49102" ph="..." />
+            <marker date="1511877224281" expanded="true" signature="49042:49115" ph="..." />
+            <marker date="1511877224281" expanded="true" signature="49042:49130" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="195" column="47" lean-forward="false" selection-start-line="195" selection-start-column="47" selection-end-line="195" selection-end-column="47" />
           <folding />
         </state>
       </provider>
