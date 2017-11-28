@@ -13,6 +13,7 @@ if (isset($_POST['btnaddprogress'])) {
     $qtrBudget = $_POST['txtpttbudget'];
     $yearlyAllocQty = $_POST['txtayearqty'];
     $qtrAllocQty = $_POST['txtqaloqty'];
+    $qtrTargetBudget = $_POST['txtqtargetbudget'];
     if ($yearlyAllocQty < $yearlyAllocProgressQty) {
         $message = $utils->errorMessage("वार्षिक लक्षको भौतिक परिमाण भन्दा प्रगतिको  भौतिक परिमाण रकम बढी हुन गएको छ!!");
     } else if ($row['yearly_alloc_budget'] < $yearlyAllocProgressBud) {
@@ -28,7 +29,8 @@ if (isset($_POST['btnaddprogress'])) {
             $qtrQty,
             $_GET['tlid'],
             $yearlyAllocQty,
-            $qtrAllocQty);
+            $qtrAllocQty,
+            $qtrTargetBudget);
         if ($res) {
             $_SESSION["message"] = " लक्ष तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
             echo "<script>
@@ -108,7 +110,8 @@ if (isset($_POST['btnaddprogress'])) {
                                 <td align="center"><span class="preeti">भौतिक परिमाण</span></td>
                                 <td align="left" bgcolor="#CCCCCC"><span class="preeti"><input class="siddhi" size="30"
                                                                                                maxlength="50"
-                                                                                               type="text"
+                                                                                               type="number"
+                                                                                               step="1"
                                                                                                name="txtpyearqty"
                                                                                                value="<?php echo $yearlyAllocProgressQty ?>"/></span>
                                 </td>
@@ -135,7 +138,8 @@ if (isset($_POST['btnaddprogress'])) {
                                 <td><span class="siddhi">
                                 <input class="siddhi" size="30"
                                        maxlength="50"
-                                       type="text"
+                                       type="number"
+                                       step="1"
                                        name="txtqaloqty"
                                        value="<?php echo $row['q1_alloc_qty'] ?>"/>
                                 </span></td>
@@ -143,7 +147,13 @@ if (isset($_POST['btnaddprogress'])) {
                             </tr>
                             <tr>
                                 <td align="center"><span class="preeti">बजेट</span></td>
-                                <td><span class="siddhi"><?php echo $row['q1_alloc_budget'] ?></span></td>
+                                <td><span class="siddhi">
+                                         <input class="siddhi" size="30"
+                                                maxlength="50"
+                                                type="number"
+                                                step="1"
+                                                name="txtqtargetbudget"
+                                                value="<?php echo $row['q1_alloc_budget'] ?>"/></span></td>
 
                             </tr>
 
@@ -158,7 +168,8 @@ if (isset($_POST['btnaddprogress'])) {
                                 <td align="center"><span class="preeti">भौतिक परिमाण</span></td>
                                 <td align="left" bgcolor="#CCCCCC"><span class="preeti"><input class="siddhi" size="30"
                                                                                                maxlength="50"
-                                                                                               type="text"
+                                                                                               step="1"
+                                                                                               type="number"
                                                                                                name="txtpttqty"
                                                                                                value="<?php echo $qtrQty ?>"/></span>
                                 </td>
@@ -166,6 +177,7 @@ if (isset($_POST['btnaddprogress'])) {
                             <tr>
                                 <td align="center"><span class="preeti">बजेट</span></td>
                                 <td align="left" bgcolor="#CCCCCC"><span class="preeti"><input class="siddhi" size="30"
+
                                                                                                maxlength="50"
                                                                                                type="text"
                                                                                                name="txtpttbudget"

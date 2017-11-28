@@ -72,7 +72,7 @@
                             <td align="right" bgcolor="#CCCCCC" style="width:0.6em;"><span class="preeti"><?php echo $row['q1_progress_qty'] ?></span></td>
                             <td align="right" bgcolor="#CCCCCC"><span class="preeti"><?php echo $row['q1_progress_expenditure'] ?></span></td>
                             <td align="center" ><p><input type="button"   
-                            onclick="window.location.href='dashboard.php?action=entryThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>'" class="delete" value=' प्रगति थप गर्ने '></p></td>
+                            onclick="window.location.href='dashboard.php?action=entryThree&oid=<?php echo $_GET['oid'] ?>&tlid=<?php echo $row['id'] ?>&name=<?php echo $row['name_np'];?>'" class="delete" value=' प्रगति थप गर्ने '></p></td>
                         </tr>
                         <?php } ?>
                     </table>
