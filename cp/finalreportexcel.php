@@ -98,7 +98,7 @@ if(isset($_SESSION['user_type'])&&isset($_SESSION['username'])){
         if(isset($_GET['o_name'])){
             header('Content-Disposition: attachment;filename="pis-report-final-for-'.$_GET['o_name'].'.xlsx"');
         }else{
-            header('Content-Disposition: attachment;filename="pis-report-final.xlsx"');
+            header('Content-Disposition: attachment;filename="pis-report-final.xls"');
         }
         header('Content-Type: application/vnd.ms-excel');
         $objWriter->save('php://output');

@@ -77,7 +77,7 @@ if(isset($_SESSION['user_type'])){
         ob_end_clean();
         //we will be outputing an excel file
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xlsx"');
+        header('Content-Disposition: attachment;filename="pis-report-for-'.$office_name.'.xls"');
         $objWriter->save('php://output');
     }else{
         echo "<script>location.href='http://localhost/pis-project/cp/dashboard.php?action=home';</script>";

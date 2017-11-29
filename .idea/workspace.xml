@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ae5fcf5c-b78a-492c-a5fd-fce9041f84de" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/dashboard.php" afterPath="$PROJECT_DIR$/cp/dashboard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/eduoffice.php" afterPath="$PROJECT_DIR$/cp/eduoffice.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/entryLocalThree.php" afterPath="$PROJECT_DIR$/cp/entryLocalThree.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/entryLocalTwo.php" afterPath="$PROJECT_DIR$/cp/entryLocalTwo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/entryThree.php" afterPath="$PROJECT_DIR$/cp/entryThree.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/office.php" afterPath="$PROJECT_DIR$/cp/office.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/program.php" afterPath="$PROJECT_DIR$/cp/program.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/activitywiseexcel.php" afterPath="$PROJECT_DIR$/cp/activitywiseexcel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/excelreport.php" afterPath="$PROJECT_DIR$/cp/excelreport.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/finalreportexcel.php" afterPath="$PROJECT_DIR$/cp/finalreportexcel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cp/officewiseexcel.php" afterPath="$PROJECT_DIR$/cp/officewiseexcel.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,37 +34,194 @@
       <file leaf-file-name="entryLocalTwo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cp/entryLocalTwo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
               <folding>
-                <marker date="1511888926685" expanded="true" signature="7211:7658" ph="..." />
-                <marker date="1511888926685" expanded="true" signature="7252:7647" ph="{...}" />
-                <marker date="1511888926685" expanded="true" signature="7463:7641" ph="//..." />
+                <marker date="1511890322267" expanded="true" signature="9195:9642" ph="..." />
+                <marker date="1511890322267" expanded="true" signature="9236:9631" ph="{...}" />
+                <marker date="1511890322267" expanded="true" signature="9447:9625" ph="//..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="entryThree.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cp/entryThree.php">
+      <file leaf-file-name="entryTwo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cp/entryTwo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="70" column="26" lean-forward="true" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+            <state relative-caret-position="102">
+              <caret line="6" column="58" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="6" selection-end-column="58" />
               <folding>
-                <marker date="1511888962214" expanded="true" signature="2000:2008" ph="..." />
+                <marker date="1511890260764" expanded="true" signature="7019:7407" ph="..." />
+                <marker date="1511890260764" expanded="true" signature="7060:7396" ph="{...}" />
+                <marker date="1511890260764" expanded="true" signature="7065:7208" ph="//..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="entryLocalThree.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cp/entryLocalThree.php">
+      <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/class/common.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="77" column="33" lean-forward="true" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
+            <state relative-caret-position="153">
+              <caret line="459" column="51" lean-forward="true" selection-start-line="459" selection-start-column="51" selection-end-line="459" selection-end-column="51" />
               <folding>
-                <marker date="1511888881377" expanded="true" signature="1889:1946" ph="..." />
+                <marker date="1511890536374" expanded="true" signature="740:827" ph="SELECT * FRO... tbl_users" />
+                <marker date="1511890536374" expanded="true" signature="989:1015" ph="SELECT * FRO... tbl_programs" />
+                <marker date="1511890536374" expanded="true" signature="1124:1151" ph="SELECT * FRO... tbl_districts" />
+                <marker date="1511890536374" expanded="true" signature="1249:1313" ph="SELECT * FRO... tbl_programs" />
+                <marker date="1511890536374" expanded="true" signature="1454:1505" ph="SELECT * FRO... tbl_programs" />
+                <marker date="1511890536374" expanded="true" signature="1612:1858" ph="SELECT lo.id... tbl_local_bodies" />
+                <marker date="1511890536374" expanded="true" signature="1968:2213" ph="SELECT eo.id... tbl_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="2329:2368" ph="SELECT * fro... tbl_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="2515:2620" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="3043:3094" ph="Select COUNT... tbl_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="3358:3410" ph="Select COUNT... tbl_local_bodies" />
+                <marker date="1511890536374" expanded="true" signature="3774:3886" ph="INSERT INTO `pisdoego_db_pis`.`tbl_local_bodies`... " />
+                <marker date="1511890536374" expanded="true" signature="4287:4393" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="4915:5047" ph="INSERT INTO `pisdoego_db_pis`.`tbl_edu_offices`... " />
+                <marker date="1511890536374" expanded="true" signature="5479:5676" ph="SELECT eo.id... tbl_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="5804:6089" ph="SELECT lo.id... tbl_local_bodies" />
+                <marker date="1511890536374" expanded="true" signature="6247:6312" ph="Select COUNT... tbl_programs" />
+                <marker date="1511890536374" expanded="true" signature="6678:6785" ph="INSERT INTO `pisdoego_db_pis`.`tbl_programs`... " />
+                <marker date="1511890536374" expanded="true" signature="7209:7313" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="7754:7811" ph="Select COUNT... tbl_users" />
+                <marker date="1511890536374" expanded="true" signature="8216:8358" ph="INSERT INTO `pisdoego_db_pis`.`tbl_users`... " />
+                <marker date="1511890536374" expanded="true" signature="8909:8958" ph="SELECT * FRO... tbl_users" />
+                <marker date="1511890536374" expanded="true" signature="9203:9275" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="9691:9816" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="10326:10373" ph="SELECT * FRO... tbl_local_bodies" />
+                <marker date="1511890536374" expanded="true" signature="10493:10552" ph="SELECT * FRO... tbl_main_activities" />
+                <marker date="1511890536374" expanded="true" signature="10668:10732" ph="SELECT * FRO... tbl_sub_activities" />
+                <marker date="1511890536374" expanded="true" signature="10845:10906" ph="SELECT * FRO... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="11025:11083" ph="SELECT * FRO... tbl_main_activities" />
+                <marker date="1511890536374" expanded="true" signature="11201:11260" ph="SELECT * FRO... tbl_sub_activities" />
+                <marker date="1511890536374" expanded="true" signature="11389:11448" ph="Select COUNT... tbl_main_activities" />
+                <marker date="1511890536374" expanded="true" signature="11810:11955" ph="INSERT INTO `pisdoego_db_pis`.`tbl_main_activities`... " />
+                <marker date="1511890536374" expanded="true" signature="12436:12536" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="12969:13034" ph="DELETE FROM " />
+                <marker date="1511890536374" expanded="true" signature="13289:13347" ph="Select COUNT... tbl_sub_activities" />
+                <marker date="1511890536374" expanded="true" signature="13708:13853" ph="INSERT INTO `pisdoego_db_pis`.`tbl_sub_activities`... " />
+                <marker date="1511890536374" expanded="true" signature="14330:14429" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="14867:14921" ph="Select COUNT... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="15308:15467" ph="INSERT INTO `pisdoego_db_pis`.`tbl_activities`... " />
+                <marker date="1511890536374" expanded="true" signature="16019:16124" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="16602:17200" ph="SELECT SUM(t... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="17374:17540" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="17661:17831" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="17928:18626" ph="SELECT SUM(t... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="18796:18930" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="19066:19306" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="19443:19636" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="19767:19964" ph="SELECT a.nam... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="20084:20215" ph="select id,us... tbl_users" />
+                <marker date="1511890536374" expanded="true" signature="20323:20488" ph="SELECT u.use... tbl_users" />
+                <marker date="1511890536374" expanded="true" signature="20593:20697" ph="SELECT id,us... tbl_users" />
+                <marker date="1511890536374" expanded="true" signature="20900:20961" ph="SELECT name_... tbl_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="21101:21163" ph="SELECT name_... tbl_local_bodies" />
+                <marker date="1511890536374" expanded="true" signature="21335:21458" ph="SELECT o.nam... tbl_local_bodies" />
+                <marker date="1511890536374" expanded="true" signature="21606:21791" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="22321:22513" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="22968:23013" ph="SELECT * FRO... tbl_fiscal_year" />
+                <marker date="1511890536374" expanded="true" signature="23212:23281" ph="Select COUNT... tbl_fiscal_year" />
+                <marker date="1511890536374" expanded="true" signature="23657:23734" ph="INSERT INTO `pisdoego_db_pis`.`tbl_fiscal_year`... " />
+                <marker date="1511890536374" expanded="true" signature="23967:24013" ph="SELECT * fro... tbl_fiscal_year" />
+                <marker date="1511890536374" expanded="true" signature="24160:24215" ph="DELETE FROM " />
+                <marker date="1511890536374" expanded="true" signature="25451:25481" ph="SELECT * FRO... ${$table}" />
+                <marker date="1511890536374" expanded="true" signature="28984:29093" ph="SELECT id,us... tbl_users" />
+                <marker date="1511890536374" expanded="true" signature="29170:29267" ph="SELECT count... tbl_transaction_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="29403:29559" ph="SELECT count... tbl_transaction_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="29701:29782" ph="SELECT * FRO... tbl_sub_activities" />
+                <marker date="1511890536374" expanded="true" signature="29921:30299" ph="SELECT SUM(y... tbl_transaction_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="30420:30469" ph="SELECT * FRO... tbl_main_activities" />
+                <marker date="1511890536374" expanded="true" signature="30603:31382" ph="SELECT act.i... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="31530:32344" ph="SELECT act.i... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="32510:32901" ph="SELECT eo.na... tbl_transaction_edu_offices" />
+                <marker date="1511890536374" expanded="true" signature="33069:33535" ph="SELECT lo.na... tbl_transaction_local_offices" />
+                <marker date="1511890536374" expanded="true" signature="33690:33755" ph="SELECT code tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="33893:36678" ph="SELECT SUM(M... main_id" />
+                <marker date="1511890536374" expanded="true" signature="34288:36668" ph="SELECT main_... main_id" />
+                <marker date="1511890536374" expanded="true" signature="34769:36636" ph="SELECT main_... id" />
+                <marker date="1511890536374" expanded="true" signature="35320:36609" ph="SELECT main.... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="36873:39237" ph="SELECT main_... main_id" />
+                <marker date="1511890536374" expanded="true" signature="37338:39205" ph="SELECT main_... id" />
+                <marker date="1511890536374" expanded="true" signature="37889:39178" ph="SELECT main.... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="39435:40981" ph="SELECT sub_c... code" />
+                <marker date="1511890536374" expanded="true" signature="39813:40953" ph="SELECT sub.c... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="41226:42131" ph="SELECT act.n... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="42324:43322" ph="SELECT SUM(s... desc_np" />
+                <marker date="1511890536374" expanded="true" signature="42654:43312" ph="SELECT act.d... tbl_local_bodies_activities4" />
+                <marker date="1511890536374" expanded="true" signature="43528:44186" ph="SELECT act.d... tbl_local_bodies_activities4" />
+                <marker date="1511890536374" expanded="true" signature="45989:47308" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="49139:49821" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="51318:52108" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="53777:54765" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="57606:59565" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="62403:63085" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="63891:63940" ph="SELECT * FRO... tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="64026:66770" ph="SELECT SUM(M... main_id" />
+                <marker date="1511890536374" expanded="true" signature="64421:66760" ph="SELECT main_... main_id" />
+                <marker date="1511890536374" expanded="true" signature="64902:66728" ph="SELECT main_... id" />
+                <marker date="1511890536374" expanded="true" signature="65453:66701" ph="SELECT main.... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="66966:69289" ph="SELECT main_... main_id" />
+                <marker date="1511890536374" expanded="true" signature="67431:69257" ph="SELECT main_... id" />
+                <marker date="1511890536374" expanded="true" signature="67982:69230" ph="SELECT main.... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="69495:71015" ph="SELECT sub_c... code" />
+                <marker date="1511890536374" expanded="true" signature="69873:70987" ph="SELECT sub.c... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="71248:72147" ph="SELECT act.n... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="72714:73483" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="74299:75283" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="76242:78193" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="80302:80984" ph="INSERT INTO tbl_current_reports" />
+                <marker date="1511890536374" expanded="true" signature="81789:81869" ph="SELECT id, c... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="81984:82037" ph="SELECT * FRO... tbl_activities" />
+                <marker date="1511890536374" expanded="true" signature="82185:82431" ph="SELECT lo.id... tbl_local_bodies" />
+                <marker date="1511890536374" expanded="true" signature="82569:82851" ph="SELECT lo.id... tbl_local_bodies" />
+                <marker date="1511890536374" expanded="true" signature="82978:83211" ph="SELECT a.des... tbl_local_bodies_activities4" />
+                <marker date="1511890536374" expanded="true" signature="83345:83604" ph="SELECT a.des... tbl_local_bodies_activities4" />
+                <marker date="1511890536374" expanded="true" signature="84095:84512" ph="UPDATE `pisd... " />
+                <marker date="1511890536374" expanded="true" signature="85187:85244" ph="SELECT * FRO... tbl_users" />
+                <marker date="1511890536374" expanded="true" signature="85380:85448" ph="UPDATE pisdo... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activitywiseexcel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cp/activitywiseexcel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="64" column="85" lean-forward="false" selection-start-line="64" selection-start-column="82" selection-end-line="64" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="excelreport.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cp/excelreport.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="85" column="62" lean-forward="true" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="finalreportexcel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cp/finalreportexcel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="100" column="82" lean-forward="false" selection-start-line="100" selection-start-column="79" selection-end-line="100" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="officewiseexcel.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cp/officewiseexcel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,8 +230,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selectOne</find>
-      <find>transact</find>
       <find>0</find>
       <find>officewise</find>
       <find>activitywise</find>
@@ -105,7 +257,9 @@
       <find>btnaddprogress</find>
       <find>echo</find>
       <find>updateOneLocalTransaction</find>
+      <find>इकाई</find>
       <find>लक्ष</find>
+      <find>selectSumOfTransactionLocal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -124,7 +278,6 @@
         <option value="$PROJECT_DIR$/cp/loginCheck.php" />
         <option value="$PROJECT_DIR$/cp/logout.php" />
         <option value="$PROJECT_DIR$/cp/login.php" />
-        <option value="$PROJECT_DIR$/cp/activitywiseexcel.php" />
         <option value="$PROJECT_DIR$/cp/activitywise.php" />
         <option value="$PROJECT_DIR$/class/Report.php" />
         <option value="$PROJECT_DIR$/cp/testing.php" />
@@ -137,15 +290,19 @@
         <option value="$PROJECT_DIR$/cp/entryLocal.php" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/cp/entryTwo.php" />
-        <option value="$PROJECT_DIR$/class/common.php" />
         <option value="$PROJECT_DIR$/cp/program.php" />
         <option value="$PROJECT_DIR$/cp/eduoffice.php" />
         <option value="$PROJECT_DIR$/cp/dashboard.php" />
         <option value="$PROJECT_DIR$/cp/office.php" />
         <option value="$PROJECT_DIR$/cp/entryLocalThree.php" />
-        <option value="$PROJECT_DIR$/cp/entryLocalTwo.php" />
         <option value="$PROJECT_DIR$/cp/entryThree.php" />
+        <option value="$PROJECT_DIR$/cp/entryTwo.php" />
+        <option value="$PROJECT_DIR$/cp/entryLocalTwo.php" />
+        <option value="$PROJECT_DIR$/class/common.php" />
+        <option value="$PROJECT_DIR$/cp/activitywiseexcel.php" />
+        <option value="$PROJECT_DIR$/cp/excelreport.php" />
+        <option value="$PROJECT_DIR$/cp/finalreportexcel.php" />
+        <option value="$PROJECT_DIR$/cp/officewiseexcel.php" />
       </list>
     </option>
   </component>
@@ -167,10 +324,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="248" />
-    <option name="y" value="357" />
-    <option name="width" value="1240" />
-    <option name="height" value="636" />
+    <option name="x" value="28" />
+    <option name="y" value="-3" />
+    <option name="width" value="1252" />
+    <option name="height" value="723" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -188,7 +345,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -212,6 +368,7 @@
       </pane>
       <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,7 +505,8 @@
       <workItem from="1511796292517" duration="300000" />
       <workItem from="1511796614569" duration="1526000" />
       <workItem from="1511876668781" duration="1216000" />
-      <workItem from="1511882880675" duration="5603000" />
+      <workItem from="1511882880675" duration="7450000" />
+      <workItem from="1511935565346" duration="229000" />
     </task>
     <task id="LOCAL-00001" summary="If the target_qty or target_budget for particular quarter has zero, then do not allow users to enter the progress_qty or progress_expenditure">
       <created>1511797212935</created>
@@ -378,11 +536,25 @@
       <option name="project" value="LOCAL" />
       <updated>1511888340100</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Grammar correction">
+      <created>1511889136836</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1511889136836</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Display total budget at the end of list">
+      <created>1511890565522</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1511890565522</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87083000" />
+    <option name="totallyTimeSpent" value="89159000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -394,7 +566,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="28" y="-3" width="1252" height="1027" extended-state="6" />
+    <frame x="28" y="-3" width="1252" height="723" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -406,12 +578,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.4966942" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44444445" sideWeight="0.49338844" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47603306" sideWeight="0.49338844" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26198348" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28347108" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -424,6 +595,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -491,7 +663,9 @@
     <MESSAGE value="DEOKANCHANPUR is not popping up any place for progress entry." />
     <MESSAGE value="If the target_qty or target_budget for particular quarter has zero, then do not allow users to enter the progress_qty or progress_expenditure" />
     <MESSAGE value="Allow local bodies to enter quarterly target budget as well." />
-    <option name="LAST_COMMIT_MESSAGE" value="Allow local bodies to enter quarterly target budget as well." />
+    <MESSAGE value="Grammar correction" />
+    <MESSAGE value="Display total budget at the end of list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Display total budget at the end of list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -500,27 +674,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cp/entryLocalThree.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cp/editprogram.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cp/entryLocal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cp/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -554,7 +707,124 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
           <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
-          <folding />
+          <folding>
+            <marker date="1511890536374" expanded="true" signature="740:827" ph="SELECT * FRO... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="989:1015" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1511890536374" expanded="true" signature="1124:1151" ph="SELECT * FRO... tbl_districts" />
+            <marker date="1511890536374" expanded="true" signature="1249:1313" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1511890536374" expanded="true" signature="1454:1505" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1511890536374" expanded="true" signature="1612:1858" ph="SELECT lo.id... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="1968:2213" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="2329:2368" ph="SELECT * fro... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="2515:2620" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="3043:3094" ph="Select COUNT... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="3358:3410" ph="Select COUNT... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="3774:3886" ph="INSERT INTO `pisdoego_db_pis`.`tbl_local_bodies`... " />
+            <marker date="1511890536374" expanded="true" signature="4287:4393" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="4915:5047" ph="INSERT INTO `pisdoego_db_pis`.`tbl_edu_offices`... " />
+            <marker date="1511890536374" expanded="true" signature="5479:5676" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="5804:6089" ph="SELECT lo.id... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="6247:6312" ph="Select COUNT... tbl_programs" />
+            <marker date="1511890536374" expanded="true" signature="6678:6785" ph="INSERT INTO `pisdoego_db_pis`.`tbl_programs`... " />
+            <marker date="1511890536374" expanded="true" signature="7209:7313" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="7754:7811" ph="Select COUNT... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="8216:8358" ph="INSERT INTO `pisdoego_db_pis`.`tbl_users`... " />
+            <marker date="1511890536374" expanded="true" signature="8909:8958" ph="SELECT * FRO... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="9203:9275" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="9691:9816" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="10326:10373" ph="SELECT * FRO... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="10493:10552" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1511890536374" expanded="true" signature="10668:10732" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1511890536374" expanded="true" signature="10845:10906" ph="SELECT * FRO... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="11025:11083" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1511890536374" expanded="true" signature="11201:11260" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1511890536374" expanded="true" signature="11389:11448" ph="Select COUNT... tbl_main_activities" />
+            <marker date="1511890536374" expanded="true" signature="11810:11955" ph="INSERT INTO `pisdoego_db_pis`.`tbl_main_activities`... " />
+            <marker date="1511890536374" expanded="true" signature="12436:12536" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="12969:13034" ph="DELETE FROM " />
+            <marker date="1511890536374" expanded="true" signature="13289:13347" ph="Select COUNT... tbl_sub_activities" />
+            <marker date="1511890536374" expanded="true" signature="13708:13853" ph="INSERT INTO `pisdoego_db_pis`.`tbl_sub_activities`... " />
+            <marker date="1511890536374" expanded="true" signature="14330:14429" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="14867:14921" ph="Select COUNT... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="15308:15467" ph="INSERT INTO `pisdoego_db_pis`.`tbl_activities`... " />
+            <marker date="1511890536374" expanded="true" signature="16019:16124" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="16602:17200" ph="SELECT SUM(t... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="17374:17540" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="17661:17831" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="17928:18626" ph="SELECT SUM(t... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="18796:18930" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="19066:19306" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="19443:19636" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="19767:19964" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="20084:20215" ph="select id,us... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="20323:20488" ph="SELECT u.use... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="20593:20697" ph="SELECT id,us... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="20900:20961" ph="SELECT name_... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="21101:21163" ph="SELECT name_... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="21335:21458" ph="SELECT o.nam... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="21606:21791" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="22321:22513" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="22968:23013" ph="SELECT * FRO... tbl_fiscal_year" />
+            <marker date="1511890536374" expanded="true" signature="23212:23281" ph="Select COUNT... tbl_fiscal_year" />
+            <marker date="1511890536374" expanded="true" signature="23657:23734" ph="INSERT INTO `pisdoego_db_pis`.`tbl_fiscal_year`... " />
+            <marker date="1511890536374" expanded="true" signature="23967:24013" ph="SELECT * fro... tbl_fiscal_year" />
+            <marker date="1511890536374" expanded="true" signature="24160:24215" ph="DELETE FROM " />
+            <marker date="1511890536374" expanded="true" signature="25451:25481" ph="SELECT * FRO... ${$table}" />
+            <marker date="1511890536374" expanded="true" signature="28984:29093" ph="SELECT id,us... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="29170:29267" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="29403:29559" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="29701:29782" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1511890536374" expanded="true" signature="29921:30299" ph="SELECT SUM(y... tbl_transaction_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="30420:30469" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1511890536374" expanded="true" signature="30603:31382" ph="SELECT act.i... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="31530:32344" ph="SELECT act.i... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="32510:32901" ph="SELECT eo.na... tbl_transaction_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="33069:33535" ph="SELECT lo.na... tbl_transaction_local_offices" />
+            <marker date="1511890536374" expanded="true" signature="33690:33755" ph="SELECT code tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="33893:36678" ph="SELECT SUM(M... main_id" />
+            <marker date="1511890536374" expanded="true" signature="34288:36668" ph="SELECT main_... main_id" />
+            <marker date="1511890536374" expanded="true" signature="34769:36636" ph="SELECT main_... id" />
+            <marker date="1511890536374" expanded="true" signature="35320:36609" ph="SELECT main.... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="36873:39237" ph="SELECT main_... main_id" />
+            <marker date="1511890536374" expanded="true" signature="37338:39205" ph="SELECT main_... id" />
+            <marker date="1511890536374" expanded="true" signature="37889:39178" ph="SELECT main.... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="39435:40981" ph="SELECT sub_c... code" />
+            <marker date="1511890536374" expanded="true" signature="39813:40953" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="41226:42131" ph="SELECT act.n... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="42324:43322" ph="SELECT SUM(s... desc_np" />
+            <marker date="1511890536374" expanded="true" signature="42654:43312" ph="SELECT act.d... tbl_local_bodies_activities4" />
+            <marker date="1511890536374" expanded="true" signature="43528:44186" ph="SELECT act.d... tbl_local_bodies_activities4" />
+            <marker date="1511890536374" expanded="true" signature="45989:47308" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="49139:49821" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="51318:52108" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="53777:54765" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="57606:59565" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="62403:63085" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="63891:63940" ph="SELECT * FRO... tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="64026:66770" ph="SELECT SUM(M... main_id" />
+            <marker date="1511890536374" expanded="true" signature="64421:66760" ph="SELECT main_... main_id" />
+            <marker date="1511890536374" expanded="true" signature="64902:66728" ph="SELECT main_... id" />
+            <marker date="1511890536374" expanded="true" signature="65453:66701" ph="SELECT main.... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="66966:69289" ph="SELECT main_... main_id" />
+            <marker date="1511890536374" expanded="true" signature="67431:69257" ph="SELECT main_... id" />
+            <marker date="1511890536374" expanded="true" signature="67982:69230" ph="SELECT main.... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="69495:71015" ph="SELECT sub_c... code" />
+            <marker date="1511890536374" expanded="true" signature="69873:70987" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="71248:72147" ph="SELECT act.n... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="72714:73483" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="74299:75283" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="76242:78193" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="80302:80984" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="81789:81869" ph="SELECT id, c... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="81984:82037" ph="SELECT * FRO... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="82185:82431" ph="SELECT lo.id... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="82569:82851" ph="SELECT lo.id... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="82978:83211" ph="SELECT a.des... tbl_local_bodies_activities4" />
+            <marker date="1511890536374" expanded="true" signature="83345:83604" ph="SELECT a.des... tbl_local_bodies_activities4" />
+            <marker date="1511890536374" expanded="true" signature="84095:84512" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="85187:85244" ph="SELECT * FRO... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="85380:85448" ph="UPDATE pisdo... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -672,20 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cp/finalreport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="178" column="43" lean-forward="false" selection-start-line="178" selection-start-column="43" selection-end-line="178" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cp/activitywiseexcel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cp/fiscalYear.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -726,7 +982,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -750,7 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -758,7 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3553">
           <caret line="209" column="2" lean-forward="false" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -775,143 +1027,6 @@
         <state relative-caret-position="85">
           <caret line="5" column="130" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="130" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cp/entryTwo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="184" lean-forward="false" selection-start-line="74" selection-start-column="184" selection-end-line="74" selection-end-column="184" />
-          <folding>
-            <marker date="1511885850762" expanded="true" signature="5126:5132" ph="&amp;nbsp;" />
-            <marker date="1511885850762" expanded="true" signature="5333:5339" ph="&amp;nbsp;" />
-            <marker date="1511885850762" expanded="true" signature="5379:5767" ph="..." />
-            <marker date="1511885850762" expanded="true" signature="5420:5756" ph="{...}" />
-            <marker date="1511885850762" expanded="true" signature="5425:5568" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2569">
-          <caret line="1860" column="55" lean-forward="true" selection-start-line="1860" selection-start-column="55" selection-end-line="1860" selection-end-column="55" />
-          <folding>
-            <marker date="1511887932739" expanded="true" signature="740:827" ph="SELECT * FRO... tbl_users" />
-            <marker date="1511887932739" expanded="true" signature="989:1015" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1511887932739" expanded="true" signature="1124:1151" ph="SELECT * FRO... tbl_districts" />
-            <marker date="1511887932739" expanded="true" signature="1249:1313" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1511887932739" expanded="true" signature="1454:1505" ph="SELECT * FRO... tbl_programs" />
-            <marker date="1511887932739" expanded="true" signature="1612:1858" ph="SELECT lo.id... tbl_local_bodies" />
-            <marker date="1511887932739" expanded="true" signature="1968:2213" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="2329:2368" ph="SELECT * fro... tbl_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="2515:2620" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="3043:3094" ph="Select COUNT... tbl_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="3358:3410" ph="Select COUNT... tbl_local_bodies" />
-            <marker date="1511887932739" expanded="true" signature="3774:3886" ph="INSERT INTO `pisdoego_db_pis`.`tbl_local_bodies`... " />
-            <marker date="1511887932739" expanded="true" signature="4287:4393" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="4915:5047" ph="INSERT INTO `pisdoego_db_pis`.`tbl_edu_offices`... " />
-            <marker date="1511887932739" expanded="true" signature="5479:5676" ph="SELECT eo.id... tbl_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="5804:6089" ph="SELECT lo.id... tbl_local_bodies" />
-            <marker date="1511887932739" expanded="true" signature="6247:6312" ph="Select COUNT... tbl_programs" />
-            <marker date="1511887932739" expanded="true" signature="6678:6785" ph="INSERT INTO `pisdoego_db_pis`.`tbl_programs`... " />
-            <marker date="1511887932739" expanded="true" signature="7209:7313" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="7754:7811" ph="Select COUNT... tbl_users" />
-            <marker date="1511887932739" expanded="true" signature="8216:8358" ph="INSERT INTO `pisdoego_db_pis`.`tbl_users`... " />
-            <marker date="1511887932739" expanded="true" signature="8909:8958" ph="SELECT * FRO... tbl_users" />
-            <marker date="1511887932739" expanded="true" signature="9203:9275" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="9691:9816" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="10326:10373" ph="SELECT * FRO... tbl_local_bodies" />
-            <marker date="1511887932739" expanded="true" signature="10493:10552" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1511887932739" expanded="true" signature="10668:10732" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1511887932739" expanded="true" signature="10845:10906" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="11025:11083" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1511887932739" expanded="true" signature="11201:11260" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1511887932739" expanded="true" signature="11389:11448" ph="Select COUNT... tbl_main_activities" />
-            <marker date="1511887932739" expanded="true" signature="11810:11955" ph="INSERT INTO `pisdoego_db_pis`.`tbl_main_activities`... " />
-            <marker date="1511887932739" expanded="true" signature="12436:12536" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="12969:13034" ph="DELETE FROM " />
-            <marker date="1511887932739" expanded="true" signature="13289:13347" ph="Select COUNT... tbl_sub_activities" />
-            <marker date="1511887932739" expanded="true" signature="13708:13853" ph="INSERT INTO `pisdoego_db_pis`.`tbl_sub_activities`... " />
-            <marker date="1511887932739" expanded="true" signature="14330:14429" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="14867:14921" ph="Select COUNT... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="15308:15467" ph="INSERT INTO `pisdoego_db_pis`.`tbl_activities`... " />
-            <marker date="1511887932739" expanded="true" signature="16019:16124" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="16615:16781" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="16902:17072" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="17194:17328" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="17464:17704" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="17841:18034" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="18165:18362" ph="SELECT a.nam... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="18482:18613" ph="select id,us... tbl_users" />
-            <marker date="1511887932739" expanded="true" signature="18721:18886" ph="SELECT u.use... tbl_users" />
-            <marker date="1511887932739" expanded="true" signature="18991:19095" ph="SELECT id,us... tbl_users" />
-            <marker date="1511887932739" expanded="true" signature="19298:19359" ph="SELECT name_... tbl_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="19499:19561" ph="SELECT name_... tbl_local_bodies" />
-            <marker date="1511887932739" expanded="true" signature="19733:19856" ph="SELECT o.nam... tbl_local_bodies" />
-            <marker date="1511887932739" expanded="true" signature="20004:20189" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="20719:20911" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="21366:21411" ph="SELECT * FRO... tbl_fiscal_year" />
-            <marker date="1511887932739" expanded="true" signature="21610:21679" ph="Select COUNT... tbl_fiscal_year" />
-            <marker date="1511887932739" expanded="true" signature="22055:22132" ph="INSERT INTO `pisdoego_db_pis`.`tbl_fiscal_year`... " />
-            <marker date="1511887932739" expanded="true" signature="22365:22411" ph="SELECT * fro... tbl_fiscal_year" />
-            <marker date="1511887932739" expanded="true" signature="22558:22613" ph="DELETE FROM " />
-            <marker date="1511887932739" expanded="true" signature="23849:23879" ph="SELECT * FRO... ${$table}" />
-            <marker date="1511887932739" expanded="true" signature="27382:27491" ph="SELECT id,us... tbl_users" />
-            <marker date="1511887932739" expanded="true" signature="27568:27665" ph="SELECT count... tbl_transaction_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="27801:27957" ph="SELECT count... tbl_transaction_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="28099:28180" ph="SELECT * FRO... tbl_sub_activities" />
-            <marker date="1511887932739" expanded="true" signature="28319:28697" ph="SELECT SUM(y... tbl_transaction_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="28818:28867" ph="SELECT * FRO... tbl_main_activities" />
-            <marker date="1511887932739" expanded="true" signature="29001:29780" ph="SELECT act.i... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="29928:30742" ph="SELECT act.i... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="30908:31299" ph="SELECT eo.na... tbl_transaction_edu_offices" />
-            <marker date="1511887932739" expanded="true" signature="31467:31933" ph="SELECT lo.na... tbl_transaction_local_offices" />
-            <marker date="1511887932739" expanded="true" signature="32088:32153" ph="SELECT code tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="32291:35076" ph="SELECT SUM(M... main_id" />
-            <marker date="1511887932739" expanded="true" signature="32686:35066" ph="SELECT main_... main_id" />
-            <marker date="1511887932739" expanded="true" signature="33167:35034" ph="SELECT main_... id" />
-            <marker date="1511887932739" expanded="true" signature="33718:35007" ph="SELECT main.... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="35271:37635" ph="SELECT main_... main_id" />
-            <marker date="1511887932739" expanded="true" signature="35736:37603" ph="SELECT main_... id" />
-            <marker date="1511887932739" expanded="true" signature="36287:37576" ph="SELECT main.... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="37833:39379" ph="SELECT sub_c... code" />
-            <marker date="1511887932739" expanded="true" signature="38211:39351" ph="SELECT sub.c... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="39624:40529" ph="SELECT act.n... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="40722:41720" ph="SELECT SUM(s... desc_np" />
-            <marker date="1511887932739" expanded="true" signature="41052:41710" ph="SELECT act.d... tbl_local_bodies_activities4" />
-            <marker date="1511887932739" expanded="true" signature="41926:42584" ph="SELECT act.d... tbl_local_bodies_activities4" />
-            <marker date="1511887932739" expanded="true" signature="44387:45706" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="47537:48219" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="49716:50506" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="52175:53163" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="56004:57963" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="60801:61483" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="62289:62338" ph="SELECT * FRO... tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="62424:65168" ph="SELECT SUM(M... main_id" />
-            <marker date="1511887932739" expanded="true" signature="62819:65158" ph="SELECT main_... main_id" />
-            <marker date="1511887932739" expanded="true" signature="63300:65126" ph="SELECT main_... id" />
-            <marker date="1511887932739" expanded="true" signature="63851:65099" ph="SELECT main.... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="65364:67687" ph="SELECT main_... main_id" />
-            <marker date="1511887932739" expanded="true" signature="65829:67655" ph="SELECT main_... id" />
-            <marker date="1511887932739" expanded="true" signature="66380:67628" ph="SELECT main.... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="67893:69413" ph="SELECT sub_c... code" />
-            <marker date="1511887932739" expanded="true" signature="68271:69385" ph="SELECT sub.c... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="69646:70545" ph="SELECT act.n... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="71112:71881" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="72697:73681" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="74640:76591" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="78700:79382" ph="INSERT INTO tbl_current_reports" />
-            <marker date="1511887932739" expanded="true" signature="80187:80267" ph="SELECT id, c... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="80382:80435" ph="SELECT * FRO... tbl_activities" />
-            <marker date="1511887932739" expanded="true" signature="80583:80829" ph="SELECT lo.id... tbl_local_bodies" />
-            <marker date="1511887932739" expanded="true" signature="80967:81249" ph="SELECT lo.id... tbl_local_bodies" />
-            <marker date="1511887932739" expanded="true" signature="81376:81609" ph="SELECT a.des... tbl_local_bodies_activities4" />
-            <marker date="1511887932739" expanded="true" signature="81743:82002" ph="SELECT a.des... tbl_local_bodies_activities4" />
-            <marker date="1511887932739" expanded="true" signature="82493:82910" ph="UPDATE `pisd... " />
-            <marker date="1511887932739" expanded="true" signature="83585:83642" ph="SELECT * FRO... tbl_users" />
-            <marker date="1511887932739" expanded="true" signature="83778:83846" ph="UPDATE pisdo... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -951,7 +1066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="30" column="88" lean-forward="false" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -963,9 +1077,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cp/finalreport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="115" column="64" lean-forward="false" selection-start-line="115" selection-start-column="58" selection-end-line="115" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/entryThree.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="26" lean-forward="true" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cp/entryLocalThree.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="-1577">
           <caret line="77" column="33" lean-forward="true" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
           <folding>
             <marker date="1511888881377" expanded="true" signature="1889:1946" ph="..." />
@@ -975,23 +1103,182 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cp/entryLocalTwo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
           <folding>
-            <marker date="1511888926685" expanded="true" signature="7211:7658" ph="..." />
-            <marker date="1511888926685" expanded="true" signature="7252:7647" ph="{...}" />
-            <marker date="1511888926685" expanded="true" signature="7463:7641" ph="//..." />
+            <marker date="1511890322267" expanded="true" signature="9195:9642" ph="..." />
+            <marker date="1511890322267" expanded="true" signature="9236:9631" ph="{...}" />
+            <marker date="1511890322267" expanded="true" signature="9447:9625" ph="//..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cp/entryThree.php">
+    <entry file="file://$PROJECT_DIR$/cp/entryTwo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="70" column="26" lean-forward="true" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="6" column="58" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="6" selection-end-column="58" />
           <folding>
-            <marker date="1511888962214" expanded="true" signature="2000:2008" ph="..." />
+            <marker date="1511890260764" expanded="true" signature="7019:7407" ph="..." />
+            <marker date="1511890260764" expanded="true" signature="7060:7396" ph="{...}" />
+            <marker date="1511890260764" expanded="true" signature="7065:7208" ph="//..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/class/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="459" column="51" lean-forward="true" selection-start-line="459" selection-start-column="51" selection-end-line="459" selection-end-column="51" />
+          <folding>
+            <marker date="1511890536374" expanded="true" signature="740:827" ph="SELECT * FRO... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="989:1015" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1511890536374" expanded="true" signature="1124:1151" ph="SELECT * FRO... tbl_districts" />
+            <marker date="1511890536374" expanded="true" signature="1249:1313" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1511890536374" expanded="true" signature="1454:1505" ph="SELECT * FRO... tbl_programs" />
+            <marker date="1511890536374" expanded="true" signature="1612:1858" ph="SELECT lo.id... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="1968:2213" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="2329:2368" ph="SELECT * fro... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="2515:2620" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="3043:3094" ph="Select COUNT... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="3358:3410" ph="Select COUNT... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="3774:3886" ph="INSERT INTO `pisdoego_db_pis`.`tbl_local_bodies`... " />
+            <marker date="1511890536374" expanded="true" signature="4287:4393" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="4915:5047" ph="INSERT INTO `pisdoego_db_pis`.`tbl_edu_offices`... " />
+            <marker date="1511890536374" expanded="true" signature="5479:5676" ph="SELECT eo.id... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="5804:6089" ph="SELECT lo.id... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="6247:6312" ph="Select COUNT... tbl_programs" />
+            <marker date="1511890536374" expanded="true" signature="6678:6785" ph="INSERT INTO `pisdoego_db_pis`.`tbl_programs`... " />
+            <marker date="1511890536374" expanded="true" signature="7209:7313" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="7754:7811" ph="Select COUNT... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="8216:8358" ph="INSERT INTO `pisdoego_db_pis`.`tbl_users`... " />
+            <marker date="1511890536374" expanded="true" signature="8909:8958" ph="SELECT * FRO... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="9203:9275" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="9691:9816" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="10326:10373" ph="SELECT * FRO... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="10493:10552" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1511890536374" expanded="true" signature="10668:10732" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1511890536374" expanded="true" signature="10845:10906" ph="SELECT * FRO... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="11025:11083" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1511890536374" expanded="true" signature="11201:11260" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1511890536374" expanded="true" signature="11389:11448" ph="Select COUNT... tbl_main_activities" />
+            <marker date="1511890536374" expanded="true" signature="11810:11955" ph="INSERT INTO `pisdoego_db_pis`.`tbl_main_activities`... " />
+            <marker date="1511890536374" expanded="true" signature="12436:12536" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="12969:13034" ph="DELETE FROM " />
+            <marker date="1511890536374" expanded="true" signature="13289:13347" ph="Select COUNT... tbl_sub_activities" />
+            <marker date="1511890536374" expanded="true" signature="13708:13853" ph="INSERT INTO `pisdoego_db_pis`.`tbl_sub_activities`... " />
+            <marker date="1511890536374" expanded="true" signature="14330:14429" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="14867:14921" ph="Select COUNT... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="15308:15467" ph="INSERT INTO `pisdoego_db_pis`.`tbl_activities`... " />
+            <marker date="1511890536374" expanded="true" signature="16019:16124" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="16602:17200" ph="SELECT SUM(t... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="17374:17540" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="17661:17831" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="17928:18626" ph="SELECT SUM(t... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="18796:18930" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="19066:19306" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="19443:19636" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="19767:19964" ph="SELECT a.nam... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="20084:20215" ph="select id,us... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="20323:20488" ph="SELECT u.use... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="20593:20697" ph="SELECT id,us... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="20900:20961" ph="SELECT name_... tbl_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="21101:21163" ph="SELECT name_... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="21335:21458" ph="SELECT o.nam... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="21606:21791" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="22321:22513" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="22968:23013" ph="SELECT * FRO... tbl_fiscal_year" />
+            <marker date="1511890536374" expanded="true" signature="23212:23281" ph="Select COUNT... tbl_fiscal_year" />
+            <marker date="1511890536374" expanded="true" signature="23657:23734" ph="INSERT INTO `pisdoego_db_pis`.`tbl_fiscal_year`... " />
+            <marker date="1511890536374" expanded="true" signature="23967:24013" ph="SELECT * fro... tbl_fiscal_year" />
+            <marker date="1511890536374" expanded="true" signature="24160:24215" ph="DELETE FROM " />
+            <marker date="1511890536374" expanded="true" signature="25451:25481" ph="SELECT * FRO... ${$table}" />
+            <marker date="1511890536374" expanded="true" signature="28984:29093" ph="SELECT id,us... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="29170:29267" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="29403:29559" ph="SELECT count... tbl_transaction_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="29701:29782" ph="SELECT * FRO... tbl_sub_activities" />
+            <marker date="1511890536374" expanded="true" signature="29921:30299" ph="SELECT SUM(y... tbl_transaction_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="30420:30469" ph="SELECT * FRO... tbl_main_activities" />
+            <marker date="1511890536374" expanded="true" signature="30603:31382" ph="SELECT act.i... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="31530:32344" ph="SELECT act.i... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="32510:32901" ph="SELECT eo.na... tbl_transaction_edu_offices" />
+            <marker date="1511890536374" expanded="true" signature="33069:33535" ph="SELECT lo.na... tbl_transaction_local_offices" />
+            <marker date="1511890536374" expanded="true" signature="33690:33755" ph="SELECT code tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="33893:36678" ph="SELECT SUM(M... main_id" />
+            <marker date="1511890536374" expanded="true" signature="34288:36668" ph="SELECT main_... main_id" />
+            <marker date="1511890536374" expanded="true" signature="34769:36636" ph="SELECT main_... id" />
+            <marker date="1511890536374" expanded="true" signature="35320:36609" ph="SELECT main.... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="36873:39237" ph="SELECT main_... main_id" />
+            <marker date="1511890536374" expanded="true" signature="37338:39205" ph="SELECT main_... id" />
+            <marker date="1511890536374" expanded="true" signature="37889:39178" ph="SELECT main.... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="39435:40981" ph="SELECT sub_c... code" />
+            <marker date="1511890536374" expanded="true" signature="39813:40953" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="41226:42131" ph="SELECT act.n... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="42324:43322" ph="SELECT SUM(s... desc_np" />
+            <marker date="1511890536374" expanded="true" signature="42654:43312" ph="SELECT act.d... tbl_local_bodies_activities4" />
+            <marker date="1511890536374" expanded="true" signature="43528:44186" ph="SELECT act.d... tbl_local_bodies_activities4" />
+            <marker date="1511890536374" expanded="true" signature="45989:47308" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="49139:49821" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="51318:52108" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="53777:54765" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="57606:59565" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="62403:63085" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="63891:63940" ph="SELECT * FRO... tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="64026:66770" ph="SELECT SUM(M... main_id" />
+            <marker date="1511890536374" expanded="true" signature="64421:66760" ph="SELECT main_... main_id" />
+            <marker date="1511890536374" expanded="true" signature="64902:66728" ph="SELECT main_... id" />
+            <marker date="1511890536374" expanded="true" signature="65453:66701" ph="SELECT main.... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="66966:69289" ph="SELECT main_... main_id" />
+            <marker date="1511890536374" expanded="true" signature="67431:69257" ph="SELECT main_... id" />
+            <marker date="1511890536374" expanded="true" signature="67982:69230" ph="SELECT main.... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="69495:71015" ph="SELECT sub_c... code" />
+            <marker date="1511890536374" expanded="true" signature="69873:70987" ph="SELECT sub.c... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="71248:72147" ph="SELECT act.n... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="72714:73483" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="74299:75283" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="76242:78193" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="80302:80984" ph="INSERT INTO tbl_current_reports" />
+            <marker date="1511890536374" expanded="true" signature="81789:81869" ph="SELECT id, c... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="81984:82037" ph="SELECT * FRO... tbl_activities" />
+            <marker date="1511890536374" expanded="true" signature="82185:82431" ph="SELECT lo.id... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="82569:82851" ph="SELECT lo.id... tbl_local_bodies" />
+            <marker date="1511890536374" expanded="true" signature="82978:83211" ph="SELECT a.des... tbl_local_bodies_activities4" />
+            <marker date="1511890536374" expanded="true" signature="83345:83604" ph="SELECT a.des... tbl_local_bodies_activities4" />
+            <marker date="1511890536374" expanded="true" signature="84095:84512" ph="UPDATE `pisd... " />
+            <marker date="1511890536374" expanded="true" signature="85187:85244" ph="SELECT * FRO... tbl_users" />
+            <marker date="1511890536374" expanded="true" signature="85380:85448" ph="UPDATE pisdo... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/activitywiseexcel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="64" column="85" lean-forward="false" selection-start-line="64" selection-start-column="82" selection-end-line="64" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/excelreport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="85" column="62" lean-forward="true" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/finalreportexcel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="100" column="82" lean-forward="false" selection-start-line="100" selection-start-column="79" selection-end-line="100" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cp/officewiseexcel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
