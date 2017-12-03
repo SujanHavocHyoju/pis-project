@@ -19,6 +19,50 @@ class DB_dbc
         mysqli_select_db($this->dbc, 'pisdoego_db_pis');
     }
 
+    function selectUserLogToday()
+    {
+        $query = "SELECT * 
+                FROM user_ip  
+                WHERE DATE(last_access_date) = CURDATE()
+        ";
+        return mysqli_query($this->dbc, $query);
+    }
+    function selectCountUserLogToday()
+    {
+        $query = "SELECT count(*) 
+                FROM user_ip  
+                WHERE DATE(last_access_date) = CURDATE()
+        ";
+        return mysqli_query($this->dbc, $query);
+    }
+    function insertOrUpdateUserLog($username, $office_name, $user_type, $ip, $device, $status)
+    {
+        $resultRo = $this->selectUserByUserName($username);
+        if ($resultRo == 0) {
+            $query = "INSERT INTO `pisdoego_db_pis`.`user_ip` 
+            (`username`, `office_name`, `user_type`, `ip_address`, `device`, `login_status`, `last_access_date`) 
+            VALUES ('$username', '$office_name', '$user_type', '$ip', '$device', '$status', NOW());";
+            $result = mysqli_query($this->dbc, $query);
+            return $result;
+        } else {
+            $queryUpdate = "UPDATE `pisdoego_db_pis`.`user_ip` 
+              SET `office_name`='$office_name', `user_type`='$user_type', 
+              `ip_address`='$ip', 
+              `device`='$device', 
+              `login_status`='$status', 
+              `last_access_date`=NOW()
+                WHERE `username`='$username';";
+            $resultUpdate = mysqli_query($this->dbc, $queryUpdate);
+            return $resultUpdate;
+        }
+    }
+
+    function updateUserLog($username, $reason)
+    {
+        $query = "UPDATE `pisdoego_db_pis`.`user_ip` SET `reason`='$reason' WHERE `username`='$username';";
+        $result = mysqli_query($this->dbc, $query);
+        return $result;
+    }
 
     function selectUserLogin($username, $password)
     {
@@ -228,21 +272,19 @@ class DB_dbc
         return $res;
     }
 
-    function changePassword($id)
+    function changePassword($id, $password)
     {
-        $length = 8;
-        $randomletter = trim(substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, $length));
+        //$length = 8;
+        //$randomletter = trim(substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, $length));
         $query = sprintf(
             "UPDATE `pisdoego_db_pis`.`tbl_users` SET `password`='%s' WHERE `id`='%s';",
-            mysqli_real_escape_string($this->dbc, crypt($randomletter, 'st')),
+            mysqli_real_escape_string($this->dbc, crypt($password, 'st')),
             mysqli_real_escape_string($this->dbc, $id)
         );
         $res = mysqli_query(
             $this->dbc, $query
         );
-        if ($res > 0) {
-            return $randomletter;
-        }
+        return $res;
     }
 
     function updateUser($id, $username, $fullname, $user_type, $office_id)
@@ -443,7 +485,7 @@ class DB_dbc
 
     function selectTransactionGovernment($oid)
     {
-        $query="SELECT a.name_np, a.code,a.id, tl.* 
+        $query = "SELECT a.name_np, a.code,a.id, tl.* 
               FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code
               WHERE tl.edu_office_id = '$oid' 
               and tl.q2_alloc_bugdet='0' and tl.q3_alloc_budget='0'";
@@ -456,7 +498,9 @@ class DB_dbc
         $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_local_offices AS tl ON a.code = tl.activity_code WHERE tl.local_office_id = '$oid'");
         return $res;
     }
-    function selectSumOfTransactionLocal($oid){
+
+    function selectSumOfTransactionLocal($oid)
+    {
         $query = "SELECT 
                     SUM(tl.yearly_alloc_qty) as yaq,
                     SUM(tl.yearly_alloc_cost) as yac,
@@ -708,13 +752,37 @@ class DB_dbc
 
     function countActivities($office_id)
     {
-        $query = "SELECT count(*) FROM pisdoego_db_pis.tbl_transaction_edu_offices where edu_office_id='$office_id';";
+        $query = "SELECT count(*) 
+              FROM pisdoego_db_pis.tbl_transaction_edu_offices 
+              where edu_office_id='$office_id';";
         return mysqli_query($this->dbc, $query);
     }
 
+
     function countActiviesWhichIsUnDone($office_id)
     {
-        $query = "SELECT count(*) FROM pisdoego_db_pis.tbl_transaction_edu_offices where edu_office_id='$office_id' and q1_progress_qty='0' and q1_progress_expenditure='0.00';";
+        $query = "SELECT count(*) 
+        FROM pisdoego_db_pis.tbl_transaction_edu_offices 
+        where edu_office_id='$office_id' and q1_progress_qty='0' 
+        and q1_progress_expenditure='0.00';";
+        return mysqli_query($this->dbc, $query);
+    }
+
+    function countLocalActivities($office_id)
+    {
+        $query = "SELECT count(*) 
+              FROM pisdoego_db_pis.tbl_transaction_local_bodies 
+              where local_body_id='$office_id';";
+        return mysqli_query($this->dbc, $query);
+    }
+
+
+    function countLocalActiviesWhichIsUnDone($office_id)
+    {
+        $query = "SELECT count(*) 
+        FROM pisdoego_db_pis.tbl_transaction_local_bodies 
+        where local_body_id='$office_id' and q1_progress_qty='0' 
+        and q1_progress_expenditure='0.00';";
         return mysqli_query($this->dbc, $query);
     }
 
@@ -2378,10 +2446,13 @@ HAVING `activity_id` = '$activity_id'";
 
 
     }
-    function selectIndividualEduReport(){
+
+    function selectIndividualEduReport()
+    {
         $query = "SELECT * FROM pisdoego_db_pis.tbl_edu_reports;";
         return mysqli_query($this->dbc, $query);
     }
+
     function sumOfIndiLocalActivity($oid)
     {
         $query = "SELECT 
@@ -2406,6 +2477,7 @@ HAVING `activity_id` = '$activity_id'";
         return $res;
 
     }
+
     function sumOfIndiLocalTotal($oid)
     {
         $query = "SELECT 
@@ -2441,7 +2513,9 @@ HAVING `activity_id` = '$activity_id'";
         return $res;
 
     }
-    function generateIndividualLocalReport($oid){
+
+    function generateIndividualLocalReport($oid)
+    {
         //set_time_limit(3000);
         $resultFinal = mysqli_fetch_array($this->sumOfIndiLocalTotal($oid));
         $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_local_reports`;";
@@ -2579,9 +2653,21 @@ HAVING `activity_id` = '$activity_id'";
             return false;
         }
     }
-    function selectIndividualLocalReport(){
+
+    function selectIndividualLocalReport()
+    {
         $query = "SELECT * FROM pisdoego_db_pis.tbl_local_reports;";
         return mysqli_query($this->dbc, $query);
+    }
+
+    private function selectUserByUserName($username)
+    {
+        $queRY = "select count(username) from user_ip WHERE  username='$username'";
+
+        $result = mysqli_query($this->dbc, $queRY);
+        $row = mysqli_fetch_array($result);
+
+        return $row[0];
     }
 }
 
