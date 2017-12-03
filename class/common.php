@@ -19,6 +19,7 @@ class DB_dbc
         mysqli_select_db($this->dbc, 'pisdoego_db_pis');
     }
 
+
     function selectUserLogin($username, $password)
     {
         $query = "SELECT * FROM tbl_users WHERE username = '$username' AND password = '$password' LIMIT 1";
@@ -433,14 +434,20 @@ class DB_dbc
             SUM(tl.q1_progress_expenditure) as qpe
               FROM tbl_activities AS a 
               INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code 
-              WHERE tl.edu_office_id = '$office_id'";
+              WHERE tl.edu_office_id = '$office_id'
+              and tl.q2_alloc_bugdet='0' and tl.q3_alloc_budget='0'
+              ";
         $res = mysqli_query($this->dbc, $query);
         return $res;
     }
 
     function selectTransactionGovernment($oid)
     {
-        $res = mysqli_query($this->dbc, "SELECT a.name_np, a.code,a.id, tl.* FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code WHERE tl.edu_office_id = '$oid'");
+        $query="SELECT a.name_np, a.code,a.id, tl.* 
+              FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code
+              WHERE tl.edu_office_id = '$oid' 
+              and tl.q2_alloc_bugdet='0' and tl.q3_alloc_budget='0'";
+        $res = mysqli_query($this->dbc, $query);
         return $res;
     }
 
@@ -1931,7 +1938,651 @@ HAVING `activity_id` = '$activity_id'";
         }
     }
 
+    function sumOfIndividualEduTotal($oid)
+    {
+        $sql = "SELECT
+               SUM(Main_syag) as agr_syag, 
+               SUM(Main_syab) as agr_syab, 
+               SUM(Main_sypq) as agr_sypq, 
+               SUM(Main_sype) as agr_sype, 
+               SUM(Main_sqaq) as agr_sqaq, 
+               SUM(Main_sqab) as agr_sqab, 
+               SUM(Main_sqpq) as agr_sqpq, 
+               SUM(Main_sqpe) as agr_sqpe 
+               FROM
+                (SELECT 
+                main_id, 
+                main_name_np,
+               SUM(Sub_syag) as Main_syag, 
+               SUM(Sub_syab) as Main_syab, 
+               SUM(Sub_sypq) as Main_sypq, 
+               SUM(Sub_sype) as Main_sype, 
+               SUM(Sub_sqaq) as Main_sqaq, 
+               SUM(Sub_sqab) as Main_sqab, 
+               SUM(Sub_sqpq) as Main_sqpq, 
+               SUM(Sub_sqpe) as Main_sqpe 
+               FROM
+                    (
+                        SELECT 
+                        main_id, 
+                        main_name_np,
+                        SUM(syaq) as Sub_syag, 
+                        SUM(syab) as Sub_syab, 
+                        SUM(sypq) as Sub_sypq, 
+                        SUM(sype) as Sub_sype, 
+                        SUM(sqaq) as Sub_sqaq, 
+                        SUM(sqab) as Sub_sqab, 
+                        SUM(sqpq) as Sub_sqpq, 
+                        SUM(sqpe) as Sub_sqpe 
+                        FROM 
+                            (
+                            SELECT 
+                            main.id as main_id, 
+                            main.name_np as main_name_np,
+                            SUM(tl.yearly_alloc_qty) as syaq,
+                            SUM(tl.yearly_alloc_budget) as syab,
+                            SUM(tl.yearly_progress_qty) as sypq,
+                            SUM(tl.yearly_progress_expenditure) as sype,
+                            SUM(tl.q1_alloc_qty) as sqaq,
+                            SUM(tl.q1_alloc_budget) as sqab,
+                            SUM(tl.q1_progress_qty) as sqpq, 
+                            SUM(tl.q1_progress_expenditure) as sqpe
+                                from tbl_activities as act
+                                left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
+                                left join tbl_main_activities as main on main.id= sub.main_activity_id
+                                left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
+                                    where main.id=sub.main_activity_id
+                                        and tl.edu_office_id = '$oid'
+                                        GROUP BY
+                                        act.id
+                                        ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id) as T_AGR ;";
+        mysqli_query($this->dbc, "SET sql_mode = '';");
+        $res = mysqli_query($this->dbc, $sql);
+        return $res;
+    }
 
+    function sumOfIndividualMainActivity($oid)
+    {
+        $sql = "SELECT 
+        main_id, 
+        main_name_np,
+               SUM(Sub_syag) as Main_syag, 
+               SUM(Sub_syab) as Main_syab, 
+               SUM(Sub_sypq) as Main_sypq, 
+               SUM(Sub_sype) as Main_sype, 
+               SUM(Sub_sqaq) as Main_sqaq, 
+               SUM(Sub_sqab) as Main_sqab, 
+               SUM(Sub_sqpq) as Main_sqpq, 
+               SUM(Sub_sqpe) as Main_sqpe 
+               FROM
+                    (
+                        SELECT 
+                        main_id, 
+                        main_name_np,
+                        SUM(syaq) as Sub_syag, 
+                        SUM(syab) as Sub_syab, 
+                        SUM(sypq) as Sub_sypq, 
+                        SUM(sype) as Sub_sype, 
+                        SUM(sqaq) as Sub_sqaq, 
+                        SUM(sqab) as Sub_sqab, 
+                        SUM(sqpq) as Sub_sqpq, 
+                        SUM(sqpe) as Sub_sqpe 
+                        FROM 
+                            (
+                            SELECT 
+                            main.id as main_id, 
+                            main.name_np as main_name_np,
+                            SUM(tl.yearly_alloc_qty) as syaq,
+                            SUM(tl.yearly_alloc_budget) as syab,
+                            SUM(tl.yearly_progress_qty) as sypq,
+                            SUM(tl.yearly_progress_expenditure) as sype,
+                            SUM(tl.q1_alloc_qty) as sqaq,
+                            SUM(tl.q1_alloc_budget) as sqab,
+                            SUM(tl.q1_progress_qty) as sqpq, 
+                            SUM(tl.q1_progress_expenditure) as sqpe
+                                from tbl_activities as act
+                                left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
+                                left join tbl_main_activities as main on main.id= sub.main_activity_id
+                                left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
+                                    where main.id=sub.main_activity_id
+                                        and tl.edu_office_id = '$oid'
+                                        GROUP BY
+                                        act.id
+                                        ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id;";
+        mysqli_query($this->dbc, "SET sql_mode = '';");
+        $res = mysqli_query($this->dbc, $sql);
+        return $res;
+    }
+
+    function sumOfIndiSubActivity($id, $oid)
+    {
+        $sql = "SELECT 
+            sub_code, 
+            sub_name_np,
+            SUM(syaq) as sub_syag, 
+            SUM(syab) as sub_syab, 
+            SUM(sypq) as sub_sypq, 
+            SUM(sype) as sub_sype, 
+            SUM(sqaq) as sub_sqaq, 
+            SUM(sqab) as sub_sqab, 
+            SUM(sqpq) as sub_sqpq, 
+            SUM(sqpe) as sub_sqpe 
+            FROM 
+                (SELECT 
+                    sub.code as sub_code, 
+                    sub.name_np as sub_name_np,
+                    SUM(tl.yearly_alloc_qty) as syaq,SUM(tl.yearly_alloc_budget) as syab,
+                    SUM(tl.yearly_progress_qty) as sypq,
+                    SUM(tl.yearly_progress_expenditure) as sype,
+                    SUM(tl.q1_alloc_qty) as sqaq,
+                    SUM(tl.q1_alloc_budget) as sqab,
+                    SUM(tl.q1_progress_qty) as sqpq, 
+                    SUM(tl.q1_progress_expenditure) as sqpe
+                        from tbl_activities as act
+                        left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
+                        left join tbl_main_activities as main on main.id= sub.main_activity_id
+                        left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
+                                where main.id='$id' and
+                                sub.code=act.sub_activity_code
+                                and tl.edu_office_id = '$oid'
+                                GROUP BY sub.id
+                                ORDER BY sub.id ASC) as T_SUB GROUP BY sub_code;";
+        //echo $sql;
+        mysqli_query($this->dbc, "SET sql_mode = '';");
+        $res = mysqli_query($this->dbc, $sql);
+        return $res;
+    }
+
+    function sumofIndiActivity($main_activity, $sub_activity, $oid)
+    {
+        $query = "SELECT 
+        act.name_np as act_name_np,
+        act.code as act_code,
+        SUM(tl.yearly_alloc_qty) as syaq,
+        SUM(tl.yearly_alloc_budget) as syab,
+        SUM(tl.yearly_progress_qty) as sypq,
+        SUM(tl.yearly_progress_expenditure) as sype,
+        SUM(tl.q1_alloc_qty) as sqaq,
+        SUM(tl.q1_alloc_budget) as sqab,
+        SUM(tl.q1_progress_qty) as sqpq, 
+        SUM(tl.q1_progress_expenditure) as sqpe
+        from tbl_activities as act
+            left join tbl_sub_activities as sub on sub.code=act.sub_activity_code
+            left join tbl_main_activities as main on main.id= sub.main_activity_id
+            left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
+            where main.id='$main_activity' and
+            sub.code='$sub_activity'
+            and tl.edu_office_id = '$oid'
+            GROUP BY
+            act.id
+            ORDER BY act.id ASC;";
+        mysqli_query($this->dbc, "SET sql_mode = '';");
+        $res = mysqli_query($this->dbc, $query);
+        return $res;
+    }
+
+    function generateEducationalIndividualReport($oid)
+    {
+        //set_time_limit(3000);
+        $resultFinal = mysqli_fetch_array($this->sumOfIndividualEduTotal($oid));
+        $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_edu_reports`;";
+        $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+        if ($resultForTruncate > 0) {
+            $queryForMainActivity = $this->sumOfIndividualMainActivity($oid);
+            while ($rma = mysqli_fetch_array($queryForMainActivity)) {
+                $yearlyMainWeight = ($rma['Main_syab'] / $resultFinal['agr_syab']) * 100;
+                $yearlyExpProPerMain = ($rma['Main_sype'] / $rma['Main_syab']) / 100;
+                $qtrAllocWeighMain = ($rma['Main_sqaq'] / $resultFinal['agr_sqaq']) * 100;
+                if ($rma['Main_sqab'] != 0) {
+                    $qtrExpProPerMain = ($rma['Main_sqpe'] / $rma['Main_sqab']) / 100;
+                } else {
+                    $qtrExpProPerMain = 0;
+                }
+                $queryToInsertForMain = sprintf("INSERT INTO 
+                `pisdoego_db_pis`.`tbl_edu_reports` 
+                (`activity_number`, 
+                `yearly_weight`, 
+                `yearly_alloc_budget`, 
+                `yearly_progress_expenditure`, 
+                `yearly_progress_expenditure_percentage`, 
+                `qtr_alloc_weight`, 
+                `qtr_alloc_budget`, 
+                `qtr_progress_expenditure`, 
+                `qtr_progress_expenditure_percentage`, 
+                `name_np`,
+                `status`) VALUES 
+                (
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s',
+                '%s', 
+                '%s',
+                '0')",
+                    mysqli_real_escape_string($this->dbc, $rma['main_id']),
+                    mysqli_real_escape_string($this->dbc, $yearlyMainWeight),
+                    mysqli_real_escape_string($this->dbc, $rma['Main_syab']),
+                    mysqli_real_escape_string($this->dbc, $rma['Main_sype']),
+                    mysqli_real_escape_string($this->dbc, $yearlyExpProPerMain),
+                    mysqli_real_escape_string($this->dbc, $qtrAllocWeighMain),
+                    mysqli_real_escape_string($this->dbc, $rma['Main_sqab']),
+                    mysqli_real_escape_string($this->dbc, $rma['Main_sqpe']),
+                    mysqli_real_escape_string($this->dbc, $qtrExpProPerMain),
+                    mysqli_real_escape_string($this->dbc, $rma['main_name_np']));
+                $resultFromMain = mysqli_query($this->dbc, $queryToInsertForMain);
+
+                if ($resultFromMain > 0) {
+                    $resultForQuery = $this->sumOfIndiSubActivity($rma['main_id'], $oid);
+                    while ($rsa = mysqli_fetch_array($resultForQuery)) {
+                        $yearlySubWeight = ($rsa['sub_syab'] / $resultFinal['agr_syab']) * 100;
+                        $yearlyExpProPerSub = ($rsa['sub_sype'] / $rsa['sub_syab']) / 100;
+                        $qtrAllocWeighSUB = ($rsa['sub_sqaq'] / $resultFinal['agr_sqaq']) * 100;
+                        if ($rsa['sub_sqab'] != 0) {
+                            $qtrExpProPerSub = ($rsa['sub_sqpe'] / $rsa['sub_sqab']) / 100;
+                        } else {
+                            $qtrExpProPerSub = 0;
+                        }
+                        $queryToInsertForSub = sprintf("INSERT INTO 
+                        `pisdoego_db_pis`.`tbl_edu_reports` 
+                        (`activity_number`, 
+                        `yearly_weight`, 
+                        `yearly_alloc_budget`,                                
+                        `yearly_progress_expenditure`, 
+                        `yearly_progress_expenditure_percentage`, 
+                        `qtr_alloc_weight`, 
+                        `qtr_alloc_budget`, 
+                        `qtr_progress_expenditure`, 
+                        `qtr_progress_expenditure_percentage`, 
+                        `name_np`,
+                        `status`) VALUES 
+                        ('%s', 
+                        '%s', 
+                        '%s', 
+                        '%s', 
+                        '%s', 
+                        '%s', 
+                        '%s', 
+                        '%s',
+                        '%s', 
+                        '%s',
+                        '1')",
+                            mysqli_real_escape_string($this->dbc, $rsa['sub_code']),
+                            mysqli_real_escape_string($this->dbc, $yearlySubWeight),
+                            mysqli_real_escape_string($this->dbc, $rsa['sub_syab']),
+                            mysqli_real_escape_string($this->dbc, $rsa['sub_sype']),
+                            mysqli_real_escape_string($this->dbc, $yearlyExpProPerSub),
+                            mysqli_real_escape_string($this->dbc, $qtrAllocWeighSUB),
+                            mysqli_real_escape_string($this->dbc, $rsa['sub_sqab']),
+                            mysqli_real_escape_string($this->dbc, $rsa['sub_sqpe']),
+                            mysqli_real_escape_string($this->dbc, $qtrExpProPerSub),
+                            mysqli_real_escape_string($this->dbc, $rsa['sub_name_np']));
+                        $resultFromSub = mysqli_query($this->dbc, $queryToInsertForSub);
+
+
+                        if ($resultFromSub > 0) {
+                            $resultFromSubQueries = $this->sumofIndiActivity($rma['main_id'], $rsa['sub_code'], $oid);
+                            while ($raa = mysqli_fetch_array($resultFromSubQueries)) {
+                                $yearlyWeight = ($raa['syab'] / $resultFinal['agr_syab']) * 100;
+                                if ($raa['syaq'] != 0) {
+                                    $yearlyProgressQtyPer = ($raa['sypq'] / $raa['syaq']) * 100;
+                                } else {
+                                    $yearlyProgressQtyPer = 0;
+                                }
+                                if ($raa['syab'] != 0) {
+                                    $yearlyExpProPer = ($raa['sype'] / $raa['syab']) / 100;
+                                } else {
+                                    $yearlyExpProPer = 0;
+                                }
+                                if ($resultFinal['agr_sqaq'] != 0) {
+                                    $qtrAllocWeight = ($raa['sqaq'] / $resultFinal['agr_sqaq']) * 100;
+                                } else {
+                                    $qtrAllocWeight = 0;
+                                }
+
+                                if ($raa['sqaq'] != 0) {
+                                    $qtrProgressQtyPer = ($raa['sqpq'] / $raa['sqaq']) * 100;
+                                } else {
+                                    $qtrProgressQtyPer = 0;
+                                }
+                                if ($raa['sqab'] != 0) {
+                                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) / 100;
+                                } else {
+                                    $qtrExpProPer = 0;
+                                }
+
+                                $queryToInsertAct = sprintf(
+                                    "INSERT INTO 
+                                `pisdoego_db_pis`.`tbl_edu_reports` 
+                                (`activity_number`, 
+                                `yearly_alloc_qty`, 
+                                `yearly_weight`, 
+                                `yearly_alloc_budget`, 
+                                `yearly_progress_qty`, 
+                                `yearly_progress_qty_percentage`, 
+                                `yearly_progress_expenditure`, 
+                                `yearly_progress_expenditure_percentage`, 
+                                `yearly_progress_weight`, 
+                                `qtr_alloc_qty`, 
+                                `qtr_alloc_weight`, 
+                                `qtr_alloc_budget`, 
+                                `qtr_progress_qty`, 
+                                `qtr_progress_qty_percentage`, 
+                                `qtr_progress_expenditure`, 
+                                `qtr_progress_expenditure_percentage`, 
+                                `qtr_progress_expenditure_weight`, 
+                                `name_np`,
+                                `status`) 
+                                VALUES (
+                                '%s', 
+                                '%s',
+                                '%s', 
+                                '%s',  
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s', 
+                                '%s',  
+                                '%s', 
+                                '%s',  
+                                '%s', 
+                                '%s', 
+                                '%s',
+                                '2')",
+                                    mysqli_real_escape_string($this->dbc, $raa['act_code']),
+                                    mysqli_real_escape_string($this->dbc, $raa['syaq']),
+                                    mysqli_real_escape_string($this->dbc, $yearlyWeight),
+                                    mysqli_real_escape_string($this->dbc, $raa['syab']),
+                                    mysqli_real_escape_string($this->dbc, $raa['sypq']),
+                                    mysqli_real_escape_string($this->dbc, $yearlyProgressQtyPer),
+                                    mysqli_real_escape_string($this->dbc, $raa['sype']),
+                                    mysqli_real_escape_string($this->dbc, $yearlyExpProPer),
+                                    mysqli_real_escape_string($this->dbc, ($yearlyProgressQtyPer / 100) * $yearlyWeight),
+                                    mysqli_real_escape_string($this->dbc, $raa['sqaq']),
+                                    mysqli_real_escape_string($this->dbc, $qtrAllocWeight),
+                                    mysqli_real_escape_string($this->dbc, $raa['sqab']),
+                                    mysqli_real_escape_string($this->dbc, $raa['sqpq']),
+                                    mysqli_real_escape_string($this->dbc, $qtrProgressQtyPer),
+                                    mysqli_real_escape_string($this->dbc, $raa['sqpe']),
+                                    mysqli_real_escape_string($this->dbc, $qtrExpProPer),
+                                    mysqli_real_escape_string($this->dbc, ($qtrProgressQtyPer / 100) * $qtrAllocWeight),
+                                    mysqli_real_escape_string($this->dbc, $raa['act_name_np'])
+                                );
+
+                                $resultFrom = mysqli_query($this->dbc, $queryToInsertAct);
+                                if ($resultFrom < 0) {
+                                    $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_edu_reports`;";
+                                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                                    return false;
+                                }
+                            }
+                        } else {
+                            $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_edu_reports`;";
+                            $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                            return false;
+                        }
+                    }
+                } else {
+                    $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_edu_reports`;";
+                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                    return false;
+                }
+
+            }
+
+            $queryToFinal = sprintf("INSERT INTO 
+            `pisdoego_db_pis`.`tbl_edu_reports` 
+            (`activity_number`, 
+            `yearly_weight`, 
+            `yearly_alloc_budget`, 
+            `yearly_progress_expenditure`, 
+            `yearly_progress_expenditure_percentage`, 
+            `qtr_alloc_weight`, 
+            `qtr_alloc_budget`, 
+            `qtr_progress_expenditure`, 
+            `qtr_progress_expenditure_percentage`, 
+            `name_np`,
+            `status`) VALUES 
+            ('', 
+            '0', 
+            '%s', 
+            '%s', 
+            '0', 
+            '0', 
+            '%s', 
+            '%s',
+            '0', 
+            'कूल जम्मा',
+            '4')",
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_syab']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sype']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sqab']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sqpe']));
+            $resultToFinale = mysqli_query($this->dbc, $queryToFinal);
+            if ($resultToFinale > 0) {
+
+                return true;
+            } else {
+                $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_edu_reports`;";
+                $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                return false;
+            }
+        }
+
+
+    }
+    function selectIndividualEduReport(){
+        $query = "SELECT * FROM pisdoego_db_pis.tbl_edu_reports;";
+        return mysqli_query($this->dbc, $query);
+    }
+    function sumOfIndiLocalActivity($oid)
+    {
+        $query = "SELECT 
+        act.desc_np as act_name_np,
+        act.local_activity3_code as act_code,
+        SUM(tl.yearly_alloc_qty) as syaq,
+        SUM(tl.yearly_alloc_budget) as syab,
+        SUM(tl.yearly_progress_qty) as sypq,
+        SUM(tl.yearly_progress_expenditure) as sype,
+        SUM(tl.q1_alloc_qty) as sqaq,
+        SUM(tl.q1_alloc_budget) as sqab,
+        SUM(tl.q1_progress_qty) as sqpq, 
+        SUM(tl.q1_progress_expenditure) as sqpe
+        from tbl_local_bodies_activities4 as act
+            left join tbl_transaction_local_bodies as tl on tl.local_body_activity4_id=act.id
+            where tl.local_body_id='$oid'
+            GROUP BY
+            act.id
+            ORDER BY act.id ASC;";
+        mysqli_query($this->dbc, "SET sql_mode = '';");
+        $res = mysqli_query($this->dbc, $query);
+        return $res;
+
+    }
+    function sumOfIndiLocalTotal($oid)
+    {
+        $query = "SELECT 
+            SUM(syaq) as agr_syag, 
+            SUM(syab) as agr_syab, 
+            SUM(sypq) as agr_sypq, 
+            SUM(sype) as agr_sype, 
+            SUM(sqaq) as agr_sqaq, 
+            SUM(sqab) as agr_sqab, 
+            SUM(sqpq) as agr_sqpq, 
+            SUM(sqpe) as agr_sqpe 
+            FROM 
+                (SELECT 
+        act.desc_np as act_name_np,
+        act.local_activity3_code as act_code,
+        SUM(tl.yearly_alloc_qty) as syaq,
+        SUM(tl.yearly_alloc_budget) as syab,
+        SUM(tl.yearly_progress_qty) as sypq,
+        SUM(tl.yearly_progress_expenditure) as sype,
+        SUM(tl.q1_alloc_qty) as sqaq,
+        SUM(tl.q1_alloc_budget) as sqab,
+        SUM(tl.q1_progress_qty) as sqpq, 
+        SUM(tl.q1_progress_expenditure) as sqpe
+        from tbl_local_bodies_activities4 as act
+            left join tbl_transaction_local_bodies as tl on tl.local_body_activity4_id=act.id
+            where tl.local_body_id='$oid'
+            GROUP BY
+            act.id
+            ORDER BY act.id ASC) as T_AGR ;
+        ";
+        mysqli_query($this->dbc, "SET sql_mode = '';");
+        $res = mysqli_query($this->dbc, $query);
+        return $res;
+
+    }
+    function generateIndividualLocalReport($oid){
+        //set_time_limit(3000);
+        $resultFinal = mysqli_fetch_array($this->sumOfIndiLocalTotal($oid));
+        $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_local_reports`;";
+        $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+        if ($resultForTruncate > 0) {
+            $resultFromSubQueries = $this->sumOfIndiLocalActivity($oid);
+            while ($raa = mysqli_fetch_array($resultFromSubQueries)) {
+                $yearlyWeight = ($raa['syab'] / $resultFinal['agr_syab']) * 100;
+                if ($raa['syaq'] != 0) {
+                    $yearlyProgressQtyPer = ($raa['sypq'] / $raa['syaq']) * 100;
+                } else {
+                    $yearlyProgressQtyPer = 0;
+                }
+                if ($raa['syab'] != 0) {
+                    $yearlyExpProPer = ($raa['sype'] / $raa['syab']) / 100;
+                } else {
+                    $yearlyExpProPer = 0;
+                }
+                if ($resultFinal['agr_sqaq'] != 0) {
+                    $qtrAllocWeight = ($raa['sqaq'] / $resultFinal['agr_sqaq']) * 100;
+                } else {
+                    $qtrAllocWeight = 0;
+                }
+
+                if ($raa['sqaq'] != 0) {
+                    $qtrProgressQtyPer = ($raa['sqpq'] / $raa['sqaq']) * 100;
+                } else {
+                    $qtrProgressQtyPer = 0;
+                }
+                if ($raa['sqab'] != 0) {
+                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) / 100;
+                } else {
+                    $qtrExpProPer = 0;
+                }
+
+                $queryToInsertAct = sprintf(
+                    "INSERT INTO 
+                `pisdoego_db_pis`.`tbl_local_reports` 
+                (`activity_number`, 
+                `yearly_alloc_qty`, 
+                `yearly_weight`, 
+                `yearly_alloc_budget`, 
+                `yearly_progress_qty`, 
+                `yearly_progress_qty_percentage`, 
+                `yearly_progress_expenditure`, 
+                `yearly_progress_expenditure_percentage`, 
+                `yearly_progress_weight`, 
+                `qtr_alloc_qty`, 
+                `qtr_alloc_weight`, 
+                `qtr_alloc_budget`, 
+                `qtr_progress_qty`, 
+                `qtr_progress_qty_percentage`, 
+                `qtr_progress_expenditure`, 
+                `qtr_progress_expenditure_percentage`, 
+                `qtr_progress_expenditure_weight`, 
+                `name_np`,
+                `status`) 
+                VALUES (
+                '%s', 
+                '%s',
+                '%s', 
+                '%s',  
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s', 
+                '%s',  
+                '%s', 
+                '%s',  
+                '%s', 
+                '%s', 
+                '%s',
+                '2')",
+                    mysqli_real_escape_string($this->dbc, $raa['act_code']),
+                    mysqli_real_escape_string($this->dbc, $raa['syaq']),
+                    mysqli_real_escape_string($this->dbc, $yearlyWeight),
+                    mysqli_real_escape_string($this->dbc, $raa['syab']),
+                    mysqli_real_escape_string($this->dbc, $raa['sypq']),
+                    mysqli_real_escape_string($this->dbc, $yearlyProgressQtyPer),
+                    mysqli_real_escape_string($this->dbc, $raa['sype']),
+                    mysqli_real_escape_string($this->dbc, $yearlyExpProPer),
+                    mysqli_real_escape_string($this->dbc, ($yearlyProgressQtyPer / 100) * $yearlyWeight),
+                    mysqli_real_escape_string($this->dbc, $raa['sqaq']),
+                    mysqli_real_escape_string($this->dbc, $qtrAllocWeight),
+                    mysqli_real_escape_string($this->dbc, $raa['sqab']),
+                    mysqli_real_escape_string($this->dbc, $raa['sqpq']),
+                    mysqli_real_escape_string($this->dbc, $qtrProgressQtyPer),
+                    mysqli_real_escape_string($this->dbc, $raa['sqpe']),
+                    mysqli_real_escape_string($this->dbc, $qtrExpProPer),
+                    mysqli_real_escape_string($this->dbc, ($qtrProgressQtyPer / 100) * $qtrAllocWeight),
+                    mysqli_real_escape_string($this->dbc, $raa['act_name_np'])
+                );
+                $resultFrom = mysqli_query($this->dbc, $queryToInsertAct);
+                if ($resultFrom < 0) {
+                    $queryForTruncate = "truncate `pisdoego_db_pis`.`tbl_local_reports`;";
+                    $resultForTruncate = mysqli_query($this->dbc, $queryForTruncate);
+                    return false;
+                }
+            }
+            $queryToFinal = sprintf("INSERT INTO 
+            `pisdoego_db_pis`.`tbl_local_reports` 
+            (`activity_number`, 
+            `yearly_weight`, 
+            `yearly_alloc_budget`, 
+            `yearly_progress_expenditure`, 
+            `yearly_progress_expenditure_percentage`, 
+            `qtr_alloc_weight`, 
+            `qtr_alloc_budget`, 
+            `qtr_progress_expenditure`, 
+            `qtr_progress_expenditure_percentage`, 
+            `name_np`,
+            `status`) VALUES 
+            ('', 
+            '0', 
+            '%s', 
+            '%s', 
+            '0', 
+            '0', 
+            '%s', 
+            '%s',
+            '0', 
+            'कूल जम्मा',
+            '4')",
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_syab']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sype']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sqab']),
+                mysqli_real_escape_string($this->dbc, $resultFinal['agr_sqpe']));
+            $resultToFinale = mysqli_query($this->dbc, $queryToFinal);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function selectIndividualLocalReport(){
+        $query = "SELECT * FROM pisdoego_db_pis.tbl_local_reports;";
+        return mysqli_query($this->dbc, $query);
+    }
 }
 
 

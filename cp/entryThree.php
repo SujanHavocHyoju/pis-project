@@ -29,7 +29,7 @@ if (isset($_POST['btnaddprogress'])) {
             }
         }
     }
-    if ($isSuccess) {
+    if($_SESSION['user_type']==0){
         $res = $dbc->updateGovernmentTransaction(
             $yearlyAllocProgressQty,
             $yearlyAllocProgressBud,
@@ -38,6 +38,19 @@ if (isset($_POST['btnaddprogress'])) {
         if ($res) {
             $_SESSION["message"] = " लक्ष्य तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
             echo "<script>location.href='dashboard.php?action=entryTwo&oid=" . $_GET['oid'] . "&name=" . $_GET['name'] . "';</script>";
+        }
+    }
+    else{
+        if ($isSuccess) {
+            $res = $dbc->updateGovernmentTransaction(
+                $yearlyAllocProgressQty,
+                $yearlyAllocProgressBud,
+                $qtrBudget,
+                $qtrQty, $_GET['tlid']);
+            if ($res) {
+                $_SESSION["message"] = " लक्ष्य तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
+                echo "<script>location.href='dashboard.php?action=entryTwo&oid=" . $_GET['oid'] . "&name=" . $_GET['name'] . "';</script>";
+            }
         }
     }
 

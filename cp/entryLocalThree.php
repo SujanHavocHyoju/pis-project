@@ -14,15 +14,7 @@ if (isset($_POST['btnaddprogress'])) {
     $yearlyAllocQty = $_POST['txtayearqty'];
     $qtrAllocQty = $_POST['txtqaloqty'];
     $qtrTargetBudget = $_POST['txtqtargetbudget'];
-    if ($yearlyAllocQty < $yearlyAllocProgressQty) {
-        $message = $utils->errorMessage("वार्षिक लक्ष्यको भौतिक परिमाण भन्दा प्रगतिको  भौतिक परिमाण रकम बढी हुन गएको छ!!");
-    } else if ($row['yearly_alloc_budget'] < $yearlyAllocProgressBud) {
-        $message = $utils->errorMessage("वार्षिक लक्ष्यको बजेट भन्दा प्रगतिको बजेट रकम बढी हुन गएको छ!!");
-    } else if ($qtrAllocQty < $qtrQty) {
-        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष्य भौतिक परिमाण भन्दा प्रथम चौमासिक प्रगति भौतिक परिमाण रकम बढी हुन गएको छ!!");
-    } else if ($row['q1_alloc_budget'] < $qtrBudget) {
-        $message = $utils->errorMessage("प्रथम चौमासिक लक्ष्य बजेट भन्दा प्रथम चौमासिक प्रगति बजेट रकम बढी हुन गएको छ!!");
-    } else {
+    if($_SESSION['user_type']==0){
         $res = $dbc->updateOneLocalTransaction($yearlyAllocProgressQty,
             $yearlyAllocProgressBud,
             $qtrBudget,
@@ -36,6 +28,32 @@ if (isset($_POST['btnaddprogress'])) {
             echo "<script>
             window.history.go(-2);
             </script>";
+        }
+    }
+    else{
+        if ($yearlyAllocQty < $yearlyAllocProgressQty) {
+            $message = $utils->errorMessage("वार्षिक लक्ष्यको भौतिक परिमाण भन्दा प्रगतिको  भौतिक परिमाण रकम बढी हुन गएको छ!!");
+        } else if ($row['yearly_alloc_budget'] < $yearlyAllocProgressBud) {
+            $message = $utils->errorMessage("वार्षिक लक्ष्यको बजेट भन्दा प्रगतिको बजेट रकम बढी हुन गएको छ!!");
+        } else if ($qtrAllocQty < $qtrQty) {
+            $message = $utils->errorMessage("प्रथम चौमासिक लक्ष्य भौतिक परिमाण भन्दा प्रथम चौमासिक प्रगति भौतिक परिमाण रकम बढी हुन गएको छ!!");
+        } else if ($row['q1_alloc_budget'] < $qtrBudget) {
+            $message = $utils->errorMessage("प्रथम चौमासिक लक्ष्य बजेट भन्दा प्रथम चौमासिक प्रगति बजेट रकम बढी हुन गएको छ!!");
+        } else {
+            $res = $dbc->updateOneLocalTransaction($yearlyAllocProgressQty,
+                $yearlyAllocProgressBud,
+                $qtrBudget,
+                $qtrQty,
+                $_GET['tlid'],
+                $yearlyAllocQty,
+                $qtrAllocQty,
+                $qtrTargetBudget);
+            if ($res) {
+                $_SESSION["message"] = " लक्ष्य तथा प्रगति विवरण परिबर्तन भैसकेको छ!!";
+                echo "<script>
+            window.history.go(-2);
+            </script>";
+            }
         }
     }
 }

@@ -44,7 +44,7 @@
                         <tr>
 
                             <td colspan="14" style="text-align: center;">
-                                आ.व. <?php echo $_SESSION["fiscal_year"];?> (जिल्लास्तर)
+                                आ.व. <?php echo $_SESSION["fiscal_year"]. " (".$_GET['type'].")";?>
                             </td>
                         </tr>
 

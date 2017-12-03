@@ -135,13 +135,7 @@ $resultOfSum = mysqli_fetch_array($sumOfSelectSumSql);
 
 <?php echo '<script>
     $("#create_excel").click(function(){
-        var agree = confirm("== कृपया माफ गर्नु होला । मंसिर १० गते पछि मात्र प्रतिबेदन डाउनलोड गर्नुहोला ====");
-        if (agree)
-            return true;
-        else
-            return false;
-            // var page ="excelreport.php?lid=' . $_GET["oid"] . '&o_name=' . $_GET['name'] . '&f_year=आ.व. : 2073/74";
-            // console.log(page);
-            // window.location=page;
+            var page ="finalreportexcel.php?lid='.$_GET['oid'].'&o_name='.$_GET['name'].'";
+            window.location=page;
     });
-</script>'; ?>
+</script>';?>

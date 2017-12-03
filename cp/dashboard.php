@@ -134,12 +134,12 @@ echo "<script>window.location='login.php';</script>";
 
             <li><a href="#">प्रतिवेदनहरु</a>
                 <ul>
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=360140">
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=360140&type=केन्द्रस्तर">
                     केन्द्रस्तर एकमुष्ठ प्रतिवेदन 
                     </a></li>
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=350806" >
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=350806&type=जिल्लास्तर" >
                     जिल्लास्तर एकमुष्ठ प्रतिवेदन </a></li>
-                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=0" >
+                    <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=finalreport&project_id=0&type=स्थानीय" >
                     स्थानीय एकमुष्ठ प्रतिवेदन </a></li>
                     <li><a class="preeti none" style="font-size:14px; font-weight:normal" href="dashboard.php?action=officewise">कार्यालयगत
                             प्रतिवेदन</a></li>
