@@ -4,7 +4,11 @@ define('DB_SERVER', '127.0.0.1');
 define('DB_USER', 'root');
 define('DB_PASS', 'admin');
 define('DB_NAME', 'pisdoego_db_pis');
-
+/*Declaring the constant keyword */
+//define('DB_SERVER', '127.0.0.1');
+//define('DB_USER', 'pisdoego_db_pis');
+//define('DB_PASS', 'P1Sd0eG0_db_P1S');
+//define('DB_NAME', 'pisdoego_db_pis');
 class DB_dbc
 {
 
@@ -27,6 +31,7 @@ class DB_dbc
         ";
         return mysqli_query($this->dbc, $query);
     }
+
     function selectCountUserLogToday()
     {
         $query = "SELECT count(*) 
@@ -35,6 +40,7 @@ class DB_dbc
         ";
         return mysqli_query($this->dbc, $query);
     }
+
     function insertOrUpdateUserLog($username, $office_name, $user_type, $ip, $device, $status)
     {
         $resultRo = $this->selectUserByUserName($username);
@@ -488,7 +494,19 @@ class DB_dbc
         $query = "SELECT a.name_np, a.code,a.id, tl.* 
               FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code
               WHERE tl.edu_office_id = '$oid' 
-              and tl.q2_alloc_bugdet='0' and tl.q3_alloc_budget='0'";
+              and tl.q1_alloc_budget!='0';";
+        $res = mysqli_query($this->dbc, $query);
+        return $res;
+    }
+
+    function selectTransactionGovernmentWithProjectId($oid, $projectId)
+    {
+        $query = "SELECT a.name_np, a.code,a.id, tl.* 
+              FROM tbl_activities AS a INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code
+              WHERE tl.edu_office_id = '$oid' 
+             and tl.q1_alloc_budget!='0' 
+              and tl.project_id='$projectId'
+              ";
         $res = mysqli_query($this->dbc, $query);
         return $res;
     }
@@ -578,10 +596,41 @@ class DB_dbc
         }
     }
 
-    function selectLocalOfficeForTransaction()
+    function updateGovernmentAdminTransaction(
+        $yearlyAllocCost,
+        $yearlyAllocQty,
+        $yearAllocBudget,
+        $txtpyearqty,
+        $txtpyearbudget,
+        $q1AllocQty,
+        $q1AllocBudget,
+        $txtpttbudget,
+        $txtpttqty,
+        $tlid)
     {
-        $res = mysqli_query($this->dbc, "SELECT o.name FROM tbl_local_bodies AS o 
-                JOIN tbl_transaction_edu_offices AS tl ON o.id = tl.edu_office_id;");
+        $sql = sprintf("UPDATE `pisdoego_db_pis` .`tbl_transaction_edu_offices` 
+                set yearly_alloc_cost = '%s',
+                 yearly_alloc_qty = '%s',
+                 yearly_alloc_budget = '%s',
+                 yearly_progress_qty = '%s',
+                 yearly_progress_expenditure='%s',
+                q1_alloc_qty='%s',
+                q1_alloc_budget='%s',
+                 q1_progress_expenditure='%s',
+                q1_progress_qty='%s' 
+                where id = '%s'",
+            mysqli_real_escape_string($this->dbc, $yearlyAllocCost),
+            mysqli_real_escape_string($this->dbc, $yearlyAllocQty),
+            mysqli_real_escape_string($this->dbc, $yearAllocBudget),
+            mysqli_real_escape_string($this->dbc, $txtpyearqty),
+            mysqli_real_escape_string($this->dbc, $txtpyearbudget),
+            mysqli_real_escape_string($this->dbc, $q1AllocQty),
+            mysqli_real_escape_string($this->dbc, $q1AllocBudget),
+            mysqli_real_escape_string($this->dbc, $txtpttbudget),
+            mysqli_real_escape_string($this->dbc, $txtpttqty),
+            mysqli_real_escape_string($this->dbc, $tlid));
+        $res = mysqli_query($this->dbc, $sql);
+        return $res;
     }
 
     function updateGovernmentTransaction($txtpyearqty, $txtpyearbudget, $txtpttbudget, $txtpttqty, $tlid)
@@ -2061,6 +2110,7 @@ HAVING `activity_id` = '$activity_id'";
                                 left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                     where main.id=sub.main_activity_id
                                         and tl.edu_office_id = '$oid'
+                                        and tl.q1_alloc_budget!='0'
                                         GROUP BY
                                         act.id
                                         ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id) as T_AGR ;";
@@ -2114,6 +2164,7 @@ HAVING `activity_id` = '$activity_id'";
                                 left join tbl_transaction_edu_offices as tl on tl.activity_code=act.code
                                     where main.id=sub.main_activity_id
                                         and tl.edu_office_id = '$oid'
+                                        and tl.q1_alloc_budget!='0'
                                         GROUP BY
                                         act.id
                                         ORDER BY sub.id ASC) as T_SUB GROUP BY main_id) as T_Main_Sub Group BY main_id;";
@@ -2153,6 +2204,7 @@ HAVING `activity_id` = '$activity_id'";
                                 where main.id='$id' and
                                 sub.code=act.sub_activity_code
                                 and tl.edu_office_id = '$oid'
+                                and tl.q1_alloc_budget!='0'
                                 GROUP BY sub.id
                                 ORDER BY sub.id ASC) as T_SUB GROUP BY sub_code;";
         //echo $sql;
@@ -2181,6 +2233,7 @@ HAVING `activity_id` = '$activity_id'";
             where main.id='$main_activity' and
             sub.code='$sub_activity'
             and tl.edu_office_id = '$oid'
+            and tl.q1_alloc_budget!='0'
             GROUP BY
             act.id
             ORDER BY act.id ASC;";

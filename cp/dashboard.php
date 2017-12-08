@@ -151,7 +151,7 @@ if ($now > $_SESSION['expire']) {
                                 जिल्लास्तर एकमुष्ठ प्रतिवेदन </a></li>
                         <li><a class="preeti none" style="font-size:14px; font-weight:normal"
                                href="dashboard.php?action=finalreport&project_id=0&type=स्थानीय">
-                                स्थानीय एकमुष्ठ प्रतिवेदन </a></li>
+                                स्थानीय तह एकमुष्ठ प्रतिवेदन </a></li>
                         <li><a class="preeti none" style="font-size:14px; font-weight:normal"
                                href="dashboard.php?action=officewise">शैक्षिक कार्यालयगत
                                 प्रतिवेदन</a></li>
