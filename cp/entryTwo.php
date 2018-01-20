@@ -5,20 +5,23 @@ if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
 }
 if(isset($_GET['type'] )){
     if ($_GET['type'] == "central") {
+        $sumOfSelectSumSql = $dbc->selectSumOfTransactionGovernment($_GET['oid'], 360140);
         $sql = $dbc->selectTransactionGovernmentWithProjectId($_GET['oid'], 360140);
     }
-    if ($_GET['type'] == "district") {
+    else if ($_GET['type'] == "district") {
+        $sumOfSelectSumSql = $dbc->selectSumOfTransactionGovernment($_GET['oid'], 350806);
         $sql = $dbc->selectTransactionGovernmentWithProjectId($_GET['oid'], 350806);
     }
     else{
+        $sumOfSelectSumSql = $dbc->selectSumTransactionGovernment($_GET['oid']);
         $sql = $dbc->selectTransactionGovernment($_GET['oid']);
     }
 }
 else {
+    $sumOfSelectSumSql = $dbc->selectSumTransactionGovernment($_GET['oid']);
     $sql = $dbc->selectTransactionGovernment($_GET['oid']);
-
 }
-$sumOfSelectSumSql = $dbc->selectSumOfTransactionGovernment($_GET['oid']);
+
 $resultOfSum = mysqli_fetch_array($sumOfSelectSumSql);
 ?>
 
@@ -39,9 +42,9 @@ $resultOfSum = mysqli_fetch_array($sumOfSelectSumSql);
                                                                                                            id="create_excel">प्रतिवेदन
                                 डाउनलोड गर्ने</a></p>
                         <select id="projectType">
-                            <option value="all">All</option>
-                            <option value="central">Central</option>
-                            <option value="district">District</option>
+                            <option value="all">सबै</option>
+                            <option value="central">केन्द्रस्तर</option>
+                            <option value="district">जिल्लास्तर</option>
                         </select>
                         <p><?php echo isset($message) ? $message : ""; ?></p>
                         <form name="del" action="" method="post">
@@ -141,8 +144,7 @@ $resultOfSum = mysqli_fetch_array($sumOfSelectSumSql);
                                                     class="preeti"><?php echo $resultOfSum['ypq'] ?></span></td>
                                         <td align="right"><span class="preeti"><?php echo $resultOfSum['ype'] ?></span>
                                         </td>
-                                        <td align="right"><span class="preeti"><?php echo $resultOfSum['ype'] ?></span>
-                                        </td>
+
                                         <td align="right"><span class="preeti"
                                                                 style="width:0.6em;"><?php echo $resultOfSum['qaq'] ?></span>
                                         </td>

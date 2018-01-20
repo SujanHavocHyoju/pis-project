@@ -1,9 +1,13 @@
 <?php
 /*Declaring the constant keyword */
 define('DB_SERVER', '127.0.0.1');
-define('DB_USER', 'root');
-define('DB_PASS', 'admin');
+define('DB_USER', 'pisdoego_db_pis');
+define('DB_PASS', 'P1Sd0eG0_db_P1S');
 define('DB_NAME', 'pisdoego_db_pis');
+//define('DB_SERVER', '127.0.0.1');
+//define('DB_USER', 'root');
+//define('DB_PASS', 'admin');
+//define('DB_NAME', 'pisdoego_db_pis');
 /*Declaring the constant keyword */
 //define('DB_SERVER', '127.0.0.1');
 //define('DB_USER', 'pisdoego_db_pis');
@@ -468,8 +472,25 @@ class DB_dbc
         $result = mysqli_query($this->dbc, $query);
         return $result;
     }
-
-    function selectSumOfTransactionGovernment($office_id)
+    function selectSumTransactionGovernment($office_id){
+        $query = "SELECT SUM(tl.yearly_alloc_qty) as yaq,
+            SUM(tl.yearly_alloc_cost) as yac,
+            SUM(tl.yearly_alloc_budget) as yab,
+            SUM(tl.yearly_progress_qty) as ypq,
+            SUM(tl.yearly_progress_expenditure) as ype,
+            SUM(tl.q1_alloc_qty) as qaq,
+            SUM(tl.q1_alloc_budget) as qab,
+            SUM(tl.q1_progress_qty) as qpq,
+            SUM(tl.q1_progress_expenditure) as qpe
+              FROM tbl_activities AS a 
+              INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code 
+              WHERE tl.edu_office_id = '$office_id'
+              and tl.q1_alloc_budget!='0'
+              ";
+        $res = mysqli_query($this->dbc, $query);
+        return $res;
+    }
+    function selectSumOfTransactionGovernment($office_id,$projectId)
     {
         $query = "SELECT SUM(tl.yearly_alloc_qty) as yaq,
             SUM(tl.yearly_alloc_cost) as yac,
@@ -483,7 +504,8 @@ class DB_dbc
               FROM tbl_activities AS a 
               INNER JOIN tbl_transaction_edu_offices AS tl ON a.code = tl.activity_code 
               WHERE tl.edu_office_id = '$office_id'
-              and tl.q2_alloc_bugdet='0' and tl.q3_alloc_budget='0'
+              and tl.q1_alloc_budget!='0'
+              and tl.project_id='$projectId'
               ";
         $res = mysqli_query($this->dbc, $query);
         return $res;
@@ -1095,7 +1117,7 @@ HAVING `activity_id` = '$activity_id'";
                                 and tl.project_id='$pid'
                                 GROUP BY sub.id
                                 ORDER BY sub.id ASC) as T_SUB GROUP BY sub_code;";
-        //echo $sql;
+
         mysqli_query($this->dbc, "SET sql_mode = '';");
         $res = mysqli_query($this->dbc, $sql);
         return $res;
@@ -1134,7 +1156,7 @@ HAVING `activity_id` = '$activity_id'";
     function sumOfLocalTotal()
     {
         $query = "SELECT 
-            SUM(syaq) as agr_syag, 
+            SUM(syaq) as agr_syaq, 
             SUM(syab) as agr_syab, 
             SUM(sypq) as agr_sypq, 
             SUM(sype) as agr_sype, 
@@ -1211,7 +1233,7 @@ HAVING `activity_id` = '$activity_id'";
                     $yearlyExpProPer = 0;
                 }
                 if ($resultFinal['agr_sqaq'] != 0) {
-                    $qtrAllocWeight = ($raa['sqaq'] / $resultFinal['agr_sqaq']) * 100;
+                    $qtrAllocWeight = ($raa['sqab'] / $resultFinal['agr_sqab']) * 100;
                 } else {
                     $qtrAllocWeight = 0;
                 }
@@ -1222,7 +1244,7 @@ HAVING `activity_id` = '$activity_id'";
                     $qtrProgressQtyPer = 0;
                 }
                 if ($raa['sqab'] != 0) {
-                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) / 100;
+                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) * 100;
                 } else {
                     $qtrExpProPer = 0;
                 }
@@ -1323,6 +1345,7 @@ HAVING `activity_id` = '$activity_id'";
                 mysqli_real_escape_string($this->dbc, $resultFinal['agr_sype']),
                 mysqli_real_escape_string($this->dbc, $resultFinal['agr_sqab']),
                 mysqli_real_escape_string($this->dbc, $resultFinal['agr_sqpe']));
+
             $resultToFinale = mysqli_query($this->dbc, $queryToFinal);
             return true;
         } else {
@@ -1344,7 +1367,7 @@ HAVING `activity_id` = '$activity_id'";
                 $yearlyExpProPerMain = ($rma['Main_sype'] / $rma['Main_syab']) / 100;
                 $qtrAllocWeighMain = ($rma['Main_sqaq'] / $resultFinal['agr_sqaq']) * 100;
                 if ($rma['Main_sqab'] != 0) {
-                    $qtrExpProPerMain = ($rma['Main_sqpe'] / $rma['Main_sqab']) / 100;
+                    $qtrExpProPerMain = ($rma['Main_sqpe'] / $rma['Main_sqab']) * 100;
                 } else {
                     $qtrExpProPerMain = 0;
                 }
@@ -1392,7 +1415,7 @@ HAVING `activity_id` = '$activity_id'";
                         $yearlyExpProPerSub = ($rsa['sub_sype'] / $rsa['sub_syab']) / 100;
                         $qtrAllocWeighSUB = ($rsa['sub_sqaq'] / $resultFinal['agr_sqaq']) * 100;
                         if ($rsa['sub_sqab'] != 0) {
-                            $qtrExpProPerSub = ($rsa['sub_sqpe'] / $rsa['sub_sqab']) / 100;
+                            $qtrExpProPerSub = ($rsa['sub_sqpe'] / $rsa['sub_sqab']) * 100;
                         } else {
                             $qtrExpProPerSub = 0;
                         }
@@ -1448,7 +1471,7 @@ HAVING `activity_id` = '$activity_id'";
                                     $yearlyExpProPer = 0;
                                 }
                                 if ($resultFinal['agr_sqaq'] != 0) {
-                                    $qtrAllocWeight = ($raa['sqaq'] / $resultFinal['agr_sqaq']) * 100;
+                                    $qtrAllocWeight = ($raa['sqab'] / $resultFinal['agr_sqab']) * 100;
                                 } else {
                                     $qtrAllocWeight = 0;
                                 }
@@ -1459,7 +1482,7 @@ HAVING `activity_id` = '$activity_id'";
                                     $qtrProgressQtyPer = 0;
                                 }
                                 if ($raa['sqab'] != 0) {
-                                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) / 100;
+                                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) * 100;
                                 } else {
                                     $qtrExpProPer = 0;
                                 }
@@ -2038,7 +2061,6 @@ HAVING `activity_id` = '$activity_id'";
             mysqli_real_escape_string($this->dbc, $qtrTargetBudget),
             mysqli_real_escape_string($this->dbc, $tlid));
         $res = mysqli_query($this->dbc, $sql);
-        echo $sql;
         return $res;
     }
 
@@ -2207,7 +2229,7 @@ HAVING `activity_id` = '$activity_id'";
                                 and tl.q1_alloc_budget!='0'
                                 GROUP BY sub.id
                                 ORDER BY sub.id ASC) as T_SUB GROUP BY sub_code;";
-        //echo $sql;
+
         mysqli_query($this->dbc, "SET sql_mode = '';");
         $res = mysqli_query($this->dbc, $sql);
         return $res;
@@ -2255,7 +2277,7 @@ HAVING `activity_id` = '$activity_id'";
                 $yearlyExpProPerMain = ($rma['Main_sype'] / $rma['Main_syab']) / 100;
                 $qtrAllocWeighMain = ($rma['Main_sqaq'] / $resultFinal['agr_sqaq']) * 100;
                 if ($rma['Main_sqab'] != 0) {
-                    $qtrExpProPerMain = ($rma['Main_sqpe'] / $rma['Main_sqab']) / 100;
+                    $qtrExpProPerMain = ($rma['Main_sqpe'] / $rma['Main_sqab']) * 100;
                 } else {
                     $qtrExpProPerMain = 0;
                 }
@@ -2303,7 +2325,7 @@ HAVING `activity_id` = '$activity_id'";
                         $yearlyExpProPerSub = ($rsa['sub_sype'] / $rsa['sub_syab']) / 100;
                         $qtrAllocWeighSUB = ($rsa['sub_sqaq'] / $resultFinal['agr_sqaq']) * 100;
                         if ($rsa['sub_sqab'] != 0) {
-                            $qtrExpProPerSub = ($rsa['sub_sqpe'] / $rsa['sub_sqab']) / 100;
+                            $qtrExpProPerSub = ($rsa['sub_sqpe'] / $rsa['sub_sqab']) * 100;
                         } else {
                             $qtrExpProPerSub = 0;
                         }
@@ -2359,7 +2381,7 @@ HAVING `activity_id` = '$activity_id'";
                                     $yearlyExpProPer = 0;
                                 }
                                 if ($resultFinal['agr_sqaq'] != 0) {
-                                    $qtrAllocWeight = ($raa['sqaq'] / $resultFinal['agr_sqaq']) * 100;
+                                    $qtrAllocWeight = ($raa['sqab'] / $resultFinal['agr_sqab']) * 100;
                                 } else {
                                     $qtrAllocWeight = 0;
                                 }
@@ -2370,7 +2392,7 @@ HAVING `activity_id` = '$activity_id'";
                                     $qtrProgressQtyPer = 0;
                                 }
                                 if ($raa['sqab'] != 0) {
-                                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) / 100;
+                                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) * 100;
                                 } else {
                                     $qtrExpProPer = 0;
                                 }
@@ -2588,7 +2610,7 @@ HAVING `activity_id` = '$activity_id'";
                     $yearlyExpProPer = 0;
                 }
                 if ($resultFinal['agr_sqaq'] != 0) {
-                    $qtrAllocWeight = ($raa['sqaq'] / $resultFinal['agr_sqaq']) * 100;
+                    $qtrAllocWeight = ($raa['sqab'] / $resultFinal['agr_sqab']) * 100;
                 } else {
                     $qtrAllocWeight = 0;
                 }
@@ -2599,7 +2621,7 @@ HAVING `activity_id` = '$activity_id'";
                     $qtrProgressQtyPer = 0;
                 }
                 if ($raa['sqab'] != 0) {
-                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) / 100;
+                    $qtrExpProPer = ($raa['sqpe'] / $raa['sqab']) * 100;
                 } else {
                     $qtrExpProPer = 0;
                 }
